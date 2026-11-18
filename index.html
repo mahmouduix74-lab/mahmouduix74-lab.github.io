@@ -998,7 +998,7 @@ if (HERO === 'o') {
     if (L && L.ring === ring && !dirty) return L;
     dirty = false;
     const kids = [...ring.children], N = kids.length || 10, S = kids[0] ? kids[0].offsetWidth : 533.33;
-    const R = 1.5 * S;                                   // dirt's geometry: ten films 36° apart on a radius of 1.5 films, the camera on the rim
+    const R = S / .535;                                  // the camera on the rim; films a little over half the radius, so a gap of about a fifth of a film opens between neighbours (as in dirt's ring)
     kids.forEach((o, i) => { o.style.animationDelay = `${(-(i * .37) % 2.8).toFixed(2)}s`; });   // each film floats a little behind its neighbour
     L = {ring, kids, N, STEP: 360 / N, R, P: R, live: kids.map(() => null), tf: kids.map(() => ''), z: kids.map(() => -1), vids: kids.map(o => o.querySelector('video'))};
     return L; }
