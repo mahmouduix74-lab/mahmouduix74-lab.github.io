@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Forma — Football player &amp; trainer platform · Case study · Mahmoud Ali</title>
+<link rel="stylesheet" href="assets/vendor/devices.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('pre')</script>
+</head>
+<body>
+<!-- Values marked data-tmp are temporary until the designer approves them. Add ?clean to hide the markers. -->
+<canvas id="gl"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav top" data-in="navdrop">
+  <a href="#top" class="nav__logo"><img src="assets/img/logo.png" alt="Forma"></a>
+  <nav><a href="#context"><span class="ul">Overview</span></a><a href="#auth"><span class="ul">Flows</span></a><a href="#system"><span class="ul">System</span></a><a href="#contact"><span class="ul">Contact</span></a></nav>
+  <i class="hl hl--b" data-in="draw" data-d="0.4"></i>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <i class="hero__glow"></i><i class="hero__glow hero__glow--b"></i>
+  <div class="blk crumbs" data-at="0.2">
+    <a href="../../" data-in="rise">← All work</a>
+    <span data-in="rise" data-d="0.05">Case study</span><span data-in="rise" data-d="0.1">Sports platform</span><span data-in="rise" data-d="0.15">2025</span>
+    <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+  </div>
+  <div class="blk fh" data-at="0">
+    <img class="fh__logo" src="assets/img/logo.png" alt="Forma — For maturity and acceleration" data-in="rise" data-d="0.1">
+    <span class="fh__eb" data-in="rise" data-d="0.3">Case study · Sports platform</span>
+    <h1 class="fh__title" data-in="lines" data-d="0.4">Chase the Glory, join <b>FOR<i>MA</i></b> and level up your game</h1>
+    <p class="fh__lede" data-in="lines" data-d="0.8">The elite platform for professional player management, performance tracking, and career growth.</p>
+  </div>
+  <div class="blk fan" id="stage" data-at="1.0">
+    <div class="rib rib--a"><div class="rib__t" data-in="ribbon" data-x="-1" data-d="0.5"><span>Goal</span><span>Meet coaches</span><span>Forma.</span><span>Forma plans</span><span>Premium features</span><span>Goal</span><span>Meet coaches</span><span>Forma.</span><span>Forma plans</span></div></div>
+    <div class="rib rib--b"><div class="rib__t" data-in="ribbon" data-x="1" data-d="0.6"><span>Meet coaches</span><span>Forma.</span><span>Forma plans</span><span>Premium features</span><span>Goal</span><span>Meet coaches</span><span>Forma.</span><span>Forma plans</span><span>Premium features</span></div></div>
+    <div class="fan__c fan__c--l" data-in="fan" data-r="-5" data-d="0.15" data-cursor=""><img src="assets/img/login_top.jpg" alt="Sign in"></div>
+    <div class="fan__c fan__c--r" data-in="fan" data-r="5" data-d="0.25" data-cursor=""><img src="assets/img/trainer_details_top.jpg" alt="Trainer details"></div>
+    <div class="fan__c fan__c--m" data-in="fan" data-r="0" data-d="0" data-cursor=""><img src="assets/img/home_top.jpg" alt="Home page"></div>
+  </div>
+  <div class="blk cells cells--4" data-at="1.6">
+    <i class="hl" data-in="draw"></i>
+    <div data-in="rise" data-d="0"><span class="lbl">Role</span><b>Senior UI/UX Designer</b></div>
+    <div data-in="rise" data-d="0.05"><span class="lbl">Timeline</span><b>2025 · 2 months</b></div>
+    <div data-in="rise" data-d="0.1"><span class="lbl">Platform</span><b>Web · Player &amp; Trainer</b></div>
+    <div data-in="rise" data-d="0.15"><span class="lbl">Type</span><b>Client project</b></div>
+    <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+  </div>
+</section>
+
+<!-- ================= ARTICLE ================= -->
+<div class="article" id="article">
+  <i class="vl" data-vl></i>
+  <aside class="toc">
+    <div class="toc__track"><i id="tocfill"></i></div>
+    <div class="toc__links">
+      <a href="#context" data-t="context">Context &amp; problem</a>
+      <a href="#solution" data-t="solution">One platform, two sides</a>
+      <a href="#auth" data-t="auth">Sign in &amp; sign up</a>
+      <a href="#home" data-t="home">Home</a>
+      <a href="#trainer" data-t="trainer">Book a trainer</a>
+      <a href="#events" data-t="events">Events</a>
+      <a href="#plans" data-t="plans">Plans</a>
+      <a href="#progress" data-t="progress">Progress</a>
+      <a href="#trainerside" data-t="trainerside">Trainer portal</a>
+      <a href="#system" data-t="system">Design system</a>
+    </div>
+    <span class="toc__pct" id="prog">0%</span>
+  </aside>
+
+  <main class="content">
+
+    <section class="sec" id="context">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">01</div>
+        <h2 class="h" data-in="blur">Context &amp; problem — The talent is there, the path is missing</h2>
+        <p class="body" data-in="rise" data-d="0.2">Young players train hard, but their next step still depends on chance and a small personal network. Coaches, clubs and events sit in different places, and a player’s record — match stats, physical assessments, certificates — rarely travels with them. Without one trusted digital reference, talent gets lost and club scouts have little reliable data to go on.</p>
+        <p class="body" data-in="rise" data-d="0.3">Forma brings that path into one web platform: players build a complete sports profile ready for scouts, book verified trainers and events, and grow with a plan that fits their level.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_context.jpg" alt="Forma sign in"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Sign in sets the tone: night stadium, one field, one promise — become unstoppable.</span><span class="lbl">Fig. 01</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="solution">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">02</div>
+        <h2 class="h" data-in="blur">The solution — One web platform, two connected sides</h2>
+        <p class="body" data-in="rise" data-d="0.2">Forma is designed as a desktop web platform, built for dense data, analytics and booking management. Players and trainers each get their own portal, built from one system, and a player’s profile can be shared as a link with nothing to install.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk map" data-at="0.4">
+        <a data-cursor="" class="map__card" href="#solution" data-in="rise" data-d="0"><span class="map__img"><img src="assets/img/home_top.jpg" alt=""></span><span class="lbl">01</span><b>Player portal</b><small>Sports profile · stats · trainers · events · plans · wallet · leaderboard</small></a>
+        <a data-cursor="" class="map__card" href="#solution" data-in="rise" data-d="0.1"><span class="map__img"><img src="assets/img/trainer_player_details_top.jpg" alt=""></span><span class="lbl">02</span><b>Trainer portal</b><small>Career &amp; licences · clubs · player analytics · invitations · community feed</small></a>
+      </div>
+      <div class="blk cells cells--3 outcome" data-at="0.6">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><b><span data-in="count" data-to="49">49</span></b><span class="cap">Player portal screens</span></div>
+        <div data-in="rise" data-d="0.2"><b><span data-in="count" data-to="43">43</span></b><span class="cap">Trainer portal screens</span></div>
+        <div data-in="rise" data-d="0.3"><b><span data-in="count" data-to="92">92</span></b><span class="cap">Desktop screens in total</span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+    </section>
+
+    <section class="sec" id="auth">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">03</div>
+        <h2 class="h" data-in="blur">Sign in &amp; sign up — As little as possible at every step</h2>
+        <p class="body" data-in="rise" data-d="0.2">The whole entry flow sits on night-stadium art, so the platform’s sporting identity is there from the first second. To cut drop-off and effort, each step asks for as little as possible. Scroll through the four steps below.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="ht" id="ht">
+        <div class="ht__pin">
+          <div class="ht__panel">
+            <ol class="ht__list"><li class="ht__step" data-i="0"><span class="ht__no">01</span><b>Sign in</b><p>One field, the email. Players who already have an account go straight in.</p></li><li class="ht__step" data-i="1"><span class="ht__no">02</span><b>Create account</b><p>New players start from the same single field.</p></li><li class="ht__step" data-i="2"><span class="ht__no">03</span><b>Verify email</b><p>A four-digit code, a 59:00 timer and a one-tap resend.</p></li><li class="ht__step" data-i="3"><span class="ht__no">04</span><b>Player profile</b><p>Name, nationality, main position on the pitch, and an optional invite code that links the player to a trainer.</p></li></ol>
+            <div class="ht__bar"><i id="htfill"></i></div>
+            <div class="ht__stage"><div class="ht__scale" data-w="720" data-h="512"><div class="ht__card" data-i="0"><img class="ht__l ly-img" data-depth="0.4" src="assets/img/auth/s0_screen.jpg" alt="" style="left:0;top:0;width:720px;height:512px;border-radius:14px"><img class="ht__l ly-float ly-r" data-depth="1.3" src="assets/img/auth/s0_card.png" alt="" style="left:462px;top:56.5px;width:231px;height:113.0px"></div><div class="ht__card" data-i="1"><img class="ht__l ly-img" data-depth="0.4" src="assets/img/auth/s1_screen.jpg" alt="" style="left:0;top:0;width:720px;height:512px;border-radius:14px"><img class="ht__l ly-float ly-r" data-depth="1.3" src="assets/img/auth/s1_card.png" alt="" style="left:462px;top:56.5px;width:231px;height:113.0px"></div><div class="ht__card" data-i="2"><img class="ht__l ly-img" data-depth="0.4" src="assets/img/auth/s2_screen.jpg" alt="" style="left:0;top:0;width:720px;height:512px;border-radius:14px"><img class="ht__l ly-float ly-r" data-depth="1.3" src="assets/img/auth/s2_card.png" alt="" style="left:462px;top:48.4px;width:231px;height:129.2px"></div><div class="ht__card" data-i="3"><img class="ht__l ly-img" data-depth="0.4" src="assets/img/auth/s3_screen.jpg" alt="" style="left:0;top:0;width:720px;height:512px;border-radius:14px"><img class="ht__l ly-float ly-r" data-depth="1.3" src="assets/img/auth/s3_card.png" alt="" style="left:462px;top:23.5px;width:231px;height:179.0px"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec" id="home">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">04</div>
+        <h2 class="h" data-in="blur">Home — Chase the Glory</h2>
+        <p class="body" data-in="rise" data-d="0.2">One page that answers the player’s question, “what’s my next step?”: a hero carousel (get discovered, train with verified coaches, unlock more with Forma plans), one search across trainers, events and clubs, upcoming events, the plans on a dark stadium band, elite verified trainers and the players’ community feed. Scroll to move through it.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.3">
+        <div class="frame pan" data-in="rise"><img src="assets/img/home_long.jpg" alt="The Forma home page, top to bottom"></div>
+        <figcaption data-in="rise" data-d="0.3"><span>The home page moves with your scroll: hero, search, events, plans, trainers, posts.</span><span class="lbl">Fig. 02</span></figcaption>
+      </figure>
+    </section>
+    <section class="sec" id="trainer">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">05</div>
+        <h2 class="h" data-in="blur">Book a trainer — From profile to paid in five steps</h2>
+        <p class="body" data-in="rise" data-d="0.2">The player browses verified trainers, checks their licences, past clubs and session plans, then sends a booking request. Payment comes only after the trainer accepts, so a player never pays for a session that isn’t confirmed.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk fl" data-at="0.3"><div class="fl__row"><div class="fl__i" data-in="rise" data-d="0.00" data-cursor=""><span class="fl__img"><img src="assets/img/flow_t1.jpg" alt=""></span><span class="lbl">01</span><b>Elite trainers</b></div><div class="fl__i" data-in="rise" data-d="0.08" data-cursor=""><span class="fl__img"><img src="assets/img/flow_t2.jpg" alt=""></span><span class="lbl">02</span><b>Trainer profile</b></div></div><div class="fl__row fl__row--3"><div class="fl__i fl__i--m" data-in="rise" data-d="0.16" data-cursor=""><span class="fl__img"><img src="assets/img/flow_t3.png" alt=""></span><span class="lbl">03</span><b>Request booking</b></div><div class="fl__i fl__i--m" data-in="rise" data-d="0.24" data-cursor=""><span class="fl__img"><img src="assets/img/flow_t4.png" alt=""></span><span class="lbl">04</span><b>Payment method</b></div><div class="fl__i fl__i--m" data-in="rise" data-d="0.32" data-cursor=""><span class="fl__img"><img src="assets/img/flow_t5.png" alt=""></span><span class="lbl">05</span><b>Payment successful</b></div></div></div>
+      <p class="note blk" data-at="0.6"><span data-in="rise">Booking steps open as dialogs over the trainer’s page, so the player never leaves the context.</span></p>
+    </section>
+    <section class="sec" id="events">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">06</div>
+        <h2 class="h" data-in="blur">Events — Spots, price and payment on one screen</h2>
+        <p class="body" data-in="rise" data-d="0.2">Trials and training camps show the date, pitch, price and spots left up front. One payment pattern runs across the whole platform — a session with a trainer, a seat at an event or a plan upgrade — with cards, Apple Pay, PayPal or the Forma wallet, and VAT shown before paying.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk fl" data-at="0.3"><div class="fl__row"><div class="fl__i" data-in="rise" data-d="0.00" data-cursor=""><span class="fl__img"><img src="assets/img/flow_e1.jpg" alt=""></span><span class="lbl">01</span><b>Upcoming events</b></div><div class="fl__i" data-in="rise" data-d="0.08" data-cursor=""><span class="fl__img"><img src="assets/img/flow_e2.jpg" alt=""></span><span class="lbl">02</span><b>Event details</b></div></div><div class="fl__row fl__row--3"><div class="fl__i fl__i--m" data-in="rise" data-d="0.16" data-cursor=""><span class="fl__img"><img src="assets/img/flow_e3.png" alt=""></span><span class="lbl">03</span><b>Complete booking</b></div><div class="fl__i fl__i--m" data-in="rise" data-d="0.24" data-cursor=""><span class="fl__img"><img src="assets/img/flow_e4.png" alt=""></span><span class="lbl">04</span><b>Payment method</b></div><div class="fl__i fl__i--m" data-in="rise" data-d="0.32" data-cursor=""><span class="fl__img"><img src="assets/img/flow_e5.png" alt=""></span><span class="lbl">05</span><b>Payment successful</b></div></div></div>
+      <p class="note blk" data-at="0.6"><span data-in="rise">Learn the payment once, use it everywhere.</span></p>
+    </section>
+    <section class="sec" id="plans">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">07</div>
+        <h2 class="h" data-in="blur">Plans — Three levels, compared at a glance</h2>
+        <p class="body" data-in="rise" data-d="0.2">Basic, Platinum and Golden share the same card layout, so the benefits compare at a glance. Golden is lifted and turned blue to draw the eye. Every plan lists the same four benefits: priority trials, an AI performance index, pro verification and direct scout chat.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.3">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_plans.jpg" alt="Subscription plans on the home page"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Plans on the home page’s dark stadium band.</span><span class="lbl">Fig. 03</span></figcaption>
+      </figure>
+    </section>
+    <section class="sec" id="progress">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">08</div>
+        <h2 class="h" data-in="blur">Progress — Wallet, leaderboard and certificates</h2>
+        <p class="body" data-in="rise" data-d="0.2">A profile is worth as much as the trust in its numbers. Around the player’s stats sit a digital wallet with easy top-ups and a detailed transaction history, a competitive leaderboard ranked by performance, and the certificates the player adds and manages.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk map map--3" data-at="0.3"><a data-cursor="" class="map__card" href="#progress" data-in="rise" data-d="0.0"><span class="map__img"><img src="assets/img/wallet_top.jpg" alt=""></span><span class="lbl">01</span><b>My wallet</b><small>Balance, top up, transactions</small></a><a data-cursor="" class="map__card" href="#progress" data-in="rise" data-d="0.1"><span class="map__img"><img src="assets/img/leaderboard_top.jpg" alt=""></span><span class="lbl">02</span><b>Leaderboard</b><small>Rank and performance</small></a><a data-cursor="" class="map__card" href="#progress" data-in="rise" data-d="0.2"><span class="map__img"><img src="assets/img/certificates_top.jpg" alt=""></span><span class="lbl">03</span><b>Certificates</b><small>Add, edit and manage</small></a></div>
+    </section>
+    <section class="sec" id="trainerside">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">09</div>
+        <h2 class="h" data-in="blur">Trainer portal — Managing talent</h2>
+        <p class="body" data-in="rise" data-d="0.2">Trainers get their own management and analysis tools in the same design language: a detailed player card with skills, physical numbers, analytics and leaderboard position; their current and past clubs; invitations to bring players in; and a community feed for training updates.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.3">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_trainer.jpg" alt="Trainer home page"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>The trainer home keeps the player-side hero, with a cut-out duo of players.</span><span class="lbl">Fig. 04</span></figcaption>
+      </figure>
+      <div class="blk map map--3" data-at="0.3"><a data-cursor="" class="map__card" href="#trainerside" data-in="rise" data-d="0.0"><span class="map__img"><img src="assets/img/trainer_player_details_top.jpg" alt=""></span><span class="lbl">01</span><b>Player details</b><small>Skills, physical stats, leaderboard</small></a><a data-cursor="" class="map__card" href="#trainerside" data-in="rise" data-d="0.1"><span class="map__img"><img src="assets/img/user_clubs_top.jpg" alt=""></span><span class="lbl">02</span><b>Clubs</b><small>Current and past clubs</small></a><a data-cursor="" class="map__card" href="#trainerside" data-in="rise" data-d="0.2"><span class="map__img"><img src="assets/img/add_post_top.jpg" alt=""></span><span class="lbl">03</span><b>Create post</b><small>Community feed</small></a></div>
+    </section>
+    <section class="sec" id="system">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">10</div>
+        <h2 class="h" data-in="blur">Design system — High-contrast sporting precision</h2>
+        <p class="body" data-in="rise" data-d="0.2">The system balances sporting energy with the clarity a data-dense web interface needs. Click a swatch to copy it.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk swatches" data-at="0.3"><div data-in="rise" data-d="0.00" class="sw" data-hex="#073E74" title="#073E74"><i style="background:#073E74"><em aria-hidden="true">✓</em></i><b>Primary</b><small>#073E74 · Main actions, links, trust</small></div><div data-in="rise" data-d="0.08" class="sw" data-hex="#88121C" title="#88121C"><i style="background:#88121C"><em aria-hidden="true">✓</em></i><b>Secondary</b><small>#88121C · Key alerts, the “MA” in the logo, ribbons</small></div><div data-in="rise" data-d="0.16" class="sw" data-hex="#001D4E" title="#001D4E"><i style="background:#001D4E"><em aria-hidden="true">✓</em></i><b>Blue 900</b><small>#001D4E · Deep backgrounds, dark bands</small></div><div data-in="rise" data-d="0.24" class="sw" data-hex="#86BBFA" title="#86BBFA"><i style="background:#86BBFA"><em aria-hidden="true">✓</em></i><b>Blue 300</b><small>#86BBFA · Glow and highlights on dark</small></div><div data-in="rise" data-d="0.32" class="sw" data-hex="#34C759" title="#34C759"><i style="background:#34C759"><em aria-hidden="true">✓</em></i><b>Green</b><small>#34C759 · Success, verified badges</small></div></div>
+      <div class="blk fonts" data-at="0.6">
+        <i class="hl" data-in="draw"></i>
+        <div class="font" data-in="rise" data-d="0.05"><div class="font__aa fa--pj">Aa</div><div class="font__meta"><span class="lbl">Headlines</span><b>Plus Jakarta Sans</b><span>Medium · Bold — headlines and section navigation</span></div></div>
+        <div class="font" data-in="rise" data-d="0.15"><div class="font__aa fa--os">Aa</div><div class="font__meta"><span class="lbl">Display</span><b>Oswald</b><span>Bold — “Become unstoppable”, player names and card numbers</span></div></div>
+        <div class="font" data-in="rise" data-d="0.25"><div class="font__aa fa--ca">Aa <span lang="ar">أب</span></div><div class="font__meta"><span class="lbl">Interface</span><b>Cairo</b><span>Regular · SemiBold · Bold — clear reading in Arabic and English across forms, tables and inputs</span></div></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="contact">
+  <div class="blk closing__in" data-at="0">
+    <p class="closing__line" data-in="lines">Talent gets seen when the path is clear.</p>
+    <div class="closing__me" data-in="rise" data-d="0.5">
+      <div class="avatar" data-tmp>MA</div>
+      <div><b>Mahmoud Ali</b><span>Senior UI/UX Designer</span></div>
+    </div>
+        <div class="icons" data-in="rise" data-d="0.7">
+      <a href="https://www.behance.net/mahmoudxali74" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.2 11.2c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8.2 6 6.3 6H2v12h4.5c2.1 0 4-.9 4-3.3 0-1.5-.8-2.6-2.3-3zM4.6 8h1.6c.8 0 1.4.2 1.4 1.1 0 .8-.5 1.1-1.3 1.1H4.6V8zm1.8 8H4.6v-2.9h1.8c1 0 1.7.4 1.7 1.5S7.4 16 6.4 16zM21.9 13.6c0-2.6-1.5-4.6-4.2-4.6-2.6 0-4.4 2-4.4 4.6 0 2.7 1.7 4.5 4.4 4.5 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1.1 1.1-1.8 1.1-1.3 0-2-.8-2-2.1h6.1v-.6zm-6.1-1c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8h-3.7zM15 7h5v1.3h-5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/mahmoud-ali-ui-ux/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a href="../../" aria-label="Portfolio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4H4.3zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4h-3.4z"/></svg></a>
+      <a href="tel:+201141578409" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
+    </div>
+    <a href="#top" class="totop" data-in="rise" data-d="0.9"><span>Back to top</span><i>↑</i></a>
+  </div>
+</section>
+
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/gl.js"></script>
+<script src="assets/engine.js"></script>
+</body>
+</html>
