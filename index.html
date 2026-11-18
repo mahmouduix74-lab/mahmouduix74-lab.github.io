@@ -186,7 +186,7 @@ html[lang=ar] .vR .cta svg{transform:rotate(90deg)}
 .top .pill{transition:background-color .25s ease,color .25s ease}
 .top .pill:hover{background:var(--accent);color:#fff}.top .pill:hover i{color:rgba(255,255,255,.75)}.top .pill:hover .sep{background:rgba(255,255,255,.5)}
 #links a.talk{background:var(--ink);color:var(--white);margin-inline-start:calc(8*var(--u))}
-#load{position:absolute;inset:calc(8*var(--u));inset-inline-start:calc(62*var(--u));display:flex;align-items:center;justify-content:flex-end;padding:0 calc(16*var(--u));font-size:calc(14*var(--u));font-weight:500;color:var(--mute);font-variant-numeric:tabular-nums}
+#load{position:absolute;pointer-events:none;inset:calc(8*var(--u));inset-inline-start:calc(62*var(--u));display:flex;align-items:center;justify-content:flex-end;padding:0 calc(16*var(--u));font-size:calc(14*var(--u));font-weight:500;color:var(--mute);font-variant-numeric:tabular-nums}
 #bar{position:absolute;inset:0;inset-inline-end:auto;width:0;border-radius:calc(12*var(--u));background:var(--card)}
 #pct{position:relative}
 /* ---------- section 03 · statement: one paragraph that inks in, grey to black, as the page scrolls ---------- */
@@ -466,6 +466,8 @@ html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
 <div id="pw" aria-hidden="true"><span class="h t"></span><span class="h b"></span><span class="ln"></span><p class="msg" data-t="pw"></p></div>
 
 <script src="assets/realistic-switch.js"></script>
+<script src="assets/vendor/confetti.browser.js"></script>
+<script src="assets/confetti-button.js"></script>
 <script>
 'use strict';
 // ---------- content (EN / AR) ----------
@@ -1100,6 +1102,8 @@ if (HERO === 'o') {
   $('lang').addEventListener('click', () => label(sw.checked));
   label(true);
 }
+// Let's talk: a small burst in the accent as the mail opens (the button keeps its own look)
+document.querySelector('#links a.talk').addEventListener('click', e => ConfettiButton.burst(e.currentTarget, {colors: ['#FF5A1F', '#FF8A5C', '#FFC2A8', '#111111', '#fafafa']}));
 </script>
 </body>
 </html>
