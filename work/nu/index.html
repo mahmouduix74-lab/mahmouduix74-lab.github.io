@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NU App — Card sorting research · Case study · Mahmoud Ali</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* NU App: the shared case-study system, in the research document's blue */
+  :root{--gold:#1450C8;--gold-2:#0D3C9B;--beige:#EAF0FB;--night:#06122B;--line:#E1E7F1;--canvas:#F4F7FC;--ok:#18A06A;
+        --c-item:#38B2E8;--c-group:#5DBB46;--c-nav:#F07A2A;--c-note:#DCEBB9}
+  .cursor.big{background:rgba(20,80,200,.1);border-color:rgba(20,80,200,.5)}
+  .nu-mark{font-family:Tajawal,system-ui,sans-serif;font-weight:800;letter-spacing:.02em}
+  .nav__logo{width:calc(120 * var(--u))}
+  .hero__ph img{object-position:50% 50%}
+  .hero__ph img{filter:blur(3px) saturate(.8)}
+  .hero__ph::after{background:linear-gradient(90deg,rgba(6,18,43,.95) 0,rgba(6,18,43,.82) 46%,rgba(6,18,43,.62) 100%),linear-gradient(0deg,rgba(6,18,43,.85) 0,rgba(6,18,43,0) 40%)}
+  /* the hero's cards: the study's own card types, floating */
+  .cards{position:absolute;inset:calc(120 * var(--u)) 0 calc(150 * var(--u)) 0}
+  .sn{position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 calc(14 * var(--u));
+      font-weight:700;font-size:calc(15 * var(--u));line-height:calc(18 * var(--u));color:#0b2340;border-radius:calc(4 * var(--u));
+      box-shadow:0 calc(18 * var(--u)) calc(30 * var(--u)) rgba(0,0,0,.35),0 calc(2 * var(--u)) calc(4 * var(--u)) rgba(0,0,0,.2)}
+  .sn.it{background:var(--c-item);width:calc(118 * var(--u));height:calc(104 * var(--u))}
+  .sn.gr{background:var(--c-group);width:calc(150 * var(--u));height:calc(64 * var(--u));color:#0e2a0a}
+  .sn.nv{background:var(--c-nav);width:calc(120 * var(--u));height:calc(52 * var(--u));color:#3a1503}
+  .sn.ns{background:#fff;width:calc(130 * var(--u));height:calc(70 * var(--u));color:#333;font-weight:500;border-radius:calc(10 * var(--u))}
+  .sn.ns::after{content:"";position:absolute;left:calc(18 * var(--u));bottom:calc(-12 * var(--u));border:calc(7 * var(--u)) solid transparent;border-top:calc(7 * var(--u)) solid #fff;border-left:calc(7 * var(--u)) solid #fff}
+  /* card legend */
+  .legend{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(16 * var(--u));margin-top:calc(40 * var(--u))}
+  .legend>div{position:relative;padding:calc(20 * var(--u));background:var(--canvas);border:1px solid var(--line)}
+  .legend i{display:block;width:calc(44 * var(--u));height:calc(34 * var(--u));border-radius:calc(3 * var(--u));margin-bottom:calc(16 * var(--u));box-shadow:0 calc(6 * var(--u)) calc(10 * var(--u)) rgba(6,18,43,.15)}
+  .legend b{display:block;font-size:calc(16 * var(--u));line-height:calc(22 * var(--u))}
+  .legend small{display:block;font-size:calc(14 * var(--u));line-height:calc(21 * var(--u));color:var(--mute);margin-top:calc(6 * var(--u))}
+  .qs{list-style:none;margin-top:calc(32 * var(--u));counter-reset:q}
+  .qs li{position:relative;counter-increment:q;padding:calc(18 * var(--u)) 0 calc(18 * var(--u)) calc(56 * var(--u));border-top:1px solid var(--line);font-size:calc(19 * var(--u));line-height:calc(29 * var(--u));font-weight:500;color:var(--ink)}
+  .qs li::before{content:"0" counter(q);position:absolute;left:0;top:calc(21 * var(--u));font-size:calc(13 * var(--u));font-weight:700;letter-spacing:.12em;color:var(--gold)}
+  .qs li:last-child{border-bottom:1px solid var(--line)}
+  /* the eight boards */
+  .boards{display:grid;grid-template-columns:1fr 1fr;gap:calc(24 * var(--u)) calc(20 * var(--u));margin-top:calc(40 * var(--u))}
+  .boards .fig{margin-top:0}
+  .boards .frame{aspect-ratio:4/2.6}
+  .boards .frame img{width:100%;height:100%;object-fit:cover}
+  .boards figcaption{display:block!important}
+  .boards figcaption b{display:block;color:var(--ink);font-size:calc(15 * var(--u));line-height:calc(22 * var(--u));font-weight:700}
+  .boards figcaption span{display:block;margin-top:calc(4 * var(--u))}
+  /* agreement bars */
+  .bars{margin-top:calc(40 * var(--u))}
+  .bar{position:relative;display:grid;grid-template-columns:calc(220 * var(--u)) 1fr calc(80 * var(--u));gap:calc(20 * var(--u));align-items:center;padding:calc(16 * var(--u)) 0;border-top:1px solid var(--line)}
+  .bar:last-child{border-bottom:1px solid var(--line)}
+  .bar b{font-size:calc(16 * var(--u));line-height:calc(22 * var(--u))}
+  .bar small{display:block;font-size:calc(13 * var(--u));line-height:calc(19 * var(--u));color:var(--mute);font-weight:400;margin-top:calc(2 * var(--u))}
+  .bar .tr{position:relative;height:calc(10 * var(--u));background:var(--beige);border-radius:99px;overflow:hidden}
+  .bar .tr i{position:absolute;inset:0 auto 0 0;background:var(--gold);border-radius:99px;transform-origin:0 50%}
+  .bar .tr i.warn{background:#E0A13A}
+  .bar em{font-style:normal;font-weight:800;font-size:calc(18 * var(--u));text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+  .kpi{margin-top:calc(40 * var(--u))}
+  .kpi b{font-size:calc(56 * var(--u))!important;line-height:calc(60 * var(--u))!important;font-weight:800;color:var(--gold);margin:0 0 calc(8 * var(--u))!important}
+  .kpi .f{display:block;margin-top:calc(14 * var(--u));font-size:calc(13 * var(--u));line-height:calc(20 * var(--u));color:var(--gold-2);font-weight:700}
+  .issues{display:grid;grid-template-columns:1fr 1fr;gap:calc(16 * var(--u));margin-top:calc(40 * var(--u))}
+  .issues>div{padding:calc(24 * var(--u));background:var(--canvas);border:1px solid var(--line);border-top:3px solid #E0A13A}
+  .issues b{display:block;font-size:calc(18 * var(--u));line-height:calc(26 * var(--u));margin-top:calc(8 * var(--u))}
+  .chips{display:flex;flex-wrap:wrap;gap:calc(8 * var(--u));margin-top:calc(14 * var(--u))}
+  .chips span{font-size:calc(13 * var(--u));line-height:calc(18 * var(--u));padding:calc(6 * var(--u)) calc(10 * var(--u));background:#fff;border:1px solid var(--line);border-radius:99px;color:var(--ink)}
+  /* the recommended IA */
+  .ia{position:relative;display:grid;grid-template-columns:calc(150 * var(--u)) 1fr;gap:calc(40 * var(--u));margin-top:calc(40 * var(--u));padding:calc(32 * var(--u));background:var(--canvas);border:1px solid var(--line)}
+  .ia__root{align-self:center;height:calc(64 * var(--u));display:flex;align-items:center;justify-content:center;background:var(--gold);color:#fff;font-weight:800;font-size:calc(18 * var(--u))}
+  .ia__list{position:relative;display:flex;flex-direction:column;gap:calc(10 * var(--u))}
+  .ia__list::before{content:"";position:absolute;left:calc(-24 * var(--u));top:calc(26 * var(--u));bottom:calc(26 * var(--u));width:2px;background:var(--gold)}
+  .ia__g{position:relative;display:grid;grid-template-columns:calc(190 * var(--u)) 1fr;gap:calc(16 * var(--u));align-items:start;padding:calc(14 * var(--u)) calc(16 * var(--u));background:#fff;border:1px solid var(--line);transition:border-color .35s var(--ease),transform .45s var(--ease)}
+  .ia__g:hover{border-color:var(--gold);transform:translateX(calc(4 * var(--u)))}
+  .ia__g::before{content:"";position:absolute;left:calc(-24 * var(--u));top:calc(24 * var(--u));width:calc(24 * var(--u));height:2px;background:var(--gold)}
+  .ia__g b{font-size:calc(16 * var(--u));line-height:calc(22 * var(--u))}
+  .ia__g b em{display:inline-block;margin-left:calc(8 * var(--u));font-style:normal;font-size:calc(11 * var(--u));letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--c-nav);padding:calc(2 * var(--u)) calc(6 * var(--u));vertical-align:middle}
+  .ia__g .chips{margin-top:0}
+  .notes{list-style:none;margin-top:calc(32 * var(--u));display:grid;grid-template-columns:repeat(3,1fr);gap:calc(16 * var(--u))}
+  .notes li{padding:calc(24 * var(--u));background:var(--night);color:#fff;font-size:calc(19 * var(--u));line-height:calc(27 * var(--u));font-weight:700}
+  .notes li span{display:block;font-size:calc(12 * var(--u));letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:calc(12 * var(--u))}
+  @media (max-width:1100px){
+    .cards{display:none}
+    .legend,.notes{grid-template-columns:1fr 1fr}
+    .boards,.issues{grid-template-columns:1fr}
+    .bar{grid-template-columns:1fr calc(64 * var(--u))}.bar .tr{grid-column:1/3;grid-row:2}
+    .ia{grid-template-columns:1fr}.ia__root{width:calc(150 * var(--u))}.ia__list::before,.ia__g::before{display:none}
+    .ia__g{grid-template-columns:1fr}
+  }
+</style>
+<script>document.documentElement.classList.add('pre')</script>
+</head>
+<body>
+<!-- The participants are students; they are shown by year, major and app use only, never by name. -->
+<canvas id="gl"></canvas>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav over" data-in="navdrop">
+  <a href="#top" class="nav__logo" aria-label="NU App"><svg class="logo" viewBox="0 0 120 32" fill="currentColor"><text class="nu-mark" x="0" y="25" font-size="28">NU App</text></svg></a>
+  <nav><a href="#challenge"><span class="ul">Overview</span></a><a href="#participants"><span class="ul">The sessions</span></a><a href="#ia"><span class="ul">New IA</span></a><a href="#contact"><span class="ul">Contact</span></a></nav>
+  <i class="hl hl--b" data-in="draw" data-d="0.4"></i>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__ph" data-par="-0.12"><img src="assets/img/board_3.jpg" alt="" id="heroph"></div>
+  <div class="hero__in">
+    <div class="hero__txt">
+      <div class="blk crumbs" data-at="0.2">
+        <a href="../../" data-in="rise">← All work</a>
+        <span data-in="rise" data-d="0.05">Case study</span><span data-in="rise" data-d="0.1">UX research</span><span data-in="rise" data-d="0.15">Card sorting</span>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk" data-at="0">
+        <h1 class="hero__title"><span data-in="chars" data-d="0.15">NU App</span><br><span class="gd" data-in="chars" data-d="0.35">Card sorting</span></h1>
+        <p class="hero__lede" data-in="lines" data-d="0.55">Nine students sorted the university app's content on a table. Their groups became the app's new information architecture.</p>
+      </div>
+    </div>
+    <div class="hero__dev blk" data-at="0.5">
+      <div class="cards" aria-hidden="true">
+        <div class="sn gr" data-in="phone" data-d="0.10" style="left:calc(40 * var(--u));top:calc(40 * var(--u));transform:rotate(-6deg)">NU services</div>
+        <div class="sn it" data-in="phone" data-d="0.18" style="left:calc(230 * var(--u));top:calc(10 * var(--u));transform:rotate(5deg)">Book Court</div>
+        <div class="sn it" data-in="phone" data-d="0.26" style="left:calc(60 * var(--u));top:calc(150 * var(--u));transform:rotate(3deg)">Clinic</div>
+        <div class="sn it" data-in="phone" data-d="0.34" style="left:calc(210 * var(--u));top:calc(170 * var(--u));transform:rotate(-4deg)">Grade report</div>
+        <div class="sn gr" data-in="phone" data-d="0.42" style="left:calc(110 * var(--u));top:calc(300 * var(--u));transform:rotate(4deg)">Academics</div>
+        <div class="sn ns" data-in="phone" data-d="0.50" style="left:calc(270 * var(--u));top:calc(320 * var(--u));transform:rotate(-7deg)">I am not sure</div>
+        <div class="sn it" data-in="phone" data-d="0.58" style="left:calc(30 * var(--u));top:calc(400 * var(--u));transform:rotate(-8deg)">Moodle</div>
+        <div class="sn nv" data-in="phone" data-d="0.66" style="left:calc(220 * var(--u));top:calc(450 * var(--u));transform:rotate(7deg)">Home</div>
+      </div>
+    </div>
+  </div>
+  <div class="blk cells cells--4 hero__cells" data-at="0.8">
+    <i class="hl" data-in="draw"></i>
+    <div data-in="rise" data-d="0"><span class="lbl">Role</span><b>UX research</b></div>
+    <div data-in="rise" data-d="0.05"><span class="lbl">Team</span><b>With Esraa Elemam</b></div>
+    <div data-in="rise" data-d="0.1"><span class="lbl">Method</span><b>Hybrid card sorting</b></div>
+    <div data-in="rise" data-d="0.15"><span class="lbl">Product</span><b>NU App</b><span class="cap">The university's student app</span></div>
+  </div>
+</section>
+
+<!-- ================= ARTICLE ================= -->
+<div class="article" id="article">
+  <i class="vl" data-vl></i>
+  <aside class="toc">
+    <div class="toc__track"><i id="tocfill"></i></div>
+    <div class="toc__links">
+      <a href="#challenge" data-t="challenge">The challenge</a>
+      <a href="#questions" data-t="questions">Goals & questions</a>
+      <a href="#method" data-t="method">The method</a>
+      <a href="#participants" data-t="participants">The sessions</a>
+      <a href="#analysis" data-t="analysis">Analysis</a>
+      <a href="#results" data-t="results">Results</a>
+      <a href="#issues" data-t="issues">Friction</a>
+      <a href="#ia" data-t="ia">The new IA</a>
+      <a href="#notes" data-t="notes">What students asked for</a>
+    </div>
+    <span class="toc__pct" id="prog">0%</span>
+  </aside>
+  <main class="content">
+
+    <section class="sec" id="challenge">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">01</div>
+        <h2 class="h" data-in="blur">The challenge — An app organised the way students think</h2>
+        <p class="body" data-in="rise" data-d="0.2">We were redesigning the NU App for the university's students. Before drawing screens, we wanted to understand the students' mental model: which sections they expect, what belongs together, and what the current menus get wrong.</p>
+        <p class="body" data-in="rise" data-d="0.3">The answer would decide the app's information architecture: the groups on the home screen and what sits inside each one.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/board_1.jpg" alt="A student's card sort on a wooden table"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>One of the sessions: every card is a part of the app, every column is a group the student made.</span><span class="lbl">Fig. 01</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="questions">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">02</div>
+        <h2 class="h" data-in="blur">Goals & questions — What we needed to learn</h2>
+        <p class="body" data-in="rise" data-d="0.2">Three goals: learn how students prioritise and rank information inside the existing categories, find the categories that mislead them, and collect ideas for better labels.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk" data-at="0.3">
+        <ol class="qs">
+          <li data-in="rise" data-d="0.0">What main categories and subcategories do students use when they organise and look for information?</li>
+          <li data-in="rise" data-d="0.08">How do students prioritise and group the app's sections?</li>
+          <li data-in="rise" data-d="0.16">Are there information gaps, or categories that repeat each other?</li>
+          <li data-in="rise" data-d="0.24">Where is the current information architecture inconsistent?</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sec" id="method">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">03</div>
+        <h2 class="h" data-in="blur">The method — Hybrid card sorting, on a table</h2>
+        <p class="body" data-in="rise" data-d="0.2">Each session had two rounds. In the open round, students grouped the item cards however made sense to them and could add cards for anything missing. In the closed round, they placed the items under the app's group names, used an "I am not sure" card when a label did not fit, and could name a new group of their own.</p>
+        <p class="body" data-in="rise" data-d="0.3">Open sorting gave us new names and groupings; closed sorting showed which existing categories mislead people and how students rank what is inside them.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--3 research" data-at="0.3">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><span class="lbl">Format</span><b>In person, with paper cards</b></div>
+        <div data-in="rise" data-d="0.2"><span class="lbl">Session</span><b>20–25 minutes each</b></div>
+        <div data-in="rise" data-d="0.3"><span class="lbl">Content</span><b>25 content cards, 5 app groups</b></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+      <div class="blk legend" data-at="0.4">
+        <div data-in="rise" data-d="0.0"><i style="background:var(--c-item)"></i><b>Item cards</b><small>One part of the app each: Clinic, Moodle, Grade report, Bus lines…</small></div>
+        <div data-in="rise" data-d="0.08"><i style="background:var(--c-group)"></i><b>Group names</b><small>The app's groups: NU services, Academics, Profile, Campus information, Student life.</small></div>
+        <div data-in="rise" data-d="0.16"><i style="background:#fff;box-shadow:inset 0 0 0 1px var(--line)"></i><b>I am not sure</b><small>For an item the student could not place.</small></div>
+        <div data-in="rise" data-d="0.24"><i style="background:var(--c-note)"></i><b>Blank cards</b><small>To name a new group or add a missing item.</small></div>
+      </div>
+    </section>
+
+    <section class="sec" id="participants">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">04</div>
+        <h2 class="h" data-in="blur">The sessions — Different majors, years, and app habits</h2>
+        <p class="body" data-in="rise" data-d="0.2">We recruited across majors and academic years, two or three students from each, and balanced students who already used the app with students who had never opened it. Every session started with the same script and ended with a small thank-you gift.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="boards">
+        <figure data-cursor="" class="blk fig" data-at="0"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_1.jpg" alt="Participant 1's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P1 · Freshman · Computer Science · new to the app</b><span>Made new groups for Book Court, Grade report and NU portal, and for Moodle, Directory, Gym, Food venues, Locker rental and Clubs. Unsure about Bus lines.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0.1"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_2.jpg" alt="Participant 2's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P2 · Senior · IMC · uses the app</b><span>Grouped Academic regulations, Scholarships, Internships and Grade report together. Unsure about Vaccinated state and Directory.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_3.jpg" alt="Participant 3's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P3 · Senior · IMC · uses the app</b><span>Paired Grade report with Directory, and made a group of Moodle, NU portal, Students union and Counselling sessions.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0.1"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_4.jpg" alt="Participant 4's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P4 · Year 2 · Industry · uses the app</b><span>Put Locker rental, Gym, Power Campus, Bus lines, NU portal, Moodle, Directory, Registrar services, Clinic, Academic regulations and Student exchange under NU services.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_5.jpg" alt="Participant 5's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P5 · Year 2 · Civil · uses the app</b><span>Named a new group, "Summer activities", for Scholarships, Internships and Student exchange, and moved Campus information and Student life to a side menu.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0.1"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_6.jpg" alt="Participant 6's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P6 · Freshman · Engineering · new to the app</b><span>Wanted Moodle, Power Campus and NU portal together on the home screen. Unsure about Directory.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_7.jpg" alt="Participant 7's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P7 · Freshman · Engineering · new to the app</b><span>Wanted Power Campus and NU portal on the home screen. Unsure about Food venues.</span></figcaption></figure>
+        <figure data-cursor="" class="blk fig" data-at="0.1"><div class="frame"><img data-gl data-in="reveal" src="assets/img/board_8.jpg" alt="Participant 8's board"></div>
+          <figcaption data-in="rise" data-d="0.4"><b>P8 · Freshman · Computer Science · uses the app</b><span>Could not place Student exchange, Grade report, Book Court, Registrar services, Campus rules, Campus tour, Clinic and Power Campus.</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="sec" id="analysis">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">05</div>
+        <h2 class="h" data-in="blur">Analysis — Where each card landed</h2>
+        <p class="body" data-in="rise" data-d="0.2">We counted where every card was placed across nine sorts, turned the counts into percentages, and marked each card's strongest group. The bars show how strongly students agreed on what each group should hold.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.3">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/tab_heat.jpg" alt="Each card's strongest group, as a percentage of the sorts"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Each card's strongest group, as a share of the nine sorts.</span><span class="lbl">Fig. 02</span></figcaption>
+      </figure>
+      <div class="blk bars" data-at="0.3">
+        <div class="bar" data-in="rise" data-d="0.00"><b>Campus information<small>Campus tour, Campus rules</small></b><div class="tr"><i data-in="grow" data-d="0.2" style="right:22.3%"></i></div><em>77.7%</em></div>
+        <div class="bar" data-in="rise" data-d="0.06"><b>NU services<small>Book Court, Book appointment, NU library, Clinic, Bus lines, Gym, Food venues, Locker rental, Counselling</small></b><div class="tr"><i data-in="grow" data-d="0.26" style="right:42.03%"></i></div><em>57.97%</em></div>
+        <div class="bar" data-in="rise" data-d="0.12"><b>Student life<small>Students union, Student activities, Clubs, Vaccinated state</small></b><div class="tr"><i data-in="grow" data-d="0.32" style="right:44.5%"></i></div><em>55.5%</em></div>
+        <div class="bar" data-in="rise" data-d="0.18"><b>Academics<small>Registrar services, Internships, Student exchange, Scholarships, Academic regulations</small></b><div class="tr"><i data-in="grow" data-d="0.38" style="right:46.72%"></i></div><em>53.28%</em></div>
+        <div class="bar" data-in="rise" data-d="0.24"><b>Profile<small>Grade report</small></b><div class="tr"><i data-in="grow" data-d="0.44" style="right:66.7%"></i></div><em>33.3%</em></div>
+        <div class="bar" data-in="rise" data-d="0.30"><b>A new group<small>NU portal, Power Campus, Directory, Moodle</small></b><div class="tr"><i data-in="grow" data-d="0.5" style="right:69.47%"></i></div><em>30.53%</em></div>
+        <div class="bar" data-in="rise" data-d="0.36"><b>I am not sure<small>Food venues, Directory</small></b><div class="tr"><i class="warn" data-in="grow" data-d="0.56" style="right:55.6%"></i></div><em>44.4%</em></div>
+      </div>
+    </section>
+
+    <section class="sec" id="results">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">06</div>
+        <h2 class="h" data-in="blur">Results — The current structure only half works</h2>
+        <p class="body" data-in="rise" data-d="0.2">We set two measures before the sessions. Accuracy compares each student's structure with the app's current one; consistency checks how far students agree with each other. Low accuracy with high consistency means students share a clear model, and it is not the one the app uses.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--2 kpi" data-at="0.3">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><b><span data-in="count" data-to="44.4" data-suffix="%">44.4%</span></b><span class="cap">Accuracy rate: 4 of 9 structures were close to the existing one</span><span class="f">Structures close to the existing IA ÷ all structures</span></div>
+        <div data-in="rise" data-d="0.2"><b><span data-in="count" data-to="66.6" data-suffix="%">66.6%</span></b><span class="cap">Category consistency: 6 of 9 structures were similar to each other</span><span class="f">Similar structures ÷ all participants</span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+    </section>
+
+    <section class="sec" id="issues">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">07</div>
+        <h2 class="h" data-in="blur">Friction — Two groups students did not recognise</h2>
+        <p class="body" data-in="rise" data-d="0.2">Two sets of cards kept moving between groups or ended up on the "I am not sure" pile. These are the labels the redesign had to fix first.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk issues" data-at="0.3">
+        <div data-in="rise" data-d="0.1"><span class="lbl">Learning tools</span><b>Students did not see these as one group</b>
+          <div class="chips"><span>NU portal</span><span>Power Campus</span><span>Directory</span><span>Moodle</span></div></div>
+        <div data-in="rise" data-d="0.2"><span class="lbl">Campus services</span><b>Students were unsure where these belong</b>
+          <div class="chips"><span>Clinic</span><span>Bus lines</span><span>Gym</span><span>Food venues</span><span>Locker rental</span><span>Counselling sessions</span></div></div>
+      </div>
+    </section>
+
+    <section class="sec" id="ia">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">08</div>
+        <h2 class="h" data-in="blur">The new IA — Seven groups, in the students' own words</h2>
+        <p class="body" data-in="rise" data-d="0.2">The recommendation keeps the groups students agreed on, slims down Academics and Profile, and adds two groups the sessions asked for: Summer activities, a name one participant wrote on a blank card, and LearnSync, for the learning tools students kept putting together.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk ia" data-at="0.3">
+        <div class="ia__root" data-in="rise">Home</div>
+        <div class="ia__list">
+          <div class="ia__g" data-in="rise" data-d="0.05"><b>NU services</b><div class="chips"><span>Book Court</span><span>Book appointment</span><span>NU library</span><span>Food venues</span><span>Counselling sessions</span><span>Gym</span><span>Clinic</span><span>Bus lines</span><span>Locker rental</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.1"><b>Academics</b><div class="chips"><span>Registrar services</span><span>Academic regulations</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.15"><b>Campus information</b><div class="chips"><span>Campus tour</span><span>Campus rules</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.2"><b>Student life</b><div class="chips"><span>Students union</span><span>Student activities</span><span>Vaccinated state</span><span>Clubs</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.25"><b>Profile</b><div class="chips"><span>Grade report</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.3"><b>Summer activities<em>New</em></b><div class="chips"><span>Internships</span><span>Scholarships</span><span>Student exchange</span></div></div>
+          <div class="ia__g" data-in="rise" data-d="0.35"><b>LearnSync<em>New</em></b><div class="chips"><span>Moodle</span><span>Directory</span><span>Power Campus</span><span>NU portal</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="notes">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">09</div>
+        <h2 class="h" data-in="blur">What students asked for — Beyond the cards</h2>
+        <p class="body" data-in="rise" data-d="0.2">Three requests came up in the sessions and went straight into the redesign backlog.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <ul class="blk notes" data-at="0.3">
+        <li data-in="rise" data-d="0.1"><span>01</span>Dark mode</li>
+        <li data-in="rise" data-d="0.2"><span>02</span>A physical therapy service</li>
+        <li data-in="rise" data-d="0.3"><span>03</span>"Remember me" at sign-in</li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="contact">
+  <div class="blk closing__in" data-at="0">
+    <p class="closing__line" data-in="lines">Seven groups, in the words students already use.</p>
+    <div class="closing__me" data-in="rise" data-d="0.5">
+      <div><b>Mahmoud Ali</b><span>Product Designer</span></div>
+    </div>
+    <div class="icons" data-in="rise" data-d="0.7">
+      <a href="https://www.behance.net/mahmoudxali74" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.2 11.2c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8.2 6 6.3 6H2v12h4.5c2.1 0 4-.9 4-3.3 0-1.5-.8-2.6-2.3-3zM4.6 8h1.6c.8 0 1.4.2 1.4 1.1 0 .8-.5 1.1-1.3 1.1H4.6V8zm1.8 8H4.6v-2.9h1.8c1 0 1.7.4 1.7 1.5S7.4 16 6.4 16zM21.9 13.6c0-2.6-1.5-4.6-4.2-4.6-2.6 0-4.4 2-4.4 4.6 0 2.7 1.7 4.5 4.4 4.5 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1.1 1.1-1.8 1.1-1.3 0-2-.8-2-2.1h6.1v-.6zm-6.1-1c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8h-3.7zM15 7h5v1.3h-5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/mahmoud-ali-ui-ux/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a href="../../" aria-label="Portfolio"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4H4.3zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4h-3.4z"/></svg></a>
+    </div>
+    <a href="#top" class="totop" data-in="rise" data-d="0.9"><span>Back to top</span><i>↑</i></a>
+  </div>
+</section>
+
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/gl.js"></script>
+<script src="assets/engine.js"></script>
+</body>
+</html>

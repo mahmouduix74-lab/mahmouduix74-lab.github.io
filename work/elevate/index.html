@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elevate — Real estate app · Case study · Mahmoud Ali</title>
+<meta name="description" content="Elevate: a real-estate app for the UAE and Egypt that also helps people set up a business. A case study by Mahmoud Ali.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400..700&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="preload" as="image" href="assets/s/home_v.webp">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<!-- Every screen is exported at 4x from the designer's own Figma file. Copy and numbers inside the screens are the design's placeholder content. -->
+
+<!-- the app's own splash, rebuilt: teal, a white circle sweeps through, the mark appears, then the doors go up -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__wipe"></div>
+  <div class="intro__mark"><i class="logo"></i><span>Case study</span></div>
+  <div class="intro__floor"><b id="introFloor">B2</b><em>▲</em></div>
+</div>
+
+<header class="hd" id="hd">
+  <a class="hd__me" href="../../">Mahmoud Ali</a>
+  <span class="hd__mid"><i class="logo"></i><em>Real estate app · 2023</em></span>
+  <a class="hd__all" href="../../"><span>All work</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></a>
+</header>
+
+<!-- the lift: which floor of the case study you are on -->
+<nav class="lift" id="lift" aria-label="Floors">
+  <div class="lift__panel"><em id="liftDir">▲</em><b id="liftNo">G</b><span id="liftName">Lobby</span></div>
+  <ol class="lift__btns" id="liftBtns"></ol>
+</nav>
+
+<div class="cur" id="cur" aria-hidden="true"><span>Drag</span></div>
+<div class="loupe" id="loupe" aria-hidden="true"></div>
+
+<div id="smooth-wrapper"><div id="smooth-content">
+
+<!-- ================= G · LOBBY ================= -->
+<section class="fl lobby" id="g" data-floor="G" data-name="Lobby">
+  <div class="lobby__top">
+    <span class="tag">Case study</span><span class="tag">Real estate</span><span class="tag">Business services</span><span class="tag">Freelance · 2023</span>
+  </div>
+  <h1 class="lobby__title"><span class="w">Elevate</span></h1>
+  <p class="lobby__sub" data-lines>A home in Dubai or Cairo, a payment plan you can live with, and a company of your own, in one calm mobile app.</p>
+  <div class="lobby__phones" id="heroPhones">
+    <figure class="ph ph--a" data-depth="18"><div class="ph__s"><img src="assets/s/unit_v.webp" alt="Elevate, a unit page" data-lb="unit"></div></figure>
+    <figure class="ph ph--b" data-depth="34"><div class="ph__s"><img src="assets/s/home_v.webp" alt="Elevate, the home screen" data-lb="home"></div></figure>
+    <figure class="ph ph--c" data-depth="24"><div class="ph__s"><img src="assets/s/country_on.webp" alt="Elevate, choosing a country" data-lb="country_on"></div></figure>
+  </div>
+  <dl class="lobby__facts">
+    <div><dt>Role</dt><dd>UI/UX designer</dd></div>
+    <div><dt>Type</dt><dd>Freelance project</dd></div>
+    <div><dt>Platform</dt><dd>iOS & Android</dd></div>
+    <div><dt>Markets</dt><dd>UAE · Egypt</dd></div>
+    <div><dt>Scope</dt><dd>50 screens</dd></div>
+  </dl>
+  <a class="lobby__go" href="#f1"><span>Going up</span><i>↑</i></a>
+</section>
+
+<!-- ================= 01 · THE BRIEF ================= -->
+<section class="fl brief" id="f1" data-floor="01" data-name="The brief">
+  <div class="kicker"><b>01</b><span>The brief</span></div>
+  <p class="brief__big" data-words>Elevate sells and rents homes in the UAE and Egypt. It also helps people moving to the UAE set up a company and get residency. <em>One app had to carry both businesses, without either one burying the other.</em></p>
+  <div class="brief__two">
+    <article data-rise>
+      <span class="num">A</span>
+      <h3>People looking for a home</h3>
+      <p>They compare compounds, developers and, above all, payment plans: the down payment, the monthly amount, how many years, and when the keys arrive.</p>
+    </article>
+    <article data-rise>
+      <span class="num">B</span>
+      <h3>People starting a company</h3>
+      <p>New to the UAE, they don't know what a business setup involves. They want to know what they need and roughly what it will cost before they talk to anyone.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ================= 02 · BLUEPRINT ================= -->
+<section class="fl plan" id="f2" data-floor="02" data-name="Blueprint">
+  <div class="kicker kicker--light"><b>02</b><span>Blueprint</span></div>
+  <div class="plan__head">
+    <h2 class="h2" data-split>Four rooms, <i>one front door.</i></h2>
+    <p data-rise>The app is planned like a building. Everyone comes in through the same lobby: pick a country, then a service. From there, four areas hold all fifty screens, and the side menu is the corridor between them.</p>
+  </div>
+  <div class="plan__wrap" data-rise>
+    <svg class="plan__svg" id="planSvg" viewBox="0 0 1200 660" aria-label="The structure of the app as a floor plan">
+      <defs><pattern id="hatch" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path d="M0 0V10" stroke="currentColor" stroke-width="1" opacity=".18"/></pattern></defs>
+      <g class="dim">
+        <path d="M40 24H1160M40 18V30M1160 18V30"/><text x="600" y="16">50 screens</text>
+        <path d="M1176 60V600M1170 60H1182M1170 600H1182"/><text x="1190" y="334" transform="rotate(90 1190 334)">4 areas · 1 menu</text>
+      </g>
+      <g class="walls">
+        <path class="wall" d="M40 60H1160V600H700M500 600H40Z"/>
+        <path class="wall" d="M600 60V250M600 330V600"/>
+        <path class="wall" d="M600 230H880M940 230H1160"/>
+        <path class="wall" d="M600 420H880M940 420H1160"/>
+        <path class="wall" d="M300 600V520H400M500 520V600"/>
+      </g>
+      <g class="doors">
+        <path class="door" d="M500 600A100 100 0 0 1 600 500"/>
+        <path class="door" d="M600 250A80 80 0 0 0 520 330"/>
+        <path class="door" d="M880 230A60 60 0 0 0 940 290"/>
+        <path class="door" d="M880 420A60 60 0 0 0 940 480"/>
+      </g>
+      <rect class="room" data-room="re" x="40" y="60" width="560" height="460"/>
+      <rect class="room" data-room="bs" x="600" y="60" width="560" height="170"/>
+      <rect class="room" data-room="co" x="600" y="230" width="560" height="190"/>
+      <rect class="room" data-room="ac" x="600" y="420" width="560" height="180"/>
+      <rect class="room room--lobby" data-room="lo" x="300" y="520" width="200" height="80" fill="url(#hatch)"/>
+      <g class="labels">
+        <text class="rn" x="80" y="120">Real estate</text><text class="rc" x="80" y="146">13 SCREENS</text>
+        <text class="ri" x="80" y="200">Home · Search · Results, list & map</text><text class="ri" x="80" y="226">More filters · Unit details · Compare</text><text class="ri" x="80" y="252">My favourites</text>
+        <text class="rn" x="640" y="112">Business services</text><text class="rc" x="640" y="138">11 SCREENS</text>
+        <text class="ri" x="640" y="186">Country · Service · Business setup · Cost estimate</text>
+        <text class="rn" x="640" y="282">Company</text><text class="rc" x="640" y="308">11 SCREENS</text>
+        <text class="ri" x="640" y="356">About · Career · Jobs · Contact · Partners · Quotes</text>
+        <text class="rn" x="640" y="472">Account</text><text class="rc" x="640" y="498">12 SCREENS</text>
+        <text class="ri" x="640" y="546">Sign up · Sign in · Reset · Profile · Notifications</text>
+        <text class="rn rn--s" x="318" y="566">Lobby</text><text class="rc" x="318" y="588">COUNTRY → SERVICE</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= 03 · ARRIVAL ================= -->
+<section class="fl arrive" id="f3" data-floor="03" data-name="Arrival">
+  <div class="arrive__pin">
+    <div class="arrive__intro">
+      <div class="kicker"><b>03</b><span>Arrival</span></div>
+      <h2 class="h2" data-split>Two taps, <i>then only what matters.</i></h2>
+      <p data-rise>Egypt or the UAE, then real estate or business services. The next button waits until a choice is made. People who pick business services go straight from "what do I need?" to a price, in three short steps.</p>
+      <div class="arrive__bar"><i id="arriveFill"></i></div>
+    </div>
+    <div class="arrive__view" id="arriveView"><div class="arrive__track" id="arriveTrack">
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/country.webp" alt="Select your country" loading="lazy" data-lb="country"></div></div><figcaption><b>01</b>Where are you?<span>Egypt or the UAE, as two big flags.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/country_on.webp" alt="A country selected" loading="lazy" data-lb="country_on"></div></div><figcaption><b>02</b>Chosen<span>The pick gets an outline; Next turns on.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/service.webp" alt="Select your service" loading="lazy" data-lb="service"></div></div><figcaption><b>03</b>What brings you here?<span>Real estate, or business services.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/service_on.webp" alt="Business services selected" loading="lazy" data-lb="service_on"></div></div><figcaption><b>04</b>Business services<span>The choice fills, the tick lights up.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/services_v.webp" alt="Our services" loading="lazy" data-lb="services"></div></div><figcaption><b>05</b>Our services<span>Business setup and residency, each with "Estimate cost".</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/setup_v.webp" alt="Business setup" loading="lazy" data-lb="setup"></div></div><figcaption><b>06</b>Business setup<span>What the service covers, in plain points.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/est1_v.webp" alt="Estimate the cost, personal information" loading="lazy" data-lb="est1"></div></div><figcaption><b>07</b>You<span>Name, job title, mobile, email.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/est2_v.webp" alt="Estimate the cost, business information" loading="lazy" data-lb="est2"></div></div><figcaption><b>08</b>Your business<span>Industry, company, bank accounts, visas.</span></figcaption></figure>
+      <figure class="st"><div class="ph"><div class="ph__s"><img src="assets/s/est3_v.webp" alt="Estimate the cost, the result" loading="lazy" data-lb="est3"></div></div><figcaption><b>09</b>Your estimate<span>Each item, then the estimated cost.</span></figcaption></figure>
+    </div></div>
+  </div>
+</section>
+
+<!-- ================= 04 · THE HOME SCREEN ================= -->
+<section class="fl home" id="f4" data-floor="04" data-name="Home screen">
+  <div class="home__pin" id="homePin">
+    <div class="home__txt">
+      <div class="kicker"><b>04</b><span>The home screen</span></div>
+      <h2 class="h2" data-split>Search first, <i>then reasons to browse.</i></h2>
+      <ol class="home__notes" id="homeNotes">
+        <li data-y="0"><b>Search on top</b><span>City, purpose, price range and type, before anything else.</span></li>
+        <li data-y="681"><b>Proof, early</b><span>A campaign banner, then developers, projects and properties in numbers.</span></li>
+        <li data-y="1117"><b>Recommended compounds</b><span>Price "from", the unit mix, and a quick call or WhatsApp.</span></li>
+        <li data-y="1730"><b>Top compounds</b><span>Big photo cards with the number of properties inside.</span></li>
+        <li data-y="2159"><b>Recommended properties</b><span>Beds, baths and size on every card.</span></li>
+        <li data-y="2772"><b>Top areas</b><span>Browse by area, with compounds and properties counted.</span></li>
+        <li data-y="3235"><b>Buy or rent</b><span>One switch: all, sell, rent.</span></li>
+        <li data-y="3876"><b>Properties by city</b><span>A wall of city chips over the skyline.</span></li>
+        <li data-y="4691"><b>New projects</b><span>Launches straight from the developers.</span></li>
+        <li data-y="5171"><b>List yours, or talk to us</b><span>The two other jobs of the app close the page.</span></li>
+      </ol>
+      <div class="home__now" id="homeNow" aria-live="polite"><b></b><span></span></div>
+    </div>
+    <div class="home__dev">
+      <figure class="ph ph--xl"><div class="ph__s ph__s--long"><div class="sbar" id="homeBar" aria-hidden="true"><b>9:41</b><i><svg viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5.5" width="3" height="6.5" rx="1"/><rect x="10" y="3" width="3" height="9" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1"/></svg><svg viewBox="0 0 16 12"><path d="M8 11.5 5.6 9a3.4 3.4 0 0 1 4.8 0zM3.4 6.8a6.5 6.5 0 0 1 9.2 0l-1.5 1.5a4.4 4.4 0 0 0-6.2 0zM1.2 4.6a9.6 9.6 0 0 1 13.6 0l-1.5 1.5a7.5 7.5 0 0 0-10.6 0z"/></svg><svg viewBox="0 0 27 12"><rect x=".5" y=".5" width="23" height="11" rx="3.5" fill="none" stroke="currentColor" opacity=".4"/><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="25" y="4" width="1.6" height="4" rx=".8" opacity=".5"/></svg></i></div><img id="homeLong" src="assets/s/home.webp" alt="The whole home screen" loading="lazy" data-lb="home"></div></figure>
+      <div class="home__meter"><i id="homeMeter"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 · SEARCH ================= -->
+<section class="fl search" id="f5" data-floor="05" data-name="Search">
+  <div class="kicker"><b>05</b><span>Search & filters</span></div>
+  <div class="search__head">
+    <h2 class="h2" data-split>The way buyers <i>actually decide.</i></h2>
+    <p data-rise>Results switch between a list and a map, and every card carries a Compare button. An empty search says so plainly. "More filter" goes past bedrooms and price: here, people choose by payment plan and delivery date as much as by size. <span class="hint">Move over a screen to look closer.</span></p>
+  </div>
+  <div class="search__row">
+    <figure class="sr" data-rise><div class="ph"><div class="ph__s"><img src="assets/s/search.webp" alt="Search with no results" loading="lazy" data-lb="search" data-zoom></div></div><figcaption>No results, said plainly</figcaption></figure>
+    <figure class="sr" data-rise><div class="ph"><div class="ph__s"><img src="assets/s/results_v.webp" alt="Search results" loading="lazy" data-lb="results" data-zoom></div></div><figcaption>123 results, list or map</figcaption></figure>
+    <figure class="sr" data-rise><div class="ph"><div class="ph__s"><img src="assets/s/map_v.webp" alt="Results on the map" loading="lazy" data-lb="map" data-zoom></div></div><figcaption>Prices on the map</figcaption></figure>
+    <figure class="sr" data-rise><div class="ph"><div class="ph__s"><img src="assets/s/filter_panel.webp" alt="More filters" loading="lazy" data-lb="filter_panel" data-zoom></div></div><figcaption>More filter</figcaption></figure>
+  </div>
+  <div class="spec">
+    <div class="spec__col" data-rise><h4>The place</h4><ul><li>Compound</li><li>Developer</li><li>Unit type</li><li>Room number</li><li>Square metres</li></ul></div>
+    <div class="spec__col" data-rise><h4>The money</h4><ul><li>Down payment</li><li>Max amount</li><li>Monthly instalments</li><li>Years of instalments</li><li>Price range</li></ul></div>
+    <div class="spec__col" data-rise><h4>The building</h4><ul><li>Shopping centre</li><li>Swimming pools</li><li>Garage</li><li>Playgrounds</li><li>Security · Social club</li></ul></div>
+    <div class="spec__col" data-rise><h4>The deal</h4><ul><li>Delivery date</li><li>Not · semi · fully finished</li><li>Furnished</li><li>Resale</li><li>Developer sale</li></ul></div>
+  </div>
+</section>
+
+<!-- ================= 06 · THE UNIT ================= -->
+<section class="fl unit" id="f6" data-floor="06" data-name="The unit">
+  <div class="kicker kicker--light"><b>06</b><span>The unit</span></div>
+  <div class="unit__head">
+    <h2 class="h2" data-split>Every number <i>before the call.</i></h2>
+    <p data-rise>One long page answers what people would otherwise phone about. Here it is, unrolled.</p>
+  </div>
+  <div class="unit__strips" id="unitStrips">
+    <div class="us" data-speed=".92"><div class="us__img" style="--i:0"></div><p><b>01</b> The gallery with a +24 count, the price, and Call or WhatsApp straight away.</p></div>
+    <div class="us" data-speed="1.06"><div class="us__img" style="--i:1"></div><p><b>02</b> About this home, the master plan to download, a video, and the full property details.</p></div>
+    <div class="us" data-speed=".96"><div class="us__img" style="--i:2"></div><p><b>03</b> The map, then payment plans: cash next to instalments, with the down payment and each year.</p></div>
+    <div class="us" data-speed="1.1"><div class="us__img" style="--i:3"></div><p><b>04</b> Apply now in a short form, then similar listings to compare against.</p></div>
+  </div>
+  <div class="unit__cmp">
+    <figure class="ph ph--m" data-rise><div class="ph__s"><img src="assets/s/compare_bar.webp" alt="The compare bar over the results" loading="lazy" data-lb="compare_bar"></div></figure>
+    <div data-rise>
+      <h3>Compare, side by side</h3>
+      <p>Add units from the results, and a compare bar rises from the bottom. The comparison then lines them up row by row:</p>
+      <ul class="cmp">
+        <li>Developer</li><li>Location</li><li>Price</li><li>Down payment</li><li>Instalments</li><li>Years of instalments</li><li>Floor area</li><li>Bedrooms</li><li>Bathrooms</li><li>Finishing</li><li>Type</li><li>Delivery date</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 · THE COMPANY ================= -->
+<section class="fl co" id="f7" data-floor="07" data-name="Company">
+  <div class="co__head">
+    <div class="kicker"><b>07</b><span>The company</span></div>
+    <h2 class="h2" data-split>Trust first, <i>then a request.</i></h2>
+    <p data-rise>About us, careers with a CV upload, branches in both countries, a partner form, and a project quote in three steps with a review screen that says when the answer will come. One header, one breadcrumb, one footer, so it reads as one place.</p>
+  </div>
+  <div class="co__rail" id="coRail">
+    <div class="co__track" id="coTrack">
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/about_v.webp" alt="About us" loading="lazy" data-lb="about"></div></div><figcaption>About us</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/career_v.webp" alt="Career" loading="lazy" data-lb="career"></div></div><figcaption>Career</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/job_v.webp" alt="Job details" loading="lazy" data-lb="job"></div></div><figcaption>Job details</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/contact_v.webp" alt="Contact us" loading="lazy" data-lb="contact"></div></div><figcaption>Contact · two branches</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/partner_v.webp" alt="Be our partner" loading="lazy" data-lb="partner"></div></div><figcaption>Be our partner</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/partner_ok_v.webp" alt="Partner request sent" loading="lazy" data-lb="partner_ok"></div></div><figcaption>Request sent</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/quote1_v.webp" alt="Get a project quote, step 1" loading="lazy" data-lb="quote1"></div></div><figcaption>Quote · 1 · You</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/quote2_v.webp" alt="Get a project quote, step 2" loading="lazy" data-lb="quote2"></div></div><figcaption>Quote · 2 · The property</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/quote3_v.webp" alt="Get a project quote, step 3" loading="lazy" data-lb="quote3"></div></div><figcaption>Quote · 3 · Review & send</figcaption></figure>
+      <figure class="cc"><div class="ph"><div class="ph__s"><img src="assets/s/terms_v.webp" alt="Terms of use" loading="lazy" data-lb="terms"></div></div><figcaption>Terms of use</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 08 · THE MENU ================= -->
+<section class="fl menu" id="f8" data-floor="08" data-name="The corridor">
+  <div class="menu__grid">
+    <div class="menu__txt">
+      <div class="kicker"><b>08</b><span>The corridor</span></div>
+      <h2 class="h2" data-split>Everything else, <i>one menu away.</i></h2>
+      <p data-rise>The side menu is the corridor between the four rooms: home, search, career, about and contact, the country switch with its flag, and the account below. Signed out, it leads with "Be our partner" and Login; signed in, with the profile.</p>
+      <ul class="menu__acc" data-rise>
+        <li><b>Accounts</b> Sign up and sign in with email or social accounts, a four-digit code, and a full reset-password flow.</li>
+        <li><b>Profile</b> Favourites, edit profile, change password, notifications.</li>
+        <li><b>Leaving</b> Delete account asks twice and says clearly that it can't be undone. Even the 404 page leads home.</li>
+      </ul>
+    </div>
+    <div class="menu__dev">
+      <figure class="ph ph--m menu__a" data-speed="1.08"><div class="ph__s"><img src="assets/s/menu_b.webp" alt="Side menu, signed out" loading="lazy" data-lb="menu_b"></div></figure>
+      <figure class="ph ph--m menu__b" data-speed=".94"><div class="ph__s"><img src="assets/s/menu.webp" alt="Side menu, signed in" loading="lazy" data-lb="menu"></div></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 · MATERIALS ================= -->
+<section class="fl mat" id="f9" data-floor="09" data-name="Materials">
+  <div class="kicker kicker--light"><b>09</b><span>Materials</span></div>
+  <h2 class="h2" data-split>Deep teal, <i>warm sand.</i></h2>
+  <div class="mat__sw" id="swatches">
+    <button class="sw" data-hex="#192B33" style="--c:#192B33;--t:#fff"><b>Night</b><span>#192B33</span><em>Footer, dark surfaces</em></button>
+    <button class="sw" data-hex="#335969" style="--c:#335969;--t:#fff"><b>Teal</b><span>#335969</span><em>Headers, primary buttons</em></button>
+    <button class="sw" data-hex="#2A6881" style="--c:#2A6881;--t:#fff"><b>Lagoon</b><span>#2A6881</span><em>The splash</em></button>
+    <button class="sw" data-hex="#DFC9B9" style="--c:#DFC9B9;--t:#192B33"><b>Sand</b><span>#DFC9B9</span><em>Search, secondary buttons, the mark</em></button>
+    <button class="sw" data-hex="#FFFFFF" style="--c:#FFFFFF;--t:#192B33"><b>White</b><span>#FFFFFF</span><em>Cards and forms</em></button>
+  </div>
+  <div class="mat__splash">
+    <div class="mat__sp-txt" data-rise>
+      <h3>The splash</h3>
+      <p>Seven frames: a white circle rises through the teal, fills the screen, falls away to the corner, and leaves the mark. The intro of this page is built from it.</p>
+    </div>
+    <div class="mat__film" id="film">
+      <img src="assets/s/splash1.webp" alt="" loading="lazy"><img src="assets/s/splash2.webp" alt="" loading="lazy"><img src="assets/s/splash3.webp" alt="" loading="lazy"><img src="assets/s/splash4.webp" alt="" loading="lazy"><img src="assets/s/splash5.webp" alt="" loading="lazy"><img src="assets/s/splash6.webp" alt="" loading="lazy"><img src="assets/s/splash7.webp" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ================= R · ROOF ================= -->
+<section class="fl roof" id="r" data-floor="R" data-name="Roof">
+  <p class="roof__small">You've reached the top floor.</p>
+  <h2 class="roof__big" data-split>Two businesses, <i>one calm way up.</i></h2>
+  <div class="roof__links">
+    <a href="../../" class="btn btn--sand">See all work</a>
+    <a href="mailto:Mahmouduix74@gmail.com" class="btn">Mahmouduix74@gmail.com</a>
+  </div>
+  <div class="roof__foot"><span>Mahmoud Ali · Product Designer</span><span><a href="https://www.behance.net/mahmoudxali74" target="_blank" rel="noopener">Behance</a> · <a href="https://www.linkedin.com/in/mahmoud-ali-ui-ux/" target="_blank" rel="noopener">LinkedIn</a></span><a href="#g" class="roof__down">Back to the lobby ↓</a></div>
+</section>
+
+</div></div>
+
+<!-- the viewer: any screen, at full 4K -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screen viewer" hidden>
+  <button class="lb__x" id="lbX" type="button" aria-label="Close">Close <i>✕</i></button>
+  <div class="lb__sc" id="lbSc"><img id="lbImg" alt=""></div>
+  <span class="lb__cap" id="lbCap"></span>
+</div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/ScrollSmoother.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/vendor/Draggable.min.js"></script>
+<script src="assets/vendor/InertiaPlugin.min.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>
