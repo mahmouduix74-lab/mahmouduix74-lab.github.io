@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="170" height="170">
+    <polyline points="22,98 22,24 60,70 98,24 98,98" fill="none" stroke="#111" stroke-width="15" stroke-linejoin="miter" stroke-miterlimit="10"></polyline>
+    <line x1="36" y1="70" x2="84" y2="70" stroke="#FF5A1F" stroke-width="1.4"></line>
+    <circle cx="36" cy="70" r="3.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></circle><circle cx="84" cy="70" r="3.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></circle>
+    <rect x="17.8" y="93.8" width="8.4" height="8.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></rect><rect x="17.8" y="19.8" width="8.4" height="8.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></rect><rect x="55" y="65" width="10" height="10" fill="#FF5A1F" stroke="#fff" stroke-width="1.6"></rect><rect x="93.8" y="19.8" width="8.4" height="8.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></rect><rect x="93.8" y="93.8" width="8.4" height="8.4" fill="#fff" stroke="#FF5A1F" stroke-width="1.4"></rect></svg>

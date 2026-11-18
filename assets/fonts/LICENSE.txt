@@ -1,0 +1,2 @@
+Inter Tight and IBM Plex Sans Arabic: SIL Open Font License 1.1 (Google Fonts).
+Inter Display (name_paths.js outlines): SIL Open Font License 1.1. three.js r160: MIT (vendor/three.LICENSE).

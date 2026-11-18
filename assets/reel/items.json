@@ -1,0 +1,62 @@
+[
+ {
+  "id": "osrtak-splash",
+  "p": "osrtak"
+ },
+ {
+  "id": "osrtak-home",
+  "p": "osrtak"
+ },
+ {
+  "id": "osrtak-chat",
+  "p": "osrtak"
+ },
+ {
+  "id": "sahem-app",
+  "p": "sahem"
+ },
+ {
+  "id": "sahem-web",
+  "p": "sahem"
+ },
+ {
+  "id": "sahem-dash",
+  "p": "sahem"
+ },
+ {
+  "id": "is-home",
+  "p": "is"
+ },
+ {
+  "id": "is-mobile",
+  "p": "is"
+ },
+ {
+  "id": "is-works",
+  "p": "is"
+ },
+ {
+  "id": "forma-home",
+  "p": "forma"
+ },
+ {
+  "id": "forma-login",
+  "p": "forma"
+ },
+ {
+  "id": "forma-trainers",
+  "p": "forma"
+ },
+ {
+  "id": "stride-splash",
+  "p": "stride"
+ },
+ {
+  "id": "stride-home",
+  "p": "stride"
+ },
+ {
+  "id": "stride-dash",
+  "p": "stride"
+ }
+]
