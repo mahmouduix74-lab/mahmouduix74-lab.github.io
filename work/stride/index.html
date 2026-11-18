@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stride — Gym platform · Case study · Mahmoud Ali</title>
+<link rel="stylesheet" href="assets/vendor/devices.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('pre')</script>
+</head>
+<body>
+<!-- The client's name and logo are replaced with "Stride" for confidentiality.
+     Values marked data-tmp are temporary until the real facts arrive. Add ?clean to hide the markers. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="stride" viewBox="24 18 322 74">
+    <path d="M28 90 52 20h18L46 90z"/><path d="M58 90 82 20h18L76 90z" opacity=".75"/><path d="M88 90 112 20h18l-24 70z" opacity=".5"/>
+    <text x="150" y="72" font-family="Tajawal" font-weight="800" font-size="46" letter-spacing="4" font-style="italic" transform="skewX(-10)">STRIDE</text>
+  </symbol>
+</svg>
+<canvas id="gl"></canvas>
+<div class="cover" id="cover" aria-hidden="true">
+  <svg class="cover__mark logo" id="covermark" viewBox="24 18 322 74">
+    <g fill="currentColor"><path class="bar" d="M28 90 52 20h18L46 90z"/><path class="bar" d="M58 90 82 20h18L76 90z" opacity=".75"/><path class="bar" d="M88 90 112 20h18l-24 70z" opacity=".5"/></g>
+    <g fill="#fff" class="word"><text x="150" y="72" font-family="Tajawal" font-weight="800" font-size="46" letter-spacing="4" font-style="italic" transform="skewX(-10)"><tspan>S</tspan><tspan>T</tspan><tspan>R</tspan><tspan>I</tspan><tspan>D</tspan><tspan>E</tspan></text></g>
+  </svg>
+  <span class="cover__tag">Gym platform · Case study</span>
+  <span class="cover__count" id="covercount">000</span>
+</div>
+<svg class="sweep" id="sweep" aria-hidden="true"></svg>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav over" data-in="navdrop">
+  <a href="#top" class="nav__logo" aria-label="Stride"><svg class="logo" viewBox="24 18 322 74" fill="currentColor"><use href="#stride" x="24" y="18" width="322" height="74"/></svg></a>
+  <nav><a href="#challenge"><span class="ul">Overview</span></a><a href="#trainer"><span class="ul">Trainer app</span></a><a href="#admin"><span class="ul">Dashboard</span></a><a href="#contact"><span class="ul">Contact</span></a></nav>
+  <i class="hl hl--b" data-in="draw" data-d="0.4"></i>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="hero__ph" data-par="-0.12"><img src="assets/img/ph_woman.jpg" alt="" id="heroph"></div>
+  <div class="hero__in">
+    <div class="hero__txt">
+      <div class="blk crumbs" data-at="0.2">
+        <a href="../../" data-in="rise">← All work</a>
+        <span data-in="rise" data-d="0.05">Case study</span><span data-in="rise" data-d="0.1">Fitness</span><span data-in="rise" data-d="0.15">2025</span>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk" data-at="0">
+        <svg class="hero__logo logo" viewBox="24 18 322 74" fill="currentColor" data-in="rise" data-d="0.15" role="img" aria-label="Stride"><use href="#stride" x="24" y="18" width="322" height="74"/></svg>
+        <h1 class="hero__title"><span data-in="chars" data-d="0.3">Gym</span> <span class="gd" data-in="chars" data-d="0.45">Platform</span></h1>
+        <p class="hero__lede" data-in="lines" data-d="0.55">Members book, trainers run their day, and the club manages it all from one dashboard.</p>
+      </div>
+    </div>
+    <div class="hero__dev blk" data-at="0.5">
+      <div class="dv dv--hero" data-in="phone" data-d="0.2"><div class="dv__s"><div class="device device-iphone-14-pro device-black"><div class="device-frame"><img class="device-screen" src="assets/img/u_home.jpg" alt="The member app, home"></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div><div class="device-home"></div></div></div></div>
+    </div>
+  </div>
+  <div class="blk cells cells--4 hero__cells" data-at="0.8">
+    <i class="hl" data-in="draw"></i>
+    <div data-in="rise" data-d="0"><span class="lbl">Role</span><b>Senior UI/UX Designer</b></div>
+    <div data-in="rise" data-d="0.05"><span class="lbl">Timeline</span><b>2025 · 2 months</b></div>
+    <div data-in="rise" data-d="0.1"><span class="lbl">Products</span><b>2 apps · Admin dashboard</b></div>
+    <div data-in="rise" data-d="0.15"><span class="lbl">Client</span><b>Fitness club</b><span class="cap">Name and logo changed</span></div>
+  </div>
+</section>
+
+<!-- ================= ARTICLE (sections are added one by one) ================= -->
+<div class="article" id="article">
+  <i class="vl" data-vl></i>
+  <aside class="toc">
+    <div class="toc__track"><i id="tocfill"></i></div>
+    <div class="toc__links">
+      <a href="#challenge" data-t="challenge">The challenge</a>
+      <a href="#research" data-t="research">Research</a>
+      <a href="#approach" data-t="approach">The approach</a>
+      <a href="#system" data-t="system">Design system</a>
+      <a href="#start" data-t="start">First steps</a>
+      <a href="#member" data-t="member">Member home</a>
+      <a href="#subscriptions" data-t="subscriptions">Subscriptions</a>
+      <a href="#bookings" data-t="bookings">InBody & bookings</a>
+      <a href="#trainer" data-t="trainer">Trainer app</a>
+      <a href="#admin" data-t="admin">Admin dashboard</a>
+      <a href="#outcome" data-t="outcome">Outcome</a>
+    </div>
+    <span class="toc__pct" id="prog">0%</span>
+  </aside>
+  <main class="content">
+
+    <section class="sec" id="challenge">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">01</div>
+        <h2 class="h" data-in="blur">The challenge — One club, three kinds of people</h2>
+        <p class="body" data-in="rise" data-d="0.2">Members need to buy a package and then look after it themselves: freeze it, transfer it, upgrade it, and book classes, personal trainers, single sessions and InBody tests.</p>
+        <p class="body" data-in="rise" data-d="0.3">Trainers need to see their day, check in, mark attendance and upload InBody results. The club's staff run classes, timetables, trainers, packages, coupons and payments, including split and partial payments, across branches.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_products.jpg" alt="The member app, the dashboard and the trainer app"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Three products, one system: the member app, the admin dashboard and the trainer app.</span><span class="lbl">Fig. 01</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="research">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">02</div>
+        <h2 class="h" data-in="blur">Research — Listening first, then mapping every product</h2>
+        <p class="body" data-in="rise" data-d="0.2">Before any screen, we spoke to the people who would use the platform through interviews and a survey, then mapped what each product had to hold and how people would move through it.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--3 research" data-at="0.4">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><span class="lbl">Method</span><b>Interviews and a survey</b></div>
+        <div data-in="rise" data-d="0.2"><span class="lbl">Who we heard from</span><b data-tmp>Members, trainers and club staff</b></div>
+        <div data-in="rise" data-d="0.3"><span class="lbl">What we learned</span><b data-tmp>Key findings to come</b></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_sitemap.jpg" alt="Sitemap of the member app, the trainer app and the dashboard"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>The sitemap: what each of the three products holds.</span><span class="lbl">Fig. 02</span></figcaption>
+      </figure>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_flows.jpg" alt="Key user flows across the three products"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Four key flows, mapped before the UI: booking, freezing a plan, a trainer's day, and selling at the desk.</span><span class="lbl">Fig. 03</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="approach">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">03</div>
+        <h2 class="h" data-in="blur">The approach — One path for every booking</h2>
+        <p class="body" data-in="rise" data-d="0.2">A class, a trainer, a single session and an InBody test all follow the same four steps: choose, pick a date and time, pay, and get a clear confirmation with every detail of the order.</p>
+        <p class="body" data-in="rise" data-d="0.3">Once a member has booked one thing, they know how to book everything else.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_booking.jpg" alt="Session details, date picker, payment and confirmation"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Choose, date and time, pay, confirmed. Payment takes card, cash or the wallet, with a coupon field and the totals spelled out.</span><span class="lbl">Fig. 04</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="system">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">04</div>
+        <h2 class="h" data-in="blur">Design system — Warm gold on quiet surfaces</h2>
+        <p class="body" data-in="rise" data-d="0.2">Gold carries every action, a soft beige holds secondary surfaces, and green is kept for good news: an active plan, a successful payment, a trainer who has checked in. Everything else stays neutral, so the photos of the club do the talking.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk swatches" data-at="0.4">
+        <div class="sw" data-hex="#A29261" data-in="rise" data-d="0.00" data-cursor=""><i style="background:#A29261"><em>✓</em></i><b>Gold</b><small>#A29261 · Primary · buttons, links, active states</small></div>
+        <div class="sw" data-hex="#F1EFE7" data-in="rise" data-d="0.08" data-cursor=""><i style="background:#F1EFE7;box-shadow:inset 0 0 0 1px #e4e1d8"><em>✓</em></i><b>Beige</b><small>#F1EFE7 · Soft surfaces and chips</small></div>
+        <div class="sw" data-hex="#18C07A" data-in="rise" data-d="0.16" data-cursor=""><i style="background:#18C07A"><em>✓</em></i><b>Green</b><small>#18C07A · Active, success, check-in</small></div>
+        <div class="sw" data-hex="#1A1A1A" data-in="rise" data-d="0.24" data-cursor=""><i style="background:#1A1A1A"><em>✓</em></i><b>Ink</b><small>#1A1A1A · Headings and body text</small></div>
+        <div class="sw" data-hex="#EC2D30" data-in="rise" data-d="0.32" data-cursor=""><i style="background:#EC2D30"><em>✓</em></i><b>Red</b><small>#EC2D30 · Errors, check-out, delete</small></div>
+      </div>
+      <div class="blk type" data-at="0.5">
+        <i class="hl" data-in="draw"></i>
+        <div class="type__aa" data-in="rise">Aa <span>أب</span></div>
+        <div class="type__spec" data-in="rise" data-d="0.1"><span class="lbl">Typeface</span><b>Tajawal</b><span>One family for both apps and the dashboard, in Arabic and English. Bold for headings, Medium for body and tables, Regular for hints.</span>
+          <span class="type__row"><em>H4 Bold 16/24</em><em>Button 14/20</em><em>Table 14 Medium</em><em>Hint 12/20</em></span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+    </section>
+
+    <section class="sec" id="start">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">05</div>
+        <h2 class="h" data-in="blur">First steps — From splash to signed in</h2>
+        <p class="body" data-in="rise" data-d="0.2">A dark splash and three onboarding screens set the mood with real club photos. Then a short sign-in with email and password, sign up, a one-time code, and a full forgot-password flow. Guests can look around before they create an account.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_start.jpg" alt="Splash, get started, onboarding and sign in"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Splash, get started, onboarding and sign in.</span><span class="lbl">Fig. 05</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="member">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">06</div>
+        <h2 class="h" data-in="blur">Member home — The day at a glance</h2>
+        <p class="body" data-in="rise" data-d="0.2">Home opens with the member's branch, the club's current offers, the subscription status with one tap to manage it, and the next events. Classes show free and paid counts with quick filters by type, and personal trainers list their specialty and price per session next to a Book now button.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_member.jpg" alt="Home, classes and personal trainers"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Home, classes and personal trainers.</span><span class="lbl">Fig. 06</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="subscriptions">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">07</div>
+        <h2 class="h" data-in="blur">Subscriptions — Freeze, transfer, upgrade without the front desk</h2>
+        <p class="body" data-in="rise" data-d="0.2">Each change is a short, self-serve flow. Freezing explains what pauses and how the end date moves, with a 14-day limit shown up front. Transferring validates the recipient by phone or email before anything happens. Upgrading shows the new end date, the price and what the member gains.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_subs.jpg" alt="My subscriptions, freeze, transfer and upgrade"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>My subscriptions, then freeze, transfer and upgrade.</span><span class="lbl">Fig. 07</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="bookings">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">08</div>
+        <h2 class="h" data-in="blur">InBody & bookings — Everything booked, in one list</h2>
+        <p class="body" data-in="rise" data-d="0.2">InBody sessions show what is left at a glance: total, free, purchased, remaining and completed. My bookings gathers classes, InBody, single sessions and personal training in one place, filtered by status, and any booking can be rescheduled from the same date and time sheet.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_inbody.jpg" alt="InBody sessions, my bookings and reschedule"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>InBody sessions, my bookings and the reschedule sheet.</span><span class="lbl">Fig. 08</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="trainer">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">09</div>
+        <h2 class="h" data-in="blur">Trainer app — The day starts with check-in</h2>
+        <p class="body" data-in="rise" data-d="0.2">The trainer's home stays locked until they check in at the branch. After that it fills with the day: counts for personal training, InBody and classes, and each session with a Start session button.</p>
+        <p class="body" data-in="rise" data-d="0.3">The schedule shows bookings by month and the trainer's own availability, and attendance is marked client by client. Supervisors get extra tools to manage sessions and assign trainers.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_trainer.jpg" alt="Trainer home before and after check-in"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Before and after check-in.</span><span class="lbl">Fig. 09</span></figcaption>
+      </figure>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_attendance.jpg" alt="My schedule and mark attendance"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>My schedule and marking attendance.</span><span class="lbl">Fig. 10</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="admin">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">10</div>
+        <h2 class="h" data-in="blur">Admin dashboard — Running the club</h2>
+        <p class="body" data-in="rise" data-d="0.2">Staff sign in to a dashboard that manages the same things members see: classes, clubs, trainers, packages, single sessions, coupons, InBody and client subscriptions. Every list has search and filters, capacity and status at a glance, and a timetable by day, week or month that exports to Excel.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_dashlogin.jpg" alt="Dashboard sign in"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Sign in to the dashboard.</span><span class="lbl">Fig. 11</span></figcaption>
+      </figure>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_admin.jpg" alt="Timetable and classes management"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>The class timetable and classes management.</span><span class="lbl">Fig. 12</span></figcaption>
+      </figure>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_payments.jpg" alt="Split and partial payment management"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Split and partial payments.</span><span class="lbl">Fig. 13</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="outcome">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">11</div>
+        <h2 class="h" data-in="blur">Outcome — Two apps and a dashboard in two months</h2>
+        <p class="body" data-in="rise" data-d="0.2">The platform was delivered as one system: a member app, a trainer app and an admin dashboard on one set of colours, type and components.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--3 outcome" data-at="0.4">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><b data-tmp><span data-in="count" data-to="101">101</span></b><span class="cap">Member app screens</span></div>
+        <div data-in="rise" data-d="0.2"><b data-tmp><span data-in="count" data-to="60">60</span></b><span class="cap">Trainer app screens</span></div>
+        <div data-in="rise" data-d="0.3"><b data-tmp><span data-in="count" data-to="31">31</span></b><span class="cap">Dashboard screens, plus 119 sheets, dialogs and toasts across all three</span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= CLOSING ================= -->
+<section class="closing" id="contact">
+  <div class="blk closing__in" data-at="0">
+    <p class="closing__line" data-in="lines">One system for everyone who walks into the club.</p>
+    <div class="closing__me" data-in="rise" data-d="0.5">
+      <div><b>Mahmoud Ali</b><span>Senior UI/UX Designer</span></div>
+    </div>
+    <div class="icons" data-in="rise" data-d="0.7">
+      <a href="https://www.behance.net/mahmoudxali74" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.2 11.2c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8.2 6 6.3 6H2v12h4.5c2.1 0 4-.9 4-3.3 0-1.5-.8-2.6-2.3-3zM4.6 8h1.6c.8 0 1.4.2 1.4 1.1 0 .8-.5 1.1-1.3 1.1H4.6V8zm1.8 8H4.6v-2.9h1.8c1 0 1.7.4 1.7 1.5S7.4 16 6.4 16zM21.9 13.6c0-2.6-1.5-4.6-4.2-4.6-2.6 0-4.4 2-4.4 4.6 0 2.7 1.7 4.5 4.4 4.5 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1.1 1.1-1.8 1.1-1.3 0-2-.8-2-2.1h6.1v-.6zm-6.1-1c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8h-3.7zM15 7h5v1.3h-5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/mahmoud-ali-ui-ux/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a href="../../" aria-label="Portfolio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4H4.3zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4h-3.4z"/></svg></a>
+      <a href="tel:+201141578409" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
+    </div>
+    <a href="#top" class="totop" data-in="rise" data-d="0.9"><span>Back to top</span><i>↑</i></a>
+  </div>
+</section>
+
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/gl.js"></script>
+<script src="assets/engine.js"></script>
+</body>
+</html>

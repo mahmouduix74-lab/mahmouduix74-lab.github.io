@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahem — Real-estate investment platform · Case study · Mahmoud Ali</title>
+<link rel="stylesheet" href="assets/vendor/devices.min.css">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.add('pre')</script>
+</head>
+<body>
+<!-- Values marked data-tmp are temporary until the real facts arrive. Add ?clean to hide the markers. -->
+<canvas id="gl"></canvas>
+<div class="cover" id="cover" aria-hidden="true">
+  <svg class="cover__svg" id="coversvg"></svg>
+  <span class="cover__tag">Sahem · Case study</span>
+  <span class="cover__count" id="covercount">000</span>
+</div>
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+
+<header class="nav" data-in="navdrop">
+  <a href="#top" class="nav__logo"><img src="assets/img/logo.png" alt="Sahem"></a>
+  <nav><a href="#context"><span class="ul">Overview</span></a><a href="#journey"><span class="ul">Journey</span></a><a href="#admin"><span class="ul">Admin</span></a><a href="#contact"><span class="ul">Contact</span></a></nav>
+  <i class="hl hl--b" data-in="draw" data-d="0.4"></i>
+</header>
+
+<!-- ================= 01 HERO ================= -->
+<section class="hero" id="top">
+  <div class="blk crumbs" data-at="0.2">
+    <a href="../../" data-in="rise">← All work</a>
+    <span data-in="rise" data-d="0.05">Case study</span><span data-in="rise" data-d="0.1">Fintech</span><span data-in="rise" data-d="0.15" data-tmp>2025</span>
+    <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+  </div>
+  <div class="blk hero__head" data-at="0">
+    <h1 class="hero__title"><span class="hero__word" data-in="chars" data-d="0.3" data-grad>Sahem</span><i class="hero__dot" data-in="rise" data-d="0.75"></i></h1>
+    <div class="hero__intro">
+      <p class="hero__lede" data-in="lines" data-d="0.1">Making real-estate investment simple to start and easy to follow.</p>
+      <p class="body" data-in="lines" data-d="0.35">A fintech platform for investing in real-estate funds and sukuk, designed across a mobile app, a web platform, a landing page and an admin dashboard.</p>
+    </div>
+  </div>
+  <div class="blk cells cells--4" data-at="0.35">
+    <i class="hl" data-in="draw"></i>
+    <div data-in="rise" data-d="0"><span class="lbl">Role</span><b>Senior UI/UX Designer</b></div>
+    <div data-in="rise" data-d="0.05"><span class="lbl">Timeline</span><b data-tmp>2025 · 4 months</b></div>
+    <div data-in="rise" data-d="0.1"><span class="lbl">Platforms</span><b>iOS · Android · Web · Admin</b></div>
+    <div data-in="rise" data-d="0.15"><span class="lbl">Client</span><b data-tmp>Sahem Financial</b></div>
+  </div>
+  <div class="blk cells cells--2 impact" data-at="0.6">
+    <i class="hl" data-in="draw"></i>
+    <div data-in="rise" data-d="0.1"><b data-tmp><span data-in="count" data-to="100" data-suffix="K+">100K+</span></b><span class="cap">Users</span></div>
+    <div data-in="rise" data-d="0.2"><b><span data-in="count" data-to="309">309</span></b><span class="cap">Screens designed in total</span></div>
+    <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+  </div>
+  <div class="blk stage stage--cover" id="stage" data-at="1.0">
+    <div class="frame" data-cursor=""><img data-gl data-in="reveal" src="assets/img/fig_context.jpg" alt="The Sahem landing page on a MacBook and an iPhone"></div>
+  </div>
+</section>
+
+<!-- ================= ARTICLE ================= -->
+<div class="article" id="article">
+  <i class="vl" data-vl></i>
+  <aside class="toc">
+    <div class="toc__track"><i id="tocfill"></i></div>
+    <div class="toc__links">
+      <a href="#context" data-t="context">Context &amp; problem</a>
+      <a href="#research" data-t="research">Research</a>
+      <a href="#r1" data-t="r1" class="sub">01 The process</a>
+      <a href="#r2" data-t="r2" class="sub">02 Journey map</a>
+      <a href="#r3" data-t="r3" class="sub">03 Service blueprint</a>
+      <a href="#insight" data-t="insight">The insight</a>
+      <a href="#platform" data-t="platform">Platform map</a>
+      <a href="#foundations" data-t="foundations">Foundations</a>
+      <a href="#journey" data-t="journey">Designing the journey</a>
+      <a href="#j0" data-t="j0" class="sub">01 Sign in &amp; sign up</a>
+      <a href="#j1" data-t="j1" class="sub">02 Verify</a>
+      <a href="#j2" data-t="j2" class="sub">03 Discover</a>
+      <a href="#j3" data-t="j3" class="sub">04 Invest</a>
+      <a href="#j4" data-t="j4" class="sub">05 Track</a>
+      <a href="#howto" data-t="howto">How to invest</a>
+      <a href="#web" data-t="web">Web platform</a>
+      <a href="#admin" data-t="admin">Admin dashboard</a>
+      <a href="#outcome" data-t="outcome">Outcome</a>
+    </div>
+    <span class="toc__pct" id="prog">0%</span>
+  </aside>
+
+  <main class="content">
+
+    <section class="sec" id="context">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">01</div>
+        <h2 class="h" data-in="blur">Context &amp; problem — Investing in real estate felt out of reach</h2>
+        <p class="body" data-in="rise" data-d="0.2" data-tmp>For most people in Saudi Arabia, owning part of a commercial building meant large tickets, paperwork and little visibility once the money was in. Funds and sukuk existed, but finding one, understanding its terms and following its returns happened across calls, PDFs and bank transfers.</p>
+        <p class="body" data-in="rise" data-d="0.3" data-tmp>Sahem set out to bring the whole cycle into one product: sign up, verify, compare opportunities, invest from a few hundred riyals and watch the investment grow.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+    </section>
+
+    <section class="sec" id="research">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">02</div>
+        <h2 class="h" data-in="blur">Research — Mapping the investor before drawing a screen</h2>
+        <p class="body" data-in="rise" data-d="0.2">Before any screen, the work set out how the project would move, where the investor’s confidence is won or lost, and what the Sahem team has to do behind each step.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="step" id="r1">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">01</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">The process</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">From a brief to a system on four surfaces</span>
+          <p class="body" data-in="rise" data-d="0.3">The work moved in five stages. Each one ended with something the next could build on, so nothing was designed twice.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <div class="blk proc" data-at="0.3">
+          <i class="proc__line" data-in="draw" data-d="0.1"></i>
+          <div class="proc__st" data-in="rise" data-d="0.20"><i class="proc__dot"></i><span class="proc__no">01</span><b>Discover</b><p data-tmp>Read the brief and the CMA rules for real-estate fund distribution, and reviewed how Saudi investment apps handle sign-up, KYC and payment.</p><span class="proc__out"><em>Output</em>Scope: one investor journey on app and web, one admin panel to run it</span></div><div class="proc__st" data-in="rise" data-d="0.32"><i class="proc__dot"></i><span class="proc__no">02</span><b>Define</b><p>Mapped the investor’s path end to end and wrote down the question they ask at each step.</p><span class="proc__out"><em>Output</em>Customer journey map and platform map</span></div><div class="proc__st" data-in="rise" data-d="0.44"><i class="proc__dot"></i><span class="proc__no">03</span><b>Design</b><p>Built the foundations first, colour, type and components, then the flows: sign in, KYC, discover, invest, track.</p><span class="proc__out"><em>Output</em>309 screens across app, web, admin and landing</span></div><div class="proc__st" data-in="rise" data-d="0.56"><i class="proc__dot"></i><span class="proc__no">04</span><b>Validate</b><p data-tmp>Walked the flows with the Sahem team and refined the receipt, KYC and wallet screens.</p><span class="proc__out"><em>Output</em>Revised flows</span></div><div class="proc__st" data-in="rise" data-d="0.68"><i class="proc__dot"></i><span class="proc__no">05</span><b>Deliver</b><p>Handed over one system, with screens, components and states ready for development.</p><span class="proc__out"><em>Output</em>A developer-ready Figma file</span></div>
+        </div>
+      </div>
+      <div class="step" id="r2">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">02</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Customer journey map</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">The journey doesn’t end at payment</span>
+          <p class="body" data-in="rise" data-d="0.3">Investing in a fund is a long relationship, not a single checkout. We mapped it from the first visit to the first withdrawal, and wrote down the question the investor has at each step. Two kinds of friction showed up: the effort of getting in, and the trust it takes to move money.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <section class="blk jmx" id="jmx" data-at="0.3" aria-label="Customer journey map, eight stages" style="--at:0.0625">
+          <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="face-curious" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><circle cx="8.6" cy="10" r="1.15" fill="currentColor"/><circle cx="15.4" cy="10" r="1.15" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M6.8 7.1q1.8-1.4 3.6-.5"/><circle cx="13" cy="15.8" r="1.5" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="face-cautious" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><circle cx="8.6" cy="10" r="1.15" fill="currentColor"/><circle cx="15.4" cy="10" r="1.15" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M8.6 15.6h6.8"/></symbol><symbol id="face-impatient" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M7 9.4l3 .9M17 9.4l-3 .9M8.4 16q3.6-1.6 7.2 0"/></symbol><symbol id="face-unsure" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><circle cx="8.6" cy="10" r="1.15" fill="currentColor"/><circle cx="15.4" cy="10" r="1.15" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M7.6 15.8q1.5-1.7 2.95 0t2.95 0t2.9 0"/></symbol><symbol id="face-interested" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><circle cx="8.6" cy="10" r="1.15" fill="currentColor"/><circle cx="15.4" cy="10" r="1.15" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M8.2 14.4q3.8 2.9 7.6 0"/></symbol><symbol id="face-hesitant" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><circle cx="8.6" cy="10" r="1.15" fill="currentColor"/><circle cx="15.4" cy="10" r="1.15" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M6.9 7.9l2.7-1.1M17.1 7.9l-2.7-1.1M8.6 16.2l6.8-1.3"/></symbol><symbol id="face-reassured" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M6.8 10.2q1.8 1.7 3.6 0M13.6 10.2q1.8 1.7 3.6 0M8 14.5q4 3.1 8 0"/></symbol><symbol id="face-confident" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" fill="#fff" stroke="currentColor" stroke-width="1.25"/><path fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" d="M6.8 10.5q1.8-2.1 3.6 0M13.6 10.5q1.8-2.1 3.6 0"/><path fill="currentColor" d="M7.4 13.5h9.2q-.4 4.7-4.6 4.7t-4.6-4.7z"/></symbol></svg>
+          <div class="jmx__pin">
+            <div class="jmx__strip">
+              <p class="jmx__axis" data-in="rise">How the investor feels. Our synthesis, not a measured score.</p>
+              <div class="jmx__plot" data-in="rise" data-d="0.1">
+                <svg class="jmx__curve" viewBox="0 0 1000 140" preserveAspectRatio="none" aria-hidden="true"><path data-in="path" data-d="0.2" d="M62.5 64.4 C83.3 67.6 145.8 75.8 187.5 83.4 C229.2 91.1 270.8 109.6 312.5 110.3 C354.2 111.1 395.8 97.3 437.5 87.9 C479.2 78.6 520.8 53.2 562.5 54.3 C604.2 55.4 645.8 96.5 687.5 94.6 C729.2 92.8 770.8 54.3 812.5 43.1 C854.2 31.9 916.7 30.1 937.5 27.4"/></svg>
+                <svg class="jmx__curve jmx__curve--ink" viewBox="0 0 1000 140" preserveAspectRatio="none" aria-hidden="true"><path d="M62.5 64.4 C83.3 67.6 145.8 75.8 187.5 83.4 C229.2 91.1 270.8 109.6 312.5 110.3 C354.2 111.1 395.8 97.3 437.5 87.9 C479.2 78.6 520.8 53.2 562.5 54.3 C604.2 55.4 645.8 96.5 687.5 94.6 C729.2 92.8 770.8 54.3 812.5 43.1 C854.2 31.9 916.7 30.1 937.5 27.4"/></svg>
+                <svg class="jmx__face" style="left:6.25%;top:46.00%"><use href="#face-curious"/></svg><svg class="jmx__face" style="left:18.75%;top:59.60%"><use href="#face-cautious"/></svg><svg class="jmx__face" style="left:31.25%;top:78.80%"><use href="#face-impatient"/></svg><svg class="jmx__face" style="left:43.75%;top:62.80%"><use href="#face-unsure"/></svg><svg class="jmx__face" style="left:56.25%;top:38.80%"><use href="#face-interested"/></svg><svg class="jmx__face" style="left:68.75%;top:67.60%"><use href="#face-hesitant"/></svg><svg class="jmx__face" style="left:81.25%;top:30.80%"><use href="#face-reassured"/></svg><svg class="jmx__face" style="left:93.75%;top:19.60%"><use href="#face-confident"/></svg>
+              </div>
+              <div class="jmx__stops" data-in="rise" data-d="0.25"><i class="jmx__ptr"></i><button type="button" data-i="0"><span>01</span>Discover</button><button type="button" data-i="1"><span>02</span>Sign up</button><button type="button" data-i="2"><span>03</span>Verify</button><button type="button" data-i="3"><span>04</span>Fund</button><button type="button" data-i="4"><span>05</span>Explore</button><button type="button" data-i="5"><span>06</span>Invest</button><button type="button" data-i="6"><span>07</span>Track</button><button type="button" data-i="7"><span>08</span>Withdraw</button></div>
+              <div class="jmx__spans" data-in="rise" data-d="0.35"><span class="is-effort"><i class="jmx__k jmx__k--o"></i>Effort friction</span><span class="is-trust"><i class="jmx__k"></i>Trust friction</span></div>
+            </div>
+            <ol class="jmx__rows" data-in="rise" data-d="0.45"><li class="jmx__row" data-i="0"><div class="jmx__head"><h4>Learn what Sahem is</h4><span>Curious</span></div><dl class="jmx__cell"><dt><i class="jmx__k jmx__k--o"></i>Effort friction</dt><dd>“Is this licensed, and is it safe?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Answer it before any ask: the app’s first onboarding screen is “Licensed &amp; Regulated” with the CMA licence, the next says you can start from SAR 1,000; on the web, the landing and the sign-in panel carry the same licence.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Find somewhere safe to invest</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Reads the landing page on the web, or the onboarding in the app</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Landing page · App onboarding</dd></dl></li><li class="jmx__row" data-i="1"><div class="jmx__head"><h4>Create an account</h4><span>Cautious</span></div><dl class="jmx__cell"><dt><i class="jmx__k jmx__k--o"></i>Effort friction</dt><dd>“How much do I have to share?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Ask one question first, and show the password rules as you type.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Get in without a long form</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Enters a phone number, picks individual or company</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Sign up</dd></dl></li><li class="jmx__row" data-i="2"><div class="jmx__head"><h4>Get approved</h4><span>Impatient</span></div><dl class="jmx__cell"><dt><i class="jmx__k jmx__k--o"></i>Effort friction</dt><dd>“How long will this take?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Break KYC into short single-topic steps, and let people browse first as a guest.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Be allowed to invest</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Confirms the OTP, answers KYC</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>OTP · KYC</dd></dl></li><li class="jmx__row" data-i="3"><div class="jmx__head"><h4>Top up the wallet</h4><span>Unsure</span></div><dl class="jmx__cell"><dt><i class="jmx__k"></i>Trust friction</dt><dd>“Where is my money held?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Show the balance and the IBAN together, on one card.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Have money ready to invest</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Adds money to the e-wallet</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Wallet</dd></dl></li><li class="jmx__row" data-i="4"><div class="jmx__head"><h4>Compare funds and sukuk</h4><span>Interested</span></div><dl class="jmx__cell"><dt><i class="jmx__k"></i>Trust friction</dt><dd>“What does it return, and when does it end?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Lead every card with the amount raised, the return and the end date.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Find a fund that fits</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Browses opportunities, opens details</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Home · Opportunity details</dd></dl></li><li class="jmx__row" data-i="5"><div class="jmx__head"><h4>Commit an amount</h4><span>Hesitant</span></div><dl class="jmx__cell"><dt><i class="jmx__k"></i>Trust friction</dt><dd>“What exactly am I paying?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Itemise fees, discounts and VAT before payment; pay with mada or Apple Pay in one tap.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Be sure of what I am paying</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Picks units, reviews, pays</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Units · Receipt · Payment</dd></dl></li><li class="jmx__row" data-i="6"><div class="jmx__head"><h4>Watch it work</h4><span>Reassured</span></div><dl class="jmx__cell"><dt><i class="jmx__k"></i>Trust friction</dt><dd>“Is it growing?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Sum up totals and returns, with a certificate for each holding.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>See the investment grow</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Opens the portfolio and statistics</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Portfolio · Statistics</dd></dl></li><li class="jmx__row" data-i="7"><div class="jmx__head"><h4>Get money out</h4><span>Confident</span></div><dl class="jmx__cell"><dt><i class="jmx__k"></i>Trust friction</dt><dd>“Can I take it out when I need to?”</dd></dl><dl class="jmx__cell"><dt>Design answer</dt><dd>Make a withdrawal a single form.</dd></dl><dl class="jmx__cell jmx__q"><dt>Goal</dt><dd>Get my money back easily</dd></dl><dl class="jmx__cell jmx__q"><dt>Action</dt><dd>Requests a withdrawal to the bank</dd></dl><dl class="jmx__cell jmx__q"><dt>Touchpoint</dt><dd>Wallet · Bank details</dd></dl></li></ol>
+          </div>
+          <div class="jmx__runway"></div>
+        </section>
+        <div class="blk jm__take" data-at="0.2">
+          <span class="lbl" data-in="rise">What the map showed</span>
+          <p class="lede" data-in="lines" data-d="0.1">Trust is earned in three places: before sign-up, at payment and after investing. The licence, the itemised receipt and the portfolio became the screens the design spends the most effort on.</p>
+        </div>
+      </div>
+      <div class="step" id="r3">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">03</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Service blueprint</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">What the investor doesn’t see</span>
+          <p class="body" data-in="rise" data-d="0.3">Behind every screen in the app, someone on the Sahem team is doing something in the admin panel. Designing both sides together is what keeps the app’s promises true.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <div class="blk bp" data-at="0.3"><div class="bp__head"><span></span><b data-in="rise" data-d="0.10">Sign up &amp; verify</b><b data-in="rise" data-d="0.18">Invest</b><b data-in="rise" data-d="0.26">Track &amp; withdraw</b></div><div class="bp__lane bp__lane--0"><span class="bp__name" data-in="rise" data-d="0.20"><b>Investor sees</b>App and web</span><span class="bp__card" data-in="rise" data-d="0.30">Sign up, OTP, KYC</span><span class="bp__card" data-in="rise" data-d="0.37">Opportunity, units, receipt, payment</span><span class="bp__card" data-in="rise" data-d="0.44">Portfolio, statistics, withdraw</span></div><div class="bp__vis"><i data-in="draw" data-d="0.6"></i><span data-in="rise" data-d="0.7">Line of visibility</span></div><div class="bp__lane bp__lane--1"><span class="bp__name" data-in="rise" data-d="0.35"><b>Sahem team does</b>Admin dashboard</span><span class="bp__card" data-in="rise" data-d="0.45">Reviews KYC in Requests and edits the KYC questions</span><span class="bp__card" data-in="rise" data-d="0.52">Publishes funds and opportunities, sets units and dates</span><span class="bp__card" data-in="rise" data-d="0.59">Approves withdrawals and sends fund updates from notification templates</span></div><div class="bp__lane bp__lane--2"><span class="bp__name" data-in="rise" data-d="0.50"><b>Systems</b>Behind both</span><span class="bp__card" data-in="rise" data-d="0.60">OTP and identity checks</span><span class="bp__card" data-in="rise" data-d="0.67">Payment with mada and Apple Pay, fund records</span><span class="bp__card" data-in="rise" data-d="0.74">Reports and distribution history</span></div></div>
+      </div>
+    </section>
+
+    <section class="sec" id="insight">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">03</div>
+        <h2 class="h" data-in="blur">The insight — Confidence comes from three numbers</h2>
+        <p class="body" data-in="rise" data-d="0.2" data-tmp>Investors didn't ask for more data. They wanted the same three answers at every step: how much is raised, what it returns, and when it ends. The design puts those three numbers on every card, every detail page and every receipt.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--3 trio" data-at="0.4">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><span class="lbl">How much is raised</span><b>150,000,000 SAR</b><i class="bar"><i data-in="grow" data-d="0.4" style="--w:90%"></i></i><span class="cap">90% collected</span></div>
+        <div data-in="rise" data-d="0.2"><span class="lbl">What it returns</span><b><span data-in="count" data-to="12" data-suffix="%">12%</span></b><span class="cap">Expected return on equity</span></div>
+        <div data-in="rise" data-d="0.3"><span class="lbl">When it ends</span><b><span data-in="count" data-to="12" data-suffix=" months">12 months</span></b><span class="cap">Fund duration</span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+      <p class="note blk" data-at="0.8"><span data-in="rise">Figures are from the design's sample fund, SEDCO Capital.</span></p>
+    </section>
+
+    <section class="sec" id="platform">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">04</div>
+        <h2 class="h" data-in="blur">Platform map — Four surfaces, one system</h2>
+        <p class="body" data-in="rise" data-d="0.2">The same investor journey runs on a mobile app and a web platform. A landing page brings people in, and an admin dashboard lets the Sahem team run funds, investors and payouts.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk map" data-at="0.4">
+        <a data-cursor="" class="map__card" href="#context" data-in="rise" data-d="0"><span class="map__img"><img src="assets/img/landing_top.jpg" alt=""></span><span class="lbl">01</span><b>Landing page</b><small>Desktop + mobile</small></a>
+        <a data-cursor="" class="map__card" href="#journey" data-in="rise" data-d="0.1"><span class="map__img map__img--app"><img src="assets/img/home.png" alt=""></span><span class="lbl">02</span><b>Mobile app</b><small>Investor · iOS &amp; Android</small></a>
+        <a data-cursor="" class="map__card" href="#web" data-in="rise" data-d="0.2"><span class="map__img"><img src="assets/img/web_home.jpg" alt=""></span><span class="lbl">03</span><b>Web platform</b><small>Investor · desktop</small></a>
+        <a data-cursor="" class="map__card" href="#admin" data-in="rise" data-d="0.3"><span class="map__img"><img src="assets/img/dash_home.jpg" alt=""></span><span class="lbl">04</span><b>Admin dashboard</b><small>Sahem team</small></a>
+      </div>
+    </section>
+
+    <section class="sec" id="foundations">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">05</div>
+        <h2 class="h" data-in="blur">Foundations — A calm, trustworthy palette</h2>
+        <p class="body" data-in="rise" data-d="0.2">Deep navy carries trust and weight, and cyan marks progress and action. Every text pair passes WCAG AA. Cyan is kept for shapes and for text on navy.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk swatches" data-at="0.4">
+        <div data-in="rise" data-d="0" class="sw" data-hex="#0A1E54" title="#0A1E54"><i style="background:#0A1E54"><em aria-hidden="true">✓</em></i><b>Primary</b><small>#0A1E54 · 15.8:1 on white</small></div>
+        <div data-in="rise" data-d="0.08" class="sw" data-hex="#1BA1C6" title="#1BA1C6"><i style="background:#1BA1C6"><em aria-hidden="true">✓</em></i><b>Secondary</b><small>#1BA1C6 · 5.2:1 on navy</small></div>
+        <div data-in="rise" data-d="0.16" class="sw" data-hex="#18C07A" title="#18C07A"><i style="background:#18C07A"><em aria-hidden="true">✓</em></i><b>Success</b><small>#18C07A · status</small></div>
+        <div data-in="rise" data-d="0.24" class="sw" data-hex="#666666" title="#666666"><i style="background:#666666"><em aria-hidden="true">✓</em></i><b>Neutral 600</b><small>#666666 · 5.7:1 on white</small></div>
+        <div data-in="rise" data-d="0.32" class="sw" data-hex="#F6F6F6" title="#F6F6F6"><i style="background:#F6F6F6;box-shadow:inset 0 0 0 1px #e3e6ec"><em aria-hidden="true">✓</em></i><b>Surface</b><small>#F6F6F6</small></div>
+      </div>
+      <div class="blk fonts" data-at="0.8">
+        <i class="hl" data-in="draw"></i>
+        <div class="font" data-in="rise" data-d="0.05">
+          <div class="font__aa">Aa <span lang="ar">أب</span></div>
+          <div class="font__meta"><span class="lbl">Primary · UI</span><b>Cairo</b><span>Bold, SemiBold and Medium across the app, the web platform and the landing page. One family for Arabic and Latin.</span></div>
+        </div>
+        <div class="font" data-in="rise" data-d="0.15">
+          <div class="font__spec"><svg class="spec" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 35" width="720" height="35"><title>Future of financial Saudi Arabia</title><path fill="currentColor" d="M8.26172 9.80469V14.9023H18.2617V21.8945H8.26172V33.5547H0V1.95312H20.4102V9.80469H8.26172ZM35.0781 33.8086C28.3203 33.8086 23.8281 29.0234 23.8281 22.5391L23.7891 10.0781H31.6797L31.6992 22.5195C31.6992 25.1562 32.9688 26.8359 35.0586 26.8359C37.2461 26.8359 38.6328 25.1562 38.6328 22.5195L38.6133 10.0781H46.5039L46.543 22.5391C46.5625 29.0234 41.875 33.8086 35.0781 33.8086ZM60.7031 33.9062C54.9414 33.9062 53.1445 30 53.1445 25.625V17.0508H49.8633V10.7227H50.6055C52.6953 10.7227 53.9258 9.57031 53.9258 7.46094V5.13672H61.0352V10.0781H65.8203V17.0508H61.0352V25.2344C61.0352 26.8359 61.9727 27.6562 63.3789 27.6562C64.1016 27.6562 65.0586 27.4023 65.7617 27.1875V33.1055C64.4531 33.6133 62.2461 33.9062 60.7031 33.9062ZM80.4297 33.8086C73.6719 33.8086 69.1797 29.0234 69.1797 22.5391L69.1406 10.0781H77.0312L77.0508 22.5195C77.0508 25.1562 78.3203 26.8359 80.4102 26.8359C82.5977 26.8359 83.9844 25.1562 83.9844 22.5195L83.9648 10.0781H91.8555L91.8945 22.5391C91.9141 29.0234 87.2266 33.8086 80.4297 33.8086ZM96.9922 33.5156V10.0781H104.297L104.707 12.8711C107.09 10.1758 110.273 9.08203 113.066 9.0625L111.855 16.9336C111.543 16.875 111.074 16.8164 110.547 16.8164C108.203 16.8164 104.883 17.793 104.883 24.0625V33.5156H96.9922ZM114.16 21.7969C114.16 14.4922 119.883 9.29688 126.875 9.29688C134.316 9.29688 138.691 15.1562 138.691 20.8594C138.691 22.1289 138.438 23.5742 138.145 24.4727H122.09C122.949 26.5234 124.727 27.9297 127.012 27.9297C128.145 27.9297 129.609 27.5977 131.309 26.0742L137.188 29.4922C134.121 33.457 129.688 34.2969 126.855 34.2969C119.727 34.2969 114.16 29.0039 114.16 21.7969ZM121.816 19.668H131.152C130.684 17.3633 129.316 15.6445 126.758 15.6445C124.199 15.6445 122.461 17.3828 121.816 19.668ZM166.641 34.3359C159.219 34.3359 153.457 28.8281 153.457 21.7969C153.457 14.7656 159.219 9.25781 166.641 9.25781C174.043 9.25781 179.805 14.7656 179.805 21.7969C179.805 28.8281 174.043 34.3359 166.641 34.3359ZM166.641 27.0898C169.629 27.0898 171.914 24.7461 171.914 21.7969C171.914 18.8477 169.629 16.4844 166.641 16.4844C163.652 16.4844 161.348 18.8477 161.348 21.7969C161.348 24.7461 163.652 27.0898 166.641 27.0898ZM195.312 6.99219C193.164 6.99219 192.754 8.61328 192.754 9.25781V10.0781H197.773V17.0703H192.754V33.5156H184.863V17.0703H181.855V10.0781H184.863V9.25781C184.863 4.58984 187.305 0.507812 192.52 0.507812C194.043 0.507812 196.289 0.839844 197.773 1.38672V7.51953C196.953 7.20703 196.074 6.99219 195.312 6.99219ZM225 6.99219C222.852 6.99219 222.441 8.61328 222.441 9.25781V10.0781H227.461V17.0703H222.441V33.5156H214.551V17.0703H211.543V10.0781H214.551V9.25781C214.551 4.58984 216.992 0.507812 222.207 0.507812C223.73 0.507812 225.977 0.839844 227.461 1.38672V7.51953C226.641 7.20703 225.762 6.99219 225 6.99219ZM235.176 7.92969C232.676 7.92969 230.781 6.15234 230.781 3.96484C230.781 1.77734 232.676 0 235.176 0C237.695 0 239.57 1.77734 239.57 3.96484C239.57 6.15234 237.695 7.92969 235.176 7.92969ZM231.23 10.0781H239.121V33.5156H231.23V10.0781ZM244.648 33.5156V10.0781H251.953L252.266 12.1289C254.043 10.4102 256.484 9.35547 259.453 9.35547C263.828 9.35547 268.164 11.4648 268.164 20.8398V33.5156H260.273V20.8398C260.273 17.6953 258.926 16.4062 256.543 16.4062C253.984 16.4062 252.539 18.2227 252.539 20.8398V33.5156H244.648ZM271.973 21.7969C271.973 14.8242 276.797 9.25781 283.652 9.25781C286.758 9.25781 289.297 10.3906 291.094 12.4609L291.445 10.0781H298.75V33.5156H291.445L291.074 31.0938C289.336 33.1445 286.816 34.3359 283.652 34.3359C276.602 34.3359 271.973 28.5156 271.973 21.7969ZM279.863 21.7578C279.863 24.5703 282.031 27.1875 285.41 27.1875C288.516 27.1875 290.859 24.9414 290.859 21.7383C290.859 18.457 288.379 16.3867 285.43 16.3867C282.227 16.3867 279.863 18.8281 279.863 21.7578ZM303.828 33.5156V10.0781H311.133L311.445 12.1289C313.223 10.4102 315.664 9.35547 318.633 9.35547C323.008 9.35547 327.344 11.4648 327.344 20.8398V33.5156H319.453V20.8398C319.453 17.6953 318.105 16.4062 315.723 16.4062C313.164 16.4062 311.719 18.2227 311.719 20.8398V33.5156H303.828ZM344.199 34.2969C337.422 34.2969 331.152 29.3555 331.152 21.7969C331.152 14.2383 337.422 9.29688 344.199 9.29688C347.344 9.29688 350.273 10.3516 352.48 12.0312L348.887 17.6367C347.891 16.6992 346.27 16.0547 344.668 16.0547C341.465 16.0547 339.043 18.5547 339.043 21.7969C339.043 25.0586 341.465 27.5195 344.688 27.5195C346.348 27.5195 347.91 26.875 348.848 25.9961L352.793 31.3281C350.488 33.1836 347.422 34.2969 344.199 34.2969ZM360.488 7.92969C357.988 7.92969 356.094 6.15234 356.094 3.96484C356.094 1.77734 357.988 0 360.488 0C363.008 0 364.883 1.77734 364.883 3.96484C364.883 6.15234 363.008 7.92969 360.488 7.92969ZM356.543 10.0781H364.434V33.5156H356.543V10.0781ZM368.691 21.7969C368.691 14.8242 373.516 9.25781 380.371 9.25781C383.477 9.25781 386.016 10.3906 387.812 12.4609L388.164 10.0781H395.469V33.5156H388.164L387.793 31.0938C386.055 33.1445 383.535 34.3359 380.371 34.3359C373.32 34.3359 368.691 28.5156 368.691 21.7969ZM376.582 21.7578C376.582 24.5703 378.75 27.1875 382.129 27.1875C385.234 27.1875 387.578 24.9414 387.578 21.7383C387.578 18.457 385.098 16.3867 382.148 16.3867C378.945 16.3867 376.582 18.8281 376.582 21.7578ZM400.547 1.28906H408.438V33.5156H400.547V1.28906ZM435.762 33.9453C430.586 33.9453 425.879 31.6602 424.297 28.1836L429.355 23.2227C430.664 25.1562 433.105 26.3281 435.742 26.3281C437.52 26.3281 439.258 25.6836 439.258 24.3945C439.258 22.7734 436.035 21.3477 432.949 19.9805C428.965 18.2617 425.547 15.6445 425.547 10.8984C425.547 5.44922 430.723 1.5625 436.699 1.5625C441.504 1.5625 445.254 3.82812 446.484 6.93359L441.66 11.582C440.723 9.92188 438.301 9.19922 436.797 9.19922C435.078 9.19922 433.848 10.0781 433.848 11.1523C433.848 12.5977 436.074 13.0664 439.473 14.4922C444.395 16.5625 447.656 19.5703 447.656 24.2188C447.656 30.2148 442.07 33.9453 435.762 33.9453ZM450.02 21.7969C450.02 14.8242 454.844 9.25781 461.699 9.25781C464.805 9.25781 467.344 10.3906 469.141 12.4609L469.492 10.0781H476.797V33.5156H469.492L469.121 31.0938C467.383 33.1445 464.863 34.3359 461.699 34.3359C454.648 34.3359 450.02 28.5156 450.02 21.7969ZM457.91 21.7578C457.91 24.5703 460.078 27.1875 463.457 27.1875C466.562 27.1875 468.906 24.9414 468.906 21.7383C468.906 18.457 466.426 16.3867 463.477 16.3867C460.273 16.3867 457.91 18.8281 457.91 21.7578ZM493.164 33.8086C486.406 33.8086 481.914 29.0234 481.914 22.5391L481.875 10.0781H489.766L489.785 22.5195C489.785 25.1562 491.055 26.8359 493.145 26.8359C495.332 26.8359 496.719 25.1562 496.719 22.5195L496.699 10.0781H504.59L504.629 22.5391C504.648 29.0234 499.961 33.8086 493.164 33.8086ZM508.457 21.8164C508.457 14.8438 513.281 9.27734 520.137 9.27734C523.125 9.27734 525.566 10.3125 527.344 12.2266V1.28906H535.156V33.5156H527.93L527.559 31.0938C525.82 33.1445 523.301 34.3359 520.137 34.3359C513.086 34.3359 508.457 28.5156 508.457 21.8164ZM516.348 21.7578C516.348 24.5703 518.516 27.207 521.895 27.207C525 27.207 527.344 24.9609 527.344 21.7578C527.344 18.457 524.863 16.4062 521.914 16.4062C518.711 16.4062 516.348 18.8281 516.348 21.7578ZM544.629 7.92969C542.129 7.92969 540.234 6.15234 540.234 3.96484C540.234 1.77734 542.129 0 544.629 0C547.148 0 549.023 1.77734 549.023 3.96484C549.023 6.15234 547.148 7.92969 544.629 7.92969ZM540.684 10.0781H548.574V33.5156H540.684V10.0781ZM586.699 29.8438H574.941L573.34 33.5156H564.199L578.828 1.64062H582.793L597.441 33.5156H588.281L586.699 29.8438ZM584.043 23.7305L580.82 16.2695L577.578 23.7305H584.043ZM600.391 33.5156V10.0781H607.695L608.105 12.8711C610.488 10.1758 613.672 9.08203 616.465 9.0625L615.254 16.9336C614.941 16.875 614.473 16.8164 613.945 16.8164C611.602 16.8164 608.281 17.793 608.281 24.0625V33.5156H600.391ZM617.559 21.7969C617.559 14.8242 622.383 9.25781 629.238 9.25781C632.344 9.25781 634.883 10.3906 636.68 12.4609L637.031 10.0781H644.336V33.5156H637.031L636.66 31.0938C634.922 33.1445 632.402 34.3359 629.238 34.3359C622.188 34.3359 617.559 28.5156 617.559 21.7969ZM625.449 21.7578C625.449 24.5703 627.617 27.1875 630.996 27.1875C634.102 27.1875 636.445 24.9414 636.445 21.7383C636.445 18.457 633.965 16.3867 631.016 16.3867C627.812 16.3867 625.449 18.8281 625.449 21.7578ZM649.414 33.5156V1.28906H657.305V12.2266C659.082 10.332 661.543 9.27734 664.531 9.27734C671.367 9.27734 676.191 14.8438 676.191 21.8164C676.191 28.5156 671.562 34.3359 664.531 34.3359C661.367 34.3359 658.848 33.1445 657.09 31.0742L656.719 33.5156H649.414ZM657.305 21.7578C657.305 24.9609 659.648 27.207 662.773 27.207C666.133 27.207 668.301 24.5703 668.301 21.7578C668.301 18.8281 665.957 16.4062 662.754 16.4062C659.805 16.4062 657.305 18.457 657.305 21.7578ZM684.395 7.92969C681.895 7.92969 680 6.15234 680 3.96484C680 1.77734 681.895 0 684.395 0C686.914 0 688.789 1.77734 688.789 3.96484C688.789 6.15234 686.914 7.92969 684.395 7.92969ZM680.449 10.0781H688.34V33.5156H680.449V10.0781ZM692.598 21.7969C692.598 14.8242 697.422 9.25781 704.277 9.25781C707.383 9.25781 709.922 10.3906 711.719 12.4609L712.07 10.0781H719.375V33.5156H712.07L711.699 31.0938C709.961 33.1445 707.441 34.3359 704.277 34.3359C697.227 34.3359 692.598 28.5156 692.598 21.7969ZM700.488 21.7578C700.488 24.5703 702.656 27.1875 706.035 27.1875C709.141 27.1875 711.484 24.9414 711.484 21.7383C711.484 18.457 709.004 16.3867 706.055 16.3867C702.852 16.3867 700.488 18.8281 700.488 21.7578Z"/></svg><svg class="spec" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 401 27" width="401" height="27"><title>About Sahem Financial</title><path fill="currentColor" d="M18.6406 22.3906H6.60938L5.04688 25.9531H0L11.5781 0.484375H13.6406L25.25 25.9531H20.1875L18.6406 22.3906ZM17.125 18.9062L12.625 8.65625L8.10938 18.9062H17.125ZM27.9062 25.9531V0.171875H32.2812V9.65625C33.7188 7.73438 36.0469 6.625 38.6719 6.625C43.875 6.625 48.0156 10.8281 48.0156 16.5938C48.0156 22.2188 43.9688 26.5469 38.6719 26.5469C35.9531 26.5469 33.6094 25.4375 32.1719 23.4219L31.9688 25.9531H27.9062ZM32.2812 16.7188C32.2812 20.7344 35.5625 22.5469 37.7656 22.5469C40.9844 22.5469 43.6406 20 43.6406 16.5625C43.6406 13.0781 40.9062 10.6406 37.75 10.6406C35.1094 10.6406 32.2812 12.2656 32.2812 16.7188ZM60.5781 26.5469C54.8438 26.5469 50.2969 22.125 50.2969 16.5781C50.2969 11.0312 54.8438 6.60938 60.5781 6.60938C66.2969 6.60938 70.8438 11.0312 70.8438 16.5781C70.8438 22.125 66.2969 26.5469 60.5781 26.5469ZM60.5781 22.4844C63.8594 22.4844 66.4688 19.8438 66.4688 16.5781C66.4688 13.3125 63.8594 10.6719 60.5781 10.6719C57.2969 10.6719 54.6719 13.3125 54.6719 16.5781C54.6719 19.8438 57.2969 22.4844 60.5781 22.4844ZM82.5938 26.1875C77.875 26.1875 74.2969 22.7344 74.2969 17.625L74.2812 7.20312H78.6562L78.6719 17.6094C78.6719 20.5625 80.4375 22.2656 82.5781 22.2656C84.8125 22.2656 86.6094 20.5625 86.6094 17.6094L86.5938 7.20312H90.9688L90.9844 17.625C91 22.7344 87.375 26.1875 82.5938 26.1875ZM102.094 26.2656C98.125 26.2656 96.5469 23.5156 96.5469 19.9531V11.125H93.9688V7.5625H94.6094C96.1562 7.5625 96.9688 6.76562 96.9688 5.17188V3.48438H100.922V7.20312H105.656V11.125H100.922V19.7656C100.922 21.6406 101.891 22.7031 103.5 22.7031C104.125 22.7031 105.047 22.4688 105.672 22.2656V25.6875C104.656 26.0312 103.328 26.2656 102.094 26.2656ZM126.047 26.2656C121.891 26.2656 118.297 24.2031 117.188 21.5625L120.047 18.8281C121.125 20.7031 123.562 22 126.016 22C128.406 22 130.578 20.7812 130.578 18.9062C130.578 16.75 127.453 15.5469 124.547 14.4219C121.328 13.1719 118.219 11.3125 118.219 7.51562C118.219 3.45312 122.047 0.421875 126.641 0.421875C130.516 0.421875 133.266 2.48438 134.172 4.82812L131.391 7.35938C130.594 5.70312 128.484 4.6875 126.656 4.6875C124.547 4.6875 122.828 5.98438 122.828 7.64062C122.828 9.53125 125.203 10.2031 128.219 11.3594C132 12.8594 135.219 14.9219 135.219 18.7969C135.219 23.3594 130.875 26.2656 126.047 26.2656ZM137.359 16.5781C137.359 10.8125 141.5 6.60938 146.703 6.60938C149.391 6.60938 151.75 7.76562 153.203 9.76562L153.391 7.20312H157.469V25.9531H153.391L153.203 23.4219C151.781 25.4375 149.422 26.5469 146.703 26.5469C141.406 26.5469 137.359 22.2188 137.359 16.5781ZM141.734 16.5625C141.734 19.9844 144.391 22.5312 147.625 22.5312C150.5 22.5312 153.062 20.8125 153.094 16.5469C153.047 12.4062 150.422 10.625 147.625 10.625C144.484 10.625 141.734 13.0781 141.734 16.5625ZM172.328 6.67188C176.016 6.67188 179.297 8.65625 179.297 15.8125V25.9531H174.922V15.8125C174.922 12.0938 173.297 10.625 170.797 10.625C168.141 10.625 166.406 12.375 166.406 15.8125V25.9531H162.031V0.171875H166.406V9.40625C167.75 7.60938 169.812 6.67188 172.328 6.67188ZM182.734 16.5781C182.734 10.8125 187.109 6.625 192.516 6.625C198.031 6.625 201.625 10.9531 201.625 15.8125C201.625 16.6719 201.484 17.5 201.281 18.125H187.125C187.672 20.9531 189.938 22.8906 192.641 22.8906C194.125 22.8906 195.828 22.2969 197.141 21.0312L200.359 23.0781C198.344 25.6562 195.031 26.5312 192.578 26.5312C187.094 26.5312 182.734 22.3125 182.734 16.5781ZM186.984 15.3125H197.438C197.219 12.5625 195.516 10.25 192.484 10.25C189.547 10.25 187.406 12.4219 186.984 15.3125ZM205.062 25.9531V7.20312H209.125L209.281 9.39062C210.562 7.57812 212.484 6.60938 214.953 6.60938C217.359 6.60938 219.547 7.54688 220.672 10.4375C221.922 7.9375 224.203 6.60938 227.062 6.60938C230.609 6.60938 233.656 8.65625 233.656 15.9688V25.9531H229.281V15.9688C229.281 12.125 227.875 10.625 225.578 10.625C223.188 10.625 221.547 12.2656 221.547 15.7188V25.9531H217.172V15.7188C217.172 12.0156 215.719 10.625 213.469 10.625C210.891 10.625 209.438 12.4688 209.438 15.9688V25.9531H205.062ZM252.781 5.07812V11.6719H262.125V15.625H252.781V25.9844H248.203V0.703125H263.828V5.07812H252.781ZM269.453 4.75C267.984 4.75 266.875 3.6875 266.875 2.375C266.875 1.0625 267.984 0 269.453 0C270.922 0 272.031 1.0625 272.031 2.375C272.031 3.6875 270.922 4.75 269.453 4.75ZM267.266 7.20312H271.641V25.9531H267.266V7.20312ZM276.594 25.9531V7.20312H280.656L280.844 9.54688C282.188 7.65625 284.297 6.67188 286.891 6.67188C290.578 6.67188 293.859 8.65625 293.859 15.8125V25.9531H289.484V15.8125C289.484 12.0938 287.859 10.625 285.359 10.625C282.703 10.625 280.969 12.375 280.969 15.8125V25.9531H276.594ZM297.297 16.5781C297.297 10.8125 301.438 6.60938 306.641 6.60938C309.328 6.60938 311.688 7.76562 313.141 9.76562L313.328 7.20312H317.406V25.9531H313.328L313.141 23.4219C311.719 25.4375 309.359 26.5469 306.641 26.5469C301.344 26.5469 297.297 22.2188 297.297 16.5781ZM301.672 16.5625C301.672 19.9844 304.328 22.5312 307.562 22.5312C310.438 22.5312 313 20.8125 313.031 16.5469C312.984 12.4062 310.359 10.625 307.562 10.625C304.422 10.625 301.672 13.0781 301.672 16.5625ZM321.969 25.9531V7.20312H326.031L326.219 9.54688C327.562 7.65625 329.672 6.67188 332.266 6.67188C335.953 6.67188 339.234 8.65625 339.234 15.8125V25.9531H334.859V15.8125C334.859 12.0938 333.234 10.625 330.734 10.625C328.078 10.625 326.344 12.375 326.344 15.8125V25.9531H321.969ZM352.891 26.5781C347.656 26.5781 342.672 22.6562 342.672 16.5781C342.672 10.5156 347.656 6.57812 352.875 6.57812C355.25 6.57812 357.672 7.39062 359.406 8.76562L357.359 11.9375C356.422 11.0625 354.719 10.4062 353.109 10.4062C349.875 10.4062 347.047 12.9375 347.047 16.5781C347.047 20.25 349.891 22.7344 353.109 22.7344C354.766 22.7344 356.469 22.0625 357.406 21.1875L359.656 24.2031C357.859 25.7188 355.344 26.5781 352.891 26.5781ZM365.203 4.75C363.734 4.75 362.625 3.6875 362.625 2.375C362.625 1.0625 363.734 0 365.203 0C366.672 0 367.781 1.0625 367.781 2.375C367.781 3.6875 366.672 4.75 365.203 4.75ZM363.016 7.20312H367.391V25.9531H363.016V7.20312ZM371.203 16.5781C371.203 10.8125 375.344 6.60938 380.547 6.60938C383.234 6.60938 385.594 7.76562 387.047 9.76562L387.234 7.20312H391.312V25.9531H387.234L387.047 23.4219C385.625 25.4375 383.266 26.5469 380.547 26.5469C375.25 26.5469 371.203 22.2188 371.203 16.5781ZM375.578 16.5625C375.578 19.9844 378.234 22.5312 381.469 22.5312C384.344 22.5312 386.906 20.8125 386.938 16.5469C386.891 12.4062 384.266 10.625 381.469 10.625C378.328 10.625 375.578 13.0781 375.578 16.5625ZM395.875 0.171875H400.25V25.9531H395.875V0.171875Z"/></svg></div>
+          <div class="font__meta"><span class="lbl">Display · Landing</span><b>TS Safaa</b><span>Bold, Medium and Regular for the landing page headlines and body copy.</span></div>
+        </div>
+        <div class="font" data-in="rise" data-d="0.25">
+          <div class="font__spec font__spec--ping"><svg class="spec" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 161 20" width="161" height="20"><title>Age Distribution_2</title><path fill="currentColor" d="M13.12 15.3008H10.34L9.11998 11.7808H3.87998L2.65998 15.3008H-1.95303e-05L5.21998 1.24078H7.97998L13.12 15.3008ZM6.47998 4.20078L4.61998 9.60078H8.35998L6.47998 4.20078ZM22.7469 6.38078V4.72078H25.2869V15.2808C25.2869 17.9008 22.8669 19.7608 19.4869 19.7608C17.6069 19.7608 15.6469 19.2408 14.4669 18.4608L14.8269 16.2008C16.1269 17.0208 18.0469 17.4808 19.4669 17.4808C21.2469 17.4808 22.7469 16.6808 22.7469 14.8808V13.1408C21.8669 14.4808 20.6069 15.1208 18.9469 15.1208C16.2269 15.1208 13.7669 13.4408 13.7669 9.84078C13.7669 6.22078 16.1469 4.44078 18.9469 4.44078C20.5869 4.44078 21.8469 5.12078 22.7469 6.38078ZM19.3469 12.9608C20.9869 12.9608 22.2469 11.8608 22.7469 9.90078V9.82078C22.2269 7.82078 20.9069 6.60078 19.3269 6.60078C17.7069 6.60078 16.4269 7.62078 16.4269 9.80078C16.4269 11.8608 17.7069 12.9608 19.3469 12.9608ZM37.9606 10.8208H30.0206C30.2806 12.6208 31.4206 13.5208 33.4606 13.5208C34.7606 13.5208 35.8406 13.3008 37.0806 12.6408L37.5206 14.4808C36.3606 15.1608 34.8806 15.5808 33.0606 15.5808C29.3806 15.5808 27.3606 13.5008 27.3606 10.0808C27.3606 6.66078 29.6606 4.44078 32.8006 4.44078C35.7206 4.44078 38.0206 6.20078 38.0206 10.0008C38.0206 10.3208 38.0006 10.6008 37.9606 10.8208ZM30.0206 9.22078H35.3806C35.2006 7.38078 34.3206 6.46078 32.7606 6.46078C31.2006 6.46078 30.2406 7.40078 30.0206 9.22078ZM49.3022 1.24078C53.4422 1.24078 56.5222 4.00078 56.5222 8.28078C56.5222 12.5808 53.4222 15.3008 49.3022 15.3008H44.7822V1.24078H49.3022ZM47.4222 13.0608H49.3222C51.8622 13.0608 53.8022 11.2808 53.8022 8.34078C53.8022 5.38078 51.8222 3.48078 49.3422 3.48078H47.4222V13.0608ZM58.3637 1.54078C58.3637 0.620781 59.0837 0.000780344 59.9437 0.000780344C60.7837 0.000780344 61.5237 0.600781 61.5237 1.54078C61.5237 2.42078 60.8237 3.06078 59.9437 3.06078C59.1237 3.06078 58.3637 2.44078 58.3637 1.54078ZM61.2237 15.3008H58.6637V4.72078H61.2237V15.3008ZM67.1781 15.5608C65.5781 15.5608 64.1181 15.0808 63.2581 14.6208L63.6981 12.5408C64.5981 13.1208 65.9981 13.6008 67.2581 13.6008C68.5381 13.6008 69.3381 13.2208 69.3381 12.3608C69.3381 10.2608 63.3981 12.1008 63.3981 7.84078C63.3981 5.78078 65.0381 4.42078 67.7981 4.42078C69.1781 4.42078 70.5581 4.80078 71.5381 5.32078L71.0781 7.38078C70.1381 6.84078 69.0181 6.44078 67.9181 6.44078C66.7581 6.44078 65.9381 6.90078 65.9381 7.68078C65.9381 9.94078 71.8781 8.12078 71.8781 12.1008C71.8781 14.1808 69.8981 15.5608 67.1781 15.5608ZM81.0995 12.8608L81.4995 14.8408C80.5795 15.2808 79.5395 15.5208 78.2995 15.5208C76.0795 15.5208 74.6195 14.3608 74.6195 11.7408V6.68078H72.7595V4.72078H74.6195V1.82078H77.1595V4.72078H81.0595V6.68078H77.1595V11.1208C77.1595 12.7408 77.8995 13.3408 78.9395 13.3408C79.6995 13.3408 80.3795 13.2008 81.0995 12.8608ZM88.9215 4.52078C89.3015 4.52078 89.6615 4.56078 89.9615 4.66078L89.6015 6.84078C89.3215 6.74078 88.9415 6.70078 88.6615 6.70078C87.3615 6.70078 86.1815 7.82078 85.4815 9.64078V15.3008H82.9215V4.72078H85.4815V6.68078C86.3015 5.42078 87.4415 4.52078 88.9215 4.52078ZM91.1372 1.54078C91.1372 0.620781 91.8572 0.000780344 92.7172 0.000780344C93.5572 0.000780344 94.2972 0.600781 94.2972 1.54078C94.2972 2.42078 93.5972 3.06078 92.7172 3.06078C91.8972 3.06078 91.1372 2.44078 91.1372 1.54078ZM93.9972 15.3008H91.4372V4.72078H93.9972V15.3008ZM102.912 4.44078C105.712 4.44078 108.112 6.34078 108.112 10.0608C108.112 13.6808 105.652 15.5808 102.912 15.5808C101.252 15.5808 100.012 14.8208 99.1315 13.4408V15.3008H96.6715V1.24078H99.2315V6.36078C100.132 5.12078 101.372 4.44078 102.912 4.44078ZM102.512 13.4008C104.152 13.4008 105.432 12.1608 105.432 10.0208C105.432 7.78078 104.172 6.60078 102.512 6.60078C100.952 6.60078 99.6515 7.92078 99.1315 9.96078V10.1608C99.6315 12.1208 100.912 13.4008 102.512 13.4008ZM117.747 10.3608V4.72078H120.287V15.3008H117.747V13.3208C116.787 14.7608 115.507 15.5008 113.867 15.5008C111.687 15.5008 110.067 14.3808 110.067 10.9408V4.72078H112.607V10.7808C112.607 12.5608 113.287 13.3408 114.527 13.3408C115.927 13.3408 116.967 12.3808 117.747 10.3608ZM130.221 12.8608L130.621 14.8408C129.701 15.2808 128.661 15.5208 127.421 15.5208C125.201 15.5208 123.741 14.3608 123.741 11.7408V6.68078H121.881V4.72078H123.741V1.82078H126.281V4.72078H130.181V6.68078H126.281V11.1208C126.281 12.7408 127.021 13.3408 128.061 13.3408C128.821 13.3408 129.501 13.2008 130.221 12.8608ZM131.743 1.54078C131.743 0.620781 132.463 0.000780344 133.323 0.000780344C134.163 0.000780344 134.903 0.600781 134.903 1.54078C134.903 2.42078 134.203 3.06078 133.323 3.06078C132.503 3.06078 131.743 2.44078 131.743 1.54078ZM134.603 15.3008H132.043V4.72078H134.603V15.3008ZM136.657 10.0408C136.657 6.44078 139.357 4.42078 142.437 4.42078C145.457 4.42078 148.297 6.36078 148.297 9.98078C148.297 13.5808 145.557 15.5608 142.397 15.5608C139.317 15.5608 136.657 13.6408 136.657 10.0408ZM139.337 9.96078C139.337 12.2608 140.697 13.4008 142.437 13.4008C144.237 13.4008 145.617 12.2408 145.617 10.0008C145.617 7.74078 144.177 6.56078 142.477 6.56078C140.817 6.56078 139.337 7.66078 139.337 9.96078ZM156.843 4.46078C159.063 4.46078 160.703 5.58078 160.703 9.02078V15.3008H158.163V9.20078C158.163 7.40078 157.483 6.62078 156.223 6.62078C154.763 6.62078 153.723 7.58078 152.903 9.62078V15.3008H150.343V4.72078H152.903V6.72078C153.903 5.22078 155.243 4.46078 156.843 4.46078Z"/></svg><svg class="spec" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134 14" width="134" height="14"><title>25.000.000 SAR</title><path fill="currentColor" d="M3.25803 10.8722H8.26203V12.9062H2.93478e-05V11.4482C3.06003 8.51425 5.63403 6.04825 5.63403 4.19425C5.63403 3.06025 4.77003 2.12425 3.29403 2.12425C2.41203 2.12425 1.36803 2.44825 0.522029 3.20425L2.93478e-05 1.36825C0.720029 0.720249 1.96203 0.000249863 3.76203 0.000249863C6.57003 0.000249863 8.08203 1.81825 8.08203 3.79825C8.08203 6.06625 6.13803 8.19025 3.25803 10.8722ZM13.6422 4.98625C16.5402 4.98625 18.1602 6.58825 18.1602 8.89225C18.1602 11.4122 16.1802 13.1223 13.4622 13.1223C11.9322 13.1223 10.5462 12.6002 9.6642 12.0602L10.1502 10.0802C11.1582 10.6382 12.2202 11.0342 13.3362 11.0342C14.8122 11.0342 15.7662 10.2062 15.7662 8.87425C15.7662 7.70425 15.0102 6.75025 13.0122 6.75025C12.2202 6.75025 11.5902 6.89425 10.6722 7.20025L10.4022 6.94825L11.3562 0.25225H17.7282V2.26825H13.1562L12.7422 5.05825C13.0302 5.00425 13.3362 4.98625 13.6422 4.98625ZM19.7244 11.7362C19.7244 10.8902 20.3724 10.3142 21.1824 10.3142C21.9924 10.3142 22.6404 10.8722 22.6404 11.7362C22.6404 12.5642 22.0104 13.1583 21.1824 13.1583C20.4264 13.1583 19.7244 12.6002 19.7244 11.7362ZM29.3849 13.1223C25.7849 13.1223 24.5609 10.5482 24.5609 6.60625C24.5609 2.77225 25.8569 0.000249863 29.4029 0.000249863C32.9669 0.000249863 34.2089 2.71825 34.2089 6.60625C34.2089 10.4402 32.8769 13.1223 29.3849 13.1223ZM29.3849 11.0342C31.2389 11.0342 31.8149 9.39625 31.7969 6.58825C31.7969 3.79825 31.2749 2.14225 29.3669 2.14225C27.4589 2.14225 26.9549 3.81625 26.9549 6.57025C26.9549 9.43225 27.4049 11.0342 29.3849 11.0342ZM40.8282 13.1223C37.2282 13.1223 36.0042 10.5482 36.0042 6.60625C36.0042 2.77225 37.3002 0.000249863 40.8462 0.000249863C44.4102 0.000249863 45.6522 2.71825 45.6522 6.60625C45.6522 10.4402 44.3202 13.1223 40.8282 13.1223ZM40.8282 11.0342C42.6822 11.0342 43.2582 9.39625 43.2402 6.58825C43.2402 3.79825 42.7182 2.14225 40.8102 2.14225C38.9022 2.14225 38.3982 3.81625 38.3982 6.57025C38.3982 9.43225 38.8482 11.0342 40.8282 11.0342ZM52.2716 13.1223C48.6716 13.1223 47.4476 10.5482 47.4476 6.60625C47.4476 2.77225 48.7436 0.000249863 52.2896 0.000249863C55.8536 0.000249863 57.0956 2.71825 57.0956 6.60625C57.0956 10.4402 55.7636 13.1223 52.2716 13.1223ZM52.2716 11.0342C54.1256 11.0342 54.7016 9.39625 54.6836 6.58825C54.6836 3.79825 54.1616 2.14225 52.2536 2.14225C50.3456 2.14225 49.8416 3.81625 49.8416 6.57025C49.8416 9.43225 50.2916 11.0342 52.2716 11.0342ZM58.783 11.7362C58.783 10.8902 59.431 10.3142 60.241 10.3142C61.051 10.3142 61.699 10.8722 61.699 11.7362C61.699 12.5642 61.069 13.1583 60.241 13.1583C59.485 13.1583 58.783 12.6002 58.783 11.7362ZM68.4435 13.1223C64.8435 13.1223 63.6195 10.5482 63.6195 6.60625C63.6195 2.77225 64.9155 0.000249863 68.4615 0.000249863C72.0255 0.000249863 73.2675 2.71825 73.2675 6.60625C73.2675 10.4402 71.9355 13.1223 68.4435 13.1223ZM68.4435 11.0342C70.2975 11.0342 70.8735 9.39625 70.8555 6.58825C70.8555 3.79825 70.3335 2.14225 68.4255 2.14225C66.5175 2.14225 66.0135 3.81625 66.0135 6.57025C66.0135 9.43225 66.4635 11.0342 68.4435 11.0342ZM79.8868 13.1223C76.2868 13.1223 75.0628 10.5482 75.0628 6.60625C75.0628 2.77225 76.3588 0.000249863 79.9048 0.000249863C83.4688 0.000249863 84.7108 2.71825 84.7108 6.60625C84.7108 10.4402 83.3788 13.1223 79.8868 13.1223ZM79.8868 11.0342C81.7408 11.0342 82.3168 9.39625 82.2988 6.58825C82.2988 3.79825 81.7768 2.14225 79.8688 2.14225C77.9608 2.14225 77.4568 3.81625 77.4568 6.57025C77.4568 9.43225 77.9068 11.0342 79.8868 11.0342ZM91.3302 13.1223C87.7302 13.1223 86.5062 10.5482 86.5062 6.60625C86.5062 2.77225 87.8022 0.000249863 91.3482 0.000249863C94.9122 0.000249863 96.1542 2.71825 96.1542 6.60625C96.1542 10.4402 94.8222 13.1223 91.3302 13.1223ZM91.3302 11.0342C93.1842 11.0342 93.7602 9.39625 93.7422 6.58825C93.7422 3.79825 93.2202 2.14225 91.3122 2.14225C89.4042 2.14225 88.9002 3.81625 88.9002 6.57025C88.9002 9.43225 89.3502 11.0342 91.3302 11.0342ZM105.809 13.1403C104.351 13.1403 102.839 12.7262 101.795 12.1322L102.209 10.0442C103.199 10.6382 104.513 11.0882 105.773 11.0882C107.357 11.0882 108.257 10.4042 108.257 9.43225C108.257 6.96625 101.921 8.40625 101.921 3.90625C101.921 1.58425 103.757 0.000249863 106.475 0.000249863C107.897 0.000249863 109.553 0.43225 110.291 1.00825L109.751 2.98825C108.941 2.53825 107.789 2.07025 106.547 2.07025C104.981 2.07025 104.279 2.82625 104.279 3.67225C104.279 6.33625 110.597 5.02225 110.597 9.27025C110.597 11.6642 108.437 13.1403 105.809 13.1403ZM122.92 12.9062H120.418L119.32 9.73825H114.604L113.506 12.9062H111.112L115.81 0.25225H118.294L122.92 12.9062ZM116.944 2.91625L115.27 7.77625H118.636L116.944 2.91625ZM133.687 12.9062H131.059L128.467 8.42425H126.775V12.9062H124.399V0.25225H128.557C130.987 0.25225 133.255 1.42225 133.255 4.30225C133.255 6.22825 132.139 7.47025 130.645 8.04625L133.687 12.9062ZM128.053 2.21425H126.775V6.48025H128.071C129.907 6.48025 130.843 5.67025 130.843 4.37425C130.843 2.97025 129.925 2.21425 128.053 2.21425Z"/></svg></div>
+          <div class="font__meta"><span class="lbl">Data · Admin</span><b>Ping AR + LT</b><span>Bold and Medium for the admin dashboard's titles, figures and tables.</span></div>
+        </div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="1.0">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_foundations.jpg" alt="Core components"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Core components: opportunity card, fund facts grid, buttons, OTP input.</span><span class="lbl">Fig. 01</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="journey">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">06</div>
+        <h2 class="h" data-in="blur">Designing the journey — From first tap to first return</h2>
+        <p class="body" data-in="rise" data-d="0.2">Five steps, each built so the investor always knows where they are and what happens next.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="step" id="j0">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">01</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Sign in &amp; sign up</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">The first screen sets the tone</span>
+          <p class="body" data-in="rise" data-d="0.3">On the web, sign-in sits beside a full-height brand panel: the wallet in an iPhone, a QR code to get the app, and the Capital Market Authority licence. In the app, sign-in is a phone number with Face ID for returning users, and sign-up asks one question first, individual or company, then shows the password rules as you type.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <figure data-cursor="" class="blk fig" data-at="0.4">
+          <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_signin.jpg" alt="Bento of the web sign in, app sign in, app sign up, password rules, one-time code and Face ID"></div>
+          <figcaption data-in="rise" data-d="0.5"><span>Web sign in, app sign in and sign up, and the details that make them feel finished.</span><span class="lbl">Fig. 02</span></figcaption>
+        </figure>
+      </div>
+      <div class="step" id="j1">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">02</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Verify</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">OTP · KYC</span>
+          <p class="body" data-in="rise" data-d="0.3">A one-time code confirms the phone number. KYC is broken into short, single-topic questions, and people who want to look around first can skip it and continue as a guest.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <figure data-cursor="" class="blk fig" data-at="0.4">
+          <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_j1.jpg" alt="Sign in, OTP and KYC screens"></div>
+          <figcaption data-in="rise" data-d="0.5"><span>Sign in → OTP → KYC, individual and company paths.</span><span class="lbl">Fig. 03</span></figcaption>
+        </figure>
+      </div>
+      <div class="step" id="j2">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">03</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Discover</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">Funds and sukuk, side by side</span>
+          <p class="body" data-in="rise" data-d="0.3">Opportunities and sukuk sit in two tabs on home. Every card leads with the amount raised, the progress bar and the fund's status. The details page answers the rest, with units, dates, duration and a return calculator, before anyone commits.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <figure data-cursor="" class="blk fig" data-at="0.4">
+          <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_j2.jpg" alt="Home, opportunity details and statistics"></div>
+          <figcaption data-in="rise" data-d="0.5"><span>Home → opportunity details → statistics.</span><span class="lbl">Fig. 04</span></figcaption>
+        </figure>
+      </div>
+      <div class="step" id="j3">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">04</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Invest</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">Every riyal visible before you pay</span>
+          <p class="body" data-in="rise" data-d="0.3">A unit slider sets the amount, and the receipt itemises the platform fee, discounts, VAT and the total before payment. Paying with Apple Pay or mada takes one tap, and a clear success screen leads straight to the invoice.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <figure data-cursor="" class="blk fig" data-at="0.4">
+          <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_j3.jpg" alt="Units, payment and confirmation"></div>
+          <figcaption data-in="rise" data-d="0.5"><span>Units → payment → confirmation.</span><span class="lbl">Fig. 05</span></figcaption>
+        </figure>
+      </div>
+      <div class="step" id="j4">
+        <div class="blk" data-at="0">
+          <i class="hl" data-in="draw"></i>
+          <span class="num" data-in="rise">05</span>
+          <h3 class="h3" data-in="blur" data-d="0.1">Track</h3>
+          <span class="lbl" data-in="rise" data-d="0.2">Portfolio, wallet and payouts in one place</span>
+          <p class="body" data-in="rise" data-d="0.3">The portfolio sums up total investment, returns and the number of opportunities, with a certificate for each holding. The wallet keeps the balance and bank details together, so a withdrawal is a single form.</p>
+          <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+        </div>
+        <figure data-cursor="" class="blk fig" data-at="0.4">
+          <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_j4.jpg" alt="Portfolio, statistics and withdraw"></div>
+          <figcaption data-in="rise" data-d="0.5"><span>Portfolio → statistics → withdraw.</span><span class="lbl">Fig. 06</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sec" id="howto">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">07</div>
+        <h2 class="h" data-in="blur">How to invest — The landing page's guided tour</h2>
+        <p class="body" data-in="rise" data-d="0.2">Four steps from the landing page, each a layered scene: a live screen in an iPhone with the key moment pulled out on a floating card. Scroll through them below.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="ht" id="ht">
+        <div class="ht__pin">
+          <div class="ht__panel">
+            <ol class="ht__list"><li class="ht__step" data-i="0"><span class="ht__no">01</span><svg class="ht__mk" viewBox="-300 0 1620 1022" aria-hidden="true"><rect x="-300" y="0" width="300" height="300" fill="#1BA1C6"/><path fill="currentColor" fill-rule="evenodd" d="M0 300 L0 1021 L395 1021 L437 1008 L1020 428 L1021 1021 L1319 1021 L1319 0 L299 0 L299 298 Z M298 725 L299 299 L725 300 Z"/></svg><b>Get Started</b><p>Use Sahem’s mobile app or website to register as an investor and manage your account.</p></li><li class="ht__step" data-i="1"><span class="ht__no">02</span><svg class="ht__mk" viewBox="-300 0 1620 1022" aria-hidden="true"><rect x="-300" y="0" width="300" height="300" fill="#1BA1C6"/><path fill="currentColor" fill-rule="evenodd" d="M0 300 L0 1021 L395 1021 L437 1008 L1020 428 L1021 1021 L1319 1021 L1319 0 L299 0 L299 298 Z M298 725 L299 299 L725 300 Z"/></svg><b>Fund Your Wallet</b><p>Recharge your Sahem e-wallet, explore available investment opportunities, and get notified when new ones open.</p></li><li class="ht__step" data-i="2"><span class="ht__no">03</span><svg class="ht__mk" viewBox="-300 0 1620 1022" aria-hidden="true"><rect x="-300" y="0" width="300" height="300" fill="#1BA1C6"/><path fill="currentColor" fill-rule="evenodd" d="M0 300 L0 1021 L395 1021 L437 1008 L1020 428 L1021 1021 L1319 1021 L1319 0 L299 0 L299 298 Z M298 725 L299 299 L725 300 Z"/></svg><b>Invest with Confidence</b><p>Invest in opportunities that match your goals after reviewing their terms and conditions.</p></li><li class="ht__step" data-i="3"><span class="ht__no">04</span><svg class="ht__mk" viewBox="-300 0 1620 1022" aria-hidden="true"><rect x="-300" y="0" width="300" height="300" fill="#1BA1C6"/><path fill="currentColor" fill-rule="evenodd" d="M0 300 L0 1021 L395 1021 L437 1008 L1020 428 L1021 1021 L1319 1021 L1319 0 L299 0 L299 298 Z M298 725 L299 299 L725 300 Z"/></svg><b>Track &amp; Manage</b><p>Track your portfolio, receive updates from fund managers, and recharge or withdraw funds anytime.</p></li></ol>
+            <div class="ht__bar"><i id="htfill"></i></div>
+            <div class="ht__stage"><div class="ht__scale"><div class="ht__card" data-i="0"><img class="ht__l ly-phone" data-depth="0.4" src="assets/img/how/s1_phone.png" alt="" style="left:97px;top:36px;width:324px;height:662px"><img class="ht__l ly-pop" data-depth="1.4" src="assets/img/how/s1_sticker.png" alt="" style="left:51px;top:8px;width:123px;height:123px"><img class="ht__l ly-float ly-l" data-depth="1" src="assets/img/how/s1_card.png" alt="" style="left:41px;top:251px;width:437px;height:133px"></div><div class="ht__card" data-i="1"><img class="ht__l ly-phone" data-depth="0.4" src="assets/img/how/s2_phone.png" alt="" style="left:97px;top:36px;width:324px;height:662px"><img class="ht__l ly-float ly-r" data-depth="1" src="assets/img/how/s2_card.png" alt="" style="left:61px;top:317px;width:396px;height:100px"><img class="ht__l ly-pop" data-depth="1.4" src="assets/img/how/s2_badge.png" alt="" style="left:55px;top:34px;width:102px;height:102px"></div><div class="ht__card" data-i="2"><img class="ht__l ly-img ly-l" data-depth="0.7" src="assets/img/how/s3_imgL.png" alt="" style="left:27px;top:166px;width:155px;height:130px"><img class="ht__l ly-phone" data-depth="0.4" src="assets/img/how/s3_phone.png" alt="" style="left:97px;top:36px;width:324px;height:662px"><img class="ht__l ly-img ly-r" data-depth="1.1" src="assets/img/how/s3_imgR.png" alt="" style="left:313px;top:86px;width:171px;height:144px"><img class="ht__l ly-float ly-l" data-depth="1" src="assets/img/how/s3_card.png" alt="" style="left:49px;top:351px;width:420px;height:99px"></div><div class="ht__card" data-i="3"><img class="ht__l ly-phone" data-depth="0.4" src="assets/img/how/s4_phone.png" alt="" style="left:97px;top:36px;width:324px;height:662px"><img class="ht__l ly-float ly-l" data-depth="1.1" src="assets/img/how/s4_card.png" alt="" style="left:37px;top:332px;width:203px;height:140px"><img class="ht__l ly-pop" data-depth="1.4" src="assets/img/how/s4_badge.png" alt="" style="left:352px;top:48px;width:102px;height:102px"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="web">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">08</div>
+        <h2 class="h" data-in="blur">Web platform — The same journey at desktop size</h2>
+        <p class="body" data-in="rise" data-d="0.2">On desktop, navigation moves into a side menu and the opportunity cards sit in a grid. The details page uses the extra width to show the fund's facts and the investment panel side by side.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_web.jpg" alt="Web platform home and opportunity details"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Home and opportunity details on the web platform.</span><span class="lbl">Fig. 07</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="admin">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">09</div>
+        <h2 class="h" data-in="blur">Admin dashboard — Running the platform from one screen</h2>
+        <p class="body" data-in="rise" data-d="0.2">The Sahem team manages investors, funds, KYC questions, distributions, notifications and roles. The home view leads with the totals they check daily, with investor demographics underneath.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <figure data-cursor="" class="blk fig" data-at="0.4">
+        <div class="frame"><img data-gl data-in="reveal" src="assets/img/fig_admin.jpg" alt="Admin dashboard home and investors list"></div>
+        <figcaption data-in="rise" data-d="0.5"><span>Dashboard home and the investors list.</span><span class="lbl">Fig. 08</span></figcaption>
+      </figure>
+    </section>
+
+    <section class="sec" id="outcome">
+      <div class="blk sec__head" data-at="0">
+        <i class="hl" data-in="draw"></i>
+        <div class="sec__no" data-in="rise">10</div>
+        <h2 class="h" data-in="blur">Outcome — A complete platform, ready to ship</h2>
+        <p class="body" data-in="rise" data-d="0.2" data-tmp>The design was handed over as one system covering the investor app, the web platform, the landing page and the admin panel, built on one set of colours, type and components.</p>
+        <i class="hl hl--b" data-in="draw" data-d="0.3"></i>
+      </div>
+      <div class="blk cells cells--2 outcome" data-at="0.4">
+        <i class="hl" data-in="draw"></i>
+        <div data-in="rise" data-d="0.1"><b data-tmp><span data-in="count" data-to="100" data-suffix="K+">100K+</span></b><span class="cap">Users</span></div>
+        <div data-in="rise" data-d="0.2"><b><span data-in="count" data-to="309">309</span></b><span class="cap">Screens designed in total</span></div>
+        <i class="hl hl--b" data-in="draw" data-d="0.2"></i>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ================= 10 CLOSING ================= -->
+<section class="closing" id="contact">
+  <div class="blk closing__in" data-at="0">
+    <p class="closing__line" data-in="lines" data-tmp>Trust in fintech is designed one clear number at a time.</p>
+    <div class="closing__me" data-in="rise" data-d="0.5">
+      <div class="avatar" data-tmp>MA</div>
+      <div><b>Mahmoud Ali</b><span>UI/UX Designer</span></div>
+    </div>
+    <div class="icons" data-in="rise" data-d="0.7">
+      <a href="https://www.behance.net/mahmoudxali74" aria-label="Behance" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M8.2 11.2c.9-.4 1.5-1.2 1.5-2.4C9.7 6.6 8.2 6 6.3 6H2v12h4.5c2.1 0 4-.9 4-3.3 0-1.5-.8-2.6-2.3-3zM4.6 8h1.6c.8 0 1.4.2 1.4 1.1 0 .8-.5 1.1-1.3 1.1H4.6V8zm1.8 8H4.6v-2.9h1.8c1 0 1.7.4 1.7 1.5S7.4 16 6.4 16zM21.9 13.6c0-2.6-1.5-4.6-4.2-4.6-2.6 0-4.4 2-4.4 4.6 0 2.7 1.7 4.5 4.4 4.5 2 0 3.4-.9 4-2.9h-2.1c-.2.7-1.1 1.1-1.8 1.1-1.3 0-2-.8-2-2.1h6.1v-.6zm-6.1-1c.1-1.1.8-1.8 1.9-1.8 1.1 0 1.7.7 1.8 1.8h-3.7zM15 7h5v1.3h-5z"/></svg></a>
+      <a href="https://www.linkedin.com/in/mahmoud-ali-ui-ux/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4z"/></svg></a>
+      <a href="../../" aria-label="Portfolio" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 6h-3a15 15 0 0 0-1.3-3.9A8 8 0 0 1 18.9 8zM12 4c.8 1.2 1.5 2.5 1.9 4h-3.8c.4-1.5 1.1-2.8 1.9-4zM4.3 14a8 8 0 0 1 0-4h3.4a16 16 0 0 0 0 4H4.3zm.8 2h3a15 15 0 0 0 1.3 3.9A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.3-3.9C8.9 5.3 8.4 6.6 8.1 8zM12 20c-.8-1.2-1.5-2.5-1.9-4h3.8c-.4 1.5-1.1 2.8-1.9 4zm2.3-6H9.7a14 14 0 0 1 0-4h4.6a14 14 0 0 1 0 4zm.3 5.9c.6-1.2 1-2.5 1.3-3.9h3a8 8 0 0 1-4.3 3.9zm1.7-5.9a16 16 0 0 0 0-4h3.4a8 8 0 0 1 0 4h-3.4z"/></svg></a>
+      <a href="tel:+201141578409" aria-label="Phone"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></a>
+    </div>
+    <a href="#top" class="totop" data-in="rise" data-d="0.9"><span>Back to top</span><i>↑</i></a>
+  </div>
+</section>
+
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/vendor/three.min.js"></script>
+<script src="assets/gl.js"></script>
+<script src="assets/engine.js"></script>
+</body>
+</html>

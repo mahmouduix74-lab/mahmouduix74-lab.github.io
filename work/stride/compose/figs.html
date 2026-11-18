@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<!-- Composition sheet for the case-study figures (not published). Each .fig is shot at 3x by compose.js. -->
+<link rel="stylesheet" href="../assets/vendor/devices.min.css">
+<style>
+@font-face{font-family:Tajawal;font-weight:700;src:url(../assets/fonts/Tajawal-700.ttf)}
+*{box-sizing:border-box;margin:0}
+body{background:#ccc;padding:20px;display:flex;flex-direction:column;gap:20px;font-family:Tajawal,sans-serif}
+.fig{position:relative;width:920px;height:560px;background:#f1efe7;overflow:hidden}
+.fig.tall{height:620px}
+.fig.dark{background:#0f100f}
+.fig::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 45%,#fbfaf6 0%,rgba(251,250,246,0) 70%)}
+.fig.dark::before{background:radial-gradient(60% 70% at 50% 40%,rgba(162,146,97,.22) 0%,rgba(162,146,97,0) 70%)}
+.d{position:absolute;transform-origin:0 0}
+.device .device-screen{object-fit:cover;object-position:top center}
+.shadow{filter:drop-shadow(0 30px 40px rgba(60,48,20,.22)) drop-shadow(0 8px 14px rgba(60,48,20,.12))}
+.dark .shadow{filter:drop-shadow(0 30px 40px rgba(0,0,0,.55)) drop-shadow(0 8px 14px rgba(0,0,0,.35))}
+.card{position:absolute;border-radius:18px;overflow:hidden;background:#fff;box-shadow:0 26px 50px -18px rgba(60,48,20,.35),0 0 0 1px rgba(60,48,20,.06)}
+.card img{display:block;width:100%}
+.step{position:absolute;font-size:12px;line-height:16px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a7b4f}
+.step b{display:inline-block;width:22px;height:22px;line-height:23px;border-radius:50%;background:#a29261;color:#fff;text-align:center;margin-right:8px;letter-spacing:0}
+.dark .step{color:#c9bb8c}
+@font-face{font-family:Tajawal;font-weight:500;src:url(../assets/fonts/Tajawal-500.ttf)}
+@font-face{font-family:Tajawal;font-weight:800;src:url(../assets/fonts/Tajawal-800.ttf)}
+.fig.diag{height:auto;padding:36px 32px 34px;color:#1a1a1a}
+.fig.diag::before{display:none}
+.map3{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.col{position:relative}
+.col::before{content:"";position:absolute;left:22px;top:52px;bottom:22px;width:1px;background:#d9d2bd}
+.root{position:relative;display:flex;align-items:center;gap:10px;height:44px;padding:0 16px;border-radius:12px;background:#1a1a1a;color:#fff;font-weight:800;font-size:15px;margin-bottom:14px}
+.root i{font-style:normal;margin-left:auto;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#c9bb8c;font-weight:700}
+.grp{position:relative;margin:0 0 10px 40px;padding:10px 12px 10px 14px;background:#fff;border-radius:10px;box-shadow:0 1px 0 rgba(60,48,20,.06),0 8px 18px -12px rgba(60,48,20,.3)}
+.grp::before{content:"";position:absolute;left:-18px;top:19px;width:18px;height:1px;background:#d9d2bd}
+.grp::after{content:"";position:absolute;left:-22px;top:16px;width:7px;height:7px;border-radius:50%;background:#a29261}
+.grp b{display:block;font-size:13px;line-height:18px;font-weight:800}
+.grp span{display:block;font-size:11px;line-height:16px;color:#6b6457;font-weight:500;margin-top:2px}
+.grp.sup{background:#1a1a1a;color:#fff}.grp.sup span{color:#c9bb8c}
+.flows{display:flex;flex-direction:column;gap:22px}
+.fl{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:16px}
+.fl>b{font-size:12px;line-height:16px;letter-spacing:.14em;text-transform:uppercase;color:#8a7b4f;font-weight:800}
+.fl>b small{display:block;letter-spacing:0;text-transform:none;font-size:12px;color:#6b6457;font-weight:500;margin-top:4px}
+.chain{display:flex;align-items:center}
+.nd{flex:1 1 0;min-width:0;padding:12px 10px;border-radius:10px;background:#fff;font-size:12.5px;line-height:17px;font-weight:700;text-align:center;box-shadow:0 1px 0 rgba(60,48,20,.06),0 8px 18px -12px rgba(60,48,20,.3)}
+.nd.s{background:#1a1a1a;color:#fff}.nd.e{background:#a29261;color:#fff}
+.nd small{display:block;font-weight:500;font-size:10.5px;line-height:14px;color:#8a8170;margin-top:2px}
+.nd.s small,.nd.e small{color:rgba(255,255,255,.7)}
+.ar{flex:0 0 22px;height:1px;background:#bfb391;position:relative}
+.ar::after{content:"";position:absolute;right:-1px;top:-3px;border-left:6px solid #bfb391;border-top:3.5px solid transparent;border-bottom:3.5px solid transparent}
+</style></head><body>
+<script>
+const IMG = '../assets/img/';
+const phone = (src) => `<div class="device device-iphone-14-pro device-black"><div class="device-frame"><img class="device-screen" src="${IMG}${src}"></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div><div class="device-home"></div></div>`;
+const mac = (src) => `<div class="device device-macbook-pro device-spacegray"><div class="device-frame"><img class="device-screen" src="${IMG}${src}"></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div>`;
+const place = (html, x, y, s) => `<div class="d shadow" style="left:${x}px;top:${y}px;transform:scale(${s})">${html}</div>`;
+const card = (src, x, y, w) => `<div class="card" style="left:${x}px;top:${y}px;width:${w}px"><img src="${IMG}${src}"></div>`;
+const step = (n, t, x, y) => `<span class="step" style="left:${x}px;top:${y}px"><b>${n}</b>${t}</span>`;
+// a row of phones, centred, scale s, gap g, top y
+const row = (srcs, s, g, y, labels) => { const w = 428 * s, total = srcs.length * w + (srcs.length - 1) * g, x0 = (920 - total) / 2;
+  return srcs.map((src, i) => place(phone(src), x0 + i * (w + g), y, s) + (labels ? step(i + 1, labels[i], x0 + i * (w + g) + 4, y - 34) : '')).join(''); };
+const figs = {
+  products: place(mac('d_trainers.jpg'), 150, 70, .84) + place(phone('u_home.jpg'), 40, 150, .46) + place(phone('t_home2.jpg'), 684, 150, .46),
+  booking: place(phone('u_session.jpg'), 40, 112, .46) + step(1, 'Choose', 44, 72)
+    + card('u_selectdate.jpg', 262, 196, 190) + step(2, 'Date & time', 266, 156)
+    + place(phone('u_payment.jpg'), 476, 112, .46) + step(3, 'Pay', 480, 72)
+    + place(phone('u_paysuccess.jpg'), 698, 112, .46) + step(4, 'Confirmed', 702, 72),
+  start: row(['u_splash.jpg', 'u_getstarted.jpg', 'u_onboarding1.jpg', 'u_signin.jpg'], .46, 26, 64),
+  member: row(['u_home.jpg', 'u_classes.jpg', 'u_trainers.jpg'], .54, 44, 46),
+  subs: row(['u_mysubs.jpg', 'u_freeze.jpg', 'u_transfer.jpg', 'u_upgrade.jpg'], .46, 26, 64),
+  inbody: place(phone('u_inbody.jpg'), 70, 46, .54) + place(phone('u_booked.jpg'), 345, 46, .54) + card('u_reschedule.jpg', 660, 96, 210),
+  trainer: place(phone('t_home.jpg'), 170, 92, .5) + step(1, 'Before check-in', 174, 52) + place(phone('t_home2.jpg'), 536, 92, .5) + step(2, 'Checked in', 540, 52),
+  attendance: place(phone('t_schedule.jpg'), 120, 46, .54) + card('t_attendance.jpg', 420, 90, 330),
+  dashlogin: place(mac('d_login.jpg'), 92, 64, 1.0),
+  admin: place(mac('d_timetable.jpg'), 300, 70, .78) + place(mac('d_classes.jpg'), 40, 196, .78),
+  payments: place(mac('d_split.jpg'), 92, 64, 1.0),
+};
+
+const grp = (t, items, cls = '') => `<div class="grp ${cls}"><b>${t}</b><span>${items}</span></div>`;
+const col = (name, tag, gs) => `<div class="col"><div class="root">${name}<i>${tag}</i></div>${gs.join('')}</div>`;
+const sitemap = `<div class="map3">` +
+  col('Member app', 'Members', [grp('Start', 'Splash · onboarding · guest mode · sign in / up · OTP · forgot password'),
+    grp('Home', 'Branch · offers · subscription status · next events · notifications · search'),
+    grp('Book', 'Classes · personal trainers · single sessions · InBody · payment'),
+    grp('Subscriptions', 'Packages · my subscriptions · freeze · transfer · upgrade · transfer requests'),
+    grp('My bookings', 'Classes · InBody · single sessions · personal training · cancel · reschedule'),
+    grp('Account', 'Profile · wallet · favourite trainers · documents · policies · language')]) +
+  col('Trainer app', 'Trainers', [grp('Join', 'Sign in · sign up · availability · session price · certificates'),
+    grp('Home', 'Check-in · attendance · today\'s sessions by type'),
+    grp('My schedule', 'Bookings by month · availability · time slots'),
+    grp('My bookings', 'Personal training · classes · InBody · client profile · mark attendance · upload result'),
+    grp('Wallet & profile', 'Balance · withdraw · profile · certificates'),
+    grp('Supervisor only', 'Sessions management · assign trainer to session', 'sup')]) +
+  col('Dashboard', 'Club staff', [grp('Access', 'Login · forgot password · OTP · new password'),
+    grp('Club setup', 'Clubs · sliders · class categories · general settings'),
+    grp('People', 'Trainers · weekly hours · attendance'),
+    grp('Catalogue', 'Classes & timetable · packages · single sessions · InBody · coupons'),
+    grp('Sales', 'Client subscriptions · session booking · package subscriptions · split & partial payment'),
+    grp('Support', 'Contact us messages · FAQs')]) + `</div>`;
+const nd = (t, sub = '', c = '') => `<div class="nd ${c}">${t}${sub ? `<small>${sub}</small>` : ''}</div>`;
+const chain = (ns) => `<div class="chain">${ns.join('<i class="ar"></i>')}</div>`;
+const fl = (t, sub, ns) => `<div class="fl"><b>${t}<small>${sub}</small></b>${chain(ns)}</div>`;
+const flows = `<div class="flows">` +
+  fl('Book', 'Member app', [nd('Home', '', 's'), nd('Class · trainer', 'session · InBody'), nd('Details'), nd('Date & time'), nd('Payment', 'card · cash · wallet'), nd('Confirmed', '', 'e')]) +
+  fl('Freeze', 'Member app', [nd('My subscriptions', '', 's'), nd('Details'), nd('Freeze', 'max 14 days'), nd('Start & end date'), nd('Request created', '', 'e')]) +
+  fl('Run the day', 'Trainer app', [nd('Check in', '', 's'), nd('Today\'s sessions'), nd('Start session'), nd('Mark attendance'), nd('Upload InBody result', '', 'e')]) +
+  fl('Sell & collect', 'Dashboard', [nd('Add class', '', 's'), nd('Timetable'), nd('Book for a client'), nd('Process payment', 'split · partial'), nd('Complete', '', 'e')]) + `</div>`;
+figs.sitemap = sitemap; figs.flows = flows;
+const dark = ['start', 'trainer'];
+for (const [id, html] of Object.entries(figs)) {
+  const el = document.createElement('div'); el.className = 'fig' + (['admin'].includes(id) ? ' tall' : '') + (dark.includes(id) ? ' dark' : '') + (['sitemap', 'flows'].includes(id) ? ' diag' : ''); el.id = id; el.innerHTML = html;
+  document.body.appendChild(el);
+}
+</script>
+</body></html>

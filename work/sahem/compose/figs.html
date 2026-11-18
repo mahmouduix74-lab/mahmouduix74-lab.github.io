@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<!-- Composition sheet for the case-study figures (not published). Each .fig is shot at 3x by compose.js. -->
+<link rel="stylesheet" href="../assets/vendor/devices.min.css">
+<style>
+*{box-sizing:border-box;margin:0}
+body{background:#ccc;padding:20px;display:flex;flex-direction:column;gap:20px}
+.fig{position:relative;width:920px;height:560px;background:#f3f5f8;overflow:hidden}
+.fig.tall{height:640px}
+.fig::before{content:"";position:absolute;inset:0;background:radial-gradient(60% 70% at 50% 45%,#ffffff 0%,rgba(255,255,255,0) 70%)}
+.d{position:absolute;transform-origin:0 0}
+.device .device-screen{object-fit:cover;object-position:top center}
+@font-face{font-family:Cairo;font-weight:600;src:url(../assets/fonts/Cairo-600.ttf)}
+.fig.bento{height:760px;background:#fff;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(4,1fr);gap:12px;font-family:Cairo,sans-serif}
+.fig.bento::before{display:none}
+.t{position:relative;border-radius:18px;background:#f3f5f8;overflow:hidden}
+.t .cap{position:absolute;left:20px;top:16px;font-size:11px;line-height:16px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5c6270;z-index:2}
+.t .web{position:absolute;left:24px;top:48px;width:calc(100% - 24px);border-radius:12px 0 0 0;box-shadow:0 24px 50px -18px rgba(10,30,84,.35),0 0 0 1px rgba(10,30,84,.06)}
+.crop{position:absolute;left:50%;top:58%;transform:translate(-50%,-50%);overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 20px 40px -16px rgba(10,30,84,.3),0 0 0 1px rgba(10,30,84,.05)}
+.crop img{position:absolute;max-width:none}
+.shadow{filter:drop-shadow(0 30px 40px rgba(10,30,84,.22)) drop-shadow(0 8px 14px rgba(10,30,84,.12))}
+</style></head><body>
+<script>
+const IMG = '../assets/img/';
+const phone = (src) => `<div class="device device-iphone-14-pro device-black"><div class="device-frame"><img class="device-screen" src="${IMG}${src}"></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div><div class="device-home"></div></div>`;
+const mac = (src) => `<div class="device device-macbook-pro device-spacegray"><div class="device-frame"><img class="device-screen" src="${IMG}${src}"></div><div class="device-stripe"></div><div class="device-header"></div><div class="device-sensors"></div><div class="device-btns"></div><div class="device-power"></div></div>`;
+const place = (html, x, y, s) => `<div class="d shadow" style="left:${x}px;top:${y}px;transform:scale(${s})">${html}</div>`;
+const three = (a, b, c) => place(phone(a), 132, 72, .5) + place(phone(c), 574, 72, .5) + place(phone(b), 346, 40, .53);
+const crop = (src, x0, y0, x1, y1, w, W = 856) => { const k = w / (x1 - x0);
+  return `<div class="crop" style="width:${w}px;height:${Math.round((y1 - y0) * k)}px"><img src="${IMG}${src}" style="width:${W * k}px;left:${-x0 * k}px;top:${-y0 * k}px"></div>`; };
+const tile = (c, r, cap, html) => `<div class="t" style="grid-column:${c};grid-row:${r}"><span class="cap">${cap}</span>${html}</div>`;
+const figs = {
+  context: place(mac('landing_top.jpg'), 70, 92, .92) + place(phone('landing_mobile.png'), 640, 120, .43),
+  j1: three('signin.png', 'otp.png', 'kyc.png'),
+  j2: three('home.png', 'opportunity.png', 'statics.png'),
+  j3: three('invest.png', 'payment.png', 'success.png'),
+  j4: three('portfolio.png', 'statics.png', 'wallet.png'),
+  web: place(mac('web_home.jpg'), 40, 70, .98) + place(mac('web_opportunity.jpg'), 430, 300, .62),
+  admin: place(mac('dash_investors.jpg'), 300, 70, .78) + place(mac('dash_home.jpg'), 40, 196, .78),
+  signin: tile('1/5', '1/3', 'Web · Sign in', `<img class="web" src="${IMG}web_login.jpg">`)
+    + tile('5/7', '1/4', 'App · Sign in', place(phone('signin.png'), 32, 56, .55))
+    + tile('1/3', '3/5', 'App · Sign up', place(phone('signup.png'), 32, 56, .55))
+    + tile('3/5', '3/4', 'Password rules, as you type', crop('signup.png', 24, 1655, 560, 1822, 230))
+    + tile('3/5', '4/5', 'One-time code', crop('otp.png', 20, 555, 846, 715, 256))
+    + tile('5/7', '4/5', 'Face ID for returning users', crop('signin.png', 20, 955, 836, 1085, 250)),
+  dashlogin: place(mac('dash_login.jpg'), 92, 64, 1.0),
+};
+for (const [id, html] of Object.entries(figs)) {
+  const el = document.createElement('div'); el.className = 'fig' + (['web','admin'].includes(id) ? ' tall' : '') + (id === 'signin' ? ' bento' : ''); el.id = id; el.innerHTML = html;
+  document.body.appendChild(el);
+}
+</script>
+</body></html>
