@@ -79,7 +79,7 @@ html[lang=ar] .vD h1{font-size:calc(60*var(--u));line-height:1.3}
 .vO .stage3d{position:absolute;inset:0;perspective-origin:50% 44%;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .vO .stage3d.drag{cursor:grabbing}
 .vO .ring{position:absolute;left:50%;top:44%;width:0;height:0;transform-style:preserve-3d}
-.vO .orb{position:absolute;left:calc(var(--S)/-2);top:calc(var(--S)/-2);width:var(--S);height:var(--S);border-radius:999px;overflow:hidden;
+.vO .orb{position:absolute;left:calc(var(--S)/-2);top:calc(var(--S)/-2);width:var(--S);height:var(--S);border-radius:999px;overflow:hidden;will-change:transform;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:inherit;background:#f2f2ef;transform-style:flat;-webkit-user-drag:none}
 @media (max-width:600px){.vO{--S:513px}}
 .vO .orb video,.vO .orb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
@@ -981,44 +981,53 @@ if (HERO === 'd' && !Q.has('render') && !matchMedia('(prefers-reduced-motion: re
 // ---------- the orbs hero: round films on a circle, seen from a point on its rim ----------
 if (HERO === 'o') {
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const N = () => $('ring') ? $('ring').children.length : 12, STEP = () => 360 / N();
-  // the ring stands still; only a drag turns it, and on release it eases onto the nearest film
-  let ang = 0, tgt = 0, k = 2.6, last = performance.now();
-  let drag = null, vel = 0, moved = 0;
-  const snap = a => Math.round(a / STEP()) * STEP();
-  function placeRing(now){
-    const ring = $('ring'); if (!ring) return;
-    const S = ring.firstElementChild ? ring.firstElementChild.offsetWidth : 533;
-    const R = 1.015 * S / (2 * Math.sin(Math.PI / N()));   // films just touch, edge to edge, without cutting into each other
-    ring.parentElement.style.perspective = R + 'px';  // the camera sits on the rim
-    [...ring.children].forEach((o, i) => {
-      const a = ((i * STEP() + ang) % 360 + 540) % 360 - 180;    // 0 = straight across from the camera
-      const show = Math.abs(a) < 128, live = show;
-      o.style.visibility = show ? 'visible' : 'hidden';
-      o.style.transform = `rotateY(${a}deg) translateZ(${-R}px)`;
-      const v = o.querySelector('video'); if (v) { if (live && v.paused) v.play().catch(() => {}); else if (!live && !v.paused) v.pause(); } }); }
+  // A drag moves a target angle and the ring glides after it; a release throws the target on with the hand's own speed
+  // and the ring settles on the nearest film. Sizes are measured once (and on resize), and nothing is written while it rests.
+  const FOLLOW = 13, SETTLE = 3.2, DEG = 36 / 300;   // follow and settle rates (per second); a 300px drag ≈ one film
+  let ang = 0, tgt = 0, last = performance.now(), drag = null, L = null, dirty = false;
+  const samples = [];
+  function layout(){
+    const ring = $('ring'); if (!ring) return null;
+    if (L && L.ring === ring && !dirty) return L;
+    dirty = false;
+    const kids = [...ring.children], N = kids.length || 12, S = kids[0] ? kids[0].offsetWidth : 533;
+    const R = 1.015 * S / (2 * Math.sin(Math.PI / N));    // films just touch, edge to edge
+    ring.parentElement.style.perspective = R + 'px';      // the camera sits on the rim
+    L = {ring, kids, vids: kids.map(o => o.querySelector('video')), N, STEP: 360 / N, R, live: kids.map(() => null), tf: kids.map(() => '')};
+    return L; }
+  function place(){
+    const l = layout(); if (!l) return;
+    for (let i = 0; i < l.N; i++) {
+      const a = ((i * l.STEP + ang) % 360 + 540) % 360 - 180, show = Math.abs(a) < 128, o = l.kids[i];
+      if (l.live[i] !== show) { l.live[i] = show; o.style.visibility = show ? 'visible' : 'hidden';
+        const v = l.vids[i]; if (v) { if (show) v.play().catch(() => {}); else v.pause(); } }
+      if (show) { const tf = `rotateY(${a.toFixed(3)}deg) translateZ(${(-l.R).toFixed(1)}px)`; if (tf !== l.tf[i]) { o.style.transform = tf; l.tf[i] = tf; } } } }
+  const snap = a => { const st = L ? L.STEP : 30; return Math.round(a / st) * st; };
   function tick(now){
     const dt = Math.min(.05, (now - last) / 1000); last = now;
-    if (!drag) ang += (tgt - ang) * (1 - Math.exp(-(RM ? 20 : k) * dt));
-    placeRing(now); requestAnimationFrame(tick); }
-  const DEG = () => 36 / 300;                          // a 300px drag turns the ring about one film
+    const d = tgt - ang;
+    if (Math.abs(d) > .001) { ang += d * (1 - Math.exp(-(RM ? 30 : drag ? FOLLOW : SETTLE) * dt)); place(); }
+    else if (ang !== tgt || dirty || !L || L.ring !== $('ring')) { ang = tgt; place(); }
+    requestAnimationFrame(tick); }
   addEventListener('pointermove', e => {
     if (!drag || e.pointerId !== drag.id) return;
-    const dx = e.clientX - drag.x, t = performance.now();
-    moved = Math.max(moved, Math.abs(e.clientX - drag.x0));
-    ang -= dx * DEG(); vel = vel * .6 - (dx * DEG()) / Math.max(1, t - drag.t) * 1000 * .4;
-    drag.x = e.clientX; drag.t = t; }, {passive: true});
+    const now = performance.now();
+    tgt = drag.a0 - (e.clientX - drag.x0) * DEG;        // a film at a positive angle sits left: a drag right lowers the angle
+    samples.push([now, tgt]); while (samples.length > 2 && now - samples[0][0] > 90) samples.shift(); }, {passive: true});
   document.addEventListener('pointerdown', e => {
     const st = e.target.closest && e.target.closest('.vO .stage3d'); if (!st || e.button > 0) return;
-    drag = {id: e.pointerId, x: e.clientX, x0: e.clientX, t: performance.now()}; vel = 0; moved = 0;
+    drag = {id: e.pointerId, x0: e.clientX, a0: tgt}; samples.length = 0; samples.push([performance.now(), tgt]);
     st.classList.add('drag'); });
   const end = () => { if (!drag) return; drag = null;
-    tgt = snap(ang + vel * .35);                       // let it run on, then rest on a film
+    let v = 0; if (samples.length > 1) { const [t0, a0] = samples[0], [t1, a1] = samples[samples.length - 1]; if (t1 - t0 > 8) v = (a1 - a0) / ((t1 - t0) / 1000); }
+    if (performance.now() - (samples.length ? samples[samples.length - 1][0] : 0) > 120) v = 0;   // held still before letting go: no throw
+    tgt = snap(tgt + Math.max(-100, Math.min(100, v * .24)));       // run on with the hand's speed, then rest on a film
     document.querySelectorAll('.vO .stage3d').forEach(s => s.classList.remove('drag')); };
   addEventListener('pointerup', end); addEventListener('pointercancel', end);
   document.addEventListener('dragstart', e => { if (e.target.closest && e.target.closest('.vO')) e.preventDefault(); });
-  addEventListener('resize', () => placeRing(performance.now()));
-  window.ringSet = a => { ang = tgt = a; placeRing(performance.now()); };   // for frame-exact captures
+  addEventListener('resize', () => { dirty = true; });
+  window.ringSet = a => { ang = tgt = a; place(); };   // for frame-exact captures
+  place();
   requestAnimationFrame(t => { last = t; tick(t); });
 }
 </script>
