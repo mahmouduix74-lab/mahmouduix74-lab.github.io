@@ -414,6 +414,18 @@ html[lang=ar] #contact h2{font-size:calc(48.0*var(--u));line-height:1.35}
 #contact .icons svg{width:calc(21.33*var(--u));height:calc(21.33*var(--u))}
 #contact .foot{font-family:var(--mono);font-size:calc(16.0*var(--u));text-transform:uppercase}
 html[lang=ar] #contact .foot{font-family:inherit}
+/* ---------- the power switch: top right, turns the whole site off (an old screen folding to a line) and back on ---------- */
+#power{position:fixed;top:max(calc(25.2*var(--u)),4px);inset-inline-end:var(--side);z-index:9999;font-size:max(calc(8*var(--u)),6.5px)!important}
+#pw{position:fixed;inset:0;z-index:9998;pointer-events:none;visibility:hidden}
+html.pw-off #pw{pointer-events:auto}
+html.pw-off{overflow:hidden}
+#pw .h{position:absolute;left:0;right:0;height:50.5%;background:#070707;transform:scaleY(0)}
+#pw .h.t{top:0;transform-origin:50% 0}#pw .h.b{bottom:0;transform-origin:50% 100%}
+#pw .ln{position:absolute;left:0;right:0;top:50%;height:2px;margin-top:-1px;background:#fff;opacity:0;
+  box-shadow:0 0 calc(14*var(--u)) calc(2*var(--u)) rgba(255,255,255,.75),0 0 calc(60*var(--u)) calc(8*var(--u)) rgba(255,90,31,.35)}
+#pw .msg{position:absolute;left:0;right:0;top:50%;margin-top:calc(-10*var(--u));text-align:center;color:rgba(255,255,255,.42);opacity:0;
+  font-family:var(--mono);font-size:calc(16*var(--u));letter-spacing:.02em;text-transform:uppercase}
+html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
@@ -450,6 +462,10 @@ html[lang=ar] #contact .foot{font-family:inherit}
   <div id="load"><div id="bar"></div><span id="pct">0%</span></div>
 </nav>
 
+<button class="rsw" id="power" data-in="fade" data-d="3.6" data-color="#FF5A1F" data-tone="light" data-checked="true" data-sound="true" aria-label="Turn the site off"></button>
+<div id="pw" aria-hidden="true"><span class="h t"></span><span class="h b"></span><span class="ln"></span><p class="msg" data-t="pw"></p></div>
+
+<script src="assets/realistic-switch.js"></script>
 <script>
 'use strict';
 // ---------- content (EN / AR) ----------
@@ -480,7 +496,7 @@ const CASES = {
                                   ar:{line:'تطبيق للأعضاء وتطبيق للمدربين ولوحة تحكم للنادي، تحت علامة واحدة.', tags:['تطبيق الأعضاء','تطبيق المدرب','لوحة تحكم','2025']}},
 };
 const T = {
-  en:{wm:'Mahmoud', rst:'Restore', role_s:'— UI/UX Designer', avail:'Available for freelance', l1:'EN', l2:'ع', eyebrow:'UI/UX & Product Designer',
+  en:{wm:'Mahmoud', rst:'Restore', pw:'The site is off · press the switch to turn it on', pw_on:'Turn the site on', pw_off:'Turn the site off', role_s:'— UI/UX Designer', avail:'Available for freelance', l1:'EN', l2:'ع', eyebrow:'UI/UX & Product Designer',
       h1:['I design apps, platforms','and dashboards that read clearly',['in ','Arabic and English.']],
       lede:'Mobile apps, web platforms, dashboards and company websites — from the first user flow to developer handoff.',
       cta:'View selected work', latest:'Latest case study', langs:'Arabic · English',
@@ -505,7 +521,7 @@ const T = {
           ['Deliver','Every state, spec and component a developer needs.',['Handoff','Specs','States']]],
       wk_h:'Five products, from concept to handoff.', wk_go:'View case study', wk_soon:'Case study soon', wk_all:'All projects',
       n_work:'Work', n_projects:'Projects', n_process:'Process', n_about:'About', n_contact:'Contact', n_talk:"Let's talk"},
-  ar:{wm:'محمود', rst:'استعادة', role_s:'— مصمم UI/UX', avail:'متاح للعمل الحر', l1:'ع', l2:'EN', eyebrow:'مصمم منتجات رقمية · UI/UX',
+  ar:{wm:'محمود', rst:'استعادة', pw:'الموقع مقفول · دوس على الزرار عشان تشغّله', pw_on:'شغّل الموقع', pw_off:'اقفل الموقع', role_s:'— مصمم UI/UX', avail:'متاح للعمل الحر', l1:'ع', l2:'EN', eyebrow:'مصمم منتجات رقمية · UI/UX',
       h1:['أصمّم تطبيقات ومنصات','ولوحات تحكم واضحة',['','بالعربية والإنجليزية.']],
       lede:'تطبيقات موبايل ومنصات ويب ولوحات تحكم ومواقع شركات، من أول رحلة مستخدم حتى التسليم للمطورين.',
       cta:'استعرض الأعمال', latest:'أحدث دراسة حالة', langs:'العربية · الإنجليزية',
@@ -1048,6 +1064,41 @@ if (HERO === 'o') {
   window.ringSet = a => { ang = tgt = a; place(); };   // for frame-exact captures
   place();
   requestAnimationFrame(t => { last = t; tick(t); });
+}
+// ---------- the power switch: off folds the page into a bright line, then a dot, then dark; on plays it back ----------
+{
+  const pw = $('pw'), [ht, hb] = pw.querySelectorAll('.h'), ln = pw.querySelector('.ln'), msg = pw.querySelector('.msg');
+  const still = matchMedia('(prefers-reduced-motion: reduce)'), held = [];
+  const A = (el, k, o) => el.animate(k, Object.assign({fill: 'forwards'}, o));
+  const label = on => { const t = T[LANG] || T.en; $('power').setAttribute('aria-label', on ? t.pw_off : t.pw_on); };
+  const rest = () => [...document.body.children].filter(el => el.id !== 'power' && el.id !== 'pw' && el.tagName !== 'SCRIPT');
+  let sw;
+  const power = on => {
+    [ht, hb, ln, msg].forEach(el => el.getAnimations().forEach(a => a.cancel()));
+    label(on); pw.style.visibility = 'visible';
+    if (!on) {
+      held.length = 0; document.querySelectorAll('video').forEach(v => { if (!v.paused) { held.push(v); v.pause(); } });
+      document.documentElement.classList.add('pw-off'); rest().forEach(el => el.inert = true); $('power').dataset.tone = 'dark';
+      if (still.matches) { [ht, hb].forEach(h => A(h, [{transform: 'scaleY(1)'}], {duration: 1})); A(msg, [{opacity: 0}, {opacity: 1}], {duration: 300}); return; }
+      [ht, hb].forEach(h => A(h, [{transform: 'scaleY(0)'}, {transform: 'scaleY(1)'}], {duration: 340, easing: 'cubic-bezier(.7,0,.84,0)'}));
+      A(ln, [{opacity: 0, transform: 'scaleX(1)', offset: 0}, {opacity: 1, transform: 'scaleX(1)', offset: .05}, {opacity: 1, transform: 'scaleX(.004)', offset: .62},
+             {opacity: 1, transform: 'scaleX(.004) scaleY(2.2)', offset: .75}, {opacity: 0, transform: 'scaleX(.001) scaleY(1)', offset: 1}],
+        {delay: 310, duration: 620, easing: 'cubic-bezier(.55,0,.75,.2)'});
+      A(msg, [{opacity: 0}, {opacity: 1}], {delay: 1150, duration: 700, easing: 'ease-out'});
+    } else {
+      document.documentElement.classList.remove('pw-off'); rest().forEach(el => el.inert = false); $('power').dataset.tone = 'light';
+      const back = () => { pw.style.visibility = 'hidden'; held.forEach(v => { const p = v.play(); if (p) p.catch(() => {}); }); held.length = 0; };
+      if (still.matches) { A(ht, [{transform: 'scaleY(0)'}], {duration: 1}); A(hb, [{transform: 'scaleY(0)'}], {duration: 1}).onfinish = back; return; }
+      A(msg, [{opacity: getComputedStyle(msg).opacity}, {opacity: 0}], {duration: 160});
+      A(ln, [{opacity: 0, transform: 'scaleX(.001)', offset: 0}, {opacity: 1, transform: 'scaleX(.004) scaleY(2.2)', offset: .15}, {opacity: 1, transform: 'scaleX(1)', offset: .6},
+             {opacity: 0, transform: 'scaleX(1)', offset: 1}], {delay: 120, duration: 560, easing: 'cubic-bezier(.2,.7,.2,1)'});
+      [ht, hb].forEach(h => A(h, [{transform: 'scaleY(1)'}, {transform: 'scaleY(0)'}], {delay: 420, duration: 520, easing: 'cubic-bezier(.16,1,.3,1)'}));
+      setTimeout(back, 960);
+    }
+  };
+  sw = RealisticSwitch.mount($('power'), {onChange: power});
+  $('lang').addEventListener('click', () => label(sw.checked));
+  label(true);
 }
 </script>
 </body>

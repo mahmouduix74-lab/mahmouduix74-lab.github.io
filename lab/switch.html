@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Realistic switch</title><link rel="stylesheet" href="../assets/fonts.css">
+<style>
+ body{margin:0;font-family:'Inter Tight',sans-serif;background:#F4F4F2;color:#111}
+ .row{display:flex;gap:56px;align-items:flex-end;justify-content:center;padding:56px 40px}
+ .row.dk{background:#111;color:#fff}
+ figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+ figcaption{font:12px ui-monospace,Menlo,monospace;text-transform:uppercase;letter-spacing:.05em;opacity:.55}
+</style></head><body>
+<div class="row">
+ <figure><button class="rsw" data-color="#e1261c"></button><figcaption>Red · off</figcaption></figure>
+ <figure><button class="rsw" data-color="#e1261c" data-checked="true"></button><figcaption>Red · on</figcaption></figure>
+ <figure><button class="rsw" data-color="#FF5A1F"></button><figcaption>Accent · off</figcaption></figure>
+ <figure><button class="rsw" data-color="#FF5A1F" data-checked="true"></button><figcaption>Accent · on</figcaption></figure>
+ <figure><button class="rsw" data-color="#FF5A1F" data-size="lg" data-checked="true" data-sound="true"></button><figcaption>Large · sound</figcaption></figure>
+</div>
+<div class="row dk">
+ <figure><button class="rsw" data-tone="dark" data-color="#FF5A1F"></button><figcaption>Dark · off</figcaption></figure>
+ <figure><button class="rsw" data-tone="dark" data-color="#FF5A1F" data-checked="true"></button><figcaption>Dark · on</figcaption></figure>
+ <figure><button class="rsw" data-tone="dark" data-color="#2E6BFF" data-checked="true"></button><figcaption>Blue · on</figcaption></figure>
+ <figure><button class="rsw" data-tone="dark" data-color="#16A34A" data-size="sm" data-checked="true"></button><figcaption>Small</figcaption></figure>
+</div>
+<script src="../assets/realistic-switch.js"></script>
+<script>RealisticSwitch.mountAll()</script>
+</body></html>
