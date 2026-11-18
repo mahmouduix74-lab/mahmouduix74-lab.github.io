@@ -75,18 +75,17 @@ html[lang=ar] .vD h1{font-size:calc(60*var(--u));line-height:1.3}
 .vO{position:absolute;inset:0;direction:ltr}
 /* the ring: the camera stands on the rim of a circle of round films and looks across it,
    so the film opposite is half size and the ones beside it swell past the edges of the screen */
-.vO{--S:min(533px,37vw)}
+.vO{--S:533.33px}   /* dirt's size: 533.33px on every desktop width, 513.33px on phones */
 .vO .stage3d{position:absolute;inset:0;perspective-origin:50% 44%;overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .vO .stage3d.drag{cursor:grabbing}
-.vO .ring{position:absolute;left:50%;top:44%;width:0;height:0;transform-style:preserve-3d}
+.vO .ring{position:absolute;left:50%;top:44%;width:0;height:0}
 .vO .orb{position:absolute;left:calc(var(--S)/-2);top:calc(var(--S)/-2);width:var(--S);height:var(--S);border-radius:999px;overflow:hidden;will-change:transform;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;cursor:inherit;background:#f2f2ef;transform-style:flat;-webkit-user-drag:none}
-@media (max-width:600px){.vO{--S:513px}}
+@media (max-width:600px){.vO{--S:513.33px}}
 .vO .orb video,.vO .orb img,.vO .orb canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 @keyframes orbFloat{0%,100%{translate:0 0}50%{translate:0 calc(-10*var(--u)*1.333)}}
 .vO .orb{animation:orbFloat 2.8s ease-in-out infinite}
 @media (prefers-reduced-motion:reduce){.vO .orb{animation:none}}
-.vO .vpool{position:absolute;left:0;top:0;width:2px;height:2px;overflow:hidden;opacity:0;pointer-events:none}   /* one playing video per world; its frames are copied into every film of that world */
 .vO .txt{position:absolute;left:var(--side);bottom:calc(56*var(--u));max-width:calc(620*var(--u))}
 html[lang=ar] .vO .txt{left:auto;right:var(--side);direction:rtl;text-align:right}
 .vO .txt .a{font-size:calc(24*var(--u));line-height:1.3;font-weight:600;letter-spacing:-.02em;color:var(--mute)}
@@ -568,8 +567,7 @@ const ORBS = [
 const VARIANTS = {
   o: t => `<div class="vO">
       <div class="stage3d" data-in="fade" data-d="2.2"><div class="ring" id="ring">${[[0, 1, 2, 0, 1, 3, 0, 1, 2, 3].map(j => ORBS[j])].map(FILMS => FILMS.map((o, j) => { const c = FILMS.indexOf(o) !== j; return `<div class="orb" role="img" aria-label="${o.name}"${c ? ' aria-hidden="true"' : ''}>
-          <canvas width="640" height="640" data-k="${o.k}"></canvas></div>`; }).join('')).join('')}</div>
-        <div class="vpool" aria-hidden="true">${ORBS.map(o => `<video muted loop playsinline preload="auto" data-k="${o.k}" poster="assets/hero/${o.k}.jpg"><source src="assets/hero/${o.k}.mp4" type="video/mp4"><source src="assets/hero/${o.k}.webm" type="video/webm"></video>`).join('')}</div></div>
+          <video muted loop playsinline preload="auto" draggable="false" data-k="${o.k}" poster="assets/hero/${o.k}.jpg"><source src="assets/hero/${o.k}.mp4" type="video/mp4"><source src="assets/hero/${o.k}.webm" type="video/webm"></video></div>`; }).join('')).join('')}</div></div>
       <div class="txt" data-in="rise" data-d="2.8"><p class="a">${t.me} — ${t.eyebrow}</p><p class="b">${t.lede}</p></div>
       <a class="cta go" href="#reel" data-in="fade" data-d="3.2">${t.cta}${arrow}</a>
     </div>`,
@@ -993,48 +991,40 @@ if (HERO === 'o') {
   // and the ring settles on the nearest film. Sizes are measured once (and on resize), and nothing is written while it rests.
   const FOLLOW = 22, SETTLE = 3.2, DEG = 36 / 300;   // follow and settle rates (per second); a 300px drag ≈ one film
   let ang = 0, tgt = 0, last = performance.now(), drag = null, L = null, dirty = false;
-  let mx = 0, my = 0, rx = 0, ry = 0, tiltTf = '';
+  let mx = 0, my = 0, rx = 0, ry = 0;
   const samples = [];
   function layout(){
     const ring = $('ring'); if (!ring) return null;
     if (L && L.ring === ring && !dirty) return L;
     dirty = false;
-    const kids = [...ring.children], N = kids.length || 12, S = kids[0] ? kids[0].offsetWidth : 533;
-    const R = 1.01 * S / (2 * Math.sin(Math.PI / N));    // dirt's spacing (10 films, 36° apart, edge to edge); a hair wider so neighbours never cut into each other
-    ring.parentElement.style.perspective = R + 'px';      // the camera sits on the rim
-    const pool = {}; ring.parentElement.querySelectorAll('.vpool video').forEach(v => { pool[v.dataset.k] = v; });
+    const kids = [...ring.children], N = kids.length || 10, S = kids[0] ? kids[0].offsetWidth : 533.33;
+    const R = 1.5 * S;                                   // dirt's geometry: ten films 36° apart on a radius of 1.5 films, the camera on the rim
     kids.forEach((o, i) => { o.style.animationDelay = `${(-(i * .37) % 2.8).toFixed(2)}s`; });   // each film floats a little behind its neighbour
-    tiltTf = '';
-    L = {ring, kids, N, STEP: 360 / N, R, live: kids.map(() => null), tf: kids.map(() => ''), pool,
-         cv: kids.map(o => { const c = o.querySelector('canvas'); return {k: c.dataset.k, g: c.getContext('2d', {alpha: false})}; })};
-    Object.entries(pool).forEach(([k, v]) => bindWorld(L, k, v));
+    L = {ring, kids, N, STEP: 360 / N, R, P: R, live: kids.map(() => null), tf: kids.map(() => ''), z: kids.map(() => -1), vids: kids.map(o => o.querySelector('video'))};
     return L; }
-  // one decoder per world: every new frame of its video is drawn into the films of that world that are on screen
-  function paintWorld(l, k, src){ for (let i = 0; i < l.N; i++) if (l.cv[i].k === k && l.live[i]) l.cv[i].g.drawImage(src, 0, 0, 640, 640); }
-  function bindWorld(l, k, v){
-    const poster = new Image(); poster.onload = () => { if (v.readyState < 2) for (let i = 0; i < l.N; i++) if (l.cv[i].k === k) l.cv[i].g.drawImage(poster, 0, 0, 640, 640); }; poster.src = v.poster;
-    if (v.requestVideoFrameCallback) { const f = () => { if (L === l) { paintWorld(l, k, v); v.requestVideoFrameCallback(f); } }; v.requestVideoFrameCallback(f); }
-    else { const f = () => { if (L === l) { if (!v.paused && v.readyState >= 2) paintWorld(l, k, v); requestAnimationFrame(f); } }; requestAnimationFrame(f); }
-    if (heroOn) v.play().catch(() => {}); }
-  // the worlds play only while the hero is on screen
-  let heroOn = true;
-  if ('IntersectionObserver' in window) new IntersectionObserver(es => { heroOn = es[0].isIntersecting;
-    if (L) Object.values(L.pool).forEach(v => { if (heroOn) v.play().catch(() => {}); else v.pause(); }); }).observe($('hero'));
+  // each film carries the whole camera in its own transform (perspective, tilt, its place on the ring), and the nearer films are drawn on top
   function place(){
     const l = layout(); if (!l) return;
     for (let i = 0; i < l.N; i++) {
-      const a = ((i * l.STEP + ang) % 360 + 540) % 360 - 180, show = Math.abs(a) < 100, o = l.kids[i];   // past ±100° a film is off screen
+      const a = ((i * l.STEP + ang) % 360 + 540) % 360 - 180, show = Math.abs(a) < 126, o = l.kids[i];
       if (l.live[i] !== show) { l.live[i] = show; o.style.visibility = show ? 'visible' : 'hidden';
-        const v = l.pool[l.cv[i].k]; if (show && v && v.readyState >= 2) l.cv[i].g.drawImage(v, 0, 0, 640, 640); }
-      if (show) { const tf = `rotateY(${a.toFixed(3)}deg) translateZ(${(-l.R).toFixed(1)}px)`; if (tf !== l.tf[i]) { o.style.transform = tf; l.tf[i] = tf; } } } }
-  const snap = a => { const st = L ? L.STEP : 30; return Math.round(a / st) * st; };
+        const v = l.vids[i]; if (v) { if (show && heroOn) v.play().catch(() => {}); else v.pause(); } }
+      if (!show) continue;
+      const tf = `perspective(${l.P.toFixed(1)}px) rotateX(${rx.toFixed(3)}deg) rotateY(${(a + ry).toFixed(3)}deg) translateZ(${(-l.R).toFixed(1)}px)`;
+      if (tf !== l.tf[i]) { o.style.transform = tf; l.tf[i] = tf; }
+      const z = Math.round(Math.abs(a)); if (z !== l.z[i]) { o.style.zIndex = z; l.z[i] = z; } } }
+  // the worlds play only while the hero is on screen
+  let heroOn = true;
+  if ('IntersectionObserver' in window) new IntersectionObserver(es => { heroOn = es[0].isIntersecting;
+    if (L) L.vids.forEach((v, i) => { if (heroOn && L.live[i]) v.play().catch(() => {}); else v.pause(); }); }).observe($('hero'));
+  const snap = a => { const st = L ? L.STEP : 36; return Math.round(a / st) * st; };
   function tick(now){
     const dt = Math.min(.05, (now - last) / 1000); last = now;
     const d = tgt - ang;
     if (Math.abs(d) > .001) { ang += d * (1 - Math.exp(-(RM ? 30 : drag ? FOLLOW : SETTLE) * dt)); place(); }
     else if (ang !== tgt || dirty || !L || L.ring !== $('ring')) { ang = tgt; place(); }
-    if (!RM && L) { const e = 1 - Math.exp(-4 * dt); rx += (-my * 4.8 - rx) * e; ry += (-mx * 3 - ry) * e;
-      const tf = `rotateX(${rx.toFixed(3)}deg) rotateY(${ry.toFixed(3)}deg)`; if (tf !== tiltTf) { L.ring.style.transform = tf; tiltTf = tf; } }
+    if (!RM && L) { const e = 1 - Math.exp(-4 * dt), nx = rx + (-my * 4.8 - rx) * e, ny = ry + (-mx * 3 - ry) * e;
+      if (Math.abs(nx - rx) > .0005 || Math.abs(ny - ry) > .0005) { rx = nx; ry = ny; place(); } }
     requestAnimationFrame(tick); }
   addEventListener('pointermove', e => {
     const hb = $('hero').getBoundingClientRect();     // the pointer, from the ring's centre, -1…1
