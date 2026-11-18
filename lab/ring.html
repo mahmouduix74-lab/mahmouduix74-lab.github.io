@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ring test</title>
+<style>
+  /* A test bench for the hero ring: the same ring three ways, to find what costs on a given machine.
+     ?m=video  — one video per film, built the way dirt builds it (a rotating wrapper, the film pushed back inside it)
+     ?m=canvas — four videos, their frames copied into canvases (the site's current way)
+     ?m=image  — the posters only, no video */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; background: #fff; overflow: hidden; font-family: ui-monospace, Menlo, monospace; }
+  #stage { position: absolute; inset: 0; perspective-origin: 50% 44%; overflow: hidden; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+  #stage.drag { cursor: grabbing; }
+  #ring { position: absolute; left: 50%; top: 44%; width: 0; height: 0; transform-style: preserve-3d; }
+  .rot { position: absolute; left: -266.5px; top: -266.5px; width: 533px; height: 533px; transform-style: preserve-3d; }
+  .orb { position: absolute; inset: 0; border-radius: 999px; overflow: hidden; backface-visibility: hidden; -webkit-backface-visibility: hidden; contain: layout style paint; will-change: transform; background: #eee; }
+  .orb video, .orb canvas, .orb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none; -webkit-user-drag: none; }
+  .pool { position: absolute; left: 0; top: 0; width: 2px; height: 2px; overflow: hidden; opacity: 0; pointer-events: none; }
+  #hud { position: fixed; left: 16px; bottom: 16px; font-size: 13px; color: #111; background: rgba(255,255,255,.9); padding: 10px 12px; border-radius: 10px; box-shadow: 0 0 0 1px #ddd; line-height: 1.6; }
+  #hud a { color: #111; margin-right: 10px; } #hud a.on { font-weight: 700; text-decoration: none; background: #111; color: #fff; padding: 2px 6px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div id="stage"><div id="ring"></div><div class="pool" id="pool"></div></div>
+<div id="hud"><div><a href="?m=video">video</a><a href="?m=canvas">canvas</a><a href="?m=image">image</a></div><div id="fps">fps —</div></div>
+<script>
+const M = new URLSearchParams(location.search).get('m') || 'video', K = ['mahmoud', 'stride', 'sahem', 'is'], N = 12, STEP = 360 / N, S = 533;
+const R = 1.015 * S / (2 * Math.sin(Math.PI / N)), $ = id => document.getElementById(id), A = '../assets/hero/';
+document.querySelectorAll('#hud a').forEach(a => a.classList.toggle('on', a.textContent === M));
+$('stage').style.perspective = R + 'px';
+const vid = k => `<video muted loop playsinline autoplay preload="auto" poster="${A}${k}.jpg"><source src="${A}${k}.mp4" type="video/mp4"><source src="${A}${k}.webm" type="video/webm"></video>`;
+$('ring').innerHTML = Array.from({length: N}, (_, i) => { const k = K[i % 4];
+  const inner = M === 'video' ? vid(k) : M === 'canvas' ? `<canvas width="640" height="640" data-k="${k}"></canvas>` : `<img src="${A}${k}.jpg" alt="" draggable="false">`;
+  return `<div class="rot" id="r${i}"><div class="orb" style="transform:translateZ(${-R}px)">${inner}</div></div>`; }).join('');
+const rots = [...document.querySelectorAll('.rot')];
+if (M === 'canvas') {
+  $('pool').innerHTML = K.map(vid).join('');
+  const cv = [...document.querySelectorAll('#ring canvas')].map(c => ({k: c.dataset.k, g: c.getContext('2d', {alpha: false})}));
+  [...$('pool').querySelectorAll('video')].forEach((v, j) => { const k = K[j], f = () => { cv.forEach(c => { if (c.k === k) c.g.drawImage(v, 0, 0, 640, 640); }); v.requestVideoFrameCallback(f); };
+    v.requestVideoFrameCallback ? v.requestVideoFrameCallback(f) : 0; v.play().catch(() => {}); }); }
+// the same motion as the site: a drag moves a target, the ring follows; a release throws it on and it rests on a film
+let ang = 0, tgt = 0, last = performance.now(), drag = null; const smp = [], DEG = 36 / 300;
+function place(){ rots.forEach((r, i) => { const a = ((i * STEP + ang) % 360 + 540) % 360 - 180; const show = Math.abs(a) < 100;
+  r.style.visibility = show ? 'visible' : 'hidden'; if (show) r.style.transform = `rotateY(${a.toFixed(3)}deg)`; }); }
+let fr = 0, ft = performance.now();
+function tick(now){ const dt = Math.min(.05, (now - last) / 1000); last = now; const d = tgt - ang;
+  if (Math.abs(d) > .001) { ang += d * (1 - Math.exp(-(drag ? 22 : 3.2) * dt)); place(); }
+  fr++; if (now - ft > 500) { $('fps').textContent = `fps ${Math.round(fr * 1000 / (now - ft))} · ${M}`; fr = 0; ft = now; }
+  requestAnimationFrame(tick); }
+addEventListener('pointermove', e => { if (!drag) return; const t = performance.now(); tgt = drag.a0 - (e.clientX - drag.x0) * DEG; smp.push([t, tgt]); while (smp.length > 2 && t - smp[0][0] > 90) smp.shift(); }, {passive: true});
+$('stage').addEventListener('pointerdown', e => { drag = {x0: e.clientX, a0: tgt}; smp.length = 0; smp.push([performance.now(), tgt]); $('stage').classList.add('drag'); });
+const end = () => { if (!drag) return; drag = null; let v = 0; if (smp.length > 1) { const [t0, a0] = smp[0], [t1, a1] = smp[smp.length - 1]; if (t1 - t0 > 8) v = (a1 - a0) / ((t1 - t0) / 1000); }
+  if (performance.now() - smp[smp.length - 1][0] > 120) v = 0; tgt = Math.round((tgt + Math.max(-100, Math.min(100, v * .24))) / STEP) * STEP; $('stage').classList.remove('drag'); };
+addEventListener('pointerup', end); addEventListener('pointercancel', end);
+place(); requestAnimationFrame(tick);
+</script>
+</body>
+</html>
