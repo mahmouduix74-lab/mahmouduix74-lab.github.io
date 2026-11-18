@@ -567,9 +567,8 @@ const ORBS = [
 ];
 const VARIANTS = {
   o: t => `<div class="vO">
-      <div class="stage3d" data-in="fade" data-d="2.2"><div class="ring" id="ring">${Array.from({length: Math.max(2, Math.round(11 / ORBS.length))}, (_, c) => c).map(c => ORBS.map((o, i) =>
-        `<div class="orb" role="img" aria-label="${o.name}"${c ? ' aria-hidden="true"' : ''}>
-          <canvas width="640" height="640" data-k="${o.k}"></canvas></div>`).join('')).join('')}</div>
+      <div class="stage3d" data-in="fade" data-d="2.2"><div class="ring" id="ring">${[[0, 1, 2, 0, 1, 3, 0, 1, 2, 3].map(j => ORBS[j])].map(FILMS => FILMS.map((o, j) => { const c = FILMS.indexOf(o) !== j; return `<div class="orb" role="img" aria-label="${o.name}"${c ? ' aria-hidden="true"' : ''}>
+          <canvas width="640" height="640" data-k="${o.k}"></canvas></div>`; }).join('')).join('')}</div>
         <div class="vpool" aria-hidden="true">${ORBS.map(o => `<video muted loop playsinline preload="auto" data-k="${o.k}" poster="assets/hero/${o.k}.jpg"><source src="assets/hero/${o.k}.mp4" type="video/mp4"><source src="assets/hero/${o.k}.webm" type="video/webm"></video>`).join('')}</div></div>
       <div class="txt" data-in="rise" data-d="2.8"><p class="a">${t.me} — ${t.eyebrow}</p><p class="b">${t.lede}</p></div>
       <a class="cta go" href="#reel" data-in="fade" data-d="3.2">${t.cta}${arrow}</a>
@@ -1001,7 +1000,7 @@ if (HERO === 'o') {
     if (L && L.ring === ring && !dirty) return L;
     dirty = false;
     const kids = [...ring.children], N = kids.length || 12, S = kids[0] ? kids[0].offsetWidth : 533;
-    const R = 1.015 * S / (2 * Math.sin(Math.PI / N));    // films just touch, edge to edge
+    const R = 1.01 * S / (2 * Math.sin(Math.PI / N));    // dirt's spacing (10 films, 36° apart, edge to edge); a hair wider so neighbours never cut into each other
     ring.parentElement.style.perspective = R + 'px';      // the camera sits on the rim
     const pool = {}; ring.parentElement.querySelectorAll('.vpool video').forEach(v => { pool[v.dataset.k] = v; });
     kids.forEach((o, i) => { o.style.animationDelay = `${(-(i * .37) % 2.8).toFixed(2)}s`; });   // each film floats a little behind its neighbour
