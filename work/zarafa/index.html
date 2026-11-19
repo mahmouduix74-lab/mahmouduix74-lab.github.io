@@ -213,7 +213,7 @@ footer a.m:hover{color:var(--pur)}
 .vl b{display:block;font-weight:600;margin-bottom:6px;font-size:17px}
 .vl p{font-size:15px;color:var(--soft)}
 .lim li b{color:var(--ink);font-weight:500}
-section#value .lim{margin-top:90px}
+.s .lim{margin-top:28px}
 
 /* ---------- motion layer (GSAP + Lenis). Hidden states only exist when the script runs, so the page reads fine without it ---------- */
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
@@ -280,7 +280,7 @@ html:not(.js) #pre{display:none}
   <div class="wrap">
     <a class="back" href="../../"><i>←</i>All work</a>
     <nav>
-      <a href="#challenge">Challenge</a><a href="#home">Home</a><a href="#stores">Stores</a><a href="#earn">Earning</a><a href="#wallet">Wallet</a><a href="#system">System</a><a href="#value">Value</a>
+      <a href="#challenge">Challenge</a><a href="#system">System</a><a href="#home">Home</a><a href="#earn">Earning</a><a href="#wallet">Wallet</a><a href="#decisions">Decisions</a><a href="#value">Value</a>
     </nav>
     <a class="talk mag" href="mailto:Mahmouduix74@gmail.com">Let's talk</a>
   </div>
@@ -324,11 +324,11 @@ html:not(.js) #pre{display:none}
 
   <div class="chap rv">
     <span class="mono soft">Jump to</span>
-    <a href="#challenge"><i>01</i>Challenge</a><a href="#home"><i>02</i>The home</a><a href="#stores"><i>03</i>Stores &amp; cashback</a><a href="#earn"><i>04</i>Earning</a><a href="#wallet"><i>05</i>The wallet</a><a href="#account"><i>06</i>Account &amp; onboarding</a><a href="#system"><i>07</i>System</a><a href="#decisions"><i>08</i>Decisions</a><a href="#value"><i>09</i>Value &amp; learnings</a>
+    <a href="#challenge"><i>01</i>The challenge</a><a href="#system"><i>02</i>Design system</a><a href="#onboarding"><i>03</i>Onboarding</a><a href="#home"><i>04</i>The home</a><a href="#stores"><i>05</i>Stores &amp; cashback</a><a href="#earn"><i>06</i>Earning</a><a href="#wallet"><i>07</i>The wallet</a><a href="#account"><i>08</i>Account &amp; subscription</a><a href="#decisions"><i>09</i>Key decisions</a><a href="#value"><i>10</i>Scope &amp; value</a><a href="#learnings"><i>11</i>Key learnings</a><a href="#next-steps"><i>12</i>Next steps</a>
   </div>
 </div>
 
-<!-- ================= 01 challenge ================= -->
+<!-- ================= 01 the challenge ================= -->
 <section class="s" id="challenge">
   <div class="wrap">
     <div class="lab rv"><i>01</i><span>The challenge</span></div>
@@ -351,10 +351,54 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= 02 home ================= -->
+<!-- ================= the screens, all moving ================= -->
+<section class="strip" aria-label="A selection of Zarafa screens">
+  <div class="wrap cap2 rv"><b>83 screens, <span class="gt">one product.</span></b><span class="mono soft">Six flows · one system</span></div>
+  <div class="row" id="rowA"><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure></div>
+  <div class="row" id="rowB"><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure></div>
+</section>
+
+<!-- ================= 02 design system ================= -->
+<section class="s" id="system">
+  <div class="wrap">
+    <div class="lab rv"><i>02</i><span>Design system</span></div>
+    <h2 class="rv">A deliberately restrained system: the gradient means money or the next step, and nothing else.</h2>
+    <p class="lede rv">With clear colour roles, users learn the language once, so every new screen across the 83 is faster to understand.</p>
+    <div class="sw rv">
+      <div class="gm" style="color:#fff"><b>Zarafa gradient</b><span>#E813FC → #8765EE → #27B9E1</span></div>
+      <div style="background:var(--navy);color:#fff"><b>Navy</b><span>#010247</span></div>
+      <div style="background:var(--pur);color:#fff"><b>Purple</b><span>#C630F7</span></div>
+      <div style="background:var(--tint);border:1px solid var(--line)"><b>Lavender</b><span>#F6EDFA</span></div>
+    </div>
+    <div class="sys rv">
+      <div class="card"><span class="mono">Buttons</span>
+        <div class="btns"><button class="b1" type="button">Show now</button><button class="b2" type="button">Login</button><button class="b3" type="button">Signup</button></div>
+        <p class="soft" style="margin-top:20px;font-size:15px">A gradient pill marks the one primary action per screen; filled purple and outline handle secondary actions.</p></div>
+      <div class="card"><span class="mono">Where the gradient appears</span>
+        <p style="font-size:15px">The primary button, the wallet card, the account balance, the reward summary and key headlines. It never sits behind body text, which protects readability. Reusable components (the cashback chip, store, task and tier cards, transaction rows and one dialog pattern) carry it across every flow.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 onboarding ================= -->
+<section class="s" id="onboarding">
+  <div class="wrap">
+    <div class="lab rv"><i>03</i><span>Onboarding</span></div>
+    <h2 class="rv">Onboarding speaks to a regional audience from the very first interaction.</h2>
+    <p class="lede rv">The journey starts at sign-in. Phone, email or social accounts all work, and the region selector and Arabic switch sit directly under the form, so users never have to look for them. Verification follows in phone and email versions.</p>
+    <div class="duo">
+      <figure class="rv"><div class="win"><img src="assets/login.jpg" alt="Login page: Zarafa brand panel on the left, phone or email and password on the right, social sign-in, region and Arabic switch"></div>
+        <figcaption class="cap"><em>A</em><div><b>Sign-in</b> <span>Phone, email or social sign-in, with the region selector and Arabic switch right under the form, for a regional audience from the first interaction.</span></div></figcaption></figure>
+      <figure class="rv"><div class="win"><img src="assets/verify.jpg" alt="Verify account page: a four-digit code sent to a phone number, with a resend timer"></div>
+        <figcaption class="cap"><em>B</em><div><b>Verification</b> <span>A four-digit code with a resend timer, in phone and email versions.</span></div></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 the home ================= -->
 <section class="s" id="home">
   <div class="wrap">
-    <div class="lab rv"><i>02</i><span>The home</span></div>
+    <div class="lab rv"><i>04</i><span>The home</span></div>
     <h2 class="rv">Eleven entry points in one scroll, ordered from the most specific intent to the broadest.</h2>
     <p class="lede rv">A tabbed or menu-driven home would hide most of the platform's value behind clicks. Instead, the home is one continuous scroll of purpose-built sections, and every section ends in “See all”, so the length works as a set of doorways rather than an endless feed.</p>
   </div>
@@ -382,17 +426,10 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= the screens, all moving ================= -->
-<section class="strip" aria-label="A selection of Zarafa screens">
-  <div class="wrap cap2 rv"><b>83 screens, <span class="gt">one product.</span></b><span class="mono soft">Six flows · one system</span></div>
-  <div class="row" id="rowA"><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure></div>
-  <div class="row" id="rowB"><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure></div>
-</section>
-
-<!-- ================= 02 stores ================= -->
+<!-- ================= 05 stores & cashback ================= -->
 <section class="s" id="stores">
   <div class="wrap">
-    <div class="lab rv"><i>03</i><span>Stores &amp; cashback</span></div>
+    <div class="lab rv"><i>05</i><span>Stores &amp; cashback</span></div>
     <h2 class="rv">One component carries the business model: the cashback chip.</h2>
     <p class="lede rv">The rate drives conversion, but repeating it on every card risked clutter. A single reusable chip, with a “+” icon, the current rate and the previous one, sits in the same position on every store, deal and brand card. Users compare by scanning, not reading, and showing the old rate makes a promotion obvious at a glance.</p>
     <div class="panel rv">
@@ -412,10 +449,10 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= 03 earning ================= -->
+<!-- ================= 06 earning ================= -->
 <section class="s" id="earn">
   <div class="wrap">
-    <div class="lab rv"><i>04</i><span>Earning</span></div>
+    <div class="lab rv"><i>06</i><span>Earning</span></div>
     <h2 class="rv">Ads, tasks, referrals, savings and tiers, structured so they feel like one reward, not five games.</h2>
     <p class="lede rv">Rewardy states the value of every task before the user commits. Zpoints raises the cashback ceiling as users progress, and the savings summary turns individual results into a reason to keep going.</p>
     <div class="duo wide">
@@ -445,10 +482,10 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= 04 wallet ================= -->
+<!-- ================= 07 the wallet ================= -->
 <section class="s" id="wallet">
   <div class="wrap">
-    <div class="lab rv"><i>05</i><span>The wallet</span></div>
+    <div class="lab rv"><i>07</i><span>The wallet</span></div>
     <h2 class="rv">Clarity and control over every amount, because a balance users can't trace is one they stop trusting.</h2>
     <p class="lede rv">The wallet is action-first: the balance, then the three most frequent actions, the last person paid and recent activity. Every transaction shows its direction, source and status: paid, pending or declined.</p>
     <div class="duo">
@@ -473,52 +510,24 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= 05 account ================= -->
+<!-- ================= 08 account & subscription ================= -->
 <section class="s" id="account">
   <div class="wrap">
-    <div class="lab rv"><i>06</i><span>Account &amp; onboarding</span></div>
-    <h2 class="rv">From the first screen to a lapsed subscription, every state offers a clear next step.</h2>
+    <div class="lab rv"><i>08</i><span>Account &amp; subscription</span></div>
+    <h2 class="rv">The account shows what users can actually use, and a lapsed plan is never a dead end.</h2>
     <div class="duo">
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>account</b></div><img src="assets/account.jpg" alt="Account page: profile, account balance, amounts that can be withdrawn or redeemed, invite friends, receive award, and settings rows"></div>
         <figcaption class="cap"><em>A</em><div><b>Account</b> <span>Withdrawable and partner-redeemable funds side by side, so users know what they can actually use.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>subscription</b></div><img src="assets/subscription.jpg" alt="Subscription page: you are unsubscribed and no longer have access to your offers, with subscribe and access code buttons"></div>
         <figcaption class="cap"><em>B</em><div><b>Subscription recovery</b> <span>A lapsed plan states what access was lost and offers two ways back, turning a dead end into a recovery path.</span></div></figcaption></figure>
     </div>
-    <div class="duo">
-      <figure class="rv"><div class="win"><img src="assets/login.jpg" alt="Login page: Zarafa brand panel on the left, phone or email and password on the right, social sign-in, region and Arabic switch"></div>
-        <figcaption class="cap"><em>C</em><div><b>Sign-in</b> <span>Phone, email or social sign-in, with the region selector and Arabic switch right under the form, for a regional audience from the first interaction.</span></div></figcaption></figure>
-      <figure class="rv"><div class="win"><img src="assets/verify.jpg" alt="Verify account page: a four-digit code sent to a phone number, with a resend timer"></div>
-        <figcaption class="cap"><em>D</em><div><b>Verification</b> <span>A four-digit code with a resend timer, in phone and email versions.</span></div></figcaption></figure>
-    </div>
   </div>
 </section>
 
-<!-- ================= 06 system ================= -->
-<section class="s" id="system">
-  <div class="wrap">
-    <div class="lab rv"><i>07</i><span>Design system</span></div>
-    <h2 class="rv">A deliberately restrained system: the gradient means money or the next step, and nothing else.</h2>
-    <p class="lede rv">With clear colour roles, users learn the language once, so every new screen across the 83 is faster to understand.</p>
-    <div class="sw rv">
-      <div class="gm" style="color:#fff"><b>Zarafa gradient</b><span>#E813FC → #8765EE → #27B9E1</span></div>
-      <div style="background:var(--navy);color:#fff"><b>Navy</b><span>#010247</span></div>
-      <div style="background:var(--pur);color:#fff"><b>Purple</b><span>#C630F7</span></div>
-      <div style="background:var(--tint);border:1px solid var(--line)"><b>Lavender</b><span>#F6EDFA</span></div>
-    </div>
-    <div class="sys rv">
-      <div class="card"><span class="mono">Buttons</span>
-        <div class="btns"><button class="b1" type="button">Show now</button><button class="b2" type="button">Login</button><button class="b3" type="button">Signup</button></div>
-        <p class="soft" style="margin-top:20px;font-size:15px">A gradient pill marks the one primary action per screen; filled purple and outline handle secondary actions.</p></div>
-      <div class="card"><span class="mono">Where the gradient appears</span>
-        <p style="font-size:15px">The primary button, the wallet card, the account balance, the reward summary and key headlines. It never sits behind body text, which protects readability. Reusable components (the cashback chip, store, task and tier cards, transaction rows and one dialog pattern) carry it across every flow.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= 07 decisions ================= -->
+<!-- ================= 09 key decisions ================= -->
 <section class="s" id="decisions">
   <div class="wrap">
-    <div class="lab rv"><i>08</i><span>Key decisions</span></div>
+    <div class="lab rv"><i>09</i><span>Key decisions</span></div>
     <h2 class="rv">Three decisions, the reasoning behind each, and how its trade-off was handled.</h2>
     <div class="dec">
       <article class="rv"><span class="mono soft">Decision 01</span><h3>The rate goes on every card</h3><p>It is the platform's core value and the main driver of store choice.</p><div class="cost"><span class="mono">Trade-off and mitigation</span>Heavy repetition, handled with a small, single-colour chip.</div></article>
@@ -528,10 +537,10 @@ html:not(.js) #pre{display:none}
   </div>
 </section>
 
-<!-- ================= 09 value & learnings ================= -->
+<!-- ================= 10 scope & value ================= -->
 <section class="s" id="value">
   <div class="wrap">
-    <div class="lab rv"><i>09</i><span>Scope, value &amp; learnings</span></div>
+    <div class="lab rv"><i>10</i><span>Scope &amp; value</span></div>
     <h2 class="rv">What was delivered, and what it gives the product.</h2>
     <div class="val">
       <div class="panel dk rv">
@@ -551,8 +560,15 @@ html:not(.js) #pre{display:none}
       </div>
     </div>
 
+  </div>
+</section>
+
+<!-- ================= 11 key learnings ================= -->
+<section class="s" id="learnings">
+  <div class="wrap">
+    <div class="lab rv"><i>11</i><span>Key learnings</span></div>
     <div class="lim rv">
-      <h2>Key learnings</h2>
+      <h2>What this project taught me</h2>
       <ul>
         <li><b>One component can carry a business model.</b> Getting the cashback chip right mattered more than any single screen, because it appears everywhere.</li>
         <li><b>Edge cases are where trust is built.</b> Cancelled, declined and lapsed states took real effort, and they are exactly where a financial product earns or loses confidence.</li>
@@ -560,18 +576,28 @@ html:not(.js) #pre{display:none}
         <li><b>Ask for permission in context.</b> Requesting location only where it pays off is a small decision with a large effect on trust.</li>
       </ul>
     </div>
-    <div class="lim rv" style="margin-top:56px">
-      <h2>Next steps</h2>
+  </div>
+</section>
+
+<!-- ================= 12 next steps ================= -->
+<section class="s" id="next-steps">
+  <div class="wrap">
+    <div class="lab rv"><i>12</i><span>Next steps</span></div>
+    <div class="lim rv">
+      <h2>Where the product goes next</h2>
       <ul>
         <li>Validate the home structure with real users, measuring section engagement and scroll depth.</li>
         <li>Extend the system to a mobile-first layout.</li>
         <li>Complete the Arabic, right-to-left versions of the core flows.</li>
       </ul>
     </div>
-    <p class="mono soft rv" style="margin-top:40px;text-transform:none;letter-spacing:.02em">Every number on this page is counted from the design file.</p>
-  <a class="next rv" href="../elevate/"><div><span class="mono soft">Next case</span><b>Elevate</b></div><i>→</i></a>
   </div>
 </section>
+
+<div class="wrap">
+    <p class="mono soft rv" style="margin-top:80px;text-transform:none;letter-spacing:.02em">Every number on this page is counted from the design file.</p>
+  <a class="next rv" href="../elevate/"><div><span class="mono soft">Next case</span><b>Elevate</b></div><i>→</i></a>
+</div>
 </main>
 
 <footer>
