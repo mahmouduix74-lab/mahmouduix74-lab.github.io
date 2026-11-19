@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Zarafa — Cashback, rewards and a wallet in one website · Case study · Mahmoud Ali</title>
-<meta name="description" content="Zarafa, a freelance website project: cashback offers from stores, ways to earn, and a wallet to send, request and redeem money. 83 screens across six flows.">
+<title>Zarafa — One platform for cashback, rewards and payments · Case study · Mahmoud Ali</title>
+<meta name="description" content="Zarafa: a cashback marketplace, an earning layer and a digital wallet designed as one desktop website. 83 screens, 57 dialogs and states, six end-to-end flows.">
 <link rel="stylesheet" href="../../assets/fonts.css">
 <style>
 /* Zarafa case study. Its own look: white and lavender, with Zarafa's magenta-to-cyan gradient kept for the moments that matter.
@@ -192,6 +192,27 @@ footer a{text-decoration:none}
 footer a.m{font-weight:500;font-size:18px}
 footer a.m:hover{color:var(--pur)}
 
+/* challenge, goals, value */
+.ch{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:40px}
+.ch article{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.ch em{font-style:normal;font-family:var(--mono);font-size:12px;color:#fff;background:var(--gradD);width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+.ch h3{font-size:19px;line-height:1.25;font-weight:600;letter-spacing:-.01em}
+.ch p{font-size:15px;color:var(--soft)}
+.goals .gl{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:22px}
+.goals .gl b{display:block;font-weight:600;margin-bottom:6px}
+.goals .gl p{font-size:15px;color:var(--soft)}
+.val{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px;align-items:stretch}
+.val .panel{margin-top:0}
+.del{display:grid;grid-template-columns:1fr 1fr;gap:28px 24px;margin-top:24px}
+.del b{display:block;font-size:48px;line-height:1;font-weight:600;letter-spacing:-.04em}
+.del span{display:block;margin-top:8px;font-size:14px;opacity:.75;line-height:1.4}
+.vl{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.vl div{background:#fff;border:1px solid var(--line);border-radius:22px;padding:24px}
+.vl b{display:block;font-weight:600;margin-bottom:6px;font-size:17px}
+.vl p{font-size:15px;color:var(--soft)}
+.lim li b{color:var(--ink);font-weight:500}
+section#value .lim{margin-top:90px}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -206,6 +227,7 @@ footer a.m:hover{color:var(--pur)}
   .tiers{grid-template-columns:1fr 1fr}.sw{grid-template-columns:1fr 1fr}.sw div:first-child{grid-column:1/-1}
   .panel{padding:24px}
   .lim{grid-template-columns:1fr;gap:24px}
+  .ch,.goals .gl,.val,.vl,.del{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.tour .hint i{animation:none}}
 </style>
@@ -216,7 +238,7 @@ footer a.m:hover{color:var(--pur)}
   <div class="wrap">
     <a class="back" href="../../"><i>←</i>All work</a>
     <nav>
-      <a href="#home">Home</a><a href="#stores">Stores</a><a href="#earn">Earning</a><a href="#wallet">Wallet</a><a href="#system">System</a><a href="#decisions">Decisions</a>
+      <a href="#challenge">Challenge</a><a href="#home">Home</a><a href="#stores">Stores</a><a href="#earn">Earning</a><a href="#wallet">Wallet</a><a href="#system">System</a><a href="#value">Value</a>
     </nav>
     <a class="talk" href="mailto:Mahmouduix74@gmail.com">Let's talk</a>
   </div>
@@ -229,47 +251,70 @@ footer a.m:hover{color:var(--pur)}
     <div class="txt">
       <div class="tags"><span>Case study</span><span>Freelance</span><span>Website</span><span>Cashback &amp; wallet</span></div>
       <div>
-        <h1>Zarafa: a shop that pays you back, <em>and a wallet to spend it.</em></h1>
-        <p style="margin-top:22px">Cashback from stores, small ways to earn, and a wallet that sends, requests and redeems money. Three products people usually keep apart, designed as one website.</p>
+        <h1>Zarafa: one platform for cashback, <em>rewards and payments.</em></h1>
+        <p style="margin-top:22px">A cashback marketplace, an earning layer and a digital wallet: three products people normally use separately, designed end to end as one coherent website.</p>
       </div>
     </div>
     <div class="shot"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>zarafa · home</b></div><img src="assets/home.jpg" alt="Zarafa home page: a 'Discover your style' headline beside a deal card for a hoodie, with ten percent cashback"></div></div>
   </div>
   <div class="meta rv">
-    <div><span class="mono soft">Role</span><b>UI/UX designer</b></div>
+    <div><span class="mono soft">Role</span><b>UI/UX Designer, end to end</b></div>
     <div><span class="mono soft">Project</span><b>Freelance</b></div>
-    <div><span class="mono soft">Platform</span><b>Desktop website, 1440</b></div>
+    <div><span class="mono soft">Platform</span><b>Desktop web, 1440 grid</b></div>
     <div><span class="mono soft">Market</span><b>Jordan, prices in JOD</b></div>
   </div>
 
   <!-- ================= in 30 seconds ================= -->
   <div class="brief rv">
     <div class="l">
-      <div class="badges"><span>In 30 seconds</span><span>Website</span></div>
-      <h2>Every store on Zarafa pays a little back. The site had to show that rate everywhere without becoming a wall of numbers.</h2>
-      <div class="row"><span class="mono">The parts</span><p>Offers and stores, ways to earn (ads, tasks, invites, levels), savings, and a wallet with transfers, QR payments and vouchers.</p></div>
-      <div class="row"><span class="mono">What I did</span><p>I designed the whole website: sign-up and verification, the home and store pages, the earning flows, the wallet and the account, in one system built on Zarafa's gradient.</p></div>
+      <div class="badges"><span>In 30 seconds</span><span>Overview</span></div>
+      <h2>Three products in one: stores that return a share of every purchase, ways to earn more, and a wallet to move the money.</h2>
+      <div class="row"><span class="mono">The product</span><p>A cashback marketplace, an earning layer (ads, tasks, referrals and loyalty tiers) and a digital wallet to send, request, split and redeem funds.</p></div>
+      <div class="row"><span class="mono">My role</span><p>I designed the full desktop experience, from sign-up and verification to account settings: six end-to-end flows, 83 screens and 57 supporting dialogs and states, unified by one visual system.</p></div>
     </div>
     <div class="r">
       <div><b>83</b><span>full screens</span></div>
       <div><b>57</b><span>dialogs and states</span></div>
       <div><b>6</b><span>flows, from sign-in to account</span></div>
-      <div><b>11</b><span>sections on one home</span></div>
+      <div><b>11</b><span>entry points on one home</span></div>
     </div>
   </div>
 
   <div class="chap rv">
     <span class="mono soft">Jump to</span>
-    <a href="#home"><i>01</i>The home</a><a href="#stores"><i>02</i>Stores &amp; cashback</a><a href="#earn"><i>03</i>Earning</a><a href="#wallet"><i>04</i>The wallet</a><a href="#account"><i>05</i>Account &amp; sign-in</a><a href="#system"><i>06</i>System</a><a href="#decisions"><i>07</i>Decisions</a>
+    <a href="#challenge"><i>01</i>Challenge</a><a href="#home"><i>02</i>The home</a><a href="#stores"><i>03</i>Stores &amp; cashback</a><a href="#earn"><i>04</i>Earning</a><a href="#wallet"><i>05</i>The wallet</a><a href="#account"><i>06</i>Account &amp; onboarding</a><a href="#system"><i>07</i>System</a><a href="#decisions"><i>08</i>Decisions</a><a href="#value"><i>09</i>Value &amp; learnings</a>
   </div>
 </div>
 
-<!-- ================= 01 home ================= -->
+<!-- ================= 01 challenge ================= -->
+<section class="s" id="challenge">
+  <div class="wrap">
+    <div class="lab rv"><i>01</i><span>The challenge</span></div>
+    <h2 class="rv">Each product is simple on its own. Together, they create four design problems.</h2>
+    <div class="ch">
+      <article class="rv"><em>01</em><h3>Visible value, without noise</h3><p>The cashback rate is the reason to use Zarafa. It had to appear on every store, deal and brand card, and dozens of percentages quickly become unreadable.</p></article>
+      <article class="rv"><em>02</em><h3>Many intents, one home</h3><p>Browsing categories, returning to known stores, hunting deals, discovering brands and finding nearby offers all start from the same page.</p></article>
+      <article class="rv"><em>03</em><h3>Traceable money</h3><p>Funds arrive from cashback, ads, tasks, referrals and vouchers, and leave through transfers, requests, QR payments and redemptions. Users must trust every amount.</p></article>
+      <article class="rv"><em>04</em><h3>Motivating, not confusing</h3><p>Points, tiers, tasks and subscriptions add depth, but each one is another rule to learn.</p></article>
+    </div>
+    <div class="panel rv goals">
+      <span class="mono soft">Design goals</span>
+      <div class="gl">
+        <div><b>Scannable value</b><p>Compare cashback rates across a page without reading the cards.</p></div>
+        <div><b>Zero hidden navigation</b><p>Every way into the product reachable from the home, with no menus to dig through.</p></div>
+        <div><b>Traceable money</b><p>Every transaction shows its source, direction and status.</p></div>
+        <div><b>One coherent system</b><p>One visual language across six flows, so 83 screens feel like one product.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 home ================= -->
 <section class="s" id="home">
   <div class="wrap">
-    <div class="lab rv"><i>01</i><span>The home</span></div>
-    <h2 class="rv">One long home, eleven ways in. Each row is a different reason to open a store.</h2>
-    <p class="lede rv">Nothing on the home hides behind a menu. It opens on a single offer, then moves from categories to the stores you already use, then out to deals, brands and what is near you. Every row ends in “See all”.</p>
+    <div class="lab rv"><i>02</i><span>The home</span></div>
+    <h2 class="rv">Eleven entry points in one scroll, ordered from the most specific intent to the broadest.</h2>
+    <p class="lede rv">A tabbed or menu-driven home would hide most of the platform's value behind clicks. Instead, the home is one continuous scroll of purpose-built sections, and every section ends in “See all”, so the length works as a set of doorways rather than an endless feed.</p>
   </div>
   <div class="wrap tour" id="tour">
     <div class="pin">
@@ -284,8 +329,8 @@ footer a.m:hover{color:var(--pur)}
         <li data-y="1720"><em>04</em><div><b>Hot deals</b><small>Wide cards with the offer, the rate and a “Shop now” button.</small></div></li>
         <li data-y="2190"><em>05</em><div><b>Squad picks</b><small>Brands picked for you, with a save button on each.</small></div></li>
         <li data-y="2700"><em>06</em><div><b>Deals of the week</b><small>Bigger brand offers that change every week.</small></div></li>
-        <li data-y="3200"><em>07</em><div><b>Special offers</b><small>Product photos, tagged by the kind of reward: ad offer, value added or cashback.</small></div></li>
-        <li data-y="3880"><em>08</em><div><b>Nearest to you</b><small>Asks for your location only here, at the point where it gives you something back.</small></div></li>
+        <li data-y="3200"><em>07</em><div><b>Special offers</b><small>Each offer tagged by reward type: ad offer, value added or cashback.</small></div></li>
+        <li data-y="3880"><em>08</em><div><b>Nearest to you</b><small>Location permission is requested only here, at the moment its benefit is obvious: a deliberate trust decision.</small></div></li>
         <li data-y="4350"><em>09</em><div><b>New brands</b><small>Stores that just joined.</small></div></li>
         <li data-y="4970"><em>10</em><div><b>New to cashback</b><small>Collections from brands, told with photos rather than logos.</small></div></li>
         <li data-y="5550"><em>11</em><div><b>Popular</b><small>The stores members use most, to close the page.</small></div></li>
@@ -298,11 +343,11 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 02 stores ================= -->
 <section class="s" id="stores">
   <div class="wrap">
-    <div class="lab rv"><i>02</i><span>Stores &amp; cashback</span></div>
-    <h2 class="rv">One chip on every card: the rate you get, and what it used to be.</h2>
-    <p class="lede rv">A store list gets long fast. Each card keeps to a logo, a name and the same cashback chip, so the eye can run down a page and compare rates without reading.</p>
+    <div class="lab rv"><i>03</i><span>Stores &amp; cashback</span></div>
+    <h2 class="rv">One component carries the business model: the cashback chip.</h2>
+    <p class="lede rv">The rate drives conversion, but repeating it on every card risked clutter. A single reusable chip, with a “+” icon, the current rate and the previous one, sits in the same position on every store, deal and brand card. Users compare by scanning, not reading, and showing the old rate makes a promotion obvious at a glance.</p>
     <div class="panel rv">
-      <span class="mono soft">The chip, rebuilt</span>
+      <span class="mono soft">The chip, rebuilt. Trade-off: it repeats dozens of times, so it stays small and in one colour</span>
       <div class="chipdemo">
         <span class="chip big"><i>+</i><b>10% cash back</b><s>was 2%</s></span>
         <span class="chip"><i>+</i><b>Up to 10% online</b></span>
@@ -313,7 +358,7 @@ footer a.m:hover{color:var(--pur)}
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>categories</b></div><div class="long"><img src="assets/categories.jpg" alt="Categories page: popular categories, then every category as tiles"></div></div>
         <figcaption class="cap"><em>A</em><div><b>Categories</b> <span>Popular ones first, then every category in the same tile, so the page reads as one grid.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>food · coffee</b></div><div class="long"><img src="assets/store.jpg" alt="A category page for food and coffee: an app-only offer banner, then store cards with cashback rates, an A to Z filter and category chips"></div></div>
-        <figcaption class="cap"><em>B</em><div><b>A category of stores</b> <span>An app-only banner, then every store with its rate, an A–Z index and category chips to narrow the list.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>B</em><div><b>A category of stores</b> <span>Built for long lists: an A–Z index and category filter chips keep large catalogues manageable.</span></div></figcaption></figure>
     </div>
   </div>
 </section>
@@ -321,14 +366,14 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 03 earning ================= -->
 <section class="s" id="earn">
   <div class="wrap">
-    <div class="lab rv"><i>03</i><span>Earning</span></div>
-    <h2 class="rv">Money doesn't only come from shopping. Watching an ad, finishing your profile or inviting a friend pays too.</h2>
-    <p class="lede rv">Rewardy lists small tasks with their reward on each card. Zpoints adds levels on top: the more you earn, the higher your cashback ceiling.</p>
+    <div class="lab rv"><i>04</i><span>Earning</span></div>
+    <h2 class="rv">Ads, tasks, referrals, savings and tiers, structured so they feel like one reward, not five games.</h2>
+    <p class="lede rv">Rewardy states the value of every task before the user commits. Zpoints raises the cashback ceiling as users progress, and the savings summary turns individual results into a reason to keep going.</p>
     <div class="duo wide">
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>active ads · rewardy</b></div><img src="assets/ads.jpg" alt="Rewardy page: an activity summary with tasks, time to complete and total coins, then task cards such as check daily rewardy and invite friends"></div>
-        <figcaption class="cap"><em>A</em><div><b>Rewardy</b> <span>One summary bar (tasks, time, coins), then a card per task with its reward in dinars.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>A</em><div><b>Rewardy, the task hub</b> <span>An activity summary (tasks, time to complete, total coins), then a card per task with its reward up front.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>saving</b></div><div class="long"><img src="assets/saving.jpg" alt="Savings summary: this month and all time, then a chart comparing your savings with other users"></div></div>
-        <figcaption class="cap"><em>B</em><div><b>Savings</b> <span>This month and all time, then how your savings compare with other members.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>B</em><div><b>Savings summary</b> <span>Monthly and all-time savings, plus a comparison with other members.</span></div></figcaption></figure>
     </div>
     <div class="panel cy rv">
       <span class="mono soft">Zpoints levels, as the file sets them</span>
@@ -341,9 +386,9 @@ footer a.m:hover{color:var(--pur)}
       <div class="duo" style="margin-top:28px">
         <div class="win"><div class="chrome"><i></i><i></i><i></i><b>zpoints levels</b></div><div class="long"><img src="assets/zpoints.jpg" alt="Zpoints levels page: four tiers, the benefits of Gold, how it works and frequently asked questions"></div></div>
         <div class="notes" style="grid-template-columns:1fr;margin-top:0">
-          <div class="note"><b>The benefits open under the level</b><p>Pick a tier and its perks drop down beneath it: more points, exclusive offers, priority support.</p></div>
-          <div class="note"><b>The rule in one line</b><p>“How it works” says what it takes to reach Gold in a sentence, before the questions.</p></div>
-          <div class="note"><b>Questions last</b><p>The FAQ sits at the end, folded, for the people who still need it.</p></div>
+          <div class="note"><b>Progressive disclosure</b><p>Each tier's benefits open directly beneath it: more points, exclusive offers, priority support.</p></div>
+          <div class="note"><b>The rule in one sentence</b><p>What it takes to reach a tier is stated once, plainly, before any detail.</p></div>
+          <div class="note"><b>Detail on demand</b><p>The FAQ sits at the end, collapsed, for the users who need more.</p></div>
         </div>
       </div>
     </div>
@@ -353,14 +398,14 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 04 wallet ================= -->
 <section class="s" id="wallet">
   <div class="wrap">
-    <div class="lab rv"><i>04</i><span>The wallet</span></div>
-    <h2 class="rv">What you earn lands in a wallet you can actually use: send, request, split, scan.</h2>
-    <p class="lede rv">The wallet opens on your balance and the three things people do most. Every transaction keeps its state (paid, pending, declined) next to the amount.</p>
+    <div class="lab rv"><i>05</i><span>The wallet</span></div>
+    <h2 class="rv">Clarity and control over every amount, because a balance users can't trace is one they stop trusting.</h2>
+    <p class="lede rv">The wallet is action-first: the balance, then the three most frequent actions, the last person paid and recent activity. Every transaction shows its direction, source and status: paid, pending or declined.</p>
     <div class="duo">
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>wallet</b></div><img src="assets/wallet.jpg" alt="Wallet page: balance, scan and pay, get paid, easy split, send again, recent transactions and the wallet card"></div>
-        <figcaption class="cap"><em>A</em><div><b>Wallet home</b> <span>Balance, then scan &amp; pay, get paid and easy split, the last person you paid, and recent activity.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>A</em><div><b>Action-first wallet home</b> <span>Balance, then Scan &amp; Pay, Get Paid and Easy Split, the last person paid, and recent activity.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>transactions</b></div><img src="assets/transfer.jpg" alt="Transactions page grouped by day: payment requests pending, credit received, amount sent and credit added"></div>
-        <figcaption class="cap"><em>B</em><div><b>Transactions</b> <span>Grouped by day, with the money in or out and its state on every row.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>B</em><div><b>Transaction history</b> <span>Grouped by day; every row names its direction, source and status.</span></div></figcaption></figure>
     </div>
     <div class="panel dk rv">
       <span class="mono" style="opacity:.6">Some of the 57 dialogs</span>
@@ -370,9 +415,9 @@ footer a.m:hover{color:var(--pur)}
         <figure><img src="assets/congrats.jpg" alt="Congratulations dialog: you just earned 100 JOD"><figcaption>A reward lands</figcaption></figure>
       </div>
       <div class="notes">
-        <div class="note"><b>One dialog per step</b><p>Transfers, requests, cancels and declines each get their own small dialog, instead of a page.</p></div>
-        <div class="note"><b>The gradient means money</b><p>The wallet card and the main button carry the gradient. The rest of the wallet stays white.</p></div>
-        <div class="note"><b>Always a way back</b><p>A request can be reminded, cancelled or declined from the same place it was made.</p></div>
+        <div class="note"><b>Focused dialogs</b><p>Transfers, requests, cancellations, declines, QR scans, vouchers and rewards each get a dialog instead of a page change: a large part of the 57 states.</p></div>
+        <div class="note"><b>The gradient means money</b><p>Only the wallet card and the primary action carry the gradient; the rest of the wallet stays white.</p></div>
+        <div class="note"><b>Reversibility</b><p>A payment request can be reminded, cancelled or declined from the same place it was created.</p></div>
       </div>
     </div>
   </div>
@@ -381,19 +426,19 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 05 account ================= -->
 <section class="s" id="account">
   <div class="wrap">
-    <div class="lab rv"><i>05</i><span>Account &amp; sign-in</span></div>
-    <h2 class="rv">The account shows what you can take out, and sign-in starts with your region and language.</h2>
+    <div class="lab rv"><i>06</i><span>Account &amp; onboarding</span></div>
+    <h2 class="rv">From the first screen to a lapsed subscription, every state offers a clear next step.</h2>
     <div class="duo">
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>account</b></div><img src="assets/account.jpg" alt="Account page: profile, account balance, amounts that can be withdrawn or redeemed, invite friends, receive award, and settings rows"></div>
-        <figcaption class="cap"><em>A</em><div><b>Account</b> <span>Balance up top, then what can be withdrawn and what can be redeemed with partners, side by side.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>A</em><div><b>Account</b> <span>Withdrawable and partner-redeemable funds side by side, so users know what they can actually use.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><div class="chrome"><i></i><i></i><i></i><b>subscription</b></div><img src="assets/subscription.jpg" alt="Subscription page: you are unsubscribed and no longer have access to your offers, with subscribe and access code buttons"></div>
-        <figcaption class="cap"><em>B</em><div><b>Subscription</b> <span>When it lapses, the page says what you lost and offers two ways back: subscribe or an access code.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>B</em><div><b>Subscription recovery</b> <span>A lapsed plan states what access was lost and offers two ways back, turning a dead end into a recovery path.</span></div></figcaption></figure>
     </div>
     <div class="duo">
       <figure class="rv"><div class="win"><img src="assets/login.jpg" alt="Login page: Zarafa brand panel on the left, phone or email and password on the right, social sign-in, region and Arabic switch"></div>
-        <figcaption class="cap"><em>C</em><div><b>Sign-in</b> <span>Phone or email, social sign-in, and the region and Arabic switch right under the form.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>C</em><div><b>Sign-in</b> <span>Phone, email or social sign-in, with the region selector and Arabic switch right under the form, for a regional audience from the first interaction.</span></div></figcaption></figure>
       <figure class="rv"><div class="win"><img src="assets/verify.jpg" alt="Verify account page: a four-digit code sent to a phone number, with a resend timer"></div>
-        <figcaption class="cap"><em>D</em><div><b>Verification</b> <span>A four-digit code with a resend timer. The flow has a phone and an email version.</span></div></figcaption></figure>
+        <figcaption class="cap"><em>D</em><div><b>Verification</b> <span>A four-digit code with a resend timer, in phone and email versions.</span></div></figcaption></figure>
     </div>
   </div>
 </section>
@@ -401,8 +446,9 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 06 system ================= -->
 <section class="s" id="system">
   <div class="wrap">
-    <div class="lab rv"><i>06</i><span>System</span></div>
-    <h2 class="rv">One gradient, kept for money and the main action. Everything else is white and lavender.</h2>
+    <div class="lab rv"><i>07</i><span>Design system</span></div>
+    <h2 class="rv">A deliberately restrained system: the gradient means money or the next step, and nothing else.</h2>
+    <p class="lede rv">With clear colour roles, users learn the language once, so every new screen across the 83 is faster to understand.</p>
     <div class="sw rv">
       <div style="background:var(--grad);color:#fff"><b>Zarafa gradient</b><span>#E813FC → #8765EE → #27B9E1</span></div>
       <div style="background:var(--navy);color:#fff"><b>Navy</b><span>#010247</span></div>
@@ -412,9 +458,9 @@ footer a.m:hover{color:var(--pur)}
     <div class="sys rv">
       <div class="card"><span class="mono">Buttons</span>
         <div class="btns"><button class="b1" type="button">Show now</button><button class="b2" type="button">Login</button><button class="b3" type="button">Signup</button></div>
-        <p class="soft" style="margin-top:20px;font-size:15px">The gradient pill is the one action on a screen. Filled purple and outline cover the rest.</p></div>
+        <p class="soft" style="margin-top:20px;font-size:15px">A gradient pill marks the one primary action per screen; filled purple and outline handle secondary actions.</p></div>
       <div class="card"><span class="mono">Where the gradient appears</span>
-        <p style="font-size:15px">The headline on the home, the main button, the wallet card, the account balance, the reward summary and the footer. It never sits behind body text.</p></div>
+        <p style="font-size:15px">The primary button, the wallet card, the account balance, the reward summary and key headlines. It never sits behind body text, which protects readability. Reusable components (the cashback chip, store, task and tier cards, transaction rows and one dialog pattern) carry it across every flow.</p></div>
     </div>
   </div>
 </section>
@@ -422,28 +468,60 @@ footer a.m:hover{color:var(--pur)}
 <!-- ================= 07 decisions ================= -->
 <section class="s" id="decisions">
   <div class="wrap">
-    <div class="lab rv"><i>07</i><span>Decisions</span></div>
-    <h2 class="rv">Three calls in the design, and what each one costs.</h2>
+    <div class="lab rv"><i>08</i><span>Key decisions</span></div>
+    <h2 class="rv">Three decisions, the reasoning behind each, and how its trade-off was handled.</h2>
     <div class="dec">
-      <article class="rv"><span class="mono soft">Decision 01</span><h3>The rate goes on every card</h3><p>Cashback is the reason to use Zarafa at all, so every store shows it in the same chip, old rate included.</p><div class="cost"><span class="mono">The cost</span>The same chip repeats dozens of times, so it stays small and in one colour.</div></article>
-      <article class="rv"><span class="mono soft">Decision 02</span><h3>One long home</h3><p>Eleven rows on one page, each a different way in, rather than splitting deals, brands and nearby offers into tabs.</p><div class="cost"><span class="mono">The cost</span>A long scroll. Every row gets a “See all” so it can open into its own page.</div></article>
-      <article class="rv"><span class="mono soft">Decision 03</span><h3>Earning and spending share one wallet</h3><p>Ads, tasks, invites and cashback all pay into the same balance you send and redeem from.</p><div class="cost"><span class="mono">The cost</span>The wallet has to show where each amount came from, so every row names its source and state.</div></article>
+      <article class="rv"><span class="mono soft">Decision 01</span><h3>The rate goes on every card</h3><p>It is the platform's core value and the main driver of store choice.</p><div class="cost"><span class="mono">Trade-off and mitigation</span>Heavy repetition, handled with a small, single-colour chip.</div></article>
+      <article class="rv"><span class="mono soft">Decision 02</span><h3>One long home instead of tabs</h3><p>It exposes every entry point without extra navigation.</p><div class="cost"><span class="mono">Trade-off and mitigation</span>A long scroll, so every section offers “See all” into its own page.</div></article>
+      <article class="rv"><span class="mono soft">Decision 03</span><h3>One wallet for earning and spending</h3><p>A single balance is simpler to understand than several.</p><div class="cost"><span class="mono">Trade-off and mitigation</span>Each amount needs a visible source, so every transaction row names its origin and status.</div></article>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-  <div class="lim rv">
-    <h2>What this page doesn't show yet</h2>
-    <ul>
-      <li>This page shows design work. It carries no usage or sales numbers; every number above is counted from the design file.</li>
-      <li>The file is a desktop website at 1440. There is no mobile layout in it.</li>
-      <li>The sign-in has an Arabic switch and a region picker, but the screens themselves are designed in English.</li>
-    </ul>
-  </div>
+<!-- ================= 09 value & learnings ================= -->
+<section class="s" id="value">
+  <div class="wrap">
+    <div class="lab rv"><i>09</i><span>Scope, value &amp; learnings</span></div>
+    <h2 class="rv">What was delivered, and what it gives the product.</h2>
+    <div class="val">
+      <div class="panel dk rv">
+        <span class="mono" style="opacity:.6">Delivered</span>
+        <div class="del">
+          <div><b>6</b><span>end-to-end flows: Login, Home, Saving, Active Ads, Wallet and Account</span></div>
+          <div><b>83</b><span>full screens, covering the main paths</span></div>
+          <div><b>57</b><span>dialogs and states, including the edge cases: cancelled transactions, declined requests, lapsed subscriptions, verification</span></div>
+          <div><b>1</b><span>reusable component library and colour system across the product</span></div>
+        </div>
+      </div>
+      <div class="vl rv">
+        <div><b>Faster comparison</b><p>Cashback rates can be compared by scanning, which supports the platform's main conversion goal.</p></div>
+        <div><b>Higher trust</b><p>Every financial movement is traceable by its source and status.</p></div>
+        <div><b>Built-in reasons to return</b><p>Tiers, tasks and savings feedback give users a reason to come back beyond a single purchase.</p></div>
+        <div><b>Ready for regional growth</b><p>Region selection and an Arabic switch are part of the experience from the first screen.</p></div>
+      </div>
+    </div>
 
+    <div class="lim rv">
+      <h2>Key learnings</h2>
+      <ul>
+        <li><b>One component can carry a business model.</b> Getting the cashback chip right mattered more than any single screen, because it appears everywhere.</li>
+        <li><b>Edge cases are where trust is built.</b> Cancelled, declined and lapsed states took real effort, and they are exactly where a financial product earns or loses confidence.</li>
+        <li><b>Restraint scales.</b> Reserving the gradient for a single meaning kept a large product coherent across very different flows.</li>
+        <li><b>Ask for permission in context.</b> Requesting location only where it pays off is a small decision with a large effect on trust.</li>
+      </ul>
+    </div>
+    <div class="lim rv" style="margin-top:56px">
+      <h2>Next steps</h2>
+      <ul>
+        <li>Validate the home structure with real users, measuring section engagement and scroll depth.</li>
+        <li>Extend the system to a mobile-first layout.</li>
+        <li>Complete the Arabic, right-to-left versions of the core flows.</li>
+      </ul>
+    </div>
+    <p class="mono soft rv" style="margin-top:40px;text-transform:none;letter-spacing:.02em">Every number on this page is counted from the design file.</p>
   <a class="next rv" href="../elevate/"><div><span class="mono soft">Next case</span><b>Elevate</b></div><i>→</i></a>
-</div>
+  </div>
+</section>
 </main>
 
 <footer>
