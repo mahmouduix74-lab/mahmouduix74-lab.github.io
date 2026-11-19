@@ -18,7 +18,8 @@
   --w:1180px; --r:28px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{overflow-x:clip}
 body{background:var(--bg);color:var(--ink);font-family:'Inter Tight',system-ui,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
@@ -98,9 +99,10 @@ section.s{padding:120px 0 0}
 
 /* the home tour: the page's scroll walks the home screen, one section at a time */
 .tour{position:relative;margin-top:44px}
-.tour .pin{position:sticky;top:84px;display:grid;grid-template-columns:1.45fr 1fr;gap:44px;align-items:start;border-radius:var(--r);background:var(--tint);padding:36px}
+.tour .pin{position:relative;display:grid;grid-template-columns:1.45fr 1fr;gap:44px;align-items:start;border-radius:var(--r);background:var(--tint);padding:36px}
 .tour .scr{height:min(72vh,680px);overflow:hidden;position:relative}
 .tour .scr img{width:100%;will-change:transform}
+.tour li small{transition:max-height .45s,opacity .35s,margin .35s}
 .tour .scr::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60px;background:linear-gradient(transparent,rgba(255,255,255,.9));pointer-events:none}
 .tour ol{list-style:none;counter-reset:n;display:flex;flex-direction:column;gap:2px;padding-top:6px}
 .tour li{display:grid;grid-template-columns:34px 1fr;gap:8px;padding:9px 12px;border-radius:12px;color:var(--soft);transition:background .35s,color .35s;cursor:pointer}
@@ -120,7 +122,7 @@ section.s{padding:120px 0 0}
 .duo{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:44px;align-items:start}
 .duo.wide{grid-template-columns:1.2fr 1fr}
 .long{height:520px;overflow:hidden}
-.long img{transition:transform 0s linear}
+.long img{will-change:transform}
 .cap{margin-top:14px;display:grid;grid-template-columns:28px 1fr;gap:6px;font-size:15px}
 .cap em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--pur);padding-top:3px}
 .cap b{font-weight:500}
@@ -213,9 +215,44 @@ footer a.m:hover{color:var(--pur)}
 .lim li b{color:var(--ink);font-weight:500}
 section#value .lim{margin-top:90px}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
+/* ---------- motion layer (GSAP + Lenis). Hidden states only exist when the script runs, so the page reads fine without it ---------- */
+html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-stopped{overflow:hidden}
+.js .rv{visibility:hidden}
+.ln-mask{overflow:hidden;padding-bottom:.06em;margin-bottom:-.06em}
+/* intro */
+#pre{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:var(--navy);color:#fff;pointer-events:none}
+#pre .pg{position:absolute;inset:0;background:var(--gradD);clip-path:inset(100% 0 0 0)}
+#pre .in{position:relative;display:flex;flex-direction:column;align-items:center;gap:18px}
+#pre .wm{font-size:clamp(54px,9vw,128px);font-weight:600;letter-spacing:-.05em;line-height:1;overflow:hidden}
+#pre .wm span{display:inline-block}
+#pre .ct{font-family:var(--mono);font-size:13px;letter-spacing:.1em;opacity:.7}
+html:not(.js) #pre{display:none}
+/* scroll progress */
+#prog{position:fixed;left:0;right:0;top:0;height:3px;z-index:30;background:var(--grad);transform-origin:0 50%;transform:scaleX(0)}
+/* cursor */
+#cur{position:fixed;left:0;top:0;z-index:90;width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:var(--gradD);pointer-events:none;display:grid;place-items:center;
+  font:600 11px var(--mono);letter-spacing:.06em;color:#fff;text-transform:uppercase;opacity:0}
+#cur span{opacity:0;white-space:nowrap}
+@media (hover:none){#cur{display:none}}
+/* screens strip */
+.strip{padding:120px 0 0;overflow:hidden}
+.strip .row{display:flex;gap:20px;width:max-content;will-change:transform}
+.strip .row+.row{margin-top:20px}
+.strip figure{width:400px;flex:none;border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 20px 40px -24px rgba(14,14,58,.3)}
+.strip figure img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.strip .cap2{display:flex;justify-content:space-between;align-items:end;margin-bottom:34px}
+.strip .cap2 b{font-size:clamp(28px,3vw,40px);font-weight:600;letter-spacing:-.03em;line-height:1.05}
+/* tiers progress */
+.tline{position:relative;height:6px;border-radius:6px;background:rgba(14,14,58,.08);margin-top:22px;overflow:hidden}
+.tline i{position:absolute;inset:0;background:linear-gradient(90deg,#C96A73,#7D7D84 33%,#E59E12 66%,var(--mag));transform-origin:0 50%;transform:scaleX(0)}
+/* moving gradient swatch */
+.sw .gm{background:linear-gradient(90deg,var(--mag),var(--vio),var(--cy),var(--vio),var(--mag));background-size:300% 100%}
+/* next case fill */
+.next{position:relative;overflow:hidden;isolation:isolate}
+.next::before{content:"";position:absolute;inset:0;background:var(--gradD);z-index:-1;clip-path:circle(0% at var(--mx,90%) var(--my,50%));transition:clip-path .7s cubic-bezier(.2,.7,.2,1)}
+.next:hover::before{clip-path:circle(150% at var(--mx,90%) var(--my,50%))}
+.next:hover{color:#fff;border-color:transparent}.next:hover .soft{color:rgba(255,255,255,.75)}
+.mag{display:inline-block;will-change:transform}
 
 @media (max-width:900px){
   .bar nav{display:none}
@@ -229,10 +266,15 @@ section#value .lim{margin-top:90px}
   .lim{grid-template-columns:1fr;gap:24px}
   .ch,.goals .gl,.val,.vl,.del{grid-template-columns:1fr}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.tour .hint i{animation:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.tour .hint i{animation:none}}
+@media (max-width:900px){.strip figure{width:260px}}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('still')</script>
+<div id="pre" aria-hidden="true"><i class="pg"></i><div class="in"><div class="wm"><span>Zarafa</span></div><div class="ct"><span id="preN">000</span> / 083 screens</div></div></div>
+<div id="prog" aria-hidden="true"></div>
+<div id="cur" aria-hidden="true"><span>Scroll</span></div>
 
 <header class="bar" id="bar">
   <div class="wrap">
@@ -240,7 +282,7 @@ section#value .lim{margin-top:90px}
     <nav>
       <a href="#challenge">Challenge</a><a href="#home">Home</a><a href="#stores">Stores</a><a href="#earn">Earning</a><a href="#wallet">Wallet</a><a href="#system">System</a><a href="#value">Value</a>
     </nav>
-    <a class="talk" href="mailto:Mahmouduix74@gmail.com">Let's talk</a>
+    <a class="talk mag" href="mailto:Mahmouduix74@gmail.com">Let's talk</a>
   </div>
 </header>
 
@@ -273,10 +315,10 @@ section#value .lim{margin-top:90px}
       <div class="row"><span class="mono">My role</span><p>I designed the full desktop experience, from sign-up and verification to account settings: six end-to-end flows, 83 screens and 57 supporting dialogs and states, unified by one visual system.</p></div>
     </div>
     <div class="r">
-      <div><b>83</b><span>full screens</span></div>
-      <div><b>57</b><span>dialogs and states</span></div>
-      <div><b>6</b><span>flows, from sign-in to account</span></div>
-      <div><b>11</b><span>entry points on one home</span></div>
+      <div><b data-count="83">83</b><span>full screens</span></div>
+      <div><b data-count="57">57</b><span>dialogs and states</span></div>
+      <div><b data-count="6">6</b><span>flows, from sign-in to account</span></div>
+      <div><b data-count="11">11</b><span>entry points on one home</span></div>
     </div>
   </div>
 
@@ -340,6 +382,13 @@ section#value .lim{margin-top:90px}
   </div>
 </section>
 
+<!-- ================= the screens, all moving ================= -->
+<section class="strip" aria-label="A selection of Zarafa screens">
+  <div class="wrap cap2 rv"><b>83 screens, <span class="gt">one product.</span></b><span class="mono soft">Six flows · one system</span></div>
+  <div class="row" id="rowA"><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_home.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_categories.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_store.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_ads.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_saving.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_zpoints.jpg" alt="" loading="lazy"></figure></div>
+  <div class="row" id="rowB"><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_wallet.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_transfer.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_account.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_subscription.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_login.jpg" alt="" loading="lazy"></figure><figure><img src="assets/th_verify.jpg" alt="" loading="lazy"></figure></div>
+</section>
+
 <!-- ================= 02 stores ================= -->
 <section class="s" id="stores">
   <div class="wrap">
@@ -349,7 +398,7 @@ section#value .lim{margin-top:90px}
     <div class="panel rv">
       <span class="mono soft">The chip, rebuilt. Trade-off: it repeats dozens of times, so it stays small and in one colour</span>
       <div class="chipdemo">
-        <span class="chip big"><i>+</i><b>10% cash back</b><s>was 2%</s></span>
+        <span class="chip big" id="chipBig"><i>+</i><b><span id="chipN">10</span>% cash back</b><s>was 2%</s></span>
         <span class="chip"><i>+</i><b>Up to 10% online</b></span>
         <span class="chip"><i>+</i><b>1% online</b></span>
       </div>
@@ -383,6 +432,7 @@ section#value .lim{margin-top:90px}
         <div class="tier t3"><span>1501–2000</span><div><b>Gold</b><span style="display:block">Up to 2% cashback</span></div></div>
         <div class="tier t4"><span>2001+</span><div><b>ProTones</b><span style="display:block">Up to 3% cashback</span></div></div>
       </div>
+      <div class="tline" aria-hidden="true"><i id="tline"></i></div>
       <div class="duo" style="margin-top:28px">
         <div class="win"><div class="chrome"><i></i><i></i><i></i><b>zpoints levels</b></div><div class="long"><img src="assets/zpoints.jpg" alt="Zpoints levels page: four tiers, the benefits of Gold, how it works and frequently asked questions"></div></div>
         <div class="notes" style="grid-template-columns:1fr;margin-top:0">
@@ -450,7 +500,7 @@ section#value .lim{margin-top:90px}
     <h2 class="rv">A deliberately restrained system: the gradient means money or the next step, and nothing else.</h2>
     <p class="lede rv">With clear colour roles, users learn the language once, so every new screen across the 83 is faster to understand.</p>
     <div class="sw rv">
-      <div style="background:var(--grad);color:#fff"><b>Zarafa gradient</b><span>#E813FC → #8765EE → #27B9E1</span></div>
+      <div class="gm" style="color:#fff"><b>Zarafa gradient</b><span>#E813FC → #8765EE → #27B9E1</span></div>
       <div style="background:var(--navy);color:#fff"><b>Navy</b><span>#010247</span></div>
       <div style="background:var(--pur);color:#fff"><b>Purple</b><span>#C630F7</span></div>
       <div style="background:var(--tint);border:1px solid var(--line)"><b>Lavender</b><span>#F6EDFA</span></div>
@@ -487,10 +537,10 @@ section#value .lim{margin-top:90px}
       <div class="panel dk rv">
         <span class="mono" style="opacity:.6">Delivered</span>
         <div class="del">
-          <div><b>6</b><span>end-to-end flows: Login, Home, Saving, Active Ads, Wallet and Account</span></div>
-          <div><b>83</b><span>full screens, covering the main paths</span></div>
-          <div><b>57</b><span>dialogs and states, including the edge cases: cancelled transactions, declined requests, lapsed subscriptions, verification</span></div>
-          <div><b>1</b><span>reusable component library and colour system across the product</span></div>
+          <div><b data-count="6">6</b><span>end-to-end flows: Login, Home, Saving, Active Ads, Wallet and Account</span></div>
+          <div><b data-count="83">83</b><span>full screens, covering the main paths</span></div>
+          <div><b data-count="57">57</b><span>dialogs and states, including the edge cases: cancelled transactions, declined requests, lapsed subscriptions, verification</span></div>
+          <div><b data-count="1">1</b><span>reusable component library and colour system across the product</span></div>
         </div>
       </div>
       <div class="vl rv">
@@ -531,58 +581,198 @@ section#value .lim{margin-top:90px}
   </div>
 </footer>
 
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
 <script>
 'use strict';
-const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* The motion layer. GSAP drives every reveal and scrub; Lenis smooths the scroll and feeds ScrollTrigger.
+   With reduced motion, nothing moves: the content is simply shown. */
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const STILL = document.documentElement.classList.contains('still');
+const bar = $('#bar'), navA = [...bar.querySelectorAll('nav a')];
 
-// the bar gets a hairline once the page moves; the nav marks the chapter in view
-const bar = document.getElementById('bar');
-addEventListener('scroll', () => bar.classList.toggle('on', scrollY > 10), {passive: true});
-const navA = [...bar.querySelectorAll('nav a')];
-const nio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) navA.forEach(a => a.classList.toggle('cur', a.hash === '#' + e.target.id)); }), {rootMargin: '-45% 0px -50% 0px'});
-document.querySelectorAll('section.s').forEach(sec => nio.observe(sec));
+if (STILL || !window.gsap) {
+  // no motion: show everything, keep the chapter highlight and the anchors
+  $$('.rv').forEach(el => el.style.visibility = 'visible'); $('#pre') && $('#pre').remove();
+  addEventListener('scroll', () => bar.classList.toggle('on', scrollY > 10), {passive: true});
+} else {
+  gsap.registerPlugin(ScrollTrigger, SplitText, CustomEase);
+  CustomEase.create('silk', 'M0,0 C0.16,1 0.3,1 1,1');           // a long, soft landing
+  CustomEase.create('snap', 'M0,0 C0.7,0 0.2,1 1,1');
+  gsap.defaults({ease: 'silk', duration: 1.1});
 
-// reveal on the way in
-const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), {rootMargin: '0px 0px -8% 0px'});
-document.querySelectorAll('.rv').forEach(el => rio.observe(el));
+  // ---------- smooth scroll ----------
+  const lenis = new Lenis({lerp: .09, wheelMultiplier: .95});
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0);
+  lenis.stop();
+  $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => { const t = $(a.getAttribute('href')); if (!t) return; e.preventDefault(); lenis.scrollTo(t, {offset: -70, duration: 1.4}); }));
 
-// a long screen scrolls inside its window while the pointer rests on it, and settles back when it leaves
-document.querySelectorAll('.long').forEach(box => {
-  const img = box.querySelector('img');
-  const go = on => { const d = Math.max(0, img.offsetHeight - box.clientHeight);
-    img.style.transition = `transform ${on ? Math.max(1.2, d / 260) : .9}s ${on ? 'linear' : 'cubic-bezier(.2,.7,.2,1)'}`;
-    img.style.transform = on && !still ? `translateY(${-d}px)` : 'none'; };
-  box.addEventListener('mouseenter', () => go(true)); box.addEventListener('mouseleave', () => go(false));
-});
+  // ---------- top bar, progress, chapter highlight ----------
+  ScrollTrigger.create({start: 10, end: 'max', onToggle: s => bar.classList.toggle('on', s.isActive)});
+  gsap.to('#prog', {scaleX: 1, ease: 'none', scrollTrigger: {start: 0, end: 'max', scrub: .3}});
+  $$('section.s').forEach(sec => ScrollTrigger.create({trigger: sec, start: 'top 50%', end: 'bottom 50%',
+    onToggle: s => s.isActive && navA.forEach(a => a.classList.toggle('cur', a.hash === '#' + sec.id))}));
 
-// the home tour: the section is tall; while its window is pinned, scrolling walks the home screen and lights each section in the list
-{
-  const tour = document.getElementById('tour'), pin = tour.querySelector('.pin'), scr = tour.querySelector('.scr'), img = document.getElementById('tourImg'),
-        items = [...document.querySelectorAll('#tourList li')], prog = document.getElementById('tourProg'), ys = items.map(li => +li.dataset.y);
-  const NAT = 6594;   // the home screen's height in the design, which data-y counts in
-  let cur = -1, k = 0, shown = 0, raf = 0;
-  const size = () => { tour.style.height = matchMedia('(max-width:900px)').matches ? 'auto' : (pin.offsetHeight + innerHeight * 2.6) + 'px'; };
-  const target = () => { const r = tour.getBoundingClientRect(), span = tour.offsetHeight - pin.offsetHeight - 84;
-    return span > 0 ? Math.min(1, Math.max(0, (84 - r.top) / span)) : 0; };
-  const draw = () => {
-    const s = img.offsetHeight / NAT, max = img.offsetHeight - scr.clientHeight, y = Math.min(max, shown * max);
-    img.style.transform = `translateY(${-y}px)`; prog.style.transform = `scaleX(${shown})`;
-    const at = (y + scr.clientHeight / 2) / s; let i = 0;   // the design point at the middle of the window picks the row
-    ys.forEach((v, j) => { if (at >= v) i = j; });
-    if (i !== cur) { cur = i; items.forEach((li, j) => li.classList.toggle('on', j === i)); }
-  };
-  const tick = () => { shown += (k - shown) * (still ? 1 : .14); draw(); raf = Math.abs(k - shown) > .0005 ? requestAnimationFrame(tick) : 0; };
-  const onScroll = () => { k = target(); if (!raf) raf = requestAnimationFrame(tick); };
-  addEventListener('scroll', onScroll, {passive: true});
-  addEventListener('resize', () => { size(); onScroll(); });
-  // a click on a row scrolls the page to that point of the tour
-  items.forEach((li, j) => li.addEventListener('click', () => {
-    const s = img.offsetHeight / NAT, max = img.offsetHeight - scr.clientHeight, f = Math.min(1, Math.max(0, (ys[j] * s - scr.clientHeight / 2 + 40) / max));
-    const top = tour.getBoundingClientRect().top + scrollY - 84 + f * (tour.offsetHeight - pin.offsetHeight - 84);
-    scrollTo({top: top + 2, behavior: still ? 'auto' : 'smooth'});
-  }));
-  const start = () => { size(); onScroll(); };
-  img.complete ? start() : img.addEventListener('load', start);
+  // ---------- cursor: a gradient dot that grows into a label over the screens ----------
+  const cur = $('#cur');
+  if (matchMedia('(hover:hover)').matches) {
+    const cx = gsap.quickTo(cur, 'x', {duration: .45, ease: 'power3'}), cy = gsap.quickTo(cur, 'y', {duration: .45, ease: 'power3'});
+    addEventListener('pointermove', e => { cx(e.clientX); cy(e.clientY); gsap.to(cur, {opacity: 1, duration: .3, overwrite: 'auto'}); }, {passive: true});
+    const big = (on, txt) => { cur.firstChild.textContent = txt || 'Scroll';
+      gsap.to(cur, {width: on ? 84 : 12, height: on ? 84 : 12, margin: on ? -42 : -6, duration: .5, ease: 'snap', overwrite: 'auto'});
+      gsap.to(cur.firstChild, {opacity: on ? 1 : 0, duration: .25}); };
+    $$('.win').forEach(w => { w.addEventListener('mouseenter', () => big(true, 'Scroll')); w.addEventListener('mouseleave', () => big(false)); });
+    $$('.tour li').forEach(w => { w.addEventListener('mouseenter', () => big(true, 'Jump')); w.addEventListener('mouseleave', () => big(false)); });
+    $$('a,button').forEach(w => { w.addEventListener('mouseenter', () => gsap.to(cur, {scale: 2.2, opacity: .35, duration: .35})); w.addEventListener('mouseleave', () => gsap.to(cur, {scale: 1, opacity: 1, duration: .35})); });
+    // magnetic buttons
+    $$('.mag').forEach(m => { const mx = gsap.quickTo(m, 'x', {duration: .5, ease: 'power3'}), my = gsap.quickTo(m, 'y', {duration: .5, ease: 'power3'});
+      m.addEventListener('pointermove', e => { const r = m.getBoundingClientRect(); mx((e.clientX - r.left - r.width / 2) * .35); my((e.clientY - r.top - r.height / 2) * .45); });
+      m.addEventListener('pointerleave', () => { mx(0); my(0); }); });
+    // next case: the fill grows from the pointer
+    $$('.next').forEach(n => n.addEventListener('pointermove', e => { const r = n.getBoundingClientRect(); n.style.setProperty('--mx', (e.clientX - r.left) + 'px'); n.style.setProperty('--my', (e.clientY - r.top) + 'px'); }));
+  }
+
+  // ---------- helpers ----------
+  const show = el => gsap.set(el, {visibility: 'visible'});
+  const lines = (el, o = {}) => { show(el); return SplitText.create(el, {type: 'lines', mask: 'lines', linesClass: 'ln', autoSplit: true,
+    onSplit: self => gsap.from(self.lines, Object.assign({yPercent: 110, duration: 1.2, stagger: .09, scrollTrigger: o.st === false ? undefined : {trigger: el, start: 'top 86%', once: true}}, o.tw || {}))}); };
+  const count = (el, delay = 0) => { const n = +el.dataset.count, o = {v: 0};
+    return gsap.to(o, {v: n, duration: 1.6, delay, ease: 'power3.out', onUpdate: () => el.textContent = Math.round(o.v),
+      scrollTrigger: {trigger: el, start: 'top 90%', once: true}}); };
+
+  // ---------- intro: the screen counter runs to 83, then the gradient sweeps up and opens the cover ----------
+  const intro = gsap.timeline({paused: true, defaults: {ease: 'snap'}});
+  const pn = {v: 0};
+  intro.from('#pre .wm span', {yPercent: 110, duration: .9, ease: 'silk'})
+       .to(pn, {v: 83, duration: 1.1, ease: 'power2.inOut', onUpdate: () => $('#preN').textContent = String(Math.round(pn.v)).padStart(3, '0')}, '<.1')
+       .to('#pre .pg', {clipPath: 'inset(0% 0 0 0)', duration: .8}, '-=.2')
+       .to('#pre .in', {yPercent: -40, opacity: 0, duration: .6}, '<')
+       .to('#pre', {clipPath: 'inset(0 0 100% 0)', duration: .9, ease: 'expo.inOut'}, '-=.1')
+       .add(() => { $('#pre').remove(); lenis.start(); hero.play(); }, '-=.55');
+
+  // ---------- hero ----------
+  const cover = $('.cover'), win = $('.cover .shot .win');
+  show(cover); show('.meta');
+  const h1 = SplitText.create('.cover h1', {type: 'lines,words', mask: 'lines', autoSplit: true});
+  const hero = gsap.timeline({paused: true})
+    .from(cover, {clipPath: 'inset(12% 8% 12% 8% round 28px)', scale: .96, duration: 1.4, ease: 'expo.out'})
+    .from(h1.lines, {yPercent: 115, stagger: .1, duration: 1.3}, '-=1.05')
+    .from('.cover .tags span', {y: 16, opacity: 0, stagger: .06, duration: .8}, '-=1.1')
+    .from('.cover p', {y: 20, opacity: 0, duration: 1}, '-=.9')
+    .from(win, {yPercent: 30, rotateY: -28, rotateX: 14, opacity: 0, duration: 1.6, ease: 'expo.out'}, '-=1.4')
+    .from('.meta div', {y: 18, opacity: 0, stagger: .08, duration: .9}, '-=1.1');
+  // the window leans toward the pointer, and its screen scrolls a little as the page leaves the hero
+  const tiltY = gsap.quickTo(win, 'rotateY', {duration: .9, ease: 'power3'}), tiltX = gsap.quickTo(win, 'rotateX', {duration: .9, ease: 'power3'});
+  cover.addEventListener('pointermove', e => { const r = cover.getBoundingClientRect(); tiltY(-10 + ((e.clientX - r.left) / r.width - .5) * 10); tiltX(4 - ((e.clientY - r.top) / r.height - .5) * 8); });
+  cover.addEventListener('pointerleave', () => { tiltY(-10); tiltX(4); });
+  gsap.to('.cover .shot img', {objectPosition: '50% 30%', ease: 'none', scrollTrigger: {trigger: cover, start: 'top top', end: 'bottom top', scrub: true}});
+  gsap.to(win, {yPercent: -12, ease: 'none', scrollTrigger: {trigger: cover, start: 'top top', end: 'bottom top', scrub: true}});
+
+  // ---------- the brief ----------
+  const brief = $('.brief'); show(brief);
+  gsap.from(brief, {y: 80, opacity: 0, duration: 1.3, scrollTrigger: {trigger: brief, start: 'top 88%', once: true}});
+  gsap.from('.brief .r', {clipPath: 'inset(0 0 0 100%)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: {trigger: brief, start: 'top 80%', once: true}});
+  lines($('.brief h2'));
+  $$('.brief .r b').forEach((b, i) => count(b, .3 + i * .1));
+  show('.chap'); gsap.from('.chap > *', {y: 20, opacity: 0, stagger: .04, duration: .8, scrollTrigger: {trigger: '.chap', start: 'top 92%', once: true}});
+
+  // ---------- every section: the badge spins in, the heading rises line by line, the lede follows ----------
+  $$('.lab').forEach(l => { show(l); gsap.from(l.children, {scale: 0, rotate: -120, opacity: 0, stagger: .1, duration: .9, ease: 'back.out(2)', scrollTrigger: {trigger: l, start: 'top 90%', once: true}}); });
+  $$('.s h2.rv, .lim h2, .strip .cap2 b').forEach(h => lines(h));
+  $$('.s .lede').forEach(p => lines(p, {tw: {yPercent: 100, duration: 1, stagger: .05, delay: .15}}));
+
+  // ---------- challenge: cards fan in, goals follow ----------
+  show('.ch article'); gsap.from('.ch article', {y: 90, rotate: (i) => [-4, 2, -2, 4][i], opacity: 0, stagger: .1, duration: 1.2, scrollTrigger: {trigger: '.ch', start: 'top 85%', once: true}});
+  gsap.from('.ch em', {scale: 0, duration: .8, ease: 'back.out(2.4)', stagger: .1, scrollTrigger: {trigger: '.ch', start: 'top 80%', once: true}});
+  show('.goals'); gsap.from('.goals', {clipPath: 'inset(0 0 100% 0 round 28px)', duration: 1.3, ease: 'expo.inOut', scrollTrigger: {trigger: '.goals', start: 'top 85%', once: true}});
+  gsap.from('.goals .gl > div', {y: 30, opacity: 0, stagger: .08, duration: 1, delay: .4, scrollTrigger: {trigger: '.goals', start: 'top 85%', once: true}});
+
+  // ---------- the home tour: the pin holds the window while the scroll walks the home screen ----------
+  {
+    const tour = $('#tour'), pin = tour.querySelector('.pin'), scr = tour.querySelector('.scr'), img = $('#tourImg'), items = $$('#tourList li'), ys = items.map(li => +li.dataset.y), NAT = 6594;
+    show(pin); gsap.from(pin, {y: 70, opacity: 0, duration: 1.2, scrollTrigger: {trigger: tour, start: 'top 85%', once: true}});
+    gsap.from(items, {x: 40, opacity: 0, stagger: .05, duration: .9, scrollTrigger: {trigger: tour, start: 'top 70%', once: true}});
+    let cur = -1;
+    const mark = () => { const s = img.offsetHeight / NAT, y = -gsap.getProperty(img, 'y'), at = (y + scr.clientHeight / 2) / s;
+      let i = 0; ys.forEach((v, j) => { if (at >= v) i = j; });
+      if (i !== cur) { cur = i; items.forEach((li, j) => li.classList.toggle('on', j === i)); } };
+    const mm = gsap.matchMedia();
+    mm.add({desk: '(min-width: 901px)', mob: '(max-width: 900px)'}, c => {
+      const st = {trigger: c.conditions.desk ? pin : scr, start: c.conditions.desk ? 'top 84px' : 'top 70%', end: c.conditions.desk ? () => '+=' + innerHeight * 2.6 : 'bottom 20%',
+                  pin: c.conditions.desk, scrub: .6, anticipatePin: 1, invalidateOnRefresh: true};
+      const tw = gsap.to(img, {y: () => -(img.offsetHeight - scr.clientHeight), ease: 'none', onUpdate: mark, scrollTrigger: st});   // the tween's own update, so the list follows the scrub as it settles
+      gsap.to('#tourProg', {scaleX: 1, ease: 'none', scrollTrigger: Object.assign({}, st, {pin: false})});
+      items.forEach((li, j) => li.onclick = () => { const s = img.offsetHeight / NAT, max = img.offsetHeight - scr.clientHeight, f = Math.min(1, Math.max(0, (ys[j] * s - scr.clientHeight / 2 + 40) / max)), T = tw.scrollTrigger;
+        lenis.scrollTo(T.start + f * (T.end - T.start) + 2, {duration: 1.2}); });
+      mark();
+    });
+  }
+
+  // ---------- the screens strip: two rows run against each other with the scroll ----------
+  show('.strip .cap2');
+  gsap.fromTo('#rowA', {xPercent: 0}, {xPercent: -30, ease: 'none', scrollTrigger: {trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: .8}});
+  gsap.fromTo('#rowB', {xPercent: -30}, {xPercent: 0, ease: 'none', scrollTrigger: {trigger: '.strip', start: 'top bottom', end: 'bottom top', scrub: .8}});
+  gsap.from('.strip figure', {y: 60, opacity: 0, stagger: .03, duration: 1, scrollTrigger: {trigger: '.strip', start: 'top 85%', once: true}});
+
+  // ---------- every screen window wipes open, its image settling from a zoom ----------
+  $$('.duo figure, .panel > .duo > .win').forEach(f => { show(f); const w = f.classList.contains('win') ? f : f.querySelector('.win'), im = w && w.querySelector('img');
+    const tl = gsap.timeline({scrollTrigger: {trigger: f, start: 'top 88%', once: true}});
+    tl.from(w, {clipPath: 'inset(100% 0 0 0 round 14px)', duration: 1.3, ease: 'expo.inOut'});
+    if (im && !im.closest('.long')) tl.from(im, {scale: 1.18, duration: 1.6, ease: 'expo.out'}, '-=.9');
+    const cap = f.querySelector('.cap'); if (cap) tl.from(cap, {y: 20, opacity: 0, duration: .8}, '-=1'); });
+  // a long screen scrolls itself through its window as the page passes it
+  $$('.long').forEach(box => { const im = box.querySelector('img');
+    gsap.to(im, {y: () => -(im.offsetHeight - box.clientHeight), ease: 'none', scrollTrigger: {trigger: box, start: 'top 75%', end: 'bottom 10%', scrub: 1, invalidateOnRefresh: true}}); });
+
+  // ---------- panels and notes ----------
+  $$('.panel.rv').forEach(p => { show(p); gsap.from(p, {y: 70, opacity: 0, duration: 1.2, scrollTrigger: {trigger: p, start: 'top 88%', once: true}}); });
+  $$('.notes').forEach(n => gsap.from(n.children, {y: 40, opacity: 0, stagger: .1, duration: 1, scrollTrigger: {trigger: n, start: 'top 90%', once: true}}));
+
+  // the chip counts up from the old rate, its plus turning as it lands
+  { const n = $('#chipN'), o = {v: 2};
+    gsap.timeline({scrollTrigger: {trigger: '#chipBig', start: 'top 85%', once: true}})
+      .from('.chipdemo .chip', {y: 30, opacity: 0, stagger: .12, duration: .9})
+      .to(o, {v: 10, duration: 1.4, ease: 'power3.out', onUpdate: () => n.textContent = Math.round(o.v)}, '-=.5')
+      .from('#chipBig i', {rotate: -360, duration: 1.4, ease: 'power3.out'}, '<')
+      .fromTo('#chipBig', {scale: 1}, {scale: 1.08, duration: .25, yoyo: true, repeat: 1, ease: 'power2.inOut'}, '-=.2'); }
+
+  // tiers rise one after another, then the bar fills across them
+  gsap.timeline({scrollTrigger: {trigger: '.tiers', start: 'top 85%', once: true}})
+    .from('.tier', {y: 60, rotateX: -50, transformOrigin: '50% 100%', opacity: 0, stagger: .13, duration: 1.1})
+    .to('#tline', {scaleX: 1, duration: 1.6, ease: 'power2.inOut'}, '-=.6');
+
+  // dialogs drift in from different heights, then keep a slow float
+  gsap.from('.dlg figure', {y: (i) => [120, 60, 160][i], opacity: 0, rotate: (i) => [-6, 3, 6][i], stagger: .12, duration: 1.3, scrollTrigger: {trigger: '.dlg', start: 'top 88%', once: true},
+    onComplete() { $$('.dlg figure').forEach((f, i) => gsap.to(f, {y: -8, duration: 2.4 + i * .3, yoyo: true, repeat: -1, ease: 'sine.inOut'})); }});
+
+  // ---------- system: swatches grow in, the gradient keeps moving ----------
+  show('.sw'); gsap.from('.sw div', {scaleY: 0, transformOrigin: '50% 100%', stagger: .08, duration: 1.1, ease: 'expo.out', scrollTrigger: {trigger: '.sw', start: 'top 88%', once: true}});
+  gsap.to('.sw .gm', {backgroundPosition: '100% 0', duration: 6, ease: 'none', repeat: -1, yoyo: true});
+  show('.sys'); gsap.from('.sys .card', {y: 50, opacity: 0, stagger: .12, duration: 1.1, scrollTrigger: {trigger: '.sys', start: 'top 88%', once: true}});
+  gsap.from('.btns button', {scale: .6, opacity: 0, stagger: .1, duration: .8, ease: 'back.out(2)', scrollTrigger: {trigger: '.btns', start: 'top 90%', once: true}});
+
+  // ---------- decisions: dealt like cards ----------
+  $$('.dec article').forEach(a => show(a));
+  gsap.from('.dec article', {y: 140, x: (i) => (1 - i) * 120, rotate: (i) => (i - 1) * 8, opacity: 0, stagger: .14, duration: 1.4, ease: 'expo.out', scrollTrigger: {trigger: '.dec', start: 'top 85%', once: true}});
+  gsap.from('.dec .cost', {clipPath: 'inset(0 100% 0 0 round 12px)', stagger: .14, duration: 1, delay: .6, ease: 'expo.inOut', scrollTrigger: {trigger: '.dec', start: 'top 85%', once: true}});
+
+  // ---------- value ----------
+  show('.val .panel'); show('.vl');
+  gsap.from('.val .panel', {clipPath: 'inset(0 100% 0 0 round 28px)', duration: 1.4, ease: 'expo.inOut', scrollTrigger: {trigger: '.val', start: 'top 85%', once: true}});
+  $$('.del b').forEach((b, i) => count(b, .5 + i * .12));
+  gsap.from('.vl > div', {y: 60, opacity: 0, stagger: .1, duration: 1.1, scrollTrigger: {trigger: '.vl', start: 'top 88%', once: true}});
+  $$('.lim').forEach(l => { show(l); gsap.from(l.querySelectorAll('li'), {x: 40, opacity: 0, stagger: .1, duration: 1, scrollTrigger: {trigger: l, start: 'top 85%', once: true}}); });
+
+  // ---------- anything left: a plain rise ----------
+  $$('.rv').forEach(el => { if (getComputedStyle(el).visibility === 'hidden') { show(el); gsap.from(el, {y: 50, opacity: 0, duration: 1.1, scrollTrigger: {trigger: el, start: 'top 90%', once: true}}); } });
+
+  // start once the fonts and the first screens are in, so nothing jumps
+  Promise.all([document.fonts.ready, ...['.cover .shot img', '#tourImg'].map(s => { const i = $(s); return i.complete ? 0 : new Promise(r => i.addEventListener('load', r, {once: true})); })])
+    .then(() => { ScrollTrigger.refresh(); intro.play(); });
 }
 </script>
 </body>
