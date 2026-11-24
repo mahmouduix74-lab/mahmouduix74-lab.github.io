@@ -410,3 +410,6 @@ a:hover>.ul::after{transform:scaleX(1);transform-origin:0 50%}
 .article{max-width:calc(1440 * var(--u));margin-left:auto;margin-right:auto}
 .hero>.blk:not(.fan){max-width:calc(1344 * var(--u));margin-left:auto;margin-right:auto}
 .nav{padding-left:max(var(--m), calc((100vw - 1344 * var(--u)) / 2));padding-right:max(var(--m), calc((100vw - 1344 * var(--u)) / 2))}
+
+/* The review markers stay in the markup (data-tmp: text still to be confirmed by Mahmoud) but are no longer drawn. */
+[data-tmp]{text-decoration:none!important}[data-tmp]::before,[data-tmp]::after{text-decoration:none!important}.avatar[data-tmp]{outline:0!important}

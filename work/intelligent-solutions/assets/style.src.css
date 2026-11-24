@@ -542,3 +542,6 @@ body{font-family:Cairo,system-ui,sans-serif}
 .wk .wt__tab,.wk .wk__arrow{cursor:default;pointer-events:none}
 .wk .wt__tab:not(.on):hover{color:#666}
 .wk .wk__swiper{cursor:default}
+
+/* The review markers stay in the markup (data-tmp: text still to be confirmed by Mahmoud) but are no longer drawn. */
+[data-tmp]{text-decoration:none!important}[data-tmp]::before,[data-tmp]::after{text-decoration:none!important}.avatar[data-tmp]{outline:0!important}
