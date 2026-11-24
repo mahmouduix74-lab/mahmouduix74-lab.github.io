@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walkie — Where to eat, and how to get there · Case study · Mahmoud Ali</title>
+<meta name="description" content="Walkie, a graduation project: a mobile app and website that helps people in Egypt discover cafés, restaurants, events and trips, get there by bus or metro, and use it whatever their abilities.">
+<link rel="preload" href="assets/fonts/BricolageGrotesque.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/JetBrainsMono.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/walkie.css">
+<script>document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('still')</script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<!-- colour-vision filters for the accessibility demo -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="protan"><feColorMatrix type="matrix" values="0.567 0.433 0 0 0  0.558 0.442 0 0 0  0 0.242 0.758 0 0  0 0 0 1 0"/></filter>
+  <filter id="deutan"><feColorMatrix type="matrix" values="0.625 0.375 0 0 0  0.7 0.3 0 0 0  0 0.3 0.7 0 0  0 0 0 1 0"/></filter>
+  <filter id="tritan"><feColorMatrix type="matrix" values="0.95 0.05 0 0 0  0 0.433 0.567 0 0  0 0.475 0.525 0 0  0 0 0 1 0"/></filter>
+</svg>
+
+<header class="bar">
+  <a class="back" href="../../projects.html"><i>←</i>All work</a>
+  <div class="now mono" aria-live="polite"><b>W</b><span id="now">Departure</span></div>
+  <a class="talk" href="mailto:Mahmouduix74@gmail.com">Let's talk</a>
+</header>
+
+<nav class="rail" id="rail" aria-label="Stops"><i class="track"></i><i class="fill" id="railFill"></i><i class="walker" id="walker"></i></nav>
+
+<main>
+<!-- ================= DEPARTURE ================= -->
+<section class="hero" id="top" data-st="Departure">
+  <canvas id="sky" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="line"><b>W</b><span class="mono">Line W · Graduation project · 2023</span></div>
+      <div class="board" aria-label="Walkie"><span class="flap" data-text="WALKIE" aria-hidden="true"></span></div>
+      <div class="rows" aria-hidden="true">
+        <span class="k">From</span><span class="flap" data-text="A CITY YOU DON'T KNOW"></span>
+        <span class="k">To</span><span class="flap or" data-text="THE BEST TABLE IN TOWN"></span>
+        <span class="k">Via</span><span class="flap" data-text="APP + WEBSITE"></span>
+        <span class="k">Status</span><span class="flap am" data-text="BOARDING"></span>
+      </div>
+      <h1 class="rv">Walkie helps people in Egypt find a good café or restaurant, <em>then gets them to the door</em>, by bus, by metro, and whatever their abilities.</h1>
+      <div class="ticket rv">
+        <div><span>Project</span><b>Graduation project</b></div>
+        <div><span>Year</span><b>2023</b></div>
+        <div><span>Role</span><b>UI/UX Designer, end to end</b></div>
+        <div><span>Platforms</span><b>Android · Website</b></div>
+      </div>
+    </div>
+    <div class="ph rv">
+      <div class="phone" id="heroPhone"><i class="island"></i><div class="scr"><img src="assets/s/home1.jpg" alt="Walkie home: Hi Mahmoud, welcome to Ismailia, with search, stories and gift banners"></div></div>
+      <div class="chip c1"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.5 2.9 1-6.1L3.2 9.5l6.1-.9z"/></svg></i><div>Frio Cafe 4.5<small>Recommended</small></div></div>
+      <div class="chip c2"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16M8 17v3M16 17v3"/></svg></i><div>12 min by bus<small>Directions</small></div></div>
+      <div class="chip c3"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M5 8h14M12 8v6M9 21l3-7 3 7"/></svg></i><div>5 accessibility paths<small>Built in</small></div></div>
+    </div>
+  </div>
+  <div class="scrolly mono"><span>Board</span><i></i></div>
+</section>
+
+<!-- ================= 01 THE QUESTION ================= -->
+<section class="stop paper" id="question" data-st="The question">
+  <div class="wrap">
+    <div class="sign rv"><i>01</i><div><b>The question</b><span>Where every trip starts</span></div><i class="dash"></i></div>
+    <p class="q" id="q" aria-label="Where should I eat?">Where should <em>I eat?</em></p>
+    <p class="lede rv">In a city you don't know, the simplest question is the hardest one. The research behind Walkie found five reasons why, and two groups of people paying for them.</p>
+    <div class="alerts">
+      <div class="alert rv"><span class="id">ALERT 01</span><b>Unreliable information</b><p>Trustworthy, complete details about local places are hard to find.</p><span class="st"><span class="flap" data-text="DELAYED"></span></span></div>
+      <div class="alert rv"><span class="id">ALERT 02</span><b>Hidden places</b><p>Good local spots stay buried behind the same few famous names.</p><span class="st"><span class="flap" data-text="DELAYED"></span></span></div>
+      <div class="alert rv"><span class="id">ALERT 03</span><b>No transparency</b><p>People can't tell which reviews are genuine.</p><span class="st"><span class="flap" data-text="DELAYED"></span></span></div>
+      <div class="alert rv"><span class="id">ALERT 04</span><b>Feedback goes nowhere</b><p>Customers have no clear channel for what they experienced.</p><span class="st"><span class="flap" data-text="DELAYED"></span></span></div>
+      <div class="alert rv"><span class="id">ALERT 05</span><b>One-sided marketing</b><p>Businesses tell their own story; customers barely get a voice.</p><span class="st"><span class="flap" data-text="DELAYED"></span></span></div>
+    </div>
+    <div class="who">
+      <div class="rv"><span class="mono soft">Stuck on the platform</span><b>Visitors and travellers</b><p>They need a quick recommendation they can trust, in a city they don't know.</p></div>
+      <div class="rv"><span class="mono soft">Never announced</span><b>Small cafés and restaurants</b><p>They can't outspend the big chains, so good places stay unseen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 RESEARCH ================= -->
+<section class="stop" id="research" data-st="The other lines">
+  <div class="wrap">
+    <div class="sign rv"><i>02</i><div><b>Research</b><span>Three platforms already run this route</span></div><i class="dash"></i></div>
+    <h2 class="big rv">We rode the other lines <em>first.</em></h2>
+    <p class="lede rv">Before designing anything, we studied the three leading review and discovery platforms: what each does well, and what each leaves open for someone in Egypt looking for dinner.</p>
+    <div class="plats">
+      <article class="plat rv"><div class="n"><b>1</b><span class="mono soft">Platform</span></div><h3>Trustpilot</h3><div><div class="k">Does well</div><p>Five-star reviews, and businesses can reply in public.</p></div><div class="gap"><div class="k">Leaves open</div><p>Built around companies and products, not places near you.</p></div></article>
+      <article class="plat rv"><div class="n"><b>2</b><span class="mono soft">Platform</span></div><h3>Foursquare</h3><div><div class="k">Does well</div><p>Location-based discovery, check-ins and tips.</p></div><div class="gap"><div class="k">Leaves open</div><p>Recommendations aren't tuned to the Egyptian market.</p></div></article>
+      <article class="plat rv"><div class="n"><b>3</b><span class="mono soft">Platform</span></div><h3>Yelp</h3><div><div class="k">Does well</div><p>Search by place and category, with reviews, hours and directions.</p></div><div class="gap"><div class="k">Leaves open</div><p>Little presence in Egypt, and little social content.</p></div></article>
+    </div>
+    <div class="merge">
+      <div>
+        <span class="mono soft rv" style="display:block">The missing interchange</span>
+        <h3 class="rv" style="margin-top:14px">None of them joined two lines: <em>places near you in Egypt</em>, and <em>recommendations that learn from you.</em></h3>
+        <p class="lede rv">Those two became Walkie's core, and the reason for everything after.</p>
+      </div>
+      <svg viewBox="0 0 640 380" aria-hidden="true">
+        <path class="ml a" d="M10 70 H250 Q300 70 330 120 L380 190 H630" fill="none" stroke="#FE5C1C" stroke-width="12" stroke-linecap="round"/>
+        <path class="ml b" d="M10 310 H250 Q300 310 330 260 L380 190 H630" fill="none" stroke="#5B8BD6" stroke-width="12" stroke-linecap="round"/>
+        <text x="14" y="48" class="mono" fill="#FE5C1C" style="font:600 13px 'JetBrains Mono'">LOCAL PLACES IN EGYPT</text>
+        <text x="14" y="346" class="mono" fill="#8FB1E8" style="font:600 13px 'JetBrains Mono'">RECOMMENDATIONS FROM YOUR HISTORY</text>
+        <g class="ix"><circle cx="420" cy="190" r="34" fill="#fff"/><circle cx="420" cy="190" r="34" fill="none" stroke="#0A1128" stroke-width="8"/><text x="420" y="198" text-anchor="middle" style="font:800 22px 'Bricolage Grotesque'" fill="#0A1128">W</text></g>
+        <text x="470" y="160" class="ixl" style="font:800 30px 'Bricolage Grotesque'" fill="#fff">Walkie</text>
+      </svg>
+    </div>
+    <div class="goals">
+      <div class="rv"><span>DEST 01</span><b>A bridge between local places and their customers</b></div>
+      <div class="rv"><span>DEST 02</span><b>Informed decisions through crowd-sourced reviews</b></div>
+      <div class="rv"><span>DEST 03</span><b>Trust and transparency</b></div>
+      <div class="rv"><span>DEST 04</span><b>Fair, organic visibility for local businesses</b></div>
+      <div class="rv"><span>DEST 05</span><b>A better experience than the review apps it replaces</b></div>
+      <div class="rv"><span>DEST 06</span><b>Effortless reading and posting of reviews</b></div>
+      <div class="rv"><span>DEST 07</span><b>Less time and effort to choose a place</b></div>
+      <div class="rv"><span>DEST 08</span><b>Nearby attractions and events, surfaced</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 RIDERS ================= -->
+<section class="stop paper" id="riders" data-st="The riders">
+  <div class="wrap">
+    <div class="sign rv"><i>03</i><div><b>The riders</b><span>Three tickets, three journeys</span></div><i class="dash"></i></div>
+    <h2 class="big rv">Everyone on board holds a <em>different ticket.</em></h2>
+    <p class="lede rv">The analysis defined three roles, each with its own use cases, and turned them into functional requirements before a single screen was drawn.</p>
+    <div class="tix">
+      <article class="tk rv"><div class="top"><b>Rider</b><span class="mono soft">Visitor · local</span></div><h3>The user</h3><ul><li>Signs up and keeps a profile</li><li>Browses posts and reels; likes, comments, saves and shares</li><li>Searches nearby or in another city</li><li>Opens a place with its map and reviews</li></ul><i class="perf"></i><i class="bc"></i></article>
+      <article class="tk rv"><div class="top"><b>Operator</b><span class="mono soft">Café · restaurant</span></div><h3>The business owner</h3><ul><li>Creates a business profile</li><li>Adds the location and details</li><li>Posts and reels that promote the place</li><li>Reads what customers say</li></ul><i class="perf"></i><i class="bc"></i></article>
+      <article class="tk rv"><div class="top"><b>Control</b><span class="mono soft">Platform</span></div><h3>The admin</h3><ul><li>A dashboard to manage the platform</li><li>Supervises content and accounts</li><li>Keeps the line running</li></ul><i class="perf"></i><i class="bc"></i></article>
+    </div>
+    <div class="std rv">
+      <span><i></i>Reliability: people can trust what they find</span><span><i></i>Efficiency: search is fast</span><span><i></i>Usability on every platform</span><span><i></i>Performance: quick to respond</span><span><i></i>Security: personal data protected</span><span><i></i>Weekly reviews with the supervisor</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 04 THE ROUTE (process) ================= -->
+<section class="route" id="route" data-st="The route">
+  <div class="in">
+    <div class="hd">
+      <div><div class="sign" style="margin-bottom:18px"><i>04</i><div><b>The route</b><span>How the work moved, in Agile cycles</span></div></div>
+      <h2 class="big">Six stations, <em>one line.</em></h2></div>
+      <p class="mono soft">Scroll to drive ⟶</p>
+    </div>
+    <div class="track" id="track">
+      <svg class="path" id="routeSvg" aria-hidden="true"><path id="rp" fill="none" stroke="rgba(255,255,255,.16)" stroke-width="6" stroke-linecap="round" stroke-dasharray="2 14"/><path id="rpOn" fill="none" stroke="#FE5C1C" stroke-width="6" stroke-linecap="round"/></svg>
+      <div class="bus" id="bus" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="3"/><path d="M4 11h16M8 18v2M16 18v2"/><circle cx="8" cy="14.5" r=".6" fill="#fff"/><circle cx="16" cy="14.5" r=".6" fill="#fff"/></svg></div>
+      <article class="card" data-i="0"><span class="no">STATION 1</span><h3>Research</h3><p>Studied Trustpilot, Foursquare and Yelp; defined the gap, the three roles and the requirements.</p></article>
+      <article class="card" data-i="1"><span class="no">STATION 2</span><h3>Sketch</h3><p>Imagined the whole system across mobile and web before building anything, then sketched it.</p></article>
+      <article class="card" data-i="2"><span class="no">STATION 3</span><h3>Inspire &amp; systemise</h3><p>A Figma page of references, and a component library of buttons, cards, tabs, inputs and navigation.</p></article>
+      <article class="card" data-i="3"><span class="no">STATION 4</span><h3>Design</h3><p>77 mobile screens and the full website flow in Figma, with empty states, errors and accessibility modes.</p></article>
+      <article class="card" data-i="4"><span class="no">STATION 5</span><h3>Build</h3><p>Five subsystems in parallel, website, app, admin, an AI category filter and the backend, on one REST API.</p></article>
+      <article class="card" data-i="5"><span class="no">STATION 6</span><h3>Iterate</h3><p>Weekly reviews with the supervisor fed back into the design and the code.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 THE RIDE (product tour) ================= -->
+<section class="ride" id="ride" data-st="The ride">
+  <div class="in">
+    <div class="tl" id="rideL">
+      <div class="ch"><span class="k">Stop 05 · 1 / 8 · Interests</span><h3>Personal from the very first minute.</h3><p>After three short onboarding screens, Walkie asks which city you'll explore, the kind of place you want and your budget, and even how to get to that city.</p></div>
+      <div class="ch"><span class="k">2 / 8 · Home</span><h3>A home that knows where you are.</h3><p>A greeting in your chosen city, then search, friends' stories, gift banners, posts with a location pin, recommended places, top restaurants and what's on.</p></div>
+      <div class="ch"><span class="k">3 / 8 · Directions</span><h3>Discovery that ends at the door.</h3><p>Every place leads to directions three ways: a Google Maps pin, step-by-step bus directions with the travel time, and the metro.</p></div>
+      <div class="ch"><span class="k">4 / 8 · Reels</span><h3>Reels for places, not just people.</h3><p>Nearby, Following and For You. Duets let one visitor answer another, and every reel carries a location pin, so a video becomes a visit.</p></div>
+      <div class="ch"><span class="k">5 / 8 · Community</span><h3>A local conversation, not a list of reviews.</h3><p>Ask a question, share an event or a trip, get suggestions by category, and catch offers such as a discounted tour of the Suez Canal.</p></div>
+      <div class="ch"><span class="k">6 / 8 · Business profile</span><h3>Four tabs, in the order you decide.</h3><p>Directions, Reels, Products, Reviews. Followers and a Message button sit on top, so a visitor can talk to the place directly.</p></div>
+      <div class="ch"><span class="k">7 / 8 · Gifts</span><h3>Rewards for real participation.</h3><p>Spin to win, points for watching, sharing with friends, and four badge tiers: Silver, Gold, Platinum and Diamond.</p></div>
+      <div class="ch"><span class="k">8 / 8 · Events &amp; trips</span><h3>From food into local tourism.</h3><p>Upcoming events and trips, like the Cairo Tower or the Pyramids, with the date, who's going, the full itinerary and Book now.</p></div>
+    </div>
+    <div class="ph"><div class="phone" id="ridePhone"><i class="island"></i><div class="scr" id="rideScr">
+      <img data-c="0" src="assets/s/interests.jpg" alt="Interests: the city to visit, restaurants or cafés, cheap or expensive">
+      <img data-c="1" src="assets/s/home1.jpg" alt="Home: greeting, search, stories and gifts">
+      <img data-c="1" data-b="1" src="assets/s/home3.jpg" alt="Home: recommended places and posts">
+      <img data-c="2" src="assets/s/location.jpg" alt="Location: Google Maps, by bus with a 12-minute route, and by metro">
+      <img data-c="3" src="assets/s/reels.jpg" alt="Reels with Nearby, Following and For You, and a location pin">
+      <img data-c="4" src="assets/s/community.jpg" alt="Community: ask, event, trip, suggestions and offers">
+      <img data-c="5" src="assets/s/biz_prod.jpg" alt="Business profile, products tab">
+      <img data-c="5" data-b="1" src="assets/s/biz_rev.jpg" alt="Business profile, reviews tab">
+      <img data-c="6" src="assets/s/spin.jpg" alt="Spin to win, with points and badges on the wheel">
+      <img data-c="6" data-b="1" src="assets/s/badges.jpg" alt="Badge tiers from Silver to Diamond">
+      <img data-c="7" src="assets/s/events.jpg" alt="Events and upcoming trips">
+      <img data-c="7" data-b="1" src="assets/s/trip.jpg" alt="Trip details for the Cairo Tower">
+    </div><i class="pin" id="ridePin"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/></svg></i></div></div>
+    <div class="tr" id="rideR">
+      <div class="why"><span class="k">Why</span><p>No empty, generic feed on day one: the recommendations start working from the first session.</p><ul><li>City</li><li>Café · restaurant</li><li>Budget</li><li>How to get there</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>One scroll, from people you know to places you haven't tried yet.</p><ul><li>Stories</li><li>Recommended</li><li>Top restaurants</li><li>Events</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>Most review apps stop at "here's a place". For travellers and students, getting there is part of choosing.</p><ul><li>Google Maps</li><li>By bus</li><li>By metro</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>Small cafés get authentic marketing from their own visitors, something a big budget can't buy.</p><ul><li>Nearby</li><li>For You</li><li>Duet</li><li>Location pin</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>It turns one-off reviews into an ongoing local conversation, the answer to "feedback goes nowhere".</p><ul><li>Ask</li><li>Event</li><li>Trip</li><li>Offers</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>The profile follows the visitor's questions: can I get there, what's it like, what do they serve, what do others say.</p><ul><li>Directions</li><li>Reels</li><li>Products</li><li>Reviews</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>A platform built on reviews needs a reason for people to keep writing them.</p><ul><li>Silver 1,500</li><li>Gold 2,000</li><li>Platinum 2,500</li><li>Diamond 3,000</li></ul></div>
+      <div class="why"><span class="k">Why</span><p>Food is one reason to go out; Walkie follows people to everything else worth seeing nearby.</p><ul><li>Events</li><li>Trips</li><li>Book now</li></ul></div>
+    </div>
+  </div>
+  <div class="ticks" id="ticks" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+</section>
+
+<!-- ================= 06 ACCESSIBILITY CENTRE ================= -->
+<section class="stop acc" id="access" data-st="Step-free access">
+  <div class="wrap">
+    <div class="sign rv"><i>06</i><div><b>Step-free access</b><span>The Accessibility Centre · try it</span></div><i class="dash"></i></div>
+    <h2 class="big rv">A discovery app usually assumes perfect sight, hearing and hands. <em>Walkie doesn't.</em></h2>
+    <p class="lede rv">The app's Accessibility Centre opens with one plain question, "What is your problem?", and offers five paths. Pick one below: the demo runs on Walkie's real screens.</p>
+    <div class="grid">
+      <div class="ask rv" role="tablist" aria-label="What is your problem?">
+        <p>What is your problem?</p>
+        <button role="tab" class="on" data-p="deaf"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9a6 6 0 1 1 12 0c0 3-2 4-3 5.5S14 18 12 19.5 8 20 8 18"/><path d="M10 9a2 2 0 1 1 4 0c0 1.5-2 2-2 3.5"/></svg></i><span>Deaf<small>Mono audio · captions</small></span></button>
+        <button role="tab" data-p="vision"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></i><span>Visually impaired<small>TalkBack · text size</small></span></button>
+        <button role="tab" data-p="colour"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg></i><span>Colour filters<small>Three colour visions</small></span></button>
+        <button role="tab" data-p="motor"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 11V5a1.5 1.5 0 0 1 3 0v5M10 10V3.5a1.5 1.5 0 0 1 3 0V10M13 10V5a1.5 1.5 0 0 1 3 0v6M16 9.5a1.5 1.5 0 0 1 3 0V14a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-2.6-4.4a1.5 1.5 0 0 1 2.6-1.6L7 13"/></svg></i><span>Muscular disabilities<small>Switch access · timing</small></span></button>
+        <button role="tab" data-p="read"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></i><span>Illiterate<small>A home for non-readers</small></span></button>
+      </div>
+      <div class="stage rv">
+        <div class="phone" id="accPhone"><i class="island"></i><div class="scr" id="accScr">
+          <img class="lay on" data-l="deaf" src="assets/s/a11y_deaf.jpg" alt="Accessibility settings: mono audio and caption preferences">
+          <img class="lay" data-l="deaf2" src="assets/s/a11y_caption.jpg" alt="A reel with a caption shown over the video">
+          <img class="lay" data-l="vision" src="assets/s/home1.jpg" alt="Walkie home">
+          <img class="lay" data-l="vision2" src="assets/s/a11y_talk.jpg" alt="TalkBack settings with a text size slider">
+          <img class="lay" data-l="colour" src="assets/s/home3.jpg" alt="Walkie home, recommended places">
+          <img class="lay" data-l="motor0" src="assets/s/a11y_motor.jpg" alt="Interaction control: switch access, touch and hold delay, time to take action">
+          <img class="lay" data-l="motor1" src="assets/s/a11y_switch.jpg" alt="Switch access">
+          <img class="lay" data-l="motor2" src="assets/s/a11y_nav.jpg" alt="A reel with Back and Next buttons instead of swiping">
+          <img class="lay" data-l="read" src="assets/s/a11y_menu.jpg" alt="What is your problem? Deaf, Visually impaired, Colour filters, Muscular disabilities, Illiterate">
+          <i class="cue" id="cue"></i><i class="capbox" id="capbox"></i>
+        </div><i class="lens" id="lens"></i></div>
+      </div>
+      <div class="panel">
+        <div class="pn on" data-p="deaf"><h3>Deaf and hard of hearing</h3><p>Mono audio combines both channels, so nothing is lost in one ear, and caption preferences put subtitles on every reel.</p>
+          <div class="ctl"><span class="k">Try it</span><div class="tog">Captions on reels<button type="button" id="tCap" aria-pressed="false" aria-label="Captions on reels"></button></div><div class="tog">Mono audio<button type="button" id="tMono" aria-pressed="false" aria-label="Mono audio"></button></div></div>
+          <div class="feat"><span>Mono audio</span><span>Caption preferences</span><span>Subtitles on reels</span></div></div>
+        <div class="pn" data-p="vision"><h3>Visually impaired</h3><p>Walkie works with TalkBack, Android's screen reader, lets people set their text size, and gives each section of the home an audio cue.</p>
+          <div class="ctl"><span class="k">Try it</span><button class="act" type="button" id="listen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Listen to the home</span></button>
+            <div><span class="k">Text size · hover the phone</span><input type="range" id="zoom" min="1.4" max="3.2" step=".1" value="2" aria-label="Magnifier size"></div></div>
+          <div class="feat"><span>TalkBack</span><span>Text size</span><span>Audio cues per section</span></div></div>
+        <div class="pn" data-p="colour"><h3>Colour filters</h3><p>Walkie's orange-and-blue identity reads differently to people with colour-vision deficiencies. The design answers with colour filters, and three recoloured home screens, one for each type.</p>
+          <div class="ctl"><span class="k">See the standard home as</span><div class="seg" id="cv"><button type="button" class="on" data-f="none">Typical</button><button type="button" data-f="protan">Protanopia</button><button type="button" data-f="deutan">Deuteranopia</button><button type="button" data-f="tritan">Tritanopia</button></div></div>
+          <div class="feat"><span>Red–green</span><span>Green–red</span><span>Blue–yellow</span></div></div>
+        <div class="pn" data-p="motor"><h3>Muscular disabilities</h3><p>Switch Access, a touch-and-hold delay, time to take action, auto-click and a large pointer, and on reels, big Back and Next buttons so no swipe is ever needed.</p>
+          <div class="ctl"><span class="k">Try it · rest the pointer on a button, no click</span><div style="display:flex;gap:10px"><button type="button" class="dwell" data-dir="-1"><span>Back</span></button><button type="button" class="dwell" data-dir="1"><span>Next</span></button></div>
+            <div><span class="k">Dwell time</span><input type="range" id="dwellT" min=".6" max="2.4" step=".1" value="1.2" aria-label="Dwell time in seconds"></div></div>
+          <div class="feat"><span>Switch access</span><span>Touch &amp; hold delay</span><span>Time to take action</span><span>Auto-click</span><span>Back / Next on reels</span></div></div>
+        <div class="pn" data-p="read"><h3>Illiterate users</h3><p>A home designed for people who can't read: Walkie keeps a dedicated version for them, alongside the audio support of the rest of the centre.</p>
+          <div class="ctl"><span class="k">Try it</span><button class="act" type="button" id="readMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 5 6 9H2v6h4l5 4V5zM15.5 8.5a5 5 0 0 1 0 7"/></svg><span>Read the choices aloud</span></button></div>
+          <div class="feat"><span>Dedicated home</span><span>Audio first</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 THE WEBSITE ================= -->
+<section class="stop" id="web" data-st="The big screen">
+  <div class="wrap">
+    <div class="sign rv"><i>07</i><div><b>The website</b><span>Same line, bigger screen</span></div><i class="dash"></i></div>
+    <h2 class="big rv">One system, <em>two platforms.</em></h2>
+    <p class="lede rv">The website mirrors the app for large screens: 17 page types, from sign-up and interests to business profiles, events and error pages. A deep blue-to-sunset gradient carries the brand; orange is kept for actions.</p>
+    <div class="drag rv"><i>⟷</i><span class="mono soft">Drag the line</span></div>
+  </div>
+  <div class="webs" id="webs"><div class="strip" id="strip">
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · home</b></div><div class="vw"><img src="assets/s/web_home.jpg" alt="Website home"></div><figcaption><b>Home</b><span>Welcome to Ismailia</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · interests</b></div><div class="vw"><img src="assets/s/web_interests.jpg" alt="Website interests"></div><figcaption><b>Interests</b><span>City · type · budget</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · reels</b></div><div class="vw"><img src="assets/s/web_reels.jpg" alt="Website reels"></div><figcaption><b>Reels</b><span>Nearby · Following · For You</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · business</b></div><div class="vw"><img src="assets/s/web_biz2.jpg" alt="Website business profile with directions"></div><figcaption><b>Business profile</b><span>Directions by bus &amp; metro</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · events</b></div><div class="vw"><img src="assets/s/web_events.jpg" alt="Website upcoming events"></div><figcaption><b>Events</b><span>Upcoming</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · results</b></div><div class="vw"><img src="assets/s/web_results.jpg" alt="Website search results"></div><figcaption><b>Search results</b><span>100 places found</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · profile</b></div><div class="vw"><img src="assets/s/web_prof1.jpg" alt="Website user profile"></div><figcaption><b>User profile</b><span>Posts · photos · reviews</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · contact</b></div><div class="vw"><img src="assets/s/web_contact.jpg" alt="Website contact page"></div><figcaption><b>Contact</b><span>Get in touch</span></figcaption></figure>
+    <figure class="bw"><div class="ch"><i></i><i></i><i></i><b>walkie · sign in</b></div><div class="vw"><img src="assets/s/web_signin.jpg" alt="Website sign in"></div><figcaption><b>Sign in</b><span>Email · Facebook · Google</span></figcaption></figure>
+  </div></div>
+</section>
+
+<!-- ================= 08 EVERY STATE ================= -->
+<section class="stop paper" id="states" data-st="Every stop">
+  <div class="wrap">
+    <div class="sign rv"><i>08</i><div><b>Every state</b><span>Including the quiet stops</span></div><i class="dash"></i></div>
+    <h2 class="big rv">Designed for the moments <em>nobody screenshots.</em></h2>
+    <p class="lede rv">Empty profiles, no comments yet, a forgotten password, a wrong turn. These are the states people hit every day, and the file covers them, along with notifications, share sheets, reporting and chat screens designed ahead of their build.</p>
+    <div class="states">
+      <figure class="rv"><img src="assets/s/nocomment.jpg" alt="No comment yet" loading="lazy"><figcaption>No comments yet<small>Empty state</small></figcaption></figure>
+      <figure class="rv"><img src="assets/s/forgot.jpg" alt="Forget password" loading="lazy"><figcaption>Forgot password<small>Recovery</small></figcaption></figure>
+      <figure class="rv"><img src="assets/s/reset.jpg" alt="Reset password" loading="lazy"><figcaption>Reset password<small>Recovery</small></figcaption></figure>
+      <figure class="rv"><img src="assets/s/saved.jpg" alt="Saved posts" loading="lazy"><figcaption>Saved<small>Your list</small></figcaption></figure>
+      <figure class="rv"><img src="assets/s/e404.jpg" alt="404 page not found" loading="lazy" style="aspect-ratio:823/642;object-position:center"><figcaption>404<small>Wrong turn</small></figcaption></figure>
+      <figure class="rv"><img src="assets/s/e403.jpg" alt="403 you don't have access" loading="lazy" style="aspect-ratio:823/642;object-position:center"><figcaption>403<small>Members only</small></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 09 THE ENGINE ================= -->
+<section class="stop engine" id="engine" data-st="The engine room">
+  <div class="wrap">
+    <div class="sign rv"><i>09</i><div><b>The engine room</b><span>How it was built</span></div><i class="dash"></i></div>
+    <h2 class="big rv">Five lines into <em>one interchange.</em></h2>
+    <p class="lede rv">Five subsystems were built in parallel, and every one of them talks to the same REST API.</p>
+    <svg viewBox="0 0 1200 560" id="map" role="img" aria-label="System map: a Flutter app, a React website, an admin dashboard and an AI filter all connect to a Laravel REST API, which uses MySQL and Google Maps">
+      <g fill="none" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+        <path class="mp" stroke="#FE5C1C" d="M150 110 H380 L520 250 H600"/>
+        <path class="mp" stroke="#5B8BD6" d="M150 450 H380 L520 310 H600"/>
+        <path class="mp" stroke="#B78BD6" d="M1050 100 H840 L690 250 H600"/>
+        <path class="mp" stroke="#FFC15C" d="M1050 280 H600"/>
+        <path class="mp" stroke="#D9826F" d="M1050 460 H840 L690 310 H600"/>
+        <path class="mp" stroke="#7FD1AE" d="M600 280 V520"/>
+      </g>
+      <g class="sts">
+        <circle cx="150" cy="110" r="16" fill="#0A1128" stroke="#FE5C1C" stroke-width="6"/><text class="lbl" x="150" y="70" text-anchor="middle">Android app</text><text class="sub" x="150" y="160" text-anchor="middle">Flutter · BLoC · Dio</text>
+        <circle cx="150" cy="450" r="16" fill="#0A1128" stroke="#5B8BD6" stroke-width="6"/><text class="lbl" x="150" y="410" text-anchor="middle">Website</text><text class="sub" x="150" y="500" text-anchor="middle">React · Redux · Material UI</text>
+        <circle cx="1050" cy="100" r="16" fill="#0A1128" stroke="#B78BD6" stroke-width="6"/><text class="lbl" x="1050" y="60" text-anchor="middle">Admin dashboard</text><text class="sub" x="1050" y="150" text-anchor="middle">Manage · supervise</text>
+        <circle cx="1050" cy="280" r="16" fill="#0A1128" stroke="#FFC15C" stroke-width="6"/><text class="lbl" x="1050" y="240" text-anchor="middle">AI filter</text><text class="sub" x="1050" y="330" text-anchor="middle">Categories · options</text>
+        <circle cx="1050" cy="460" r="16" fill="#0A1128" stroke="#D9826F" stroke-width="6"/><text class="lbl" x="1050" y="420" text-anchor="middle">Google Maps API</text><text class="sub" x="1050" y="510" text-anchor="middle">Locations · routes</text>
+        <circle cx="600" cy="520" r="16" fill="#0A1128" stroke="#7FD1AE" stroke-width="6"/><text class="lbl" x="660" y="527">MySQL</text>
+        <rect x="520" y="235" width="160" height="90" rx="45" fill="#fff"/><text class="hub" x="600" y="276" text-anchor="middle">REST API</text><text x="600" y="300" text-anchor="middle" style="font:600 11px 'JetBrains Mono';letter-spacing:.08em" fill="#5d5f6b">LARAVEL · PHP</text>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= 10 IMPACT & LEARNINGS ================= -->
+<section class="stop paper" id="impact" data-st="Arrivals">
+  <div class="wrap">
+    <div class="sign rv"><i>10</i><div><b>Arrivals</b><span>What the line makes possible</span></div><i class="dash"></i></div>
+    <h2 class="big rv">Where the line <em>leads.</em></h2>
+    <p class="lede rv">Walkie was delivered as an academic project, so its value is in what it makes possible, not in live usage numbers.</p>
+    <div class="imp">
+      <div class="rv"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="14" rx="3"/><path d="M4 10h16M8 17v3M16 17v3"/></svg></i><div><b>For visitors</b><p>A faster, more trustworthy choice, from discovery to directions.</p></div></div>
+      <div class="rv"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6zM17 9h1.5a2.5 2.5 0 0 1 0 5H17M8 2v3M12 2v3"/></svg></i><div><b>For small places</b><p>Free, authentic visibility through customers' reels and reviews.</p></div></div>
+      <div class="rv"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg></i><div><b>For the community</b><p>A shared local space for questions, events and trips.</p></div></div>
+      <div class="rv"><i><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="4" r="2"/><path d="M5 8h14M12 8v6M9 21l3-7 3 7"/></svg></i><div><b>For inclusion</b><p>A discovery app people with hearing, sight, motor or reading challenges can use.</p></div></div>
+    </div>
+    <div class="learn">
+      <h3 class="rv">Notes from the journey.</h3>
+      <ol>
+        <li class="rv"><div><b>Research earns the idea.</b><p>Riding the other lines first showed exactly where Walkie should differ: local to Egypt, and personal.</p></div></li>
+        <li class="rv"><div><b>Accessibility changes the whole design.</b><p>Five different needs forced clearer hierarchy, bigger targets and alternatives to gestures, and those help everyone.</p></div></li>
+        <li class="rv"><div><b>Design the full journey.</b><p>Following people past "here's a place" to "here's how to get there" made Walkie useful, not only informative.</p></div></li>
+        <li class="rv"><div><b>A shared system keeps a team on one line.</b><p>One component library across mobile and web kept seven people and two platforms consistent.</p></div></li>
+        <li class="rv"><div><b>Design every state.</b><p>Empty, error and edge states took real effort, and they are what make a product feel finished.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TERMINUS ================= -->
+<section class="stop term" id="terminus" data-st="Terminus">
+  <div class="wrap">
+    <div class="sign rv"><i>W</i><div><b>Terminus</b><span>Next departures</span></div><i class="dash"></i></div>
+    <h2 class="big rv">The line <em>keeps going.</em></h2>
+    <div class="deps rv" aria-label="Next departures: chat, multiple languages, notifications, more regions, all planned">
+      <div class="hdr"><span>Line</span><span>Destination</span><span>Status</span></div>
+      <div class="r" aria-hidden="true"><span class="flap or" data-text="W1"></span><span class="flap" data-text="CHAT"></span><span class="flap am" data-text="PLANNED"></span></div>
+      <div class="r" aria-hidden="true"><span class="flap or" data-text="W2"></span><span class="flap" data-text="MORE LANGUAGES"></span><span class="flap am" data-text="PLANNED"></span></div>
+      <div class="r" aria-hidden="true"><span class="flap or" data-text="W3"></span><span class="flap" data-text="NOTIFICATIONS"></span><span class="flap am" data-text="PLANNED"></span></div>
+      <div class="r" aria-hidden="true"><span class="flap or" data-text="W4"></span><span class="flap" data-text="MORE REGIONS"></span><span class="flap am" data-text="PLANNED"></span></div>
+    </div>
+    <div class="end">
+      <p class="big rv">End of <em>the line.</em></p>
+      <p class="facts mono rv">Graduation project · Faculty of Computers and Informatics, Suez Canal University · 2023 · 77 mobile screens · 17 website page types</p>
+    </div>
+    <a class="nextc rv" href="../zarafa/"><div><span class="mono" style="color:var(--soft)">Next case</span><b>Zarafa</b></div><i>→</i></a>
+  </div>
+</section>
+</main>
+
+<footer><span>Mahmoud Ali · UI/UX designer</span><a href="mailto:Mahmouduix74@gmail.com">Mahmouduix74@gmail.com</a></footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/vendor/CustomEase.min.js"></script>
+<script src="assets/vendor/DrawSVGPlugin.min.js"></script>
+<script src="assets/vendor/MotionPathPlugin.min.js"></script>
+<script src="assets/vendor/ScrambleTextPlugin.min.js"></script>
+<script src="assets/vendor/Draggable.min.js"></script>
+<script src="assets/vendor/InertiaPlugin.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/walkie.js"></script>
+</body>
+</html>
