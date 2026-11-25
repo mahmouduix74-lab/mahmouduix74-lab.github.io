@@ -2,9 +2,10 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Not found — Mahmoud Ali</title>
 <script>
-// /work, /about and /contact are sections of the home page shown on their own; if the host did not route them there, go there now
-(function(){ var m = location.pathname.match(/^\/(work|about|contact)\/?$/);
-  if (m) location.replace('/?page=' + m[1] + location.hash); })();
+// /about and /contact are sections of the home page shown on their own; if the host did not route them there, go there now
+(function(){ var m = location.pathname.match(/^\/(about|contact)\/?$/);
+  if (m) location.replace('/?page=' + m[1] + location.hash);
+  else if (/^\/work\/?$/.test(location.pathname)) location.replace('/#work'); })();
 </script>
 <style>html,body{margin:0;height:100%;background:#F3F3F1;color:#111;font-family:'Inter Tight',system-ui,sans-serif}
 main{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center}
