@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mahmoud Ali — Portfolio</title>
+<script>
+// /work, /about and /contact are their own pages: the same file, showing only that section (vercel.json rewrites them here)
+(function(){ var m = location.pathname.match(/^\/(work|about|contact)(?:\.html)?\/?$/), q = new URLSearchParams(location.search).get('page');
+  var pg = m ? m[1] : (/^(work|about|contact)$/.test(q || '') ? q : '');
+  if (pg) document.documentElement.setAttribute('data-page', pg); })();
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22%3E%3Crect width=%22120%22 height=%22120%22 rx=%2228%22 fill=%22%23111%22/%3E%3Cg transform=%22translate%2818 0%29%22%3E%3Cpath d=%22M13 30H71A13 13 0 0 1 84 43V90H0V43A13 13 0 0 1 13 30ZM26.5 45H26.5A4.5 4.5 0 0 1 31 49.5V90H22V49.5A4.5 4.5 0 0 1 26.5 45ZM57.5 45H57.5A4.5 4.5 0 0 1 62 49.5V90H53V49.5A4.5 4.5 0 0 1 57.5 45Z%22 fill=%22%23fff%22 fill-rule=%22evenodd%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="stylesheet" href="assets/fonts.css">
 <script src="assets/vendor/three.min.js"></script>
@@ -25,6 +31,14 @@ html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);-webkit-
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 
+/* ---------- single pages (/work, /about, /contact): the header without the hero, then one section ---------- */
+html[data-page] #hero{height:calc(120*var(--u));min-height:0;overflow:visible}
+html[data-page] #stage,html[data-page] #rst,html[data-page] #reel,html[data-page] #statement,html[data-page] #services,html[data-page] #process{display:none}
+html[data-page=work] #about,html[data-page=about] #work,html[data-page=contact] #work,html[data-page=contact] #about{display:none}
+html[data-page=work] #work{padding-top:calc(60*var(--u))}
+html[data-page=about] #about{padding-top:calc(60*var(--u))}
+html[data-page=contact] #contact{min-height:calc(100vh - 120*var(--u));margin-top:calc(20*var(--u))}
+#links a.on{background:var(--card);color:var(--ink)}
 /* ---------- shared hero parts ---------- */
 #hero{position:relative;height:max(112vh,calc(1240*var(--u)));min-height:calc(1240*var(--u));overflow:hidden}
 .top{position:absolute;inset:calc(36*var(--u)) var(--side) auto;display:flex;align-items:center;justify-content:space-between;z-index:2}
@@ -292,6 +306,11 @@ html[lang=ar] #about .bio p{font-size:calc(28*var(--u));line-height:1.6;letter-s
 #about .tools ul{list-style:none;display:flex;flex-wrap:wrap;gap:calc(8*var(--u))}
 #about .tools li{height:calc(36*var(--u));padding:0 calc(15*var(--u));border-radius:999px;background:var(--bg);display:inline-flex;align-items:center;font-size:calc(14*var(--u));font-weight:500}
 #about .tools .tl{font-size:calc(40*var(--u));font-weight:500;letter-spacing:-.02em}
+#about .years{background:var(--accent);color:#fff}
+#about .years .k{color:rgba(255,255,255,.75)}
+#about .years .big{font-size:calc(96*var(--u));font-weight:500;line-height:.9;letter-spacing:-.04em;font-family:'Inter Tight',sans-serif}
+#about .years .yl{margin-top:calc(8*var(--u));font-size:calc(20*var(--u));font-weight:500}
+#about .years p{font-size:calc(15*var(--u));line-height:1.45;color:rgba(255,255,255,.82)}
 #about .avail .st2{display:flex;align-items:center;gap:calc(12*var(--u));font-size:calc(26*var(--u));font-weight:500;letter-spacing:-.01em}
 #about .avail .st2 .dot{width:calc(12*var(--u));height:calc(12*var(--u))}
 #about .avail button svg{width:calc(16*var(--u));height:calc(16*var(--u));flex:none}
@@ -299,29 +318,51 @@ html[lang=ar] #about .bio p{font-size:calc(28*var(--u));line-height:1.6;letter-s
 #about .exp{margin-top:calc(80*var(--u));display:grid;grid-template-columns:calc(330*var(--u)) 1fr;gap:calc(60*var(--u));align-items:start}
 #about .exp .eyebrow{padding-top:calc(24*var(--u))}
 #about .exp ol{list-style:none}
-#about .exp li{display:grid;grid-template-columns:calc(250*var(--u)) calc(330*var(--u)) calc(260*var(--u)) 1fr;gap:calc(24*var(--u));align-items:baseline;padding:calc(24*var(--u)) 0;border-top:1px solid var(--line);font-size:calc(17*var(--u))}
-#about .exp li:last-child{border-bottom:1px solid var(--line)}
+#about .exp ol>li{border-top:1px solid var(--line);font-size:calc(17*var(--u))}
+#about .exp .row{width:100%;text-align:start;display:grid;grid-template-columns:calc(250*var(--u)) calc(330*var(--u)) calc(260*var(--u)) 1fr calc(40*var(--u));gap:calc(24*var(--u));align-items:baseline;padding:calc(24*var(--u)) 0;font-size:inherit;cursor:pointer}
+#about .exp .row:hover .co{color:var(--accent)}
+#about .exp .chev{align-self:center;justify-self:end;width:calc(36*var(--u));height:calc(36*var(--u));border-radius:50%;background:var(--white);display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .25s ease,color .25s ease}
+#about .exp .chev svg{width:calc(14*var(--u));height:calc(14*var(--u))}
+#about .exp .row:hover .chev{background:var(--accent);color:#fff}
+#about .exp li.open .chev{transform:rotate(45deg);background:var(--ink);color:#fff}
+#about .exp .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
+#about .exp li.open .more{grid-template-rows:1fr}
+#about .exp .more>div{overflow:hidden;padding-inline-start:calc(274*var(--u))}
+#about .exp li.open .more>div{padding-bottom:calc(28*var(--u))}
+#about .exp .more .pl{display:block;font-size:calc(14*var(--u));color:var(--mute);margin-bottom:calc(12*var(--u))}
+#about .exp .more ul{list-style:none;display:grid;gap:calc(10*var(--u));max-width:calc(900*var(--u))}
+#about .exp .more ul li{position:relative;padding-inline-start:calc(22*var(--u));line-height:1.5;color:#3A3A37}
+#about .exp .more ul li::before{content:'';position:absolute;inset-inline-start:0;top:.7em;width:calc(8*var(--u));height:1px;background:var(--accent)}
+#about .exp li.open .de{color:var(--mute)}
+#about .exp ol>li:last-child{border-bottom:1px solid var(--line)}
 #about .exp .yr{color:var(--mute);font-variant-numeric:tabular-nums}
 #about .exp .co{font-size:calc(22*var(--u));font-weight:500;letter-spacing:-.01em}
 #about .exp .ro{color:#3A3A37;font-weight:500}
 #about .exp .de{color:#4A4A46;line-height:1.5}
 
 /* ---------- section 07 · services: the list on one side, the matching work on the other; the active service follows the scroll ---------- */
-#services{position:relative;height:calc(420vh);background:var(--bg)}
-#services .pin{position:sticky;top:0;height:100vh;min-height:calc(1080*var(--u));padding:calc(110*var(--u)) var(--side) calc(130*var(--u));display:grid;grid-template-columns:calc(330*var(--u)) 1fr calc(760*var(--u));gap:calc(60*var(--u))}
-#services .num{font-size:calc(15*var(--u));color:var(--mute);margin-top:calc(14*var(--u))}
+#services{position:relative;height:calc(340vh);background:var(--bg)}
+#services .pin{position:sticky;top:0;height:100vh;min-height:calc(1080*var(--u));padding:calc(110*var(--u)) var(--side) calc(130*var(--u));display:grid;grid-template-columns:calc(330*var(--u)) 1fr;gap:calc(60*var(--u));overflow:hidden;background:#0E0E0D;color:#fff}
+#services .pin>*:not(.pics){position:relative;z-index:2}
+#services .eyebrow{color:rgba(255,255,255,.7)}#services .eyebrow::before{background:rgba(255,255,255,.7)}
+#services .num{font-size:calc(15*var(--u));color:rgba(255,255,255,.55);margin-top:calc(14*var(--u))}
 #services ol{list-style:none;display:flex;flex-direction:column;justify-content:center;counter-reset:s}
-#services li{padding:calc(14*var(--u)) 0;color:#C9C9C4;transition:color .5s}
+#services li{padding:calc(14*var(--u)) 0;color:rgba(255,255,255,.38);transition:color .5s}
 #services li .h{display:flex;align-items:baseline;gap:calc(18*var(--u));font-size:calc(58*var(--u));font-weight:500;letter-spacing:-.03em;line-height:1.05}
 html[lang=ar] #services li .h{font-size:calc(50*var(--u));letter-spacing:0;line-height:1.3}
-#services li .h b{font-size:calc(15*var(--u));font-weight:500;font-variant-numeric:tabular-nums;color:var(--mute)}
-#services li .d{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s cubic-bezier(.2,.7,.2,1),opacity .5s;font-size:calc(17*var(--u));line-height:1.55;color:#4A4A46;max-width:calc(620*var(--u))}
-#services li.on{color:var(--ink)}
+#services li .h b{font-size:calc(15*var(--u));font-weight:500;font-variant-numeric:tabular-nums;color:rgba(255,255,255,.55)}
+#services li .d{max-height:0;overflow:hidden;opacity:0;transition:max-height .7s cubic-bezier(.2,.7,.2,1),opacity .5s;font-size:calc(17*var(--u));line-height:1.55;color:rgba(255,255,255,.82);max-width:calc(620*var(--u))}
+#services li.on{color:#fff}
+#services li.on .h b{color:var(--accent)}
 #services li.on .d{max-height:calc(120*var(--u));opacity:1;margin-top:calc(12*var(--u))}
-#services .pics{position:relative;border-radius:calc(24*var(--u));overflow:hidden;background:var(--card);align-self:center;aspect-ratio:4/5}
+#services .pics{position:absolute;inset:0;z-index:0;background:#0E0E0D}
+#services .pics::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(14,14,13,.94) 0%,rgba(14,14,13,.86) 40%,rgba(14,14,13,.5) 58%,rgba(14,14,13,.12) 78%,rgba(14,14,13,.05) 100%),linear-gradient(0deg,rgba(14,14,13,.55) 0%,rgba(14,14,13,0) 26%)}
+html[dir=rtl] #services .pics::after{background:linear-gradient(270deg,rgba(14,14,13,.94) 0%,rgba(14,14,13,.86) 40%,rgba(14,14,13,.5) 58%,rgba(14,14,13,.12) 78%,rgba(14,14,13,.05) 100%),linear-gradient(0deg,rgba(14,14,13,.55) 0%,rgba(14,14,13,0) 26%)}
 #services .pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .9s ease,transform 1.6s cubic-bezier(.2,.7,.2,1)}
 #services .pics img.on{opacity:1;transform:scale(1)}
-#services .pics .cap{position:absolute;inset:auto calc(16*var(--u)) calc(16*var(--u));z-index:2}
+#services .pics .cap{position:absolute;inset:auto var(--side) calc(130*var(--u)) auto;z-index:2}
+#services .pics .cap{color:var(--ink)}
+html[dir=rtl] #services .pics .cap{inset:auto auto calc(130*var(--u)) var(--side)}
 /* ---------- section 08 · contact: the big line, the email, icon-only links, the name in 3D ---------- */
 #contact{background:#121212;color:#fff;padding:calc(140*var(--u)) var(--side) calc(130*var(--u));border-radius:calc(36*var(--u)) calc(36*var(--u)) 0 0}
 #contact .top{position:static;display:grid;grid-template-columns:calc(330*var(--u)) 1fr;gap:calc(60*var(--u));align-items:start}
@@ -400,7 +441,8 @@ html[lang=ar] #about .bio p{font-size:calc(26.67*var(--u));line-height:1.6}
 #about .tools li{height:calc(34.67*var(--u));padding:0 calc(13.33*var(--u));font-size:calc(17.33*var(--u));font-weight:400}
 #about .tools .tl{font-size:calc(38.67*var(--u));font-weight:400;letter-spacing:0}
 #about .avail .st2{font-size:calc(26.67*var(--u));font-weight:400;letter-spacing:0}
-#about .exp li{font-size:calc(20.0*var(--u));padding:calc(24.0*var(--u)) 0}
+#about .exp ol>li{font-size:calc(20.0*var(--u))}
+#about .exp .more ul li{font-size:calc(18*var(--u))}
 #about .exp .co{font-size:calc(24.0*var(--u));font-weight:400;letter-spacing:0}
 #about .exp .ro{font-weight:400}
 #about .exp .yr{font-family:var(--mono);font-size:calc(16.0*var(--u));text-transform:uppercase}
@@ -460,7 +502,7 @@ html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
 <nav id="nav" aria-label="Main">
   <span class="mono" aria-hidden="true"><svg viewBox="-4 26 92 68" style="width:58%;height:auto;display:block"><path d="M13 30H71A13 13 0 0 1 84 43V90H0V43A13 13 0 0 1 13 30ZM26.5 45H26.5A4.5 4.5 0 0 1 31 49.5V90H22V49.5A4.5 4.5 0 0 1 26.5 45ZM57.5 45H57.5A4.5 4.5 0 0 1 62 49.5V90H53V49.5A4.5 4.5 0 0 1 57.5 45Z" fill="currentColor" fill-rule="evenodd"/></svg></span>
   <div id="links">
-    <a href="#work" data-t="n_work"></a><a href="projects.html" data-t="n_projects"></a><a href="#process" data-t="n_process"></a><a href="#about" data-t="n_about"></a><a href="#contact" data-t="n_contact"></a>
+    <a href="/work" data-pg="work" data-t="n_work"></a><a href="projects.html" data-t="n_projects"></a><a href="/about" data-pg="about" data-t="n_about"></a><a href="/contact" data-pg="contact" data-t="n_contact"></a>
     <a href="mailto:Mahmouduix74@gmail.com" class="talk" data-t="n_talk"></a>
   </div>
   <div id="load"><div id="bar"></div><span id="pct">0%</span></div>
@@ -512,14 +554,13 @@ const T = {
       sv:[['Product Design','Research, user flows, wireframes and high-fidelity interfaces for web apps and dashboards.','dash','Sahem · Stride'],
           ['Web Development','Company websites and landing pages, designed and built in Framer.','web','Intelligent Solutions'],
           ['Mobile Apps','iOS and Android app design in Arabic and English, from onboarding to developer handoff.','osrtak','Osrtak'],
-          ['Brand Identity','Identity for digital products: logo, typography, colour and visual direction.','brand',''],
           ['Design Systems','Figma component libraries with tokens, states and specs that keep design and code aligned.','sys','Sahem']],
       ab_l:'About',
-      ab_bio:'Product designer with 4+ years in design systems and UX for mobile, web and enterprise products. Currently at NTG Clarity and available for freelance projects — designed Arabic-first and delivered through developer handoff.',
+      ab_bio:'Product designer with 5+ years in design systems and UX for mobile, web and enterprise products. Currently at NTG Clarity and available for freelance projects — designed Arabic-first and delivered through developer handoff.',
       ab_city:'Cairo, Egypt', ab_local:'Local time', ab_lang:'Arabic · English', ab_langk:'Languages',
-      ab_toolk:'Tools', ab_tools:['Photoshop','Illustrator','Miro','Framer','AI design workflows'],
-      ex_l:'Experience', ex:[['Oct 2025 – Now','NTG Clarity','Product Designer','Built an 80+ component design system, cutting UI inconsistencies across 3 products by 60%.'],['Oct 2024 – Oct 2025','Lamsa','Product Designer · Remote','Contributed 60+ components to a shared system, cutting handoff time by 40%, on a learning app with 10M+ users.'],['Jan 2024 – Oct 2024','G-Global','UI/UX Designer','Delivered 10+ apps and websites; raised usability scores by 22% through testing on 4 products.'],['Nov 2023 – Jan 2024','Nile Preneurs, Nile University','Product Designer','Ran a card-sorting study with 15+ students that restructured the product’s information architecture.'],['Jun – Sep 2023','Orange Digital Center','Product Designer Intern','Analysed 8 competitors; built and tested 2 prototypes with 20+ users.'],['2019 – 2023','Suez Canal University','B.Sc. Computer Science','UI/UX scholarships: ITI and DPE.']],
-      ab_availk:'Status', ab_avail:'Available for freelance', ab_availp:'Apps · Platforms · Dashboards · Websites', ab_copy:'Copy email', ab_copied:'Email copied',
+      ab_toolk:'Tools', ab_tools:['Claude','ChatGPT','Gemini','Figma Make','Framer','Photoshop','Illustrator','Miro','Notion','Jira'],
+      ex_l:'Experience', ex_more:'Details', ex:[["Oct 2025 – Now", "NTG Clarity", "Product Designer", "Built an 80+ component design system, cutting UI inconsistencies across 3 products by 60%.", "Cairo · Onsite", ["Built a scalable design system with 80+ components, cutting UI inconsistencies across 3 products by 60%.", "Ran user research across 4+ products to inform product and design decisions.", "Partnered with product and engineering teams to keep experiences consistent and high quality."]], ["Oct 2024 – Oct 2025", "Lamsa", "Product Designer · Remote", "Contributed 60+ components to a shared system, cutting handoff time by 40%, on a learning app with 10M+ users.", "UAE · Remote", ["Contributed 60+ components to a shared design system, cutting handoff time by 40%.", "Designed end-to-end flows for a children’s learning app with 10,000,000+ active users.", "Shipped 3 AI-powered features that raised session engagement by 28%."]], ["Jan 2024 – Oct 2024", "G-Global", "UI/UX Designer", "Delivered 10+ apps and websites; raised usability scores by 22% through testing on 4 products.", "Cairo · Onsite", ["Raised usability scores by 22% through heuristic evaluations and iterative testing on 4 products.", "Delivered 10+ apps and websites with 95%+ implementation accuracy.", "Produced brand-aligned assets that contributed to a 15% lift in client conversion rates."]], ["Nov 2023 – Jan 2024", "Nile Preneurs, Nile University", "Product Designer", "Ran a card-sorting study with 15+ students that restructured the product’s information architecture.", "Cairo", ["Ran a card-sorting study with 15+ students that restructured the product’s information architecture.", "Delivered 2 design frameworks adopted across 3 projects."]], ["Jun – Sep 2023", "Orange Digital Center", "Product Designer Intern", "Analysed 8 competitors; built and tested 2 prototypes with 20+ users.", "Cairo", ["Analysed 8 competitors to find gaps and opportunities.", "Built and tested 2 prototypes with 20+ users."]], ["2019 – 2023", "Suez Canal University", "B.Sc. Computer Science", "UI/UX scholarships: ITI and DPE.", "Ismailia", ["Bachelor of Science in Computer Science.", "UI/UX scholarships from ITI and DPE.", "Graduation project: Walkie, a local discovery app and website, as its UI/UX designer."]]],
+      ab_yrk:'Experience', ab_yr:'5+', ab_yrl:'Years designing digital products', ab_yrp:'Design systems, UX research and interfaces for mobile, web and enterprise.', ab_copy:'Copy email', ab_copied:'Email copied',
       pr_l:'Process', pr_h:'How I work.', pr_w:['Discover the problem','Define the structure','Design the system','Deliver every state.'],
       pr:[['Discover','Requirements, users and constraints, validated through interviews and surveys.',['Brief','User needs','Research']],
           ['Define','Information architecture, sitemap and key user flows.',['Sitemap','User flows','IA']],
@@ -537,14 +578,13 @@ const T = {
       sv:[['تصميم المنتجات','البحث ورحلات المستخدم والنماذج الهيكلية والواجهات النهائية لتطبيقات الويب ولوحات التحكم.','dash','Sahem · Stride'],
           ['تطوير المواقع','مواقع شركات وصفحات هبوط، تصميمًا وتنفيذًا على Framer.','web','Intelligent Solutions'],
           ['تطبيقات الموبايل','تصميم تطبيقات iOS وAndroid بالعربية والإنجليزية، من التسجيل حتى التسليم للمطورين.','osrtak','أسرتك'],
-          ['الهوية البصرية','هوية للمنتجات الرقمية: الشعار والخطوط والألوان والاتجاه البصري.','brand',''],
           ['أنظمة التصميم','مكتبات مكوّنات على Figma بالـ Tokens والحالات والمواصفات، لتبقى التصميمات والكود متّسقة.','sys','Sahem']],
       ab_l:'نبذة',
-      ab_bio:'مصمم منتجات بخبرة تزيد على 4 سنوات في أنظمة التصميم وتجربة المستخدم لمنتجات الموبايل والويب والمؤسسات. أعمل حاليًا في NTG Clarity، ومتاح لمشاريع العمل الحر بتصميم يبدأ بالعربية ويمتد حتى التسليم للمطورين.',
+      ab_bio:'مصمم منتجات بخبرة تزيد على 5 سنوات في أنظمة التصميم وتجربة المستخدم لمنتجات الموبايل والويب والمؤسسات. أعمل حاليًا في NTG Clarity، ومتاح لمشاريع العمل الحر بتصميم يبدأ بالعربية ويمتد حتى التسليم للمطورين.',
       ab_city:'القاهرة، مصر', ab_local:'التوقيت المحلي', ab_lang:'العربية · الإنجليزية', ab_langk:'اللغات',
-      ab_toolk:'الأدوات', ab_tools:['Photoshop','Illustrator','Miro','Framer','التصميم بالذكاء الاصطناعي'],
-      ex_l:'الخبرات', ex:[['أكتوبر 2025 – الآن','NTG Clarity','مصمم منتجات','بناء نظام تصميم يضم أكثر من 80 مكوّنًا، خفّض عدم الاتساق في الواجهات عبر 3 منتجات بنسبة 60%.'],['أكتوبر 2024 – أكتوبر 2025','Lamsa','مصمم منتجات · عن بُعد','إضافة أكثر من 60 مكوّنًا إلى نظام تصميم مشترك وتقليص وقت التسليم بنسبة 40%، لتطبيق تعليمي يتجاوز 10 ملايين مستخدم.'],['يناير 2024 – أكتوبر 2024','G-Global','مصمم UI/UX','تسليم أكثر من 10 تطبيقات ومواقع، ورفع مؤشرات سهولة الاستخدام بنسبة 22% عبر اختبار 4 منتجات.'],['نوفمبر 2023 – يناير 2024','Nile Preneurs، جامعة النيل','مصمم منتجات','دراسة فرز بطاقات (Card sorting) مع أكثر من 15 طالبًا أعادت بناء هيكل المعلومات في المنتج.'],['يونيو – سبتمبر 2023','Orange Digital Center','متدرب تصميم منتجات','تحليل 8 منافسين، وبناء نموذجين أوليين واختبارهما مع أكثر من 20 مستخدمًا.'],['2019 – 2023','جامعة قناة السويس','بكالوريوس علوم الحاسب','منحتا UI/UX من ITI ومن DPE.']],
-      ab_availk:'الحالة', ab_avail:'متاح للعمل الحر', ab_availp:'تطبيقات · منصات · لوحات تحكم · مواقع', ab_copy:'نسخ البريد', ab_copied:'تم نسخ البريد',
+      ab_toolk:'الأدوات', ab_tools:['Claude','ChatGPT','Gemini','Figma Make','Framer','Photoshop','Illustrator','Miro','Notion','Jira'],
+      ex_l:'الخبرات', ex_more:'التفاصيل', ex:[["أكتوبر 2025 – الآن", "NTG Clarity", "مصمم منتجات", "بناء نظام تصميم يضم أكثر من 80 مكوّنًا، خفّض عدم الاتساق في الواجهات عبر 3 منتجات بنسبة 60%.", "القاهرة · من المكتب", ["بناء نظام تصميم قابل للتوسع يضم أكثر من 80 مكوّنًا، خفّض عدم الاتساق في الواجهات عبر 3 منتجات بنسبة 60%.", "إجراء أبحاث مستخدمين عبر أكثر من 4 منتجات لتوجيه قرارات المنتج والتصميم.", "العمل مع فرق المنتج والتطوير للحفاظ على تجربة متسقة وعالية الجودة."]], ["أكتوبر 2024 – أكتوبر 2025", "Lamsa", "مصمم منتجات · عن بُعد", "إضافة أكثر من 60 مكوّنًا إلى نظام تصميم مشترك وتقليص وقت التسليم بنسبة 40%، لتطبيق تعليمي يتجاوز 10 ملايين مستخدم.", "الإمارات · عن بُعد", ["إضافة أكثر من 60 مكوّنًا إلى نظام تصميم مشترك، قلّصت وقت التسليم للمطورين بنسبة 40%.", "تصميم رحلات كاملة لتطبيق تعليمي للأطفال يتجاوز 10 ملايين مستخدم نشط.", "إطلاق 3 ميزات مدعومة بالذكاء الاصطناعي رفعت التفاعل في الجلسات بنسبة 28%."]], ["يناير 2024 – أكتوبر 2024", "G-Global", "مصمم UI/UX", "تسليم أكثر من 10 تطبيقات ومواقع، ورفع مؤشرات سهولة الاستخدام بنسبة 22% عبر اختبار 4 منتجات.", "القاهرة · من المكتب", ["رفع مؤشرات سهولة الاستخدام بنسبة 22% عبر التقييم الاستدلالي والاختبار المتكرر على 4 منتجات.", "تسليم أكثر من 10 تطبيقات ومواقع بدقة تنفيذ تتجاوز 95%.", "تصميم مواد متسقة مع هوية العملاء أسهمت في رفع معدلات التحويل بنسبة 15%."]], ["نوفمبر 2023 – يناير 2024", "Nile Preneurs، جامعة النيل", "مصمم منتجات", "دراسة فرز بطاقات (Card sorting) مع أكثر من 15 طالبًا أعادت بناء هيكل المعلومات في المنتج.", "القاهرة", ["دراسة فرز بطاقات (Card sorting) مع أكثر من 15 طالبًا أعادت بناء هيكل المعلومات في المنتج.", "تسليم إطاري تصميم اعتُمدا في 3 مشاريع."]], ["يونيو – سبتمبر 2023", "Orange Digital Center", "متدرب تصميم منتجات", "تحليل 8 منافسين، وبناء نموذجين أوليين واختبارهما مع أكثر من 20 مستخدمًا.", "القاهرة", ["تحليل 8 منافسين لتحديد الفجوات والفرص.", "بناء نموذجين أوليين واختبارهما مع أكثر من 20 مستخدمًا."]], ["2019 – 2023", "جامعة قناة السويس", "بكالوريوس علوم الحاسب", "منحتا UI/UX من ITI ومن DPE.", "الإسماعيلية", ["بكالوريوس العلوم في علوم الحاسب.", "منحتا UI/UX من ITI ومن DPE.", "مشروع التخرج: Walkie، تطبيق وموقع لاكتشاف الأماكن، بدور مصمم UI/UX."]]],
+      ab_yrk:'الخبرة', ab_yr:'+5', ab_yrl:'سنوات في تصميم المنتجات الرقمية', ab_yrp:'أنظمة التصميم وأبحاث تجربة المستخدم والواجهات للموبايل والويب والمؤسسات.', ab_copy:'نسخ البريد', ab_copied:'تم نسخ البريد',
       pr_l:'المنهجية', pr_h:'منهجية العمل.', pr_w:['أكتشف المشكلة','أحدّد البنية','أصمّم النظام','أسلّم كل الحالات.'],
       pr:[['الاكتشاف','فهم المتطلبات والمستخدمين والقيود عبر المقابلات والاستبيانات.',['المتطلبات','احتياجات المستخدم','البحث']],
           ['التحديد','بنية المعلومات وخريطة الموقع ورحلات المستخدم الأساسية.',['خريطة الموقع','رحلات المستخدم','بنية المعلومات']],
@@ -554,6 +594,12 @@ const T = {
       n_work:'الأعمال', n_projects:'المشاريع', n_process:'المنهجية', n_about:'نبذة', n_contact:'تواصل', n_talk:'لنتحدث'},
 };
 const Q = new URLSearchParams(location.search);
+const PAGE = document.documentElement.getAttribute('data-page') || '';
+if (PAGE) {
+  if (location.protocol === 'file:' || /^(localhost|127\.)/.test(location.hostname)) document.querySelectorAll('#links a[data-pg]').forEach(a => a.href = '?page=' + a.dataset.pg);
+  document.querySelectorAll('#links a[data-pg="' + PAGE + '"]').forEach(a => a.classList.add('on'));
+  const wm = document.querySelector('#hero .wm'); if (wm) wm.href = '/';
+} else if (location.protocol === 'file:' || /^(localhost|127\.)/.test(location.hostname)) document.querySelectorAll('#links a[data-pg]').forEach(a => a.href = '?page=' + a.dataset.pg);
 const HERO = (Q.get('hero') || 'o').toLowerCase();
 const SOLO = Q.get('solo');   // ?solo=reel: only the reel, its own clock drives heroSeek(t) (stills)
 let LANG = Q.get('lang') || (location.hash==='#ar' ? 'ar' : location.hash==='#en' ? 'en' : null) || (()=>{ try { return localStorage.getItem('lang'); } catch(e){ return null; } })() || 'en';
@@ -630,6 +676,8 @@ const reelHTML = t => `<div class="vR">
     </div>`;
 
 function render(){
+  if (PAGE) { const tt = {work:['Selected work','الأعمال'], about:['About','نبذة'], contact:['Contact','تواصل']}[PAGE];
+    document.title = (LANG === 'ar' ? tt[1] + ' — محمود علي' : tt[0] + ' — Mahmoud Ali'); }
   const t = T[LANG];
   document.documentElement.lang = LANG; document.documentElement.dir = LANG==='ar' ? 'rtl' : 'ltr';
   document.documentElement.classList.toggle('vO-on', HERO === 'o');
@@ -653,9 +701,10 @@ function render(){
       <div class="b clock" data-ain="3"><div class="info"><div class="k">${t.ab_local}</div><div><div class="tm" id="ctime">--:--</div><div class="zn"><span>${t.ab_city}</span><span id="czone"></span></div></div></div><svg class="face" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="99" fill="#2A2A28"/><circle cx="100" cy="100" r="96" fill="#F4F3EF"/><circle cx="100" cy="100" r="96" fill="url(#cg)"/><defs><radialGradient id="cg" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#fff" stop-opacity=".9"/><stop offset="1" stop-color="#E4E2DC" stop-opacity=".9"/></radialGradient></defs><g stroke="#111" stroke-linecap="round"><line x1="100.00" y1="22.00" x2="100.00" y2="7.00" stroke-width="4"/><line x1="109.20" y1="12.48" x2="109.72" y2="7.51" stroke-width="1.2"/><line x1="118.30" y1="13.92" x2="119.34" y2="9.03" stroke-width="1.2"/><line x1="127.19" y1="16.31" x2="128.74" y2="11.55" stroke-width="1.2"/><line x1="135.79" y1="19.61" x2="137.83" y2="15.04" stroke-width="1.2"/><line x1="140.50" y1="29.85" x2="146.50" y2="19.46" stroke-width="2.6"/><line x1="151.73" y1="28.81" x2="154.66" y2="24.76" stroke-width="1.2"/><line x1="158.88" y1="34.60" x2="162.23" y2="30.89" stroke-width="1.2"/><line x1="165.40" y1="41.12" x2="169.11" y2="37.77" stroke-width="1.2"/><line x1="171.19" y1="48.27" x2="175.24" y2="45.34" stroke-width="1.2"/><line x1="170.15" y1="59.50" x2="180.54" y2="53.50" stroke-width="2.6"/><line x1="180.39" y1="64.21" x2="184.96" y2="62.17" stroke-width="1.2"/><line x1="183.69" y1="72.81" x2="188.45" y2="71.26" stroke-width="1.2"/><line x1="186.08" y1="81.70" x2="190.97" y2="80.66" stroke-width="1.2"/><line x1="187.52" y1="90.80" x2="192.49" y2="90.28" stroke-width="1.2"/><line x1="178.00" y1="100.00" x2="193.00" y2="100.00" stroke-width="4"/><line x1="187.52" y1="109.20" x2="192.49" y2="109.72" stroke-width="1.2"/><line x1="186.08" y1="118.30" x2="190.97" y2="119.34" stroke-width="1.2"/><line x1="183.69" y1="127.19" x2="188.45" y2="128.74" stroke-width="1.2"/><line x1="180.39" y1="135.79" x2="184.96" y2="137.83" stroke-width="1.2"/><line x1="170.15" y1="140.50" x2="180.54" y2="146.50" stroke-width="2.6"/><line x1="171.19" y1="151.73" x2="175.24" y2="154.66" stroke-width="1.2"/><line x1="165.40" y1="158.88" x2="169.11" y2="162.23" stroke-width="1.2"/><line x1="158.88" y1="165.40" x2="162.23" y2="169.11" stroke-width="1.2"/><line x1="151.73" y1="171.19" x2="154.66" y2="175.24" stroke-width="1.2"/><line x1="140.50" y1="170.15" x2="146.50" y2="180.54" stroke-width="2.6"/><line x1="135.79" y1="180.39" x2="137.83" y2="184.96" stroke-width="1.2"/><line x1="127.19" y1="183.69" x2="128.74" y2="188.45" stroke-width="1.2"/><line x1="118.30" y1="186.08" x2="119.34" y2="190.97" stroke-width="1.2"/><line x1="109.20" y1="187.52" x2="109.72" y2="192.49" stroke-width="1.2"/><line x1="100.00" y1="178.00" x2="100.00" y2="193.00" stroke-width="4"/><line x1="90.80" y1="187.52" x2="90.28" y2="192.49" stroke-width="1.2"/><line x1="81.70" y1="186.08" x2="80.66" y2="190.97" stroke-width="1.2"/><line x1="72.81" y1="183.69" x2="71.26" y2="188.45" stroke-width="1.2"/><line x1="64.21" y1="180.39" x2="62.17" y2="184.96" stroke-width="1.2"/><line x1="59.50" y1="170.15" x2="53.50" y2="180.54" stroke-width="2.6"/><line x1="48.27" y1="171.19" x2="45.34" y2="175.24" stroke-width="1.2"/><line x1="41.12" y1="165.40" x2="37.77" y2="169.11" stroke-width="1.2"/><line x1="34.60" y1="158.88" x2="30.89" y2="162.23" stroke-width="1.2"/><line x1="28.81" y1="151.73" x2="24.76" y2="154.66" stroke-width="1.2"/><line x1="29.85" y1="140.50" x2="19.46" y2="146.50" stroke-width="2.6"/><line x1="19.61" y1="135.79" x2="15.04" y2="137.83" stroke-width="1.2"/><line x1="16.31" y1="127.19" x2="11.55" y2="128.74" stroke-width="1.2"/><line x1="13.92" y1="118.30" x2="9.03" y2="119.34" stroke-width="1.2"/><line x1="12.48" y1="109.20" x2="7.51" y2="109.72" stroke-width="1.2"/><line x1="22.00" y1="100.00" x2="7.00" y2="100.00" stroke-width="4"/><line x1="12.48" y1="90.80" x2="7.51" y2="90.28" stroke-width="1.2"/><line x1="13.92" y1="81.70" x2="9.03" y2="80.66" stroke-width="1.2"/><line x1="16.31" y1="72.81" x2="11.55" y2="71.26" stroke-width="1.2"/><line x1="19.61" y1="64.21" x2="15.04" y2="62.17" stroke-width="1.2"/><line x1="29.85" y1="59.50" x2="19.46" y2="53.50" stroke-width="2.6"/><line x1="28.81" y1="48.27" x2="24.76" y2="45.34" stroke-width="1.2"/><line x1="34.60" y1="41.12" x2="30.89" y2="37.77" stroke-width="1.2"/><line x1="41.12" y1="34.60" x2="37.77" y2="30.89" stroke-width="1.2"/><line x1="48.27" y1="28.81" x2="45.34" y2="24.76" stroke-width="1.2"/><line x1="59.50" y1="29.85" x2="53.50" y2="19.46" stroke-width="2.6"/><line x1="64.21" y1="19.61" x2="62.17" y2="15.04" stroke-width="1.2"/><line x1="72.81" y1="16.31" x2="71.26" y2="11.55" stroke-width="1.2"/><line x1="81.70" y1="13.92" x2="80.66" y2="9.03" stroke-width="1.2"/><line x1="90.80" y1="12.48" x2="90.28" y2="7.51" stroke-width="1.2"/></g><g id="chH"><line x1="100" y1="112" x2="100" y2="52" stroke="#111" stroke-width="7" stroke-linecap="round"/></g><g id="chM"><line x1="100" y1="116" x2="100" y2="24" stroke="#111" stroke-width="4.5" stroke-linecap="round"/></g><g id="chS"><line x1="100" y1="124" x2="100" y2="18" stroke="#FF5A1F" stroke-width="1.8" stroke-linecap="round"/><circle cx="100" cy="100" r="5" fill="#FF5A1F"/></g><circle cx="100" cy="100" r="2" fill="#F4F3EF"/></svg></div>
       <div class="b langs" data-ain="4"><div class="k">${t.ab_langk}</div><div class="glyphs"><span class="ar">ع</span><i></i><span class="en">Aa</span></div><p>${t.ab_lang}</p></div>
       <div class="b tools" data-ain="5"><div class="k">${t.ab_toolk}</div><div class="tl">Figma</div><ul>${t.ab_tools.map(x => `<li>${x}</li>`).join('')}</ul></div>
-      <div class="b avail" data-ain="6"><div class="k">${t.ab_availk}</div><div><div class="st2"><span class="dot"></span>${t.ab_avail}</div><p>${t.ab_availp}</p></div><button id="cpy" type="button">${cp}<span>${t.ab_copy}</span></button></div>
+      <div class="b years" data-ain="6"><div class="k">${t.ab_yrk}</div><div><div class="big">${t.ab_yr}</div><div class="yl">${t.ab_yrl}</div></div><p>${t.ab_yrp}</p></div>
     </div>
-    <div class="exp"><div class="eyebrow">${t.ex_l}</div><ol>${t.ex.map(e => `<li data-ain="7"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span class="de">${e[3]}</span></li>`).join('')}</ol></div>`;
+    <div class="exp"><div class="eyebrow">${t.ex_l}</div><ol>${t.ex.map((e, i) => `<li data-ain="7"><button type="button" class="row" aria-expanded="false" aria-controls="exm${i}"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span class="de">${e[3]}</span><i class="chev" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8h10M8 3v10"/></svg></i></button><div class="more" id="exm${i}"><div><span class="pl">${e[4]}</span><ul>${e[5].map(x => `<li>${x}</li>`).join('')}</ul></div></div></li>`).join('')}</ol></div>`;
+  document.querySelectorAll('#about .exp .row').forEach(r => r.onclick = () => { const li = r.parentNode, on = !li.classList.contains('open'); li.classList.toggle('open', on); r.setAttribute('aria-expanded', on); });
   const b = $('cpy'); if (b) b.onclick = () => { const done = () => { b.querySelector('span').textContent = t.ab_copied; setTimeout(() => b.querySelector('span').textContent = t.ab_copy, 1800); };
     try { navigator.clipboard.writeText('Mahmouduix74@gmail.com').then(done, done); } catch(e){ done(); } };
   tickClock(); setHands(); if (watchClock.io) { watchClock.io.disconnect(); watchClock.io = null; } watchClock();
@@ -1001,11 +1050,11 @@ if (!Q.has('render') && !navigator.webdriver) window.ready.then(() => {
     const watch = () => document.querySelectorAll('#work video').forEach(v => vio.observe(v)); watch(); $('lang').addEventListener('click', () => setTimeout(watch, 0)); }
   new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playAbout(); io.disconnect(); } }), {threshold:.3}).observe($('about'));
   new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playContact(); io.disconnect(); } }), {threshold:.3}).observe($('contact'));
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return heroSeek(END);
+  if (PAGE || matchMedia('(prefers-reduced-motion: reduce)').matches) return heroSeek(END);
   const t0 = performance.now(); const run = () => { const t = (performance.now()-t0)/1000; heroSeek(t); if (t < END) requestAnimationFrame(run); }; run();
 });
 // the hero name breaks under the pointer, once it has built itself (not in renders, not with reduced motion)
-if (HERO === 'd' && !Q.has('render') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+if (HERO === 'd' && !PAGE && !Q.has('render') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const built = () => NM.k.every(k => k === 1) && nmEls();
   $('hero').addEventListener('pointermove', e => { if (!built() || !nmWorld()) return;
     const w = NM.world, q = nmLocal(e.clientX, e.clientY), now = performance.now();
