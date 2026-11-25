@@ -214,32 +214,32 @@ html[lang=ar] .foot .c{font-family:inherit}
 
 <script>
 'use strict';
-// every project, newest work first after the two lead products; each opens its case study
+// every project, oldest first: 2023 (Walkie, Elevate, Zarafa), NU App (Nov 2023 – Jan 2024), then 2025 (Sahem, Intelligent Solutions, Forma, Stride)
 const P = [
-  {k:'stride', name:'Stride', cat:['mobile','dash'], img:'assets/mockups/P4-stride-app.jpg', clip:1, url:'work/stride/',
-   en:{ty:'Gym apps & dashboard', line:'Member app, trainer app and club dashboard for one gym brand.', tags:['Member app','Trainer app','Dashboard','2025']},
-   ar:{ty:'تطبيقات ولوحة تحكم', line:'تطبيق للأعضاء وتطبيق للمدربين ولوحة تحكم للنادي، تحت علامة واحدة.', tags:['تطبيق الأعضاء','تطبيق المدرب','لوحة تحكم','2025']}},
-  {k:'sahem', name:'Sahem', cat:['mobile','web','dash'], img:'assets/mockups/P55-sahem-app-3.jpg', clip:1, url:'work/sahem/',
-   en:{ty:'Fintech platform', line:'Real-estate investing across app, website, landing page and admin.', tags:['Mobile app','Web','Admin dashboard','Fintech']},
-   ar:{ty:'منصة استثمار', line:'استثمار عقاري عبر التطبيق والموقع وصفحة الهبوط ولوحة التحكم.', tags:['تطبيق موبايل','ويب','لوحة تحكم','تقنية مالية']}},
+  {k:'walkie', name:'Walkie', cat:['mobile','web'], img:'assets/mockups/P61-walkie.jpg', clip:1, isNew:1, url:'work/walkie/',
+   en:{ty:'Local discovery app & website', line:'Find a café or restaurant in Egypt, then get there by bus or metro, whatever your abilities.', tags:['Mobile app','Website','Accessibility','Graduation project','2023']},
+   ar:{ty:'تطبيق وموقع لاكتشاف الأماكن', line:'اعثر على مقهى أو مطعم في مصر، ثم اذهب إليه بالأتوبيس أو المترو، أيًّا كانت قدراتك.', tags:['تطبيق موبايل','موقع','إتاحة','مشروع تخرج','2023']}},
   {k:'elevate', name:'Elevate', cat:['mobile'], img:'assets/clips/elevate.jpg', clip:0, isNew:1, url:'work/elevate/',
    en:{ty:'Real estate app', line:'Find a home in the UAE or Egypt, compare payment plans, and set up a business, in one app.', tags:['Mobile app','Real estate','Freelance','2023']},
    ar:{ty:'تطبيق عقارات', line:'ابحث عن بيت في الإمارات أو مصر، وقارن خطط السداد، وأسّس شركتك، في تطبيق واحد.', tags:['تطبيق موبايل','عقارات','عمل حر','2023']}},
   {k:'zarafa', name:'Zarafa', cat:['web'], img:'assets/mockups/P60-zarafa-web.jpg', clip:1, isNew:1, url:'work/zarafa/',
    en:{ty:'Cashback & wallet website', line:'Cashback from stores, ways to earn and a digital wallet, designed as one website.', tags:['Website','Fintech','Freelance','83 screens']},
    ar:{ty:'موقع كاش باك ومحفظة', line:'كاش باك من المتاجر، وطرق للكسب، ومحفظة رقمية، في موقع واحد.', tags:['موقع','تقنية مالية','عمل حر','83 شاشة']}},
-  {k:'walkie', name:'Walkie', cat:['mobile','web'], img:'assets/mockups/P61-walkie.jpg', clip:1, isNew:1, url:'work/walkie/',
-   en:{ty:'Local discovery app & website', line:'Find a café or restaurant in Egypt, then get there by bus or metro, whatever your abilities.', tags:['Mobile app','Website','Accessibility','Graduation project','2023']},
-   ar:{ty:'تطبيق وموقع لاكتشاف الأماكن', line:'اعثر على مقهى أو مطعم في مصر، ثم اذهب إليه بالأتوبيس أو المترو، أيًّا كانت قدراتك.', tags:['تطبيق موبايل','موقع','إتاحة','مشروع تخرج','2023']}},
+  {k:'nu', name:'NU App', cat:['research','mobile'], img:'assets/clips/nu.jpg', clip:0, url:'work/nu/',
+   en:{ty:'UX research', line:'Card sorting with nine students to rebuild a university app\'s information architecture.', tags:['UX research','Card sorting','Information architecture']},
+   ar:{ty:'بحث تجربة مستخدم', line:'فرز البطاقات مع تسعة طلاب لإعادة بناء هيكل معلومات تطبيق جامعي.', tags:['بحث تجربة المستخدم','فرز البطاقات','هيكلة المعلومات']}},
+  {k:'sahem', name:'Sahem', cat:['mobile','web','dash'], img:'assets/mockups/P55-sahem-app-3.jpg', clip:1, url:'work/sahem/',
+   en:{ty:'Fintech platform', line:'Real-estate investing across app, website, landing page and admin.', tags:['Mobile app','Web','Admin dashboard','Fintech']},
+   ar:{ty:'منصة استثمار', line:'استثمار عقاري عبر التطبيق والموقع وصفحة الهبوط ولوحة التحكم.', tags:['تطبيق موبايل','ويب','لوحة تحكم','تقنية مالية']}},
   {k:'is', name:'Intelligent Solutions', cat:['web'], img:'assets/mockups/P32-intelligent-solutions-web.jpg', clip:1, url:'work/intelligent-solutions/',
    en:{ty:'Company website', line:'A seven-page corporate website and mobile site for a software company.', tags:['Website','Arabic RTL','Client project']},
    ar:{ty:'موقع شركة', line:'موقع مؤسسي من سبع صفحات وموقع موبايل لشركة برمجيات.', tags:['موقع','عربي RTL','مشروع لعميل']}},
   {k:'forma', name:'Forma', cat:['web'], img:'assets/mockups/P50-forma-web.jpg', clip:1, url:'work/forma/',
    en:{ty:'Sports platform', line:'A football platform connecting players with trainers and events.', tags:['Web platform','Client project','2025','2 months']},
    ar:{ty:'منصة رياضية', line:'منصة كرة قدم تربط اللاعبين بالمدربين والفعاليات.', tags:['منصة ويب','مشروع لعميل','2025','شهران']}},
-  {k:'nu', name:'NU App', cat:['research','mobile'], img:'assets/clips/nu.jpg', clip:0, url:'work/nu/',
-   en:{ty:'UX research', line:'Card sorting with nine students to rebuild a university app\'s information architecture.', tags:['UX research','Card sorting','Information architecture']},
-   ar:{ty:'بحث تجربة مستخدم', line:'فرز البطاقات مع تسعة طلاب لإعادة بناء هيكل معلومات تطبيق جامعي.', tags:['بحث تجربة المستخدم','فرز البطاقات','هيكلة المعلومات']}},
+  {k:'stride', name:'Stride', cat:['mobile','dash'], img:'assets/mockups/P4-stride-app.jpg', clip:1, url:'work/stride/',
+   en:{ty:'Gym apps & dashboard', line:'Member app, trainer app and club dashboard for one gym brand.', tags:['Member app','Trainer app','Dashboard','2025']},
+   ar:{ty:'تطبيقات ولوحة تحكم', line:'تطبيق للأعضاء وتطبيق للمدربين ولوحة تحكم للنادي، تحت علامة واحدة.', tags:['تطبيق الأعضاء','تطبيق المدرب','لوحة تحكم','2025']}},
 ];
 const CATS = ['all', 'mobile', 'web', 'dash', 'research'];
 const T = {
