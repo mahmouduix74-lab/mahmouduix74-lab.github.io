@@ -322,12 +322,12 @@ html[lang=ar] #about .bio p{font-size:calc(28*var(--u));line-height:1.6;letter-s
 #about .exp .cvb svg{width:calc(16*var(--u));height:calc(16*var(--u))}
 #about .exp ol{list-style:none}
 #about .exp ol>li{border-top:1px solid var(--line);font-size:calc(17*var(--u))}
-#about .exp .row{width:100%;text-align:start;display:grid;grid-template-columns:calc(250*var(--u)) calc(330*var(--u)) calc(260*var(--u)) 1fr calc(40*var(--u));gap:calc(24*var(--u));align-items:baseline;padding:calc(24*var(--u)) 0;font-size:inherit;cursor:pointer}
+#about .exp .row{width:100%;text-align:start;display:grid;grid-template-columns:calc(250*var(--u)) calc(330*var(--u)) calc(340*var(--u)) 1fr calc(40*var(--u));gap:calc(24*var(--u));align-items:center;padding:calc(24*var(--u)) 0;font-size:inherit;cursor:pointer}
 #about .exp .row:hover .co{color:var(--accent)}
 #about .exp .chev{align-self:center;justify-self:end;width:calc(36*var(--u));height:calc(36*var(--u));border-radius:50%;background:var(--white);display:grid;place-items:center;transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .25s ease,color .25s ease}
 #about .exp .chev svg{width:calc(14*var(--u));height:calc(14*var(--u))}
 #about .exp .row:hover .chev{background:var(--accent);color:#fff}
-#about .exp li.open .chev{transform:rotate(45deg);background:var(--ink);color:#fff}
+#about .exp li.open .chev{transform:rotate(180deg);background:var(--ink);color:#fff}
 #about .exp .more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .5s cubic-bezier(.2,.8,.2,1)}
 #about .exp li.open .more{grid-template-rows:1fr}
 #about .exp .more>div{overflow:hidden;padding-inline-start:calc(274*var(--u))}
@@ -336,7 +336,7 @@ html[lang=ar] #about .bio p{font-size:calc(28*var(--u));line-height:1.6;letter-s
 #about .exp .more ul{list-style:none;display:grid;gap:calc(10*var(--u));max-width:calc(900*var(--u))}
 #about .exp .more ul li{position:relative;padding-inline-start:calc(22*var(--u));line-height:1.5;color:#3A3A37}
 #about .exp .more ul li::before{content:'';position:absolute;inset-inline-start:0;top:.7em;width:calc(8*var(--u));height:1px;background:var(--accent)}
-#about .exp li.open .de{color:var(--mute)}
+
 #about .exp ol>li:last-child{border-bottom:1px solid var(--line)}
 #about .exp .yr{color:var(--mute);font-variant-numeric:tabular-nums}
 #about .exp .co{font-size:calc(22*var(--u));font-weight:500;letter-spacing:-.01em}
@@ -476,6 +476,76 @@ html.pw-off{overflow:hidden}
   font-family:var(--mono);font-size:calc(16*var(--u));letter-spacing:.02em;text-transform:uppercase}
 html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ---------- phones: the bar, About with its experience list, and Contact get a layout of their own, in real pixels ---------- */
+@media (max-width:700px){
+  #nav{bottom:12px;height:52px;padding:6px;border-radius:16px;max-width:calc(100vw - 16px)}
+  #nav .mono{display:none}
+  #links{gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  #links::-webkit-scrollbar{display:none}
+  #links a{flex:none;height:40px;padding:0 10px;border-radius:11px;font-size:13.5px}
+  #links a.talk{display:none}
+  html[data-page] #hero{height:76px}
+  html[data-page] .top{inset:18px 16px auto}
+  html[data-page] .wm svg{height:20px}
+  html[data-page] .top .pill{height:34px;padding:0 13px;font-size:13px;gap:8px}
+  #about{padding:0 16px 96px}
+  html[data-page=about] #about{padding-top:12px}
+  #about .top{grid-template-columns:1fr;gap:6px;margin-bottom:18px}
+  #about .top .num{display:none}
+  .eyebrow{font-size:12px!important;gap:8px}.eyebrow::before{width:18px}
+  #about .bento{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;gap:10px}
+  #about .b{border-radius:18px;padding:18px;gap:14px}
+  #about .b .k{font-size:11px!important}
+  #about .me{grid-row:auto;grid-column:1/3;aspect-ratio:4/5;padding:0}
+  #about .me .chip{inset:auto 12px 12px;font-size:14px}
+  #about .bio{grid-column:1/3}
+  #about .bio p,html[lang=ar] #about .bio p{font-size:19px;line-height:1.45}
+  #about .clock{grid-column:1/3;padding:18px}
+  #about .clock .tm{font-size:44px}
+  #about .clock .zn,#about .langs p,#about .tools p{font-size:14px}
+  #about .clock .face{height:120px}
+  #about .years{grid-column:1/3}
+  #about .years .big{font-size:64px}
+  #about .years .yl{font-size:17px}
+  #about .years p{font-size:13.5px}
+  #about .langs{grid-column:1/2}
+  #about .langs .glyphs{font-size:52px;gap:12px}#about .langs .glyphs i{height:40px}
+  #about .tools{grid-column:2/3}
+  #about .tools .tl{font-size:26px}
+  #about .tools ul{gap:6px}
+  #about .tools li{height:28px;padding:0 10px;font-size:12.5px}
+  #about .exp{margin-top:48px;grid-template-columns:1fr;gap:14px}
+  #about .exp .eyebrow{padding-top:0}
+  #about .exp ol>li{font-size:15px}
+  #about .exp .row{grid-template-columns:1fr 34px;grid-template-areas:"yr ch" "co ch" "ro ch";gap:4px 12px;padding:18px 0}
+  #about .exp .row .yr{grid-area:yr;font-size:11.5px}
+  #about .exp .row .co{grid-area:co;font-size:19px}
+  #about .exp .row .ro{grid-area:ro;font-size:14px;color:#6E6E69}
+  #about .exp .row>span:empty{display:none}
+  #about .exp .chev{grid-area:ch;width:34px;height:34px}
+  #about .exp .chev svg{width:14px;height:14px}
+  #about .exp .more>div{padding-inline-start:0}
+  #about .exp li.open .more>div{padding-bottom:20px}
+  #about .exp .more .pl{font-size:12px;margin-bottom:10px}
+  #about .exp .more ul{gap:10px;max-width:none}
+  #about .exp .more ul li{font-size:14.5px;padding-inline-start:16px}
+  #about .exp .more ul li::before{width:7px}
+  #contact{padding:64px 16px 96px;border-radius:24px 24px 0 0}
+  #contact .top{grid-template-columns:1fr;gap:10px}
+  #contact .num{display:none}
+  #contact h2,html[lang=ar] #contact h2{font-size:34px;line-height:1.12}
+  #contact .row{grid-template-columns:1fr;gap:18px;margin-top:30px}
+  #contact .row>div:first-child{display:none}
+  #contact .mail{gap:12px}
+  #contact .mail a{font-size:20px;padding-bottom:4px}
+  #contact .mail button{height:36px;padding:0 14px;font-size:13px;gap:8px}
+  #contact .mail button svg{width:14px;height:14px}
+  #contact .icons{gap:10px}
+  #contact .icons a{width:46px;height:46px}
+  #contact .icons svg{width:19px;height:19px}
+  #contact .foot{font-size:11px;margin-top:24px;padding-top:16px;gap:12px}
+}
 </style>
 </head>
 <body>
@@ -505,7 +575,7 @@ html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
 <nav id="nav" aria-label="Main">
   <span class="mono" aria-hidden="true"><svg viewBox="-4 26 92 68" style="width:58%;height:auto;display:block"><path d="M13 30H71A13 13 0 0 1 84 43V90H0V43A13 13 0 0 1 13 30ZM26.5 45H26.5A4.5 4.5 0 0 1 31 49.5V90H22V49.5A4.5 4.5 0 0 1 26.5 45ZM57.5 45H57.5A4.5 4.5 0 0 1 62 49.5V90H53V49.5A4.5 4.5 0 0 1 57.5 45Z" fill="currentColor" fill-rule="evenodd"/></svg></span>
   <div id="links">
-    <a href="/work" data-pg="work" data-t="n_work"></a><a href="projects.html" data-t="n_projects"></a><a href="/about" data-pg="about" data-t="n_about"></a><a href="/contact" data-pg="contact" data-t="n_contact"></a>
+    <a href="/work" data-pg="work" data-t="n_work"></a><a href="projects.html" data-t="n_projects"></a><a href="/about" data-pg="about" data-t="n_about"></a><a href="/contact" data-pg="contact" data-t="n_contact"></a><a href="assets/Mahmoud_Ali_CV.pdf" target="_blank" rel="noopener" data-t="n_cv"></a>
     <a href="mailto:Mahmouduix74@gmail.com" class="talk" data-t="n_talk"></a>
   </div>
   <div id="load"><div id="bar"></div><span id="pct">0%</span></div>
@@ -570,7 +640,7 @@ const T = {
           ['Design','The design system first, then the screens — RTL and LTR.',['Design system','Components','Screens','Prototype']],
           ['Deliver','Every state, spec and component a developer needs.',['Handoff','Specs','States']]],
       wk_h:'Five products, from concept to handoff.', wk_go:'View case study', wk_soon:'Case study soon', wk_all:'All projects',
-      n_work:'Work', n_projects:'Projects', n_process:'Process', n_about:'About', n_contact:'Contact', n_talk:"Let's talk"},
+      n_work:'Work', n_projects:'Projects', n_process:'Process', n_about:'About', n_contact:'Contact', n_cv:'CV', n_talk:"Let's talk"},
   ar:{wm:'محمود', rst:'استعادة', pw:'الموقع مقفول · دوس على الزرار عشان تشغّله', pw_on:'شغّل الموقع', pw_off:'اقفل الموقع', role_s:'— مصمم UI/UX', avail:'متاح للعمل الحر', l1:'ع', l2:'EN', eyebrow:'مصمم منتجات رقمية · UI/UX',
       h1:['أصمّم تطبيقات ومنصات','ولوحات تحكم واضحة',['','بالعربية والإنجليزية.']],
       lede:'تطبيقات موبايل ومنصات ويب ولوحات تحكم ومواقع شركات، من أول رحلة مستخدم حتى التسليم للمطورين.',
@@ -594,7 +664,7 @@ const T = {
           ['التصميم','نظام التصميم أولًا ثم الشاشات، من اليمين لليسار ومن اليسار لليمين.',['نظام التصميم','المكوّنات','الشاشات','النماذج الأولية']],
           ['التسليم','كل الحالات والمواصفات والمكوّنات التي يحتاجها المطور.',['التسليم','المواصفات','الحالات']]],
       wk_h:'خمسة منتجات، من الفكرة إلى التسليم.', wk_go:'عرض دراسة الحالة', wk_soon:'دراسة الحالة قريبًا', wk_all:'كل المشاريع',
-      n_work:'الأعمال', n_projects:'المشاريع', n_process:'المنهجية', n_about:'نبذة', n_contact:'تواصل', n_talk:'لنتحدث'},
+      n_work:'الأعمال', n_projects:'المشاريع', n_process:'المنهجية', n_about:'نبذة', n_contact:'تواصل', n_cv:'السيرة الذاتية', n_talk:'لنتحدث'},
 };
 const Q = new URLSearchParams(location.search);
 const PAGE = document.documentElement.getAttribute('data-page') || '';
@@ -708,7 +778,7 @@ function render(){
       <div class="b tools" data-ain="5"><div class="k">${t.ab_toolk}</div><div class="tl">Figma</div><ul>${t.ab_tools.map(x => `<li>${x}</li>`).join('')}</ul></div>
       <div class="b years" data-ain="6"><div class="k">${t.ab_yrk}</div><div><div class="big">${t.ab_yr}</div><div class="yl">${t.ab_yrl}</div></div><p>${t.ab_yrp}</p></div>
     </div>
-    <div class="exp"><div class="eh"><div class="eyebrow">${t.ex_l}</div><a class="cvb" href="assets/Mahmoud_Ali_CV.pdf" download="Mahmoud_Ali_CV.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2.5v8M4.5 7 8 10.5 11.5 7M3 13.5h10"/></svg><span>${t.ex_cv}</span></a></div><ol>${t.ex.map((e, i) => `<li data-ain="7"><button type="button" class="row" aria-expanded="false" aria-controls="exm${i}"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span class="de">${e[3]}</span><i class="chev" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 8h10M8 3v10"/></svg></i></button><div class="more" id="exm${i}"><div><span class="pl">${e[4]}</span><ul>${e[5].map(x => `<li>${x}</li>`).join('')}</ul></div></div></li>`).join('')}</ol></div>`;
+    <div class="exp"><div class="eyebrow">${t.ex_l}</div><ol>${t.ex.map((e, i) => `<li data-ain="7"><button type="button" class="row" aria-expanded="false" aria-controls="exm${i}"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span></span><i class="chev" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6 8 10.5 12.5 6"/></svg></i></button><div class="more" id="exm${i}"><div><span class="pl">${e[4]}</span><ul>${e[5].map(x => `<li>${x}</li>`).join('')}</ul></div></div></li>`).join('')}</ol></div>`;
   document.querySelectorAll('#about .exp .row').forEach(r => r.onclick = () => { const li = r.parentNode, on = !li.classList.contains('open'); li.classList.toggle('open', on); r.setAttribute('aria-expanded', on); });
   const b = $('cpy'); if (b) b.onclick = () => { const done = () => { b.querySelector('span').textContent = t.ab_copied; setTimeout(() => b.querySelector('span').textContent = t.ab_copy, 1800); };
     try { navigator.clipboard.writeText('Mahmouduix74@gmail.com').then(done, done); } catch(e){ done(); } };

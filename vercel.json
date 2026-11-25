@@ -15,15 +15,15 @@
   "rewrites": [
     {
       "source": "/work",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/about",
-      "destination": "/index.html"
+      "destination": "/"
     },
     {
       "source": "/contact",
-      "destination": "/index.html"
+      "destination": "/"
     }
   ]
 }
