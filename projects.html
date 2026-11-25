@@ -27,11 +27,15 @@ img,video{display:block}
 .top.sc{box-shadow:0 1px 0 var(--line)}
 .wm{display:block;color:var(--ink);line-height:0}
 .wm svg{display:block;height:calc(30*var(--u));width:auto}
-.pills{display:flex;gap:calc(10*var(--u))}
+.pills{display:flex;gap:calc(10*var(--u));justify-self:end}
+.top{display:grid;grid-template-columns:1fr auto 1fr;direction:ltr}
+.top .lft{justify-self:start;display:flex}
+.top .pill span,.top .pill b,.top .pill i{direction:inherit}
+html[lang=ar] .top .pill span{direction:rtl}
 .pill{height:calc(44*var(--u));padding:0 calc(18*var(--u));border-radius:999px;background:var(--white);box-shadow:inset 0 0 0 1px var(--line);display:inline-flex;align-items:center;gap:calc(10*var(--u));font-size:calc(16*var(--u));font-weight:500;transition:background .3s ease,color .3s ease,box-shadow .3s ease}
 .pill:hover{box-shadow:inset 0 0 0 1px var(--ink)}
 .pill svg{width:calc(16*var(--u));height:calc(16*var(--u))}
-html[lang=ar] .pill.home svg{transform:scaleX(-1)}
+
 .pill.talk{background:var(--ink);color:#fff;box-shadow:none}
 .pill.talk:hover{background:#333}
 .lang b{font-weight:600}.lang i{font-style:normal;color:var(--mute)}
@@ -174,9 +178,11 @@ html[lang=ar] .foot .c{font-family:inherit}
 <body>
 
 <header class="top" id="top">
+  <div class="lft">
+  <a class="pill home" href="index.html"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 8H2M7 3 2 8l5 5"/></svg><span data-t="home"></span></a>
+  </div>
   <a class="wm" href="index.html" aria-label="Mahmoud Ali — home"><svg viewBox="-2 -2 467 94" aria-hidden="true"><path d="M13 30H71A13 13 0 0 1 84 43V90H0V43A13 13 0 0 1 13 30ZM26.5 45H26.5A4.5 4.5 0 0 1 31 49.5V90H22V49.5A4.5 4.5 0 0 1 26.5 45ZM57.5 45H57.5A4.5 4.5 0 0 1 62 49.5V90H53V49.5A4.5 4.5 0 0 1 57.5 45ZM100 30H131A13 13 0 0 1 144 43V90H100A13 13 0 0 1 87 77V43A13 13 0 0 1 100 30ZM87 44H118A4 4 0 0 1 122 48V48A4 4 0 0 1 118 52H87V44ZM109.5 63H117.5A4.5 4.5 0 0 1 122 67.5V71.5A4.5 4.5 0 0 1 117.5 76H109.5A4.5 4.5 0 0 1 105 71.5V67.5A4.5 4.5 0 0 1 109.5 63ZM152 0H164A5 5 0 0 1 169 5V30H147V5A5 5 0 0 1 152 0ZM147 30H187A13 13 0 0 1 200 43V90H147V30ZM173.5 45H173.5A4.5 4.5 0 0 1 178 49.5V90H169V49.5A4.5 4.5 0 0 1 173.5 45ZM216 30H274A13 13 0 0 1 287 43V90H203V43A13 13 0 0 1 216 30ZM229.5 45H229.5A4.5 4.5 0 0 1 234 49.5V90H225V49.5A4.5 4.5 0 0 1 229.5 45ZM260.5 45H260.5A4.5 4.5 0 0 1 265 49.5V90H256V49.5A4.5 4.5 0 0 1 260.5 45ZM307 30H330A17 17 0 0 1 347 47V73A17 17 0 0 1 330 90H307A17 17 0 0 1 290 73V47A17 17 0 0 1 307 30ZM318.5 45H318.5A4.5 4.5 0 0 1 323 49.5V70.5A4.5 4.5 0 0 1 318.5 75H318.5A4.5 4.5 0 0 1 314 70.5V49.5A4.5 4.5 0 0 1 318.5 45ZM350 30H403V77A13 13 0 0 1 390 90H363A13 13 0 0 1 350 77V30ZM372 30H381V70.5A4.5 4.5 0 0 1 376.5 75H376.5A4.5 4.5 0 0 1 372 70.5V30ZM446 0H458A5 5 0 0 1 463 5V30H441V5A5 5 0 0 1 446 0ZM419 30H463V90H419A13 13 0 0 1 406 77V43A13 13 0 0 1 419 30ZM433.5 45H433.5A4.5 4.5 0 0 1 438 49.5V70.5A4.5 4.5 0 0 1 433.5 75H433.5A4.5 4.5 0 0 1 429 70.5V49.5A4.5 4.5 0 0 1 433.5 45Z" fill="currentColor" fill-rule="evenodd"/></svg></a>
   <div class="pills">
-    <a class="pill home" href="index.html"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 8H2M7 3 2 8l5 5"/></svg><span data-t="home"></span></a>
     <button class="pill lang" id="lang" type="button" aria-label="Switch language"><b data-t="l1"></b><span class="sep"></span><i data-t="l2"></i></button>
     <a class="pill talk" href="https://wa.me/201141578409" target="_blank" rel="noopener" data-t="talk"></a>
   </div>
