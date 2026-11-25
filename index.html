@@ -483,8 +483,8 @@ html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
   #nav .mono{display:none}
   #links{gap:2px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
   #links::-webkit-scrollbar{display:none}
-  #links a{flex:none;height:40px;padding:0 10px;border-radius:11px;font-size:13.5px}
-  #links a.talk{display:none}
+  #links a{flex:none;height:40px;padding:0 8px;border-radius:11px;font-size:13px}
+  #links a.talk{margin-inline-start:2px}
   html[data-page] #hero{height:76px}
   html[data-page] .top{inset:18px 16px auto}
   html[data-page] .wm svg{height:20px}
@@ -576,7 +576,7 @@ html[lang=ar] #pw .msg{font-family:inherit;text-transform:none}
   <span class="mono" aria-hidden="true"><svg viewBox="-4 26 92 68" style="width:58%;height:auto;display:block"><path d="M13 30H71A13 13 0 0 1 84 43V90H0V43A13 13 0 0 1 13 30ZM26.5 45H26.5A4.5 4.5 0 0 1 31 49.5V90H22V49.5A4.5 4.5 0 0 1 26.5 45ZM57.5 45H57.5A4.5 4.5 0 0 1 62 49.5V90H53V49.5A4.5 4.5 0 0 1 57.5 45Z" fill="currentColor" fill-rule="evenodd"/></svg></span>
   <div id="links">
     <a href="/work" data-pg="work" data-t="n_work"></a><a href="projects.html" data-t="n_projects"></a><a href="/about" data-pg="about" data-t="n_about"></a><a href="/contact" data-pg="contact" data-t="n_contact"></a><a href="assets/Mahmoud_Ali_CV.pdf" target="_blank" rel="noopener" data-t="n_cv"></a>
-    <a href="mailto:Mahmouduix74@gmail.com" class="talk" data-t="n_talk"></a>
+    <a href="https://wa.me/201141578409" target="_blank" rel="noopener" class="talk" data-t="n_talk"></a>
   </div>
   <div id="load"><div id="bar"></div><span id="pct">0%</span></div>
 </nav>
@@ -778,7 +778,7 @@ function render(){
       <div class="b tools" data-ain="5"><div class="k">${t.ab_toolk}</div><div class="tl">Figma</div><ul>${t.ab_tools.map(x => `<li>${x}</li>`).join('')}</ul></div>
       <div class="b years" data-ain="6"><div class="k">${t.ab_yrk}</div><div><div class="big">${t.ab_yr}</div><div class="yl">${t.ab_yrl}</div></div><p>${t.ab_yrp}</p></div>
     </div>
-    <div class="exp"><div class="eyebrow">${t.ex_l}</div><ol>${t.ex.map((e, i) => `<li data-ain="7"><button type="button" class="row" aria-expanded="false" aria-controls="exm${i}"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span></span><i class="chev" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6 8 10.5 12.5 6"/></svg></i></button><div class="more" id="exm${i}"><div><span class="pl">${e[4]}</span><ul>${e[5].map(x => `<li>${x}</li>`).join('')}</ul></div></div></li>`).join('')}</ol></div>`;
+    <div class="exp"><div class="eyebrow">${t.ex_l}</div><ol>${t.ex.map((e, i) => `<li data-ain="7"${i ? '' : ' class="open"'}><button type="button" class="row" aria-expanded="${i ? 'false' : 'true'}" aria-controls="exm${i}"><span class="yr">${e[0]}</span><span class="co">${e[1]}</span><span class="ro">${e[2]}</span><span></span><i class="chev" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6 8 10.5 12.5 6"/></svg></i></button><div class="more" id="exm${i}"><div><span class="pl">${e[4]}</span><ul>${e[5].map(x => `<li>${x}</li>`).join('')}</ul></div></div></li>`).join('')}</ol></div>`;
   document.querySelectorAll('#about .exp .row').forEach(r => r.onclick = () => { const li = r.parentNode, on = !li.classList.contains('open'); li.classList.toggle('open', on); r.setAttribute('aria-expanded', on); });
   const b = $('cpy'); if (b) b.onclick = () => { const done = () => { b.querySelector('span').textContent = t.ab_copied; setTimeout(() => b.querySelector('span').textContent = t.ab_copy, 1800); };
     try { navigator.clipboard.writeText('Mahmouduix74@gmail.com').then(done, done); } catch(e){ done(); } };
