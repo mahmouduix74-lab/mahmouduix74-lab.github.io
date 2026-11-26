@@ -1206,12 +1206,13 @@ window.ready = Promise.all([...document.images].filter(i => i.loading !== 'lazy'
 if (!Q.has('render') && !navigator.webdriver) window.ready.then(() => {
   // the reel starts its own clock when it is well into view
   new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) playReel(); else reelVisible = false; }), {threshold:.35}).observe($('reel'));
-  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playWork(); io.disconnect(); } }), {threshold:.12}).observe($('work'));
+  // reveal each section when its top is well on screen; a ratio threshold never fires for a section taller than the phone
+  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playWork(); io.disconnect(); } }), {threshold:0, rootMargin:'0px 0px -22% 0px'}).observe($('work'));
   if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
     const vio = new IntersectionObserver(es => es.forEach(e => { const v = e.target; if (e.isIntersecting) { const p = v.play(); if (p) p.catch(() => {}); } else v.pause(); }), {threshold:.25});
     const watch = () => document.querySelectorAll('#work video').forEach(v => vio.observe(v)); watch(); $('lang').addEventListener('click', () => setTimeout(watch, 0)); }
-  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playAbout(); io.disconnect(); } }), {threshold:.3}).observe($('about'));
-  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playContact(); io.disconnect(); } }), {threshold:.3}).observe($('contact'));
+  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playAbout(); io.disconnect(); } }), {threshold:0, rootMargin:'0px 0px -22% 0px'}).observe($('about'));
+  new IntersectionObserver((es, io) => es.forEach(e => { if (e.isIntersecting) { playContact(); io.disconnect(); } }), {threshold:0, rootMargin:'0px 0px -22% 0px'}).observe($('contact'));
   if (PAGE || matchMedia('(prefers-reduced-motion: reduce)').matches) return heroSeek(END);
   const t0 = performance.now(); const run = () => { const t = (performance.now()-t0)/1000; heroSeek(t); if (t < END) requestAnimationFrame(run); }; run();
 });
